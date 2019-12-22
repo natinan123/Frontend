@@ -28,6 +28,7 @@ import { SearchMapComponent } from './search/search-map/search-map.component';
 import { TastComponent } from './tast/tast.component';
 import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { WriteAdsComponent } from './write-ads/write-ads.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 
@@ -60,6 +61,7 @@ import { WriteAdsComponent } from './write-ads/write-ads.component';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    AngularFontAwesomeModule,
     NgbPaginationModule, NgbAlertModule, NgbModule,
     CarouselModule.forRoot(),
     AgmCoreModule.forRoot({

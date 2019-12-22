@@ -79,7 +79,6 @@ export class TestingComponent implements OnInit {
 
 
 
-  currentRate: any;
-
+  
 
 }

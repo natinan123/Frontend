@@ -15,6 +15,7 @@ import { BuyerhomeComponent } from './buyerhome/buyerhome.component';
 import { ListRequireComponent } from './list-require/list-require.component';
 import { MatchesComponent } from './matches/matches.component';
 import { RequireComponent } from './require/require.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [BuyerComponent, BuyerhomeComponent, ListRequireComponent, MatchesComponent, RequireComponent],
@@ -26,6 +27,7 @@ import { RequireComponent } from './require/require.component';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    AngularFontAwesomeModule,
     NgbPaginationModule, NgbAlertModule,NgbModule,
     CarouselModule.forRoot(),
     AgmCoreModule.forRoot({

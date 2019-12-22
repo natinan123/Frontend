@@ -23,6 +23,7 @@ import { SellUpgradeComponent } from './sell-upgrade/sell-upgrade.component';
 import { SellerhomeComponent } from './sellerhome/sellerhome.component';
 import { SellingComponent } from './selling/selling.component';
 import { TestingComponent } from './testing/testing.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [SellerComponent, ProfileComponent, SellChatComponent, SellCloseComponent, SellDraftComponent, SellEditComponent, EditPropertyComponent, SellProductComponent, SellPropertyComponent, SellUpgradeComponent, SellerhomeComponent, SellingComponent, TestingComponent],
@@ -34,6 +35,7 @@ import { TestingComponent } from './testing/testing.component';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    AngularFontAwesomeModule,
     NgbPaginationModule, NgbAlertModule, NgbModule,
     CarouselModule.forRoot(),
     AgmCoreModule.forRoot({

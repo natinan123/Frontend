@@ -18,6 +18,7 @@ import { LocationComponent } from './search/location/location.component';
 import { MapComponent } from './search/map/map.component';
 import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ArtDetailComponent } from './article/art-detail/art-detail.component';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    AngularFontAwesomeModule,
     NgbPaginationModule, NgbAlertModule, NgbModule,
     CarouselModule.forRoot(),
     AgmCoreModule.forRoot({

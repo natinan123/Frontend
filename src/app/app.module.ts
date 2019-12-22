@@ -14,6 +14,7 @@ import { CarouselModule } from 'ngx-bootstrap';
 import { AgmCoreModule } from "@agm/core";
 import { FileUploadModule } from 'ng2-file-upload';
 import { API } from './map-api';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { API } from './map-api';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    AngularFontAwesomeModule,
     NgxWebstorageModule.forRoot(),
     CarouselModule.forRoot(),
     AgmCoreModule.forRoot({
