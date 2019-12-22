@@ -1,1 +1,120 @@
-<p>sell-upgrade works!</p>
+<div class="alert alert-success" role="alert" style="margin-top: 30px;width: 85%;">
+    <h4 class="alert-heading">Upgrade!</h4>
+    <p>Upgrade รายการประกาศอสังหาริมทรัพย์ {{My_grade}}</p>
+    <hr>
+    <p class="mb-0">อัพเกรดรายการอสังหาริมทรัพย์เพื่อเพิ่มรายการอสังหาริมทรัพย์</p>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <mat-card class="card" style="background-color: #85b8cb">
+            <mat-card-header>
+                <mat-card-title>ระดับ Gold</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    ระดับ Gold สามารถประกาศอสังหาริมทรัพย์ได้ 20 รายการ
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button *ngIf="My_grade != 'Gold' && My_grade != 'Platinum' && My_grade != 'Diamond' "
+                    (click)="openModalUpgold(Gold)" class="bt-sub">สมัคร</button>
+                <button mat-raised-button disabled
+                    *ngIf="My_grade == 'Gold' && My_grade == 'Platinum' && My_grade == 'Diamond' "
+                    class="bt-sub">Disabled</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-md-3">
+        <mat-card class="card" style="background-color: #1d6a96">
+            <mat-card-header>
+                <mat-card-title>ระดับ Platinum</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    ระดับ Platinum สามารถประกาศอสังหาริมทรัพย์ได้ 35 รายการ
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button *ngIf="My_grade != 'Platinum' && My_grade != 'Diamond' "
+                    (click)="openModalUpplatinum(Platinum)" class="bt-sub">สมัคร</button>
+                <button mat-raised-button disabled *ngIf="My_grade == 'Platinum' && My_grade == 'Diamond' "
+                    class="bt-sub">Disabled</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-md-3">
+        <mat-card class="card" style="background-color: #283b42">
+            <mat-card-header>
+                <mat-card-title>ระดับ Diamond</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    ระดับ Diamond สามารถประกาศอสังหาริมทรัพย์ได้ 50 รายการ
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button *ngIf="My_grade != 'Diamond' " (click)="openModalUpdiamond(Diamond)"
+                    class="bt-sub">สมัคร</button>
+                <button mat-raised-button disabled *ngIf="My_grade == 'Diamond' " class="bt-sub">Disabled</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+
+<!-- Modal -->
+<ng-template #Gold let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Upgrade ประกาศอสังหาริมทรัพย์</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Upgrade ประกาศอสังหาริมทรัพย์ระดับ Gold</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onSubmit()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+<ng-template #Platinum let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Upgrade ประกาศอสังหาริมทรัพย์</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Upgrade ประกาศอสังหาริมทรัพย์ระดับ Platinum</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onSubmit()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+<ng-template #Diamond let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Upgrade ประกาศอสังหาริมทรัพย์</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Upgrade ประกาศอสังหาริมทรัพย์ระดับ Diamond</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onSubmit()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+
+<!-- alert -->
+<ng-template #upgrade let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        บันทึกประวัติส่วนตัว " สำเร็จ "
+    </div>
+</ng-template>

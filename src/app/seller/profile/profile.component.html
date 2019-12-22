@@ -1,1 +1,181 @@
-<p>profile works!</p>
+<div class="row" style="height: 100px;background-color: #014254">
+    <div class="col-md">
+        <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> ข้อมูลส่วนตัว</h1>
+    </div>
+    <div class="col-md">
+        <p class="count">จำนวนอสังหาริมทรัพย์ ( {{count_pro}} / {{pro_limit}} )</p>
+    </div>
+
+</div>
+
+
+
+
+<mat-card style="margin-top: 20px; margin-bottom:30px; background-color:   #F2F3F5; width: 90%; ">
+
+
+
+    <div class="" style="margin-top: 30px;">
+        <p>
+            <ngb-progressbar type="warning" value="{{count_pro}}" max="{{pro_limit}}" [striped]="true"
+                [animated]="true">{{count_pro}} of {{pro_limit}}</ngb-progressbar>
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="data:image/jpg;base64,{{pic64}}" class="circle" />
+        </div>
+        <div class="col-md-3">
+            <button mat-raised-button style="margin-top: 70px;" (click)="openModalAvatar(editAvatar)"><i
+                    class="fa fa-pencil" aria-hidden="true"> แก้ไขรูปโปรไฟล์</i></button>
+        </div>
+
+    </div>
+
+
+    <div style="margin: 20px;">
+        <form style="padding-top: 10px;padding-left: 20px;padding-right: 20px;">
+            <p>
+                <mat-form-field appearance="fill" style="width: 35%">
+                    <mat-label>ชื่อ</mat-label>
+                    <input matInput style="color: #1d6a96" disabled value="{{fname}}">
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="width: 35%; margin-left: 10px">
+                    <mat-label>นามสกุล</mat-label>
+                    <input matInput style="color: #1d6a96 ;" disabled value="{{lname}}">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill" style="width: 70%">
+                    <mat-label>อีเมล์</mat-label>
+                    <input matInput style="color: #1d6a96" disabled value="{{email_id}}">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill" style="width: 70%">
+                    <mat-label>เบอร์โทรศัพท์</mat-label>
+                    <input matInput style="color: #1d6a96" disabled value="{{phone}}">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="fill" style="width: 70%">
+                    <mat-label> ID Line</mat-label>
+                    <input matInput style="color: #1d6a96" disabled value="{{id_line}}">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="fill" style="width: 70%">
+                    <mat-label>Facebook</mat-label>
+                    <input matInput style="color: #1d6a96" disabled value="{{facebook}}">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="fill" style="width: 70%">
+                    <mat-label>รายละเอียดอื่น ๆ</mat-label>
+                    <textarea cols="50" rows="3" matInput style="color: #1d6a96" disabled
+                        value="{{cus_detail}}"></textarea>
+                </mat-form-field>
+            </p>
+
+
+            <button mat-raised-button (click)="openModalProfile(Profile)"
+                style="background: #1d6a96 ; color: snow;">แก้ไขข้อมูลส่วนตัว</button>
+        </form>
+    </div>
+</mat-card>
+
+
+
+
+<ng-template #Profile let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">แก้ไขข้อมูลส่วนตัว</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" [formGroup]="updateprofile">
+
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>ชื่อ</mat-label>
+                <input matInput formControlName="fname" style="color: #1d6a96" [(ngModel)]="fname">
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="margin-left: 10px">
+                <mat-label>นามสกุล</mat-label>
+                <input matInput formControlName="lname" style="color: #1d6a96" [(ngModel)]="lname">
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="fill" style="width: 80%">
+                <mat-label>เบอร์โทรศัพท์</mat-label>
+                <input matInput formControlName="phone" style="color: #1d6a96" [(ngModel)]="phone">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill" style="width: 80%">
+                <mat-label> ID Line</mat-label>
+                <input matInput formControlName="id_line" style="color: #1d6a96" [(ngModel)]="id_line">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill" style="width: 80%">
+                <mat-label>Facebook</mat-label>
+                <input matInput formControlName="facebook" style="color: #1d6a96" [(ngModel)]="facebook">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-label>รายละเอียดอื่น ๆ</mat-label>
+                <textarea cols="50" rows="3" matInput formControlName="cus_detail" style="color: #1d6a96"
+                    [(ngModel)]="cus_detail"></textarea>
+            </mat-form-field>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onUpdateprofile()"
+            style="background-color: #1d6a96;color: snow">บันทึก</button>
+    </div>
+</ng-template>
+
+
+
+<!-- alert -->
+<ng-template #success let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        บันทึกประวัติส่วนตัว " สำเร็จ "
+    </div>
+</ng-template>
+
+<ng-template #editAvatar let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">แก้ไขรูปโปรไฟล์</h5>
+    </div>
+
+    <div class="modal-body" [formGroup]="updateprofile">
+
+
+        <!-- single -->
+        <div class="" style="margin-top: 10px; margin-bottom: 10px;">
+            <img *ngIf="url == null && pic64 == null" src="../../../assets/pic/mainpage/user_avatar.png"
+                class="circle2">
+            <img *ngIf="url != null" [src]="url" class="circle2">
+            <img *ngIf="url == null && pic64 != null" src="data:image/jpg;base64,{{pic64}}" class="circle2" />
+        </div>
+        <div>
+            <input type='file' accept=" image/* " (change)="onSelectFile($event)">
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onSubmit()" style="background-color: #1d6a96;color: snow">บันทึก</button>
+    </div>
+
+</ng-template>

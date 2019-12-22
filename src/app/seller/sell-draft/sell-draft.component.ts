@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerService } from 'src/app/@service/server.service';
+import { SessionService } from 'src/app/@service/session.service';
 
 @Component({
   selector: 'app-sell-draft',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellDraftComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+  prodraft: Object;
+
+  constructor(
+    private service: ServerService,
+    private session: SessionService,
+  ) { }
 
   ngOnInit() {
+    this.user = this.session.getActiveUser();
+    console.log(this.user);
+
+    this.getMypro();
+  }
+
+  // อสังหาที่ประกาศ
+  getMypro() {
+    this.service.getProDraft(this.user[0].email_id).subscribe(
+      (res) => {
+        console.log(res);
+        this.prodraft = res;
+      }
+    )
   }
 
 }
