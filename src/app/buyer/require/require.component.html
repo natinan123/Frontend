@@ -1,1 +1,108 @@
-<p>require works!</p>
+<div class="row" style="height: 100px;background-color: #014254">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; ">
+        ความต้องการอสังหาริมทรัพย์ที่ต้องการซื้อ
+    </h1>
+</div>
+
+<mat-card style="width: 97%; margin-left: auto; margin-right: auto; top: 10px;background-color: #BBD9EE">
+
+    <form [formGroup]="addReq">
+
+        <div class="select">
+            <label for="select1">อสังหาริมทรัพย์ที่ต้องการ</label>
+            <select [(ngModel)]="Type_id" formControlName="Type_id" class="form-control" id="select1">
+                <option value="">เลือกรายการอสังหาริมทรัพย์</option>
+                <option [value]="t.type_id" *ngFor="let t of types">{{t.type_name}}</option>
+            </select>
+        </div>
+
+        <!-- <div class="select">
+        <label for="select2">ภูมิภาค</label>
+        <select [(ngModel)]="Loc_zone" formControlName="Loc_zone" class="form-control" id="select2">
+          <option value="">เลือกรายการภูมิภาค</option>
+          <option [value]="z.loc_zone" *ngFor="let z of zones">{{z.zone_name}}</option>
+        </select>
+      </div> -->
+
+
+        <div class="select">
+            <label for="select2">ภูมิภาค</label>
+            <select [(ngModel)]="Loc_zone" (click)="onLocation(Loc_zone)" formControlName="Loc_zone"
+                class="form-control" id="select2">
+                <option>เลือกรายการภูมิภาค</option>
+                <option [value]="z.loc_zone" *ngFor="let z of zones">{{z.zone_name}}</option>
+            </select>
+        </div>
+
+
+        <div class="select">
+            <label for="select3">จังหวัด</label>
+            <select [(ngModel)]="Location_id" formControlName="Location_id" class="form-control" id="select3">
+                <option value="">เลือกรายการจังหวัด</option>
+                <option [value]="p.location_id" *ngFor="let p of provin">{{p.loc_name}}</option>
+            </select>
+        </div>
+
+        <div class="range">
+            <label for="area">ขนาดพื้นที่สูงสุด : {{Area_max}} ตารางเมตร</label>
+            <input type="range" [(ngModel)]="Area_max" formControlName="Area_max" class="custom-range" min="0"
+                max="2000" step="5" id="area">
+            <input [(ngModel)]="Area_max" formControlName="Area_max" class="form-control" placeholder="กรอกขนาด">
+        </div>
+
+        <div class="range">
+            <label for="area">ขนาดพื้นที่ต่ำสุด : {{Area_min}} ตารางเมตร</label>
+            <input type="range" [(ngModel)]="Area_min" formControlName="Area_min" class="custom-range" min="0"
+                max="2000" step="5" id="area">
+            <input [(ngModel)]="Area_min" formControlName="Area_min" class="form-control" placeholder="กรอกขนาด">
+        </div>
+
+
+        <div class="price">
+            <label for="price1">ราคาของพื้นที่สูงสุด : {{Price_max}} บาท</label>
+            <input type="range" [(ngModel)]="Price_max" formControlName="Price_max" class="custom-range" min="0"
+                max="2000" step="5" id="price1">
+            <input [(ngModel)]="Price_max" formControlName="Price_max" class="form-control" placeholder="กรอกขนาด">
+        </div>
+
+        <div class="price">
+            <label for="price1">ราคาของพื้นที่ต่ำสุด : {{Price_min}} บาท</label>
+            <input type="range" [(ngModel)]="Price_min" formControlName="Price_min" class="custom-range" min="0"
+                max="2000" step="5" id="price1">
+            <input [(ngModel)]="Price_min" formControlName="Price_min" class="form-control" placeholder="กรอกขนาด">
+        </div>
+
+        <button mat-button class="bt-submit" (click)="openModalAddreq(Addrequire)">ยืนยันความต้องการ</button>
+    </form>
+
+</mat-card>
+
+
+<ng-template #Addrequire let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ต้องการลบ</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>ประเภทอสังหาริมทรัพย์ : {{Type_id}}</p>
+        <p>ภูมิภาค : {{Loc_zone}}</p>
+        <p>จังหวัด : {{Location_id}}</p>
+        <p>ขนาดพื้นที่สูงสุด : {{Area_max}} ตารางเมตร</p>
+        <p>ขนาดพื้นที่ต่ำสุด : {{Area_min}} ตารางเมตร</p>
+        <p>ราคาของพื้นที่สูงสุด : {{Price_max}} บาท</p>
+        <p>ราคาของพื้นที่ต่ำสุด : {{Price_min}} บาท</p>
+
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onAddReq()" style="background-color: #1d6a96;color: snow">ตกลง</button>
+    </div>
+</ng-template>
+
+<ng-template #success let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        ความต้องการอสังหาริมทรัพย์ที่ต้องการซื้อ " สำเร็จ "
+    </div>
+</ng-template>

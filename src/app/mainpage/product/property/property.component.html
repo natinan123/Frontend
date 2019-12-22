@@ -1,1 +1,125 @@
-<p>property works!</p>
+<div class="row" style="height: 100px;background-color: #014254">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> อสังหาริมทรัพย์ {{type_name}}</h1>
+</div>
+
+<mat-card class="mat-card">
+    <mat-chip-list>
+        <mat-chip class="tag-sell"><i class="material-icons">home_work</i>&nbsp; ประเภท{{pro_sell}}</mat-chip>
+    </mat-chip-list>
+
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-9">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{pro_head}}</mat-card-title>
+                <mat-card-subtitle>{{zone_name}}&nbsp; {{loc_name}}</mat-card-subtitle>
+                <mat-card-subtitle>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <i class="fa-icon" class="fa fa-object-group" aria-hidden="true">&nbsp; {{pro_area}}
+                                ตร.ม.</i>
+                        </div>
+                        <div class="col-md-3">
+                            <i class="fa-icon" class="fa fa-bed" aria-hidden="true">&nbsp; {{pro_bedroom}} ห้องนอน</i>
+                        </div>
+                        <div class="col-md-3">
+                            <i class="fa-icon" class="fa fa-bath" aria-hidden="true">&nbsp; {{pro_toilet}} ห้องน้ำ</i>
+                        </div>
+                        <div class="col-md-3">
+                            <i class="fa-icon" class="fa fa-building-o" aria-hidden="true">&nbsp; {{pro_floor}} ชั้น</i>
+                        </div>
+                    </div>
+                </mat-card-subtitle>
+            </mat-card-header>
+        </div>
+        <div class="col-md-3">
+            <mat-card-header class="price">
+                <mat-card-title>{{price | number : '1.2-2'}} บาท</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions style="margin-right: 30px;">
+                <button mat-button class="bt-map"><i class="material-icons">navigation
+                    </i> ดูตำแหน่งในแผนที่</button>
+            </mat-card-actions>
+        </div>
+    </div>
+</mat-card>
+
+
+<mat-card class="mat-card" style="top: 20px">
+    <img mat-card-lg-image class="image">
+    <p>
+        <img mat-card-md-image>
+        <img mat-card-md-image>
+        <img mat-card-md-image>
+        <img mat-card-md-image>
+        <img mat-card-md-image>
+        <img mat-card-md-image>
+        <img mat-card-md-image>
+        <img mat-card-md-image>
+        <img mat-card-md-image>
+        <img mat-card-md-image>
+    </p>
+</mat-card>
+<mat-card class="mat-card" style="top: 30px">
+    <mat-card-title>
+        <p>รายละเอียด</p>
+        <p style="width: 1000px;margin-left: auto;margin-right: auto;">{{pro_detail}}</p>
+    </mat-card-title>
+</mat-card>
+
+<mat-card class="mat-card" style="top: 35px">
+    <mat-card-title>คุณลักษณะพื้นฐาน</mat-card-title>
+    <div class="row">
+
+
+        <div class="col-md-6">
+            <mat-chip-list aria-label="Color selection">
+                <mat-chip *ngIf="style1 != 0 && style10 != null"> ที่จอดรถ </mat-chip>
+                <mat-chip *ngIf="style2 != 0 && style10 != null"> ลานจอดรถ </mat-chip>
+                <mat-chip *ngIf="style3 != 0 && style10 != null"> รักษาความปลอดภัย </mat-chip>
+                <mat-chip *ngIf="style4 != 0 && style10 != null"> สระว่ายน้า </mat-chip>
+                <mat-chip *ngIf="style5 != 0 && style10 != null"> กล้องวงจรปิด </mat-chip>
+                <mat-chip *ngIf="style6 != 0 && style10 != null"> ฟิตเนส </mat-chip>
+                <mat-chip *ngIf="style7 != 0 && style10 != null"> สนามเด็กเล่น </mat-chip>
+                <mat-chip *ngIf="style8 != 0 && style10 != null"> มินิมาร์ท </mat-chip>
+                <mat-chip *ngIf="style9 != 0 && style10 != null"> ซัก อบ รีด </mat-chip>
+                <mat-chip *ngIf="style10 != 0 && style10 != null"> ศาลาชมทิวทัศน์ </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="col-md-6">
+            <agm-map [latitude]="lat2" [longitude]="lng2">
+
+                <!-- หน้าเริ่ม -->
+                <agm-marker [latitude]="latitude" [longitude]="longtitude">
+                    <!-- มาค์ก -->
+
+                    <!-- <agm-info-window>
+            <h5><strong>{{type_name}} </strong></h5>
+  
+            <p>{{pro_head}}</p>
+            <p>{{price}} บาท</p>
+            <p><a mat-flat-button style="width: 100%; background: #1d6a96 ; color: snow; " ]">รายละเอียด</a></p>
+          </agm-info-window> -->
+
+                </agm-marker>
+
+            </agm-map>
+
+        </div>
+    </div>
+</mat-card>
+
+<mat-card class="mat-card" style="top: 40px">
+    <mat-card-title>ติดต่อผู้ใช้งาน</mat-card-title>
+    <div class="col-md-6">
+        <p>{{email_id}}</p>
+        <p>{{fname}}</p>
+        <p>{{lname}}</p>
+        <p>{{id_line}}</p>
+        <p>{{facebook}}</p>
+        <p>{{profile_pic}}</p>
+        <p>{{cus_detail}}</p>
+        <p>{{phone}}</p>
+    </div>
+
+</mat-card>

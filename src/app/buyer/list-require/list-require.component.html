@@ -1,1 +1,68 @@
-<p>list-require works!</p>
+<!-- รายการแนะนำ -->
+<mat-card style="width: 98%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
+    <mat-toolbar style="background-color: #4579a0;color: snow">รายการความต้องการ</mat-toolbar>
+    <div class="row" style="margin-top: 10px; margin-left: auto; margin-right: auto;">
+
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let row of require" style="margin-top: 5px">
+                <mat-expansion-panel-header class="require">
+                    <mat-panel-title>
+                        {{row.type_name}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        วันที่กรอก {{row.req_date}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th scope="row">พื้นที่ขนาดสูงสุด</th>
+                            <td>{{row.req_area_max}} ตารางเมตร</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">พื้นที่ขนาดต่ำสุด</th>
+                            <td>{{row.req_area_min}} ตารางเมตร</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">ราคาพื้นที่สูงสุด</th>
+                            <td>{{row.req_price_max}} บาท</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">ราคาพื้นที่ต่ำสุด</th>
+                            <td>{{row.req_price_min}} บาท</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">ภูมิภาค</th>
+                            <td>{{row.zone_name}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">จังหวัด</th>
+                            <td>{{row.loc_name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button mat-button style="background-color: #ee8b22; color: snow"
+                    (click)="openModalReq(delectrequire)">ลบรายการ</button>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </div>
+</mat-card>
+
+<ng-template #delectrequire let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ต้องการลบ</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button style="background-color: #1d6a96;color: snow">ตกลง</button>
+    </div>
+</ng-template>

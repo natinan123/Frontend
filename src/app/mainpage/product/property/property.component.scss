@@ -1,0 +1,47 @@
+mat-chip {
+  width: 180px;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+.mat-card {
+  width: 90%;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 10px;
+  background-color: #bbd9ee;
+}
+
+.tag-sell {
+  white-space: nowrap;
+  background-color: #aec33a;
+  width: 130px;
+  color: snow;
+}
+
+.price {
+  float: right;
+  color: #f25c62 !important;
+}
+
+.bt-map {
+  color: snow;
+  background-color: #5fad46;
+  float: right;
+}
+
+.image {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 450px;
+}
+
+agm-map {
+  height: 500px;
+  width: 100%;
+}

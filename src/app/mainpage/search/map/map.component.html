@@ -1,1 +1,46 @@
-<p>map works!</p>
+<div class="row" style="height: 100px;background-color: #014254">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> ค้นหาอสังหาริมทรัพย์จากแผนที่</h1>
+
+
+</div>
+
+
+
+<!-- <div *ngIf="lat && lng"> -->
+<div>
+    <mat-form-field style="width: 20%; margin-left: 20px  ;">
+        <mat-label>เลือกประเภทอสังหาริมทรัพย์</mat-label>
+        <mat-select [(value)]="type_id">
+            <mat-option (click)="getMappro()">ไม่ระบุ</mat-option>
+            <mat-option value="1">บ้านเดี่ยว</mat-option>
+            <mat-option value="2">ทาวน์เฮาส์</mat-option>
+            <mat-option value="3">อพาร์ทเมนท์</mat-option>
+            <mat-option value="4">อาคารพาณิชย์</mat-option>
+            <mat-option value="5">คอนโดมิเนียม</mat-option>
+            <mat-option value="6">ที่ดิน</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button class="btsub" (click)="onGetHouse()">ค้นหา</button>
+
+
+    <agm-map [latitude]="lat2" [longitude]="lng2">
+
+        <!-- หน้าเริ่ม -->
+        <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude">
+            <!-- มาค์ก -->
+
+            <agm-info-window>
+                <h5><strong>{{m.type_name}} </strong></h5>
+
+                <p>{{m.pro_head}}</p>
+                <p>{{m.price}} บาท</p>
+                <p><a mat-flat-button style="width: 100%; background: #1d6a96 ; color: snow; "
+                        [routerLink]="['/mainpage/mainpage/property',m.pro_id ]">รายละเอียด</a></p>
+            </agm-info-window>
+
+        </agm-marker>
+
+    </agm-map>
+
+</div>
