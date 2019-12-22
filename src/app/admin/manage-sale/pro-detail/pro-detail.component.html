@@ -1,1 +1,105 @@
-<p>pro-detail works!</p>
+<p>
+    pro-detail works! {{data}}
+
+</p>
+
+<p>{{pro_id}}</p>
+<p>{{pro_head}}</p>
+<p>{{type_name}}</p>
+<p>{{pro_sell}}</p>
+<p>{{pro_detail}}</p>
+<p>{{pro_area}}</p>
+<p>{{pro_space}}</p>
+<p>{{price}}</p>
+<p>{{pro_floor}}</p>
+<p>{{pro_bedroom}}</p>
+<p>{{pro_toilet}}</p>
+<p>{{pro_status}}</p>
+<p>{{pro_map}}</p>
+<p>{{pro_post}}</p>
+<p>{{pro_views}}</p>
+<p>{{location_id}}</p>
+
+<mat-divider></mat-divider>
+<p>{{email_id}}</p>
+<p>{{fname}}</p>
+<p>{{lname}}</p>
+<p>{{id_line}}</p>
+<p>{{facebook}}</p>
+<p>{{profile_pic}}</p>
+<p>{{cus_detail}}</p>
+<p>{{cus_status}}</p>
+<p>{{cus_status}}</p>
+<p>{{phone}}</p>
+<mat-divider></mat-divider>
+
+<p>{{image1}}</p>
+<p>{{image2}}</p>
+<p>{{image3}}</p>
+<p>{{image4}}</p>
+<p>{{image5}}</p>
+<p>{{image6}}</p>
+<p>{{image7}}</p>
+<p>{{image8}}</p>
+<p>{{image9}}</p>
+<p>{{image10}}</p>
+
+<mat-divider></mat-divider>
+
+
+
+<p>
+    <mat-chip-list aria-label="Color selection">
+        <mat-chip *ngIf="image1 != 0 && image10 != null"> ที่จอดรถ </mat-chip>
+        <mat-chip *ngIf="image2 != 0 && image10 != null"> ลานจอดรถ </mat-chip>
+        <mat-chip *ngIf="image3 != 0 && image10 != null"> รักษาความปลอดภัย </mat-chip>
+        <mat-chip *ngIf="image4 != 0 && image10 != null"> สระว่ายน้า </mat-chip>
+        <mat-chip *ngIf="image5 != 0 && image10 != null"> กล้องวงจรปิด </mat-chip>
+        <mat-chip *ngIf="image6 != 0 && image10 != null"> ฟิตเนส </mat-chip>
+        <mat-chip *ngIf="image7 != 0 && image10 != null"> สนามเด็กเล่น </mat-chip>
+        <mat-chip *ngIf="image8 != 0 && image10 != null"> มินิมาร์ท </mat-chip>
+        <mat-chip *ngIf="image9 != 0 && image10 != null"> ซัก อบ รีด </mat-chip>
+        <mat-chip *ngIf="image10 != 0 && image10 != null"> ศาลาชมทิวทัศน์ </mat-chip>
+
+    </mat-chip-list>
+</p>
+
+<button mat-raised-button (click)="openModalModifly(ModifyPro)"
+    style="background: #aaa049 ; color: snow; margin-left: 10px; "> ปิดปรับปรุง</button>
+<button mat-raised-button (click)="openModalClose(ClosePro)"
+    style="background: #428627 ; color: snow; margin-left: 10px; "> ปิดการขาย</button>
+
+
+<ng-template #ModifyPro let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ต้องการปิดปรับปรุงประกาศ</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>ต้องการปิดปรับปรุงอสังหาริมทรัพย์ที่ประกาศ </p>
+        <p> {{pro_head}} </p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onProdraft()" style="background-color: #1d6a96;color: snow">ตกลง</button>
+    </div>
+</ng-template>
+
+
+<ng-template #ClosePro let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ต้องการปิดการขาย</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>ต้องการปิดการขายอสังหาริมทรัพย์</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onProClose()" style="background-color: #1d6a96;color: snow">ตกลง</button>
+    </div>
+</ng-template>

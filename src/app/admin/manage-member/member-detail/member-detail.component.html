@@ -1,1 +1,91 @@
-<p>member-detail works!</p>
+<mat-card class="card">
+
+    <form [formGroup]="edit_detail">
+        <div class="row">
+            <div class="col-md-8">
+                <mat-card-header style="margin-top: 20px">
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title> {{fname}} {{lname}}</mat-card-title>
+                    <mat-card-subtitle> {{email_id}} </mat-card-subtitle>
+                    <mat-card-subtitle><button mat-raised-button
+                            style="background-color: #859f3c; color: snow; ">ติดต่อสอบถาม</button></mat-card-subtitle>
+                </mat-card-header>
+            </div>
+            <div class="col-md-4">
+                <div class="label">
+                    <mat-label>สิทธิการใช้ประกาศอสังหาริมทรัพท์</mat-label>
+                </div>
+                <div class="option">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-select [(ngModel)]="limit_id" formControlName="limit_id" placeholder="เลือกประเภทการขาย"
+                            required>
+                            <mat-option [value]="l.limit_id" *ngFor="let l of limit">{{l.limit_id}} : {{l.pro_limit}}
+                                รายการ
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <button mat-raised-button (click)="openModalLimit(Limit)"
+                    style="background-color: #1d6a96;color: snow; float: right;">อัพเกรดรายการประกาศ</button>
+            </div>
+        </div>
+
+
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    <th scope="row"><img src="../../../../assets/pic/admin/line-icon.png" class="image"></th>
+                    <td class="text">{{id_line}}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><img src="../../../../assets/pic/admin/facebook.png" class="image"></th>
+                    <td class="text">{{facebook}}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><img src="../../../../assets/pic/admin/gmail.png" class="image"></th>
+                    <td class="text"> {{email_id}}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><img src="../../../../assets/pic/admin/phone.ico" class="image"></th>
+                    <td class="text"> {{phone}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="image">รายละเอียด</th>
+                    <td>{{cus_detail}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+    </form>
+</mat-card>
+
+<!-- todo : ngModal -->
+<ng-template #Limit let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">สิทธิ์การใช้</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>อัพเดต สิทธิ์การประกาศอสังหาริมทรัพย์</p>
+        <p> ของผู้ใช้ <strong>{{fname}} &nbsp; {{lname}}</strong> ในระดับ {{limit_id}} : {{pro_limit}} รายการ</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onUpdateLimit()"
+            style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+<!-- !alert -->
+<ng-template #success let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        ประกาศอสังหาริมทรัพย์ " สำเร็จ "
+    </div>
+</ng-template>

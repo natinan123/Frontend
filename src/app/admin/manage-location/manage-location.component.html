@@ -1,1 +1,164 @@
-<p>manage-location works!</p>
+<div class="row" style="height: 100px;background-color: #014254">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> จัดการรายการทำเลที่ตั้ง</h1>
+</div>
+
+<p>ค้นหารายการทำเลที่ตั้ง</p>
+<mat-form-field appearance="outline" style="width: 50%;">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="ค้นหารายการ">
+</mat-form-field>
+
+<button mat-raised-button (click)="openModalAddloc(AddLoc)"
+    style="background: #1d6a96 ; color: snow; margin-left: 50px"><i class="material-icons">
+        add_box
+    </i> เพิ่มทำเล</button>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="loc_name">
+            <th mat-header-cell *matHeaderCellDef> เขต/ทำเล </th>
+            <td mat-cell *matCellDef="let row"> {{row.loc_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="loc_zone">
+            <th mat-header-cell *matHeaderCellDef> ภาค </th>
+            <td mat-cell *matCellDef="let row"> {{row.zone_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="countLoc">
+            <th mat-header-cell *matHeaderCellDef> จำนวนอสังหาริมทรัพย์ </th>
+            <td mat-cell *matCellDef="let row"> {{row.countLoc}} รายการ</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef> แก้ไข </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-icon (click)="openModalEditLoc(row,EditLoc)"
+                    style="font-size: 30px;cursor: pointer;color: #1d6a96">
+                    create</mat-icon>&nbsp;
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> ลบ </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-icon (click)="onModalDelete(row,deleteLoc)" style="font-size: 30px;cursor: pointer;color:red">
+                    delete_sweep
+                </mat-icon>&nbsp;
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[ 10, 20 ,50 , 100]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+<ng-template #AddLoc let-modal>
+    <div style="margin: 20px;">
+        <form style="padding-top: 10px;padding-left: 20px;padding-right: 20px;" [formGroup]="AddLocation">
+            <h1 mat-dialog-title>แก้ไขทำเล</h1>
+
+
+            <div class="row" style="margin-top: 8px;">
+                <div class="col-md">
+                    <div class="label">
+                        <mat-label>ชื่อทำเล</mat-label>
+                    </div>
+                    <div class="option">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <input matInput [(ngModel)]="Loc_name" formControlName="Loc_name" placeholder="กรอกทำเล"
+                                style="color: #1d6a96">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md">
+                    <label for="Zone2">ภูมิภาค</label>
+                    <select class="form-control" [(ngModel)]="Zone" formControlName="Zone">
+                        <option [value]="z.loc_zone" *ngFor="let z of zones">{{z.zone_name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div mat-dialog-actions>
+                <button mat-raised-button class="submit" (click)="onAddlocation()">
+                    เพิ่มทำเลที่ตั้ง </button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+
+<ng-template #EditLoc let-modal>
+    <div style="margin: 20px;">
+        <form style="padding-top: 10px;padding-left: 20px;padding-right: 20px;" [formGroup]="updateLoc">
+            <h1 mat-dialog-title>แก้ไขทำเล</h1>
+
+            <mat-form-field style="width: 100%">
+                <mat-label>ชื่อทำเล</mat-label>
+                <input matInput formControlName="loc_name" style="color: #1d6a96" [(ngModel)]="loc_name">
+            </mat-form-field>
+
+            <div class="row">
+                <div class="col-md">
+                    <label for="Zone2">ภูมิภาค</label>
+                    <select class="form-control" [(ngModel)]="Zone" formControlName="Zone">
+                        <option [value]="z.loc_zone" *ngFor="let z of zones">{{z.zone_name}}</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div mat-dialog-actions>
+                <button mat-raised-button class="submit" (click)="onUpdateLoc()">ยืนยันการแก้ไข</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template #deleteLoc let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ต้องการลบ</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>ต้องการลบทำเลที่ตั้ง</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onDeleteLoc()" style="background-color: #1d6a96;color: snow">ตกลง</button>
+    </div>
+</ng-template>
+
+
+
+<!-- Alert -->
+<ng-template #success let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: forestgreen">
+            offline_pin
+        </i> Successfully
+    </div>
+</ng-template>
+
+<ng-template #add_success let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: forestgreen">
+            offline_pin
+        </i> เพิ่มทำเล 'สำเร็จ'
+    </div>
+</ng-template>
+
+<ng-template #delect let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: forestgreen">
+            offline_pin
+        </i> ลบสำเร็จ
+    </div>
+</ng-template>

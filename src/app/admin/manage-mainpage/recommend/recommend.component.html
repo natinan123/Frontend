@@ -1,1 +1,63 @@
-<p>recommend works!</p>
+<div class="row" style="height: 100px;background-color: #014254">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> เพิ่มรายการแนะนำ</h1>
+</div>
+
+<p>ค้นหารายการแนะนำ</p>
+<mat-form-field appearance="outline" style="width: 50%;">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="ค้นหารายการ">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="e">
+            <th mat-header-cell *matHeaderCellDef> ชื่ออสังหาริมทรัพย์ </th>
+            <td mat-cell *matCellDef="let row">{{row.pro_head}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="f">
+            <th mat-header-cell *matHeaderCellDef> ประเภท </th>
+            <td mat-cell *matCellDef="let row"> {{row.type_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="g">
+            <th mat-header-cell *matHeaderCellDef> เจ้าของอสังหาริมทรัพย์ </th>
+            <td mat-cell *matCellDef="let row"> {{row.fname}} &nbsp; {{row.lname}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="h">
+            <th mat-header-cell *matHeaderCellDef> เพิ่มรายการแนะนำ </th>
+            <td mat-cell *matCellDef="let row">
+                <button mat-raised-button (click)="openModalRecom(row,Recom)"
+                    style="background: #1d6a96 ; color: snow; "> <i class="material-icons">
+                        add_circle
+                    </i>&nbsp; เพิ่ม</button>
+
+
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[ 10, 20 ,50 ]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+
+<ng-template #Recom let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">เพิ่มรายการแนะนำ</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>ต้องการเพิ่มรายการแนะนำอสังหาริมทรัพย์ในหน้าหลัก </p>
+        <p>{{pro_head}}</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onUpdateRecom()" style="background-color: #1d6a96;color: snow">ตกลง</button>
+    </div>
+</ng-template>

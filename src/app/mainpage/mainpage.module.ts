@@ -11,16 +11,25 @@ import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng
 import { CarouselModule } from 'ngx-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
-import { ArtcleComponent } from './artcle/artcle.component';
-import { ArtDetailComponent } from './artcle/art-detail/art-detail.component';
 import { HomeComponent } from './home/home.component';
 import { PropertyComponent } from './product/property/property.component';
 import { FilterComponent } from './search/filter/filter.component';
 import { LocationComponent } from './search/location/location.component';
 import { MapComponent } from './search/map/map.component';
+import { ArticleComponent } from './article/article.component';
+import { ArtDetailComponent } from './article/art-detail/art-detail.component';
 
 @NgModule({
-  declarations: [MainpageComponent, ArtcleComponent, ArtDetailComponent, HomeComponent, PropertyComponent, FilterComponent, LocationComponent, MapComponent],
+  declarations: [
+    MainpageComponent,
+    HomeComponent,
+    PropertyComponent,
+    FilterComponent,
+    LocationComponent,
+    MapComponent,
+    ArticleComponent,
+    ArtDetailComponent
+  ],
   imports: [
     CommonModule,
     MainpageRoutingModule,
@@ -29,11 +38,11 @@ import { MapComponent } from './search/map/map.component';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    NgbPaginationModule, NgbAlertModule,NgbModule,
+    NgbPaginationModule, NgbAlertModule, NgbModule,
     CarouselModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: API.GOOGLE_API_KEY,
-      libraries: ['places','geometry','drawing']
+      libraries: ['places', 'geometry', 'drawing']
     }),//google api
   ]
 })

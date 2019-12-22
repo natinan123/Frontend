@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerService } from 'src/app/@service/server.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chattaxt',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChattaxtComponent implements OnInit {
 
-  constructor() { }
+  data: string[];
+  texts: Object;
+
+  constructor(
+    private service: ServerService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+    this.data = this.route.snapshot.paramMap.getAll('descination');
+    console.log(this.data);
+
+    this.service.getTextMessage(this.data).subscribe(
+      (res) => {
+        console.log(res);
+        this.texts = res;
+
+      })
   }
 
 }

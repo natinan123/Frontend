@@ -1,1 +1,8 @@
-<p>chattaxt works!</p>
+<p>
+    chattext works!
+</p>
+<p>{{data}}</p>
+<mat-chip-list *ngFor="let t of texts">
+    <mat-chip>{{t.mes_text}}</mat-chip>
+    {{t.time_stamp}}
+</mat-chip-list>

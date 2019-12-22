@@ -1,1 +1,100 @@
-<p>upgrad-member works!</p>
+<div class="row" style="height: 100px;background-color: #014254;">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> รายการร้องขออัพเกรด</h1>
+</div>
+
+<form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+
+                <th scope="col">ชื่อ</th>
+                <th scope="col">ระดับอัพเกรด</th>
+                <th scope="col">วันที่ร้องขอ</th>
+                <th scope="col">ลบรายการ</th>
+                <th scope="col">อัพเกรด</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of lists">
+
+                <td> {{row.fname}} {{row.lname}}</td>
+                <td>{{row.limit_id}}</td>
+                <td>{{row.date_req | date : 'fullDate'  }}</td>
+                <td><button mat-stroked-button color="primary" (click)="openModalUpDelete(row,Delete)">ลบรายการ</button>
+                </td>
+                <td><button mat-stroked-button color="primary" (click)="openModalUpgrade(row,Upgarde)">อัพเกรด</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+    <div class="alert alert-secondary" role="alert" *ngIf="cou == 0">
+        ไม่มีข้อมูลในตาราง
+    </div>
+</form>
+
+<!-- {{row.date_req}}
+  {{row.email_id}}
+  {{row.fname}}
+  {{row.limit_id}}
+  {{row.lname}}
+  {{row.requp_id}} -->
+
+<!--   Madal  -->
+<ng-template #Upgarde let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">อัพเกรดระดับประกาศ</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <p>ต้องการอัพเกรดระดับการประกาศขายอสังหาริมทรัพย์</p>
+    </div>
+    {{email_id}}
+    <p>{{requp_id}}</p>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onUpdateprofile()"
+            style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+<!-- modla delete -->
+<ng-template #Delete let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ลบรายการอัพเกรดระดับประกาศ</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <p>ต้องการลบรายการอัพเกรดระดับการประกาศขายอสังหาริมทรัพย์</p>
+        <p>{{requp_id}}</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onDeleteupgrade()"
+            style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+<!-- alert -->
+<ng-template #delect let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: forestgreen">
+            offline_pin
+        </i> ลบสำเร็จ
+    </div>
+</ng-template>
+
+<!-- alert -->
+<ng-template #upgrade let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        บันทึกประวัติส่วนตัว " สำเร็จ "
+    </div>
+</ng-template>
