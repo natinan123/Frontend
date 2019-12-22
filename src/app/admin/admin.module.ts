@@ -30,8 +30,28 @@ import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { WriteAdsComponent } from './write-ads/write-ads.component';
 
 
+
 @NgModule({
-  declarations: [AdminComponent, AdminhomeComponent, AdsComponent, ChatComponent, ChattaxtComponent, ManageLocationComponent, ManageMainpageComponent, RecommendComponent, ManageMemberComponent, MemberDetailComponent, ManageSaleComponent, ProDetailComponent, ProfileComponent, SearchComponent, SearchMapComponent, TastComponent, UpgradMemberComponent, WriteAdsComponent],
+  declarations: [
+    AdminComponent,
+    AdminhomeComponent,
+    AdsComponent,
+    ChatComponent,
+    ChattaxtComponent,
+    ManageLocationComponent,
+    ManageMainpageComponent,
+    RecommendComponent,
+    ManageMemberComponent,
+    MemberDetailComponent,
+    ManageSaleComponent,
+    ProDetailComponent,
+    ProfileComponent,
+    SearchComponent,
+    SearchMapComponent,
+    TastComponent,
+    UpgradMemberComponent,
+    WriteAdsComponent,
+    ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -40,13 +60,13 @@ import { WriteAdsComponent } from './write-ads/write-ads.component';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    NgbPaginationModule, NgbAlertModule,NgbModule,
+    NgbPaginationModule, NgbAlertModule, NgbModule,
     CarouselModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: API.GOOGLE_API_KEY,
-      libraries: ['places','geometry','drawing']
+      libraries: ['places', 'geometry', 'drawing']
     }),//google api
-    
+
   ]
 })
 export class AdminModule { }
