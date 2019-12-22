@@ -11,9 +11,13 @@ import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng
 import { CarouselModule } from 'ngx-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
+import { BuyerhomeComponent } from './buyerhome/buyerhome.component';
+import { ListRequireComponent } from './list-require/list-require.component';
+import { MatchesComponent } from './matches/matches.component';
+import { RequireComponent } from './require/require.component';
 
 @NgModule({
-  declarations: [BuyerComponent],
+  declarations: [BuyerComponent, BuyerhomeComponent, ListRequireComponent, MatchesComponent, RequireComponent],
   imports: [
     CommonModule,
     BuyerRoutingModule,
