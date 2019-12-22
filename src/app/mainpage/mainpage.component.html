@@ -1,1 +1,257 @@
-<p>mainpage works!</p>
+<mat-toolbar>
+
+    <mat-toolbar-row class="shadow" style="background: #000e2b ; height: 120px; text-align: center;color: snow">
+        <img src="../../assets/pic/mainpage/icon-business.png" style="height: 75px;width: auto;margin-left: 30px">
+        <h1 class="text" style=" color: snow;font-size: 30px; margin-left: 20px"><b>ระบบการจัดการอสังหาริมทรัพย์</b>
+        </h1>
+
+        <span class="example-spacer"></span>
+        <div style="margin-top: 50px;">
+            <button mat-button (click)="openModalLogin(Login)"
+                style="background: #126f80 ; margin-left: 5px;">เข้าสู่ระบบ</button>
+            <button mat-button (click)="openModalRegister(Register)"
+                style="background: #10a44a ; margin-left: 5px;">สมัครสมาชิก</button>
+            <mat-menu #profile="matMenu" style="background: black">
+                <button mat-menu-item style="color: rgb(24, 24, 24);font-size: 15px;"
+                    (click)="onLogout()">Logout</button>
+            </mat-menu>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-toolbar>
+    <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
+        <div class="row col">
+            <button mat-button routerLink="/mainpage/mainpage/home"
+                style="background: #4579a0 ; margin-left: 5px; width: 100%;">หน้าหลัก</button>
+        </div>
+
+        <div class="row col">
+            <button mat-button [matMenuTriggerFor]="belowMenu1"
+                style="background: #4579a0 ;margin-left: 5px;width: 100%;">ขายอสังหาริมทรัพย์</button>
+            <mat-menu #belowMenu1="matMenu">
+                <button routerLink="/mainpage/mainpage/sellhouse" mat-menu-item
+                    style="width: 400px">ขายบ้านเดี่ยว</button>
+                <button routerLink="/mainpage/mainpage/selltownhouse" mat-menu-item>ขายทาวน์เฮ้าส์</button>
+                <button routerLink="/mainpage/mainpage/sellapartment" mat-menu-item>ขายอพาร์ทเมนท์</button>
+                <button routerLink="/mainpage/mainpage/sellcommercial" mat-menu-item>ขายอาคารพาณิชย์</button>
+                <button routerLink="/mainpage/mainpage/sellcondominium" mat-menu-item>ขายคอนโดมิเนียม</button>
+                <button routerLink="/mainpage/mainpage/sellland" mat-menu-item>ขายที่ดิน</button>
+            </mat-menu>
+        </div>
+
+        <div class="row col">
+            <button mat-button [matMenuTriggerFor]="belowMenu2"
+                style="background: #4579a0 ;margin-left: 5px;width: 100%;">เช่าอสังหาริมทรัพย์</button>
+            <mat-menu #belowMenu2="matMenu">
+                <button routerLink="/mainpage/mainpage/renthouse" mat-menu-item style="width: 400px">
+                    เช่าบ้านเดี่ยว</button>
+                <button routerLink="/mainpage/mainpage/renttownhouse" mat-menu-item>เช่าทาวน์เฮ้าส์</button>
+                <button routerLink="/mainpage/mainpage/rentapartment" mat-menu-item>เช่าอพาร์ทเมนท์</button>
+                <button routerLink="/mainpage/mainpage/rentcommercial" mat-menu-item>เช่าอาคารพาณิชย์</button>
+                <button routerLink="/mainpage/mainpage/rentcondominium" mat-menu-item>เช่าคอนโดมิเนียม</button>
+                <button routerLink="/mainpage/mainpage/rentland" mat-menu-item>เช่าที่ดิน</button>
+            </mat-menu>
+        </div>
+        <div class="row col">
+
+            <button mat-button [matMenuTriggerFor]="belowMenu3"
+                style="background: #4579a0 ;margin-left: 5px;width: 100%;">ค้นหาอสังหาริมทรัพย์</button>
+            <mat-menu #belowMenu3="matMenu">
+                <button routerLink="/mainpage/mainpage/fillter" mat-menu-item
+                    style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
+                <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
+                <button mat-menu-item>ค้นหาจากความนิยม</button>
+                <button routerLink="/mainpage/mainpage/map" mat-menu-item>ค้นหาจากแผนที่</button>
+                <button routerLink="/mainpage/mainpage/location" mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+            </mat-menu>
+        </div>
+        <div class="row col">
+            <button mat-button routerLink="/mainpage/mainpage/mapsize"
+                style="background: #4579a0 ;margin-left: 5px;width: 100%;">วัดขนาดที่ดิน</button>
+        </div>
+        <div class="row col">
+            <button mat-button routerLink="/mainpage/mainpage/article"
+                style="background: #4579a0 ;margin-left: 5px; width: 100%;">บทความโฆษณา</button>
+        </div>
+        <div class="row col">
+            <button mat-button (click)="openModalLogin(Login)"
+                style="background: #e55c25; margin-left: 5px; width: 100%;"><i class="material-icons">
+                    add_location
+                </i>ประกาศขายอสังหาริมทรัพย์</button>
+        </div>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+<router-outlet></router-outlet>
+
+
+
+<!-- Login -->
+<ng-template #Login let-modal>
+    <div class="login">
+        <form style="padding-left: 15px;padding-right: 15px;" [formGroup]="loginUser">
+            <img src="../../assets/pic/mainpage/icon-business.png" class="logo">
+            <!-- <mat-form-field class="emailcss" appearance="outline">
+          <input matInput placeholder="Enter your email" formControlName="email_id" required>
+          <mat-error *ngIf="email_id.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field> -->
+
+            <mat-form-field class="emailcss" appearance="outline">
+                <mat-label>อีเมล</mat-label>
+                <input matInput placeholder="อีเมล" formControlName="email_id" [(ngModel)]="email_id" required>
+                <!-- <mat-error *ngIf="email_id.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            <mat-form-field class="emailcss" appearance="outline">
+                <mat-label>รหัสผ่าน</mat-label>
+                <input matInput formControlName="password" [(ngModel)]="password" placeholder="รหัสผ่าน"
+                    [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <div mat-dialog-actions>
+                <button mat-raised-button class="btlogin" (click)="onLogin()">เข้าระบบ</button>
+            </div>
+
+        </form>
+    </div>
+</ng-template>
+
+<!-- Register -->
+<ng-template #Register let-modal>
+    <div class="login">
+        <form style="padding-left: 15px;padding-right: 15px;" [formGroup]="registerForm">
+            <div class="row">
+                <div class="col-md-2"><img src="../../assets/pic/mainpage/icon-business.png" class="logo-regis"></div>
+                <div class="col-md">
+                    <h1 style="font-size: 20px;margin-top: 10px;">Register</h1>
+                </div>
+            </div>
+
+            <mat-form-field class="register" appearance="outline">
+                <mat-label>ชื่อ</mat-label>
+                <input matInput placeholder="Frist name" formControlName="Fname" [(ngModel)]="Fname">
+            </mat-form-field>
+            <mat-form-field class="register" appearance="outline">
+                <mat-label>นามสกุล</mat-label>
+                <input matInput placeholder="Last name" formControlName="Lname" [(ngModel)]="Lname">
+            </mat-form-field>
+
+            <mat-form-field class="register" appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input matInput placeholder="Email" formControlName="EmailRegis" [(ngModel)]="EmailRegis">
+
+            </mat-form-field>
+
+            <mat-form-field class="register" appearance="outline">
+                <mat-label>รหัสผ่าน</mat-label>
+                <input matInput formControlName="Password" [(ngModel)]="Password" placeholder="Enter your password"
+                    [type]="hide ? 'password' : 'text'">
+
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field class="register" appearance="outline">
+                <mat-label>ยืนยันรหัสผ่าน</mat-label>
+                <input matInput formControlName="Repassword" [(ngModel)]="Repassword" placeholder="Re-password"
+                    [type]="hide ? 'password' : 'text'">
+
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field class="register" appearance="outline">
+                <mat-label>เบอร์โทรศัพท์</mat-label>
+                <input matInput placeholder="Phone" formControlName="Phone" [(ngModel)]="Phone">
+            </mat-form-field>
+
+            <mat-form-field class="register" appearance="outline">
+                <mat-label>ID. LINE</mat-label>
+                <input matInput placeholder="ID. Line" formControlName="Id_line" [(ngModel)]="Id_line">
+            </mat-form-field>
+
+            <div mat-dialog-actions>
+                <button mat-raised-button class="btlogin" (click)="onRegister()">สมัคสมาชิก</button>
+            </div>
+
+        </form>
+    </div>
+</ng-template>
+
+
+<!-- 
+  <ng-template #Register let-modal>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <div *ngIf="f.firstName.errors.required">First Name is required</div>
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+              <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+      </div>
+      <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary">Register</button>
+          
+          <a routerLink="/login" class="btn btn-link">Cancel</a>
+      </div>
+  </form>
+  </ng-template>
+  
+   Alert -->
+
+
+<!-- Alert -->
+<ng-template #loginerror let-modal>
+    <div class="alert alert-warning" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: LightCoral;">
+            highlight_off
+        </i> &nbsp;กรุณากรอก E-mail เพื่อเข้าสู่ระบบให้ถูกต้อง
+    </div>
+</ng-template>
+
+
+<ng-template #success let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        ยินดีต้อนรับเข้าสู่ระบบ
+    </div>
+</ng-template>
+
+<ng-template #error let-modal>
+    <div class="alert alert-warning" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: LightCoral;">
+            highlight_off
+        </i> &nbsp;Please enter the message to be sent.
+    </div>
+</ng-template>

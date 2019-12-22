@@ -1,1 +1,116 @@
-<p>buyer works!</p>
+<mat-toolbar>
+
+    <mat-toolbar-row class="shadow" style="background: #000e2b ;  height: 120px; text-align: center;color: snow">
+        <img src="../../assets/pic/mainpage/icon-business.png" style="height: 64px;width: auto;">
+        <h1 style=" color: snow;font-size: 30px; margin-left: 20px"><b>ระบบการจัดการอสังหาริมทรัพย์</b></h1>
+
+        <span class="example-spacer"></span>
+        <div style="margin-top: 50px;">
+            <button mat-stroked-button (click)="onLogout()"
+                style="background: #5c8b8d ; margin-left: 5px;">ออกจากระบบ</button>
+
+        </div>
+
+
+
+
+    </mat-toolbar-row>
+
+
+    <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
+
+        <div class="row col">
+            <button mat-button routerLink=""
+                style="background: #4579a0; margin-left: 5px; width: 100%;">หน้าหลัก</button>
+        </div>
+        <div class="row col">
+            <button mat-button [matMenuTriggerFor]="belowMenu1"
+                style="background: #4579a0; margin-left: 5px; width: 100%;">ขายอสังหาริมทรัพย์</button>
+            <mat-menu #belowMenu1="matMenu">
+                <button mat-menu-item style="width: 400px">ขายบ้านเดี่ยว</button>
+                <button mat-menu-item>ขายทาวน์เฮ้าส์</button>
+                <button mat-menu-item>ขายอพาร์ทเมนท์</button>
+                <button mat-menu-item>ขายอาคารพาณิชย์</button>
+                <button mat-menu-item>ขายคอนโดมิเนียม</button>
+                <button mat-menu-item>ขายที่ดิน</button>
+            </mat-menu>
+        </div>
+        <div class="row col">
+            <button mat-button [matMenuTriggerFor]="belowMenu2"
+                style="background: #4579a0 ;margin-left: 5px;width: 100%;">เช่าอสังหาริมทรัพย์</button>
+            <mat-menu #belowMenu2="matMenu">
+                <button mat-menu-item style="width: 400px"> เช่าบ้านเดี่ยว</button>
+                <button mat-menu-item>เช่าทาวน์เฮ้าส์</button>
+                <button mat-menu-item>เช่าอพาร์ทเมนท์</button>
+                <button mat-menu-item>เช่าอาคารพาณิชย์</button>
+                <button mat-menu-item>เช่าคอนโดมิเนียม</button>
+                <button mat-menu-item>เช่าที่ดิน</button>
+            </mat-menu>
+        </div>
+        <div class="row col">
+
+            <button mat-button [matMenuTriggerFor]="belowMenu3"
+                style="background: #4579a0 ;margin-left: 5px;width: 100%;">ค้นหาอสังหาริมทรัพย์</button>
+            <mat-menu #belowMenu3="matMenu">
+                <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
+                <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
+                <button mat-menu-item>ค้นหาจากความนิยม</button>
+                <button mat-menu-item>ค้นหาจากแผนที่</button>
+                <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+            </mat-menu>
+        </div>
+        <div class="row col">
+            <button mat-button routerLink=""
+                style="background: #4579a0 ;margin-left: 5px;width: 100%;">วัดขนาดที่ดิน</button>
+        </div>
+        <div class="row col">
+            <button mat-button routerLink=""
+                style="background: #4579a0 ;margin-left: 5px; width: 100%;">บทความโฆษณา</button>
+        </div>
+
+
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
+
+<div class="row" style="width: 100%">
+    <div class="col-2" style="background: #1d6a96 ;">
+        <mat-list>
+
+            <img src="../../assets/pic/buy/avtar-buy.png"
+                style="height: 100px;width: auto;  display: block; margin-left: auto; margin-right: auto; ">
+
+
+            <mat-list-item>
+                <button mat-button routerLink="/buyer/buyer/buyerhome" class="memu-left">{{fname}} &nbsp;
+                    {{user[0].lname}}</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/buyer/buyer/require"
+                    class="memu-left">อสังหาริมทรัพย์ที่ต้องการซื้อ</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/buyer/buyer/listrequire"
+                    class="memu-left">รายการความต้องการต้องการ</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/buyer/buyer/matchas" class="memu-left">อสังหาริมทรัพย์ที่ตรงกัน</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="" class="memu-left">ติดต่อสนทนา</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+        </mat-list>
+
+    </div>
+
+    <div class="col-10">
+        <router-outlet></router-outlet>
+    </div>
+</div>

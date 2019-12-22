@@ -4,23 +4,41 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminComponent } from './admin/admin.component';
-import { SellerComponent } from './seller/seller.component';
-import { BuyerComponent } from './buyer/buyer.component';
-import { MainpageComponent } from './mainpage/mainpage.component';
+import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from './material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatNativeDateModule } from '@angular/material';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { CarouselModule } from 'ngx-bootstrap';
+import { AgmCoreModule } from "@agm/core";
+import { FileUploadModule } from 'ng2-file-upload';
+import { API } from './map-api';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
-    SellerComponent,
-    BuyerComponent,
-    MainpageComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule,
+    MaterialModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    NgxWebstorageModule.forRoot(),
+    CarouselModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: API.GOOGLE_API_KEY,
+      libraries: ['places', 'geometry', 'drawing']
+    }),//google api
+    FileUploadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

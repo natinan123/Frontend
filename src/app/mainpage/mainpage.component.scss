@@ -1,0 +1,70 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.login {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 50px;
+  background: snow;
+}
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 170px;
+  width: auto;
+}
+
+.emailcss {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  color: #1d6a96;
+}
+
+.btlogin {
+  background: #126f80;
+  color: snow;
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+.logo-regis {
+  display: block;
+  margin-left: 20px;
+  height: 50px;
+  width: auto;
+}
+
+.register {
+  width: 80%;
+  display: block;
+  margin-left: 20px;
+  // margin-top: 2px;
+  color: #126f80;
+}
+
+.example-container {
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #1d6a96;
+}
+
+.text {
+  font-size: 30px;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, #456990 10%, #e5446d 50%, #ffe66d 80%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

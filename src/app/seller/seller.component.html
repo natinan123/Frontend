@@ -1,1 +1,117 @@
 <p>seller works!</p>
+<mat-toolbar>
+
+    <mat-toolbar-row class="shadow" style="background: #000e2b ; height: 120px; text-align: center;color: snow">
+        <img src="../../assets/pic/mainpage/icon-business.png" style="height: 64px;width: auto;">
+        <h1 class="text" style=" color: snow;font-size: 30px; margin-left: 20px"><b>ระบบการจัดการอสังหาริมทรัพย์</b>
+        </h1>
+
+        <span class="example-spacer"></span>
+        <div style="margin-top: 50px;">
+            <button mat-stroked-button (click)="onLogout()"
+                style="background: #5c8b8d ; margin-left: 5px;">ออกจากระบบ</button>
+        </div>
+
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
+        <div class="row col">
+            <button mat-button routerLink="/seller/seller/selle-property"
+                style="background: #4579a0 ; margin-left: 5px; width: 100%;">หน้าหลัก</button>
+        </div>
+        <div class="row col">
+            <button mat-button [matMenuTriggerFor]="belowMenu1"
+                style="background: #4579a0 ;margin-left: 5px;width: 100%;">ประเทอสังหาริมทรัพย์</button>
+            <mat-menu #belowMenu1="matMenu">
+                <button mat-menu-item style="width: 400px">บ้านเดี่ยว</button>
+                <button mat-menu-item>ทาวน์เฮ้าส์</button>
+                <button mat-menu-item>อพาร์ทเมนท์</button>
+                <button mat-menu-item>อาคารพาณิชย์</button>
+                <button mat-menu-item>คอนโดมิเนียม</button>
+                <button mat-menu-item>ที่ดิน</button>
+            </mat-menu>
+        </div>
+        <div class="row col">
+
+            <button mat-button [matMenuTriggerFor]="belowMenu3"
+                style="background: #4579a0 ;margin-left: 5px;width: 100%;">ค้นหาอสังหาริมทรัพย์</button>
+            <mat-menu #belowMenu3="matMenu">
+                <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
+                <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
+                <button mat-menu-item>ค้นหาจากความนิยม</button>
+                <button mat-menu-item>ค้นหาจากแผนที่</button>
+                <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+            </mat-menu>
+        </div>
+
+        <div class="row col">
+            <button mat-button routerLink="#" style="background: #4579a0 ;margin-left: 5px; width: 100%;">โฆษณา</button>
+        </div>
+        <div class="row col">
+            <button mat-button routerLink="/seller/seller/selling"
+                style="background: #e55c25; margin-left: 5px; width: 100%;"><i class="material-icons">
+                    add_location
+                </i>ประกาศขายอสังหาริมทรัพย์</button>
+        </div>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<div class="row" style="height: 100%;">
+    <div class="col-2" style="background-color: #1d6a96 ; ">
+        <mat-list>
+
+            <img *ngIf="profile_pic == ''" src="../../assets/pic/sall/sall-avtar.png"
+                style="height: 100px;width: auto;  display: block; margin-left: auto; margin-right: auto; ">
+
+            <img *ngIf="pic64 != null" src="data:image/jpg;base64,{{pic64}}" class="circle" />
+
+            <mat-list-item>
+                <button mat-button routerLink="/seller/seller/profile" class="memu-left">{{user[0].fname}} &nbsp;
+                    {{user[0].lname}}</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/seller/seller/selle-property"
+                    class="memu-left">อสังหาริมทรัพย์ที่ประกาศ</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/seller/seller/draft" class="memu-left">อสังหาริมทรัพย์ที่ร่าง</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/seller/seller/edit" class="memu-left">อสังหาริมทรัพย์ที่รอแก้ไข</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/seller/seller/CloseProperty"
+                    class="memu-left">อสังหาริมทรัพย์ที่ปิดประกาศ</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/seller/seller/seller-chat" class="memu-left">ติดต่อสนทนา</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/seller/seller/upgrade" class="upgrade"><i class="material-icons">
+                        star
+                    </i> Upgrade</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button routerLink="/seller/seller/test" class="memu-left"><i class="fa fa-cogs"
+                        aria-hidden="true"></i> ไว้ทดสอบ</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+        </mat-list>
+
+    </div>
+
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+</div>
