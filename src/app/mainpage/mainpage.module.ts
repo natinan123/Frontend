@@ -11,9 +11,16 @@ import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng
 import { CarouselModule } from 'ngx-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
+import { ArtcleComponent } from './artcle/artcle.component';
+import { ArtDetailComponent } from './artcle/art-detail/art-detail.component';
+import { HomeComponent } from './home/home.component';
+import { PropertyComponent } from './product/property/property.component';
+import { FilterComponent } from './search/filter/filter.component';
+import { LocationComponent } from './search/location/location.component';
+import { MapComponent } from './search/map/map.component';
 
 @NgModule({
-  declarations: [MainpageComponent],
+  declarations: [MainpageComponent, ArtcleComponent, ArtDetailComponent, HomeComponent, PropertyComponent, FilterComponent, LocationComponent, MapComponent],
   imports: [
     CommonModule,
     MainpageRoutingModule,
