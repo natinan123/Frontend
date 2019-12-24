@@ -1,0 +1,153 @@
+<form [formGroup]="firstFormGroup">
+
+    <div class="col-md-4">
+        <div class="label">
+            <mat-label>ประเภทอสังหาริมทรัพย์</mat-label>
+        </div>
+        <div class="option">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-select [(ngModel)]="Type_pro" formControlName="Type_pro" placeholder="เลือกอสังหาริมทรัพย์">
+                    <mat-option [value]="type.type_id" *ngFor="let type of types">{{type.type_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="label">
+            <mat-label>ประเภทการขาย</mat-label>
+        </div>
+        <div class="option">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-select [(ngModel)]="Type_sell" formControlName="Type_sell" placeholder="เลือกประเภทการขาย">
+                    <mat-option value="ขาย">ขาย</mat-option>
+                    <mat-option value="เช่า">เช่า</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="label">
+            <mat-label>ภูมิภาค</mat-label>
+        </div>
+        <div class="option">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-select [(ngModel)]="selectedValue" formControlName="Zone" placeholder="เลือกภูมิภาค">
+                    <mat-option [value]="z.loc_zone" *ngFor="let z of zones" (click)="onLocation(selectedValue)">
+                        {{z.zone_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="label">
+            <mat-label>จังหวัด</mat-label>
+        </div>
+        <div class="option">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-select [(ngModel)]="Location_id" formControlName="Location_id" placeholder="เลือกจังหวัด">
+                    <mat-option [value]="p.location_id" *ngFor="let p of provins">{{p.loc_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="label">
+            <mat-label>หัวข้ออสังหาริมทรัพย์</mat-label>
+        </div>
+        <div class="option">
+            <mat-form-field appearance="outline" class="full-width">
+                <input matInput [(ngModel)]="Pro_head" formControlName="Pro_head"
+                    placeholder="กรอกหัวข้ออสังหาริมทรัพย์...">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="label">
+            <mat-label>รายละเอียดอสังหาริมทรัพย์</mat-label>
+        </div>
+        <div class="option">
+            <mat-form-field appearance="outline" class="full-width">
+                <textarea matInput [(ngModel)]="Pro_detail" formControlName="Pro_detail" rows="18"
+                    placeholder="กรอกรายละเอียดอสังหาริมทรัพย์..."></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 8px; margin-left: 40px;">
+        <div class="col-md-4">
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox"  formControlName="Check1" id="Check1">
+                <label class="form-check-label" for="Check1">ที่จอดรถ</label>
+            </div>
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox" value="1" formControlName="Check2" id="Check2">
+                <label class="form-check-label" for="Check2">ลานจอดรถ</label>
+            </div>
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check3" id="Check3">
+                <label class="form-check-label" for="Check3">รักษาความปลอดภัย</label>
+            </div>
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check4" id="Check4">
+                <label class="form-check-label" for="Check4">สระว่ายน้า</label>
+            </div>
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check5" id="Check5">
+                <label class="form-check-label" for="Check5">กล้องวงจรปิด</label>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check6" id="Check6">
+                <label class="form-check-label" for="Check6">ฟิตเนส</label>
+            </div>
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check7" id="Check7">
+                <label class="form-check-label" for="Check7">สนามเด็กเล่น</label>
+            </div>
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check8" id="Check8">
+                <label class="form-check-label" for="Check8">มินิมาร์ท</label>
+            </div>
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check9" id="Check9">
+                <label class="form-check-label" for="Check9">ซัก อบ รีด</label>
+            </div>
+            <div class="check-list">
+                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check10" id="Check10">
+                <label class="form-check-label" for="Check10">ศาลาชมทิวทัศน์</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <button type="submit" (click)="onClick()">test</button>
+    </div>
+
+</form>
+
+<!-- <h2>Checkbox list example</h2>
+
+<div class="row">
+    <div class="col-md">
+        <ul>
+            <li *ngFor="let item of list">
+                <input type="checkbox" [(ngModel)]="item.checked">{{item.title}}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md">
+        <button (click)="onClick()">test</button>
+    </div>
+</div>
+
+
+<pre>{{this.result | json}}</pre> -->

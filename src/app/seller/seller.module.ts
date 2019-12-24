@@ -24,9 +24,10 @@ import { SellerhomeComponent } from './sellerhome/sellerhome.component';
 import { SellingComponent } from './selling/selling.component';
 import { TestingComponent } from './testing/testing.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
 
 @NgModule({
-  declarations: [SellerComponent, ProfileComponent, SellChatComponent, SellCloseComponent, SellDraftComponent, SellEditComponent, EditPropertyComponent, SellProductComponent, SellPropertyComponent, SellUpgradeComponent, SellerhomeComponent, SellingComponent, TestingComponent],
+  declarations: [SellerComponent, ProfileComponent, SellChatComponent, SellCloseComponent, SellDraftComponent, SellEditComponent, EditPropertyComponent, SellProductComponent, SellPropertyComponent, SellUpgradeComponent, SellerhomeComponent, SellingComponent, TestingComponent, TestPostProComponent],
   imports: [
     CommonModule,
     SellerRoutingModule,

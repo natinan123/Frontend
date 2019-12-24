@@ -13,6 +13,7 @@ import { SellProductComponent } from './sell-product/sell-product.component';
 import { EditPropertyComponent } from './sell-edit/edit-property/edit-property.component';
 import { SellUpgradeComponent } from './sell-upgrade/sell-upgrade.component';
 import { TestingComponent } from './testing/testing.component';
+import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
 
 
 
@@ -68,6 +69,10 @@ const routes: Routes = [
       { // test
         path: 'test',
         component: TestingComponent
+      },
+      { // test
+        path: 'testPost',
+        component: TestPostProComponent
       },
     ]
   },

@@ -30,7 +30,7 @@ export class SellingComponent implements OnInit {
     Pro_head: new FormControl(''),
     Pro_detail: new FormControl('')
   })
-
+ 
   public thirdFormGroup = new FormGroup({
     Area: new FormControl(''),
     Space: new FormControl(''),
@@ -359,5 +359,22 @@ export class SellingComponent implements OnInit {
     this.longitude = this.lng2;
   }
 
+  onClickCheck(){
+    console.log(this.thirdFormGroup.value)
+    console.log(this.Check1.value)
 
+    const data = {
+      style1: this.Check1,
+      style2: this.Check2,
+      style3: this.Check3,
+      style4: this.Check4,
+      style5: this.Check5,
+      style6: this.Check6,
+      style7: this.Check7,
+      style8: this.Check8,
+      style9: this.Check9,
+      style10: this.Check10,
+    }
+    console.log(data)
+  }
 }

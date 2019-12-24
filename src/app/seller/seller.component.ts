@@ -27,7 +27,7 @@ export class SellerComponent implements OnInit {
     this.data = this.user[0].email_id;
     this.showAvatar();
 
-    this.getIP();
+  
 
   }
   onLogout() {
@@ -48,11 +48,6 @@ export class SellerComponent implements OnInit {
     );
   }
 
-  getIP() {
-    this.service.getIPAddress().subscribe((res: any) => {
-      this.ipAddress = res.ip;
-      console.log(this.ipAddress);
-    });
-  }
+ 
 
 }
