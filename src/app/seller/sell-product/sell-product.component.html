@@ -16,6 +16,8 @@
 
 </div>
 
+
+
 <mat-card class="mat-card">
     <div class="row">
         <div class="col-md-9">
@@ -100,24 +102,23 @@
 
         <div class="col-md-6">
             <mat-chip-list aria-label="Color selection">
-                <mat-chip *ngIf="style1 != 0 && style1 != null"> ที่จอดรถ </mat-chip>
-                <mat-chip *ngIf="style2 != 0 && style2 != null"> ลานจอดรถ </mat-chip>
-                <mat-chip *ngIf="style3 != 0 && style3 != null"> รักษาความปลอดภัย </mat-chip>
-                <mat-chip *ngIf="style4 != 0 && style4 != null"> สระว่ายน้า </mat-chip>
-                <mat-chip *ngIf="style5 != 0 && style5 != null"> กล้องวงจรปิด </mat-chip>
-                <mat-chip *ngIf="style6 != 0 && style6 != null"> ฟิตเนส </mat-chip>
-                <mat-chip *ngIf="style7 != 0 && style7 != null"> สนามเด็กเล่น </mat-chip>
-                <mat-chip *ngIf="style8 != 0 && style8 != null"> มินิมาร์ท </mat-chip>
-                <mat-chip *ngIf="style9 != 0 && style9 != null"> ซัก อบ รีด </mat-chip>
-                <mat-chip *ngIf="style10 != 0 && style10 != null"> ศาลาชมทิวทัศน์ </mat-chip>
+                <mat-chip *ngIf="style1 != 'false'"> ที่จอดรถ </mat-chip>
+                <mat-chip *ngIf="style2 != 'false'"> ลานจอดรถ </mat-chip>
+                <mat-chip *ngIf="style3 != 'false'"> รักษาความปลอดภัย </mat-chip>
+                <mat-chip *ngIf="style4 != 'false'"> สระว่ายน้า </mat-chip>
+                <mat-chip *ngIf="style5 != 'false'"> กล้องวงจรปิด </mat-chip>
+                <mat-chip *ngIf="style6 != 'false'"> ฟิตเนส </mat-chip>
+                <mat-chip *ngIf="style7 != 'false'"> สนามเด็กเล่น </mat-chip>
+                <mat-chip *ngIf="style8 != 'false'"> มินิมาร์ท </mat-chip>
+                <mat-chip *ngIf="style9 != 'false'"> ซัก อบ รีด </mat-chip>
+                <mat-chip *ngIf="style10 != 'false' "> ศาลาชมทิวทัศน์ </mat-chip>
             </mat-chip-list>
         </div>
-        <div class="col-md-6">
 
-
-        </div>
     </div>
 </mat-card>
+
+
 
 <mat-card class="mat-card" style="top: 40px">
     <mat-card-title>ติดต่อผู้ใช้งาน</mat-card-title>

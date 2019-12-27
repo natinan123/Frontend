@@ -27,7 +27,7 @@ export class SellerComponent implements OnInit {
     this.data = this.user[0].email_id;
     this.showAvatar();
 
-  
+    
 
   }
   onLogout() {

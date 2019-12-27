@@ -49,7 +49,7 @@ export class SellProductComponent implements OnInit {
   image9;
   image10;
 
-  style1;
+  style1:any;
   style2;
   style3;
   style4;
@@ -93,6 +93,7 @@ export class SellProductComponent implements OnInit {
     )
     this.getUserLocation();
     console.log(this.pro_id)
+    console.log(this.style1);
   }
 
   getDetail() {
@@ -134,16 +135,16 @@ export class SellProductComponent implements OnInit {
           this.image8 = res[0].image8,
           this.image9 = res[0].image9,
           this.image10 = res[0].image10,
-          this.style1 = res[0].style1.data,
-          this.style2 = res[0].style2.data,
-          this.style3 = res[0].style3.data,
-          this.style4 = res[0].style4.data,
-          this.style5 = res[0].style5.data,
-          this.style6 = res[0].style6.data,
-          this.style7 = res[0].style7.data,
-          this.style8 = res[0].style8.data,
-          this.style9 = res[0].style9.data,
-          this.style10 = res[0].style10.data,
+          this.style1 = res[0].style1,
+          this.style2 = res[0].style2,
+          this.style3 = res[0].style3,
+          this.style4 = res[0].style4,
+          this.style5 = res[0].style5,
+          this.style6 = res[0].style6,
+          this.style7 = res[0].style7,
+          this.style8 = res[0].style8,
+          this.style9 = res[0].style9,
+          this.style10 = res[0].style10,
           this.loc_name = res[0].loc_name,
           this.zone_name = res[0].zone_name,
           this.latitude = res[0].latitude,

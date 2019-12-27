@@ -9,7 +9,7 @@ export class ServerService {
 
   constructor(private http: HttpClient) { }
 
-  
+
 
 
   // login 
@@ -347,6 +347,11 @@ export class ServerService {
 
 
 
+  // todo: test --------------------------//
+  // post เพิ่มอสังหา เนื้อหา
+  postCheck(data) {
+    return this.http.post(urlServer.ipServer + 'testcheck', data)
+  }
 
 
 

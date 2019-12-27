@@ -43,6 +43,7 @@ import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
       apiKey: API.GOOGLE_API_KEY,
       libraries: ['places', 'geometry', 'drawing']
     }),//google api
+
   ]
 })
 export class SellerModule { }

@@ -13,9 +13,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TestPostProComponent implements OnInit {
   user: any;
   types: Object;
-  Check1: any;
-  Check2: any;
-  Check3: any;
+  Check1: any = false;
+  Check2: any = false;
+  Check3: any = false;
   Check4: any;
   Check5: any;
   Check6: any;
@@ -66,7 +66,7 @@ export class TestPostProComponent implements OnInit {
     this.onLocation();
 
 
-   
+
 
     console.log(this.firstFormGroup.value);
 
@@ -117,15 +117,17 @@ export class TestPostProComponent implements OnInit {
       style1: this.Check1,
       style2: this.Check2,
       style3: this.Check3,
-      style4: this.Check4,
-      style5: this.Check5,
-      style6: this.Check6,
-      style7: this.Check7,
-      style8: this.Check8,
-      style9: this.Check9,
-      style10: this.Check10,
+
     }
     console.log(data)
+    this.service.postCheck(data).subscribe(
+      async (res) => {
+
+
+      }
+    )
+
+
   }
 
 }

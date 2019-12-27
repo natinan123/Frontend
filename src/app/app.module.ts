@@ -16,7 +16,6 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { API } from './map-api';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
-
 @NgModule({
   declarations: [
     AppComponent,
