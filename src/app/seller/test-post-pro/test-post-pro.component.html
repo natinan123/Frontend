@@ -138,26 +138,48 @@
         </div>
     </div>
 
-    <div class="col-md-4">
-        <button type="submit" (click)="onClick()">test</button>
+    <div class="row">
+        <div class="col-md-4">
+            <button type="submit" (click)="onClick()">test</button>
+        </div>
+        <div class="col-md-4">
+            <button mat-raised-button>submit</button>
+        </div>
     </div>
+    
 
+    .
 </form>
 
-<!-- <h2>Checkbox list example</h2>
 
-<div class="row">
-    <div class="col-md">
-        <ul>
-            <li *ngFor="let item of list">
-                <input type="checkbox" [(ngModel)]="item.checked">{{item.title}}
-            </li>
-        </ul>
+
+<mat-card style="margin-top: 20px; background-color:  #C1DAD6 ;">
+
+    <div style="text-align: center">
+        <form>
+            <h2 style="text-align: center">Multiple</h2>
+
+
+            <div class="row">
+                <mat-card *ngFor='let url of urls; let index = index'>
+                    <i class="material-icons" style="float: right; cursor: pointer;"
+                        (click)="removeSelectedFile(index)">cancel</i> <br>
+
+                    <img [src]="url" style="height: 170px; width: 289px;">
+                </mat-card>
+            </div>
+
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md">
+                    <button mat-raised-button (click)="fileInput.click()">Select File</button>
+                    <input style="display: none" #attachments type="file" accept=" image/* "
+                        (change)="onFileChanged($event)" #fileInput multiple="true">
+                </div>
+                <div class="col-md">
+                    <button mat-raised-button type="submit" (click)="onMultipleSubmit()"
+                        style="background-color: #1d6a96;color: snow">Upload</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="col-md">
-        <button (click)="onClick()">test</button>
-    </div>
-</div>
-
-
-<pre>{{this.result | json}}</pre> -->
+</mat-card>

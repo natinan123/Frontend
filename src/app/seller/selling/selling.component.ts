@@ -30,8 +30,13 @@ export class SellingComponent implements OnInit {
     Pro_head: new FormControl(''),
     Pro_detail: new FormControl('')
   })
- 
+
   public thirdFormGroup = new FormGroup({
+
+  })
+
+
+  public fourthFormGroup = new FormGroup({
     Area: new FormControl(''),
     Space: new FormControl(''),
     Price: new FormControl(''),
@@ -49,7 +54,6 @@ export class SellingComponent implements OnInit {
     Check9: new FormControl(''),
     Check10: new FormControl(''),
   })
-
 
   public MapFormGroup = new FormGroup({
     latitude: new FormControl(''),
@@ -78,16 +82,16 @@ export class SellingComponent implements OnInit {
   Badroom: any;
   Toilet: any;
   Floor: any;
-  Check1: any;
-  Check2: any;
-  Check3: any;
-  Check4: any;
-  Check5: any;
-  Check6: any;
-  Check7: any;
-  Check8: any;
-  Check9: any;
-  Check10: any;
+  Check1: any = false;
+  Check2: any = false;
+  Check3: any = false;
+  Check4: any = false;
+  Check5: any = false;
+  Check6: any = false;
+  Check7: any = false;
+  Check8: any = false;
+  Check9: any = false;
+  Check10: any = false;
   user: any;
   Location: any;
   pro_limit: any;
@@ -107,36 +111,36 @@ export class SellingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      Type_pro: ['', Validators.required],
-      Type_sell: ['', Validators.required],
-      Zone: ['', Validators.required],
-      Location_id: ['', Validators.required],
-      Type_user: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      Pro_head: ['', Validators.required],
-      Pro_detail: ['', Validators.required]
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      Area: ['', Validators.required],
-      Price: ['', Validators.required],
-      Space: [''],
-      Badroom: [''],
-      Toilet: [''],
-      Floor: [''],
-      Check1: [''],
-      Check2: [''],
-      Check3: [''],
-      Check4: [''],
-      Check5: [''],
-      Check6: [''],
-      Check7: [''],
-      Check8: [''],
-      Check9: [''],
-      Check10: [''],
+    // this.firstFormGroup = this._formBuilder.group({
+    //   Type_pro: ['', Validators.required],
+    //   Type_sell: ['', Validators.required],
+    //   Zone: ['', Validators.required],
+    //   Location_id: ['', Validators.required],
+    //   Type_user: ['', Validators.required]
+    // });
+    // this.secondFormGroup = this._formBuilder.group({
+    //   Pro_head: ['', Validators.required],
+    //   Pro_detail: ['', Validators.required]
+    // });
+    // this.thirdFormGroup = this._formBuilder.group({
+    //   Area: ['', Validators.required],
+    //   Price: ['', Validators.required],
+    //   Space: [''],
+    //   Badroom: [''],
+    //   Toilet: [''],
+    //   Floor: [''],
+    //   Check1: [''],
+    //   Check2: [''],
+    //   Check3: [''],
+    //   Check4: [''],
+    //   Check5: [''],
+    //   Check6: [''],
+    //   Check7: [''],
+    //   Check8: [''],
+    //   Check9: [''],
+    //   Check10: [''],
 
-    });
+    // });
 
     this.user = this.session.getActiveUser();
     // console.log(this.user);
@@ -201,7 +205,13 @@ export class SellingComponent implements OnInit {
 
   }
 
+  // กดตกลง ใน map
+  onSubmitMap() {
+    this.modalService.dismissAll();
+  }
+  // ปิด modal map
   closeModal() {
+    this.clearLocation()
     this.modalService.dismissAll();
   }
   // Modal recom
@@ -220,6 +230,57 @@ export class SellingComponent implements OnInit {
       });
     }
   }
+
+
+
+  //  todo : select รูป แบบหลายรูป ใช้อันนี้
+  @ViewChild('attachments', { static: false }) attachment: any;
+
+  selectedFile: File;
+  fileList: File[] = [];
+  listOfFiles: any[] = [];
+  urls: any[] = [];
+
+  onFileChanged(event: any) {
+    for (var i = 0; i <= event.target.files.length - 1; i++) {
+      var selectedFile = event.target.files[i];
+      this.fileList.push(selectedFile);
+      this.listOfFiles.push(selectedFile.name);
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        console.log(event.target.result);
+        this.urls.push(event.target.result);
+      }
+      reader.readAsDataURL(event.target.files[i]);
+    }
+    this.attachment.nativeElement.value = '';
+  }
+
+  removeSelectedFile(index) {
+    // Delete the item from fileNames list
+    this.listOfFiles.splice(index, 1);
+    // delete file from FileList
+    this.fileList.splice(index, 1);
+    // delete file from image
+    this.urls.splice(index, 1);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -251,6 +312,7 @@ export class SellingComponent implements OnInit {
     this.service.postProperty(data).subscribe(
       async (res) => {
         this.onStyle();
+        // this.onMultipleSubmit();
         this.modalService.open(this.success);
         await delay(2000);
         this.closeModal();
@@ -281,7 +343,27 @@ export class SellingComponent implements OnInit {
     )
   }
 
-  // todo : add รายการอสังหาริมทรัพย์ เผยแพร่
+  // todo :Button upload image multi
+  // ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !! แก้ตรง pro_id  ให้ตาม id ประกาศอสังหา 
+  onMultipleSubmit() {
+    const formData = new FormData();
+    // formData.append('pro_id', '1');
+    for (let img of this.fileList) {
+      formData.append('blogimage', img);
+    }
+
+    this.service.postImageProMulti(formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
+
+
+
+
+
+  // todo : add รายการอสังหาริมทรัพย์ ร่าง
   onPostDraft() {
     console.log(this.firstFormGroup.value)
     console.log(this.secondFormGroup.value)
@@ -353,15 +435,20 @@ export class SellingComponent implements OnInit {
     console.log(this.longitude)
   }
 
-
   onYourLoction() {
     this.latitude = this.lat2;
     this.longitude = this.lng2;
   }
+  // ยกเลิกตำแหน่ง
+  clearLocation() {
+    this.latitude = null;
+    this.longitude = null;
+  }
 
-  onClickCheck(){
+
+  onClickCheck() {
     console.log(this.thirdFormGroup.value)
-    console.log(this.Check1.value)
+   
 
     const data = {
       style1: this.Check1,

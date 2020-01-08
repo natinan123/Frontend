@@ -20,6 +20,7 @@
 <!-- *ngIf="pro_limit >= count_pro" -->
 <mat-card *ngIf="pro_limit >= count_pro" class="card">
 
+    <!-- ! step 1 -->
     <mat-horizontal-stepper [linear]="!isLinear" #stepper>
         <mat-step [stepControl]="firstFormGroup" class="steper">
             <ng-template matStepLabel>ประเภทอสังหาริมทรัพย์</ng-template>
@@ -32,7 +33,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <mat-select [(ngModel)]="Type_pro" formControlName="Type_pro"
-                                    placeholder="เลือกอสังหาริมทรัพย์" required>
+                                    placeholder="เลือกอสังหาริมทรัพย์">
                                     <mat-option [value]="type.type_id" *ngFor="let type of types">{{type.type_name}}
                                     </mat-option>
                                 </mat-select>
@@ -46,7 +47,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <mat-select [(ngModel)]="Type_sell" formControlName="Type_sell"
-                                    placeholder="เลือกประเภทการขาย" required>
+                                    placeholder="เลือกประเภทการขาย">
                                     <mat-option value="ขาย">ขาย</mat-option>
                                     <mat-option value="เช่า">เช่า</mat-option>
                                 </mat-select>
@@ -67,7 +68,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <mat-select [(ngModel)]="selectedValue" formControlName="Zone"
-                                    placeholder="เลือกภูมิภาค" required>
+                                    placeholder="เลือกภูมิภาค">
                                     <mat-option [value]="z.loc_zone" *ngFor="let z of zones"
                                         (click)="onLocation(selectedValue)">
                                         {{z.zone_name}}</mat-option>
@@ -82,7 +83,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <mat-select [(ngModel)]="Location_id" formControlName="Location_id"
-                                    placeholder="เลือกจังหวัด" required>
+                                    placeholder="เลือกจังหวัด">
                                     <mat-option [value]="p.location_id" *ngFor="let p of provins">{{p.loc_name}}
                                     </mat-option>
                                 </mat-select>
@@ -93,14 +94,14 @@
 
                 <div class="row" style="margin-left: 50px; margin-top: 15px;">
                     <div class="col-md-3">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="owner" style="width: 20px;
-              height: 20px; margin-top: 0px;" formControlName="Type_user" value="1">
+                        <input class="form-check-input" type="radio" name="Type_user" id="owner" style="width: 20px;
+              height: 20px; margin-top: 0px;" formControlName="Type_user" [value]="1">
                         <label class="form-check-label" style="margin-left: 10px"
                             for="owner">เจ้าของอสังหาริมทรัพย์</label>
                     </div>
                     <div class="col-md-3">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="agent" style="width: 20px;
-              height: 20px; margin-top: 0px;" formControlName="Type_user" value="2">
+                        <input class="form-check-input" type="radio" name="Type_user" id="agent" style="width: 20px;
+              height: 20px; margin-top: 0px;" formControlName="Type_user" [value]="2">
                         <label class="form-check-label" style="margin-left: 10px" for="agent">ตัวแทนจำหน่าย</label>
                     </div>
                 </div>
@@ -110,6 +111,7 @@
             </form>
         </mat-step>
 
+        <!-- ! step 2 -->
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>หัวข้ออสังหาริมทรัพย์</ng-template>
@@ -122,7 +124,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <input matInput [(ngModel)]="Pro_head" formControlName="Pro_head"
-                                    placeholder="กรอกหัวข้ออสังหาริมทรัพย์..." required>
+                                    placeholder="กรอกหัวข้ออสังหาริมทรัพย์...">
                             </mat-form-field>
                         </div>
 
@@ -137,7 +139,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <textarea matInput [(ngModel)]="Pro_detail" formControlName="Pro_detail" rows="18"
-                                    placeholder="กรอกรายละเอียดอสังหาริมทรัพย์..." required></textarea>
+                                    placeholder="กรอกรายละเอียดอสังหาริมทรัพย์..."></textarea>
                             </mat-form-field>
                         </div>
                     </div>
@@ -151,8 +153,47 @@
             </form>
         </mat-step>
 
+
+        <!-- ! step 3 -->
         <mat-step [stepControl]="thirdFormGroup">
             <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>รูปภาพ</ng-template>
+                <div style="text-align: center">
+                    <form>
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-md">
+                                <button mat-raised-button (click)="fileInput.click()">Select File</button>
+                                <input style="display: none" #attachments type="file" accept=" image/* "
+                                    (change)="onFileChanged($event)" #fileInput multiple="true">
+                            </div>
+                            <div class="col-md">
+                                <button mat-raised-button type="submit" (click)="onMultipleSubmit()"
+                                    style="background-color: #1d6a96;color: snow">Upload</button>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 20px;">
+                            <mat-card *ngFor='let url of urls; let index = index' style="background-color: #E8D0A9;">
+                                <i class="material-icons" style="float: right; cursor: pointer;"
+                                    (click)="removeSelectedFile(index)">cancel</i> <br>
+
+                                <img [src]="url" style="height: 170px; width: 289px;">
+                            </mat-card>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div>
+                    <button mat-button matStepperNext class="bt-next">ต่อไป</button>
+                    <button mat-button matStepperPrevious class="bt-Previous">ย้อนกลับ</button>
+
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- ! step 4 -->
+        <mat-step [stepControl]="fourthFormGroup">
+            <form [formGroup]="fourthFormGroup">
                 <ng-template matStepLabel>รายละเอียดอสังหาริมทรัพย์</ng-template>
 
                 <div class="row" style="margin-top: 8px;">
@@ -163,7 +204,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <input matInput type="number" [(ngModel)]="Area" formControlName="Area"
-                                    placeholder="ตารางเมตร..." required>
+                                    placeholder="ตารางเมตร...">
                             </mat-form-field>
                         </div>
                     </div>
@@ -275,56 +316,56 @@
                 <div class="row" style="margin-top: 8px; margin-left: 40px;">
                     <div class="col-md-4">
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check1"
-                                id="Check1">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check1"
+                                formControlName="Check1" id="Check1">
                             <label class="form-check-label" for="Check1">ที่จอดรถ</label>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check2"
-                                id="Check2">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check2"
+                                formControlName="Check2" id="Check2">
                             <label class="form-check-label" for="Check2">ลานจอดรถ</label>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check3"
-                                id="Check3">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check3"
+                                formControlName="Check3" id="Check3">
                             <label class="form-check-label" for="Check3">รักษาความปลอดภัย</label>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check4"
-                                id="Check4">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check4"
+                                formControlName="Check4" id="Check4">
                             <label class="form-check-label" for="Check4">สระว่ายน้า</label>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check5"
-                                id="Check5">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check5"
+                                formControlName="Check5" id="Check5">
                             <label class="form-check-label" for="Check5">กล้องวงจรปิด</label>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check6"
-                                id="Check6">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check6"
+                                formControlName="Check6" id="Check6">
                             <label class="form-check-label" for="Check6">ฟิตเนส</label>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check7"
-                                id="Check7">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check7"
+                                formControlName="Check7" id="Check7">
                             <label class="form-check-label" for="Check7">สนามเด็กเล่น</label>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check8"
-                                id="Check8">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check8"
+                                formControlName="Check8" id="Check8">
                             <label class="form-check-label" for="Check8">มินิมาร์ท</label>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check9"
-                                id="Check9">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check9"
+                                formControlName="Check9" id="Check9">
                             <label class="form-check-label" for="Check9">ซัก อบ รีด</label>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check10"
-                                id="Check10">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check10"
+                                formControlName="Check10" id="Check10">
                             <label class="form-check-label" for="Check10">ศาลาชมทิวทัศน์</label>
                         </div>
                     </div>
@@ -332,7 +373,7 @@
                 <button mat-raised-button (click)="onSubmit()" class="bt-submit">ยืนยัน</button>
                 <button mat-raised-button (click)="onPostDraft()" class="bt-draft">บันทึกเป็นฉบับร่าง</button>
                 <button mat-button matStepperPrevious class="bt-Previous">ย้อนกลับ</button>
-                <button mat-raised-button (click)="onClickCheck()" >Check</button>
+                <button mat-raised-button (click)="onClickCheck()">Check</button>
 
             </form>
         </mat-step>
@@ -342,13 +383,12 @@
 
 
 
-
 <!--   Map  -->
 <ng-template #Location let-modal>
     <form [formGroup]="MapFormGroup">
         <div class="modal-header">
             <h4 class="modal-title">ตำแหน่งอสังหาริมทรัพย์</h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <button type="button" class="close" aria-label="Close" (click)="closeModal()">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -388,8 +428,9 @@
         </agm-map>
 
         <div class="modal-footer">
-            <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
-            <button mat-raised-button (click)="closeModal()"
+            <button mat-raised-button (click)="clearLocation()">clear</button>
+            <button mat-raised-button (click)="closeModal()">ยกเลิก</button>
+            <button mat-raised-button (click)="onSubmitMap()"
                 style="background-color: #1d6a96;color: snow">ยืนยัน</button>
         </div>
 

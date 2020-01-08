@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ServerService } from 'src/app/@service/server.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -16,13 +16,14 @@ export class TestPostProComponent implements OnInit {
   Check1: any = false;
   Check2: any = false;
   Check3: any = false;
-  Check4: any;
-  Check5: any;
-  Check6: any;
-  Check7: any;
-  Check8: any;
-  Check9: any;
-  Check10: any;
+  Check4: any = false;
+  Check5: any = false;
+  Check6: any = false;
+  Check7: any = false;
+  Check8: any = false;
+  Check9: any = false;
+  Check10: any = false;
+  Pro_head: any;
 
   public firstFormGroup = new FormGroup({
     Type_pro: new FormControl(''),
@@ -47,6 +48,10 @@ export class TestPostProComponent implements OnInit {
   provins: Object;
   selectedValue: any;
   Type_pro: any;
+  Type_sell: any;
+  Zone: any;
+  Location_id: any;
+  Pro_detail: any;
 
   constructor(
     private service: ServerService,
@@ -68,7 +73,7 @@ export class TestPostProComponent implements OnInit {
 
 
 
-    console.log(this.firstFormGroup.value);
+    // console.log(this.firstFormGroup.value);
 
   }
 
@@ -104,30 +109,108 @@ export class TestPostProComponent implements OnInit {
 
   }
 
-  list: { id: number; title: string; checked: boolean; }[];
 
-  get result() {
-    return this.list.filter(item => item.checked);
+
+  //  todo : select รูป แบบหลายรูป ใช้อันนี้
+  @ViewChild('attachments', { static: false }) attachment: any;
+
+  selectedFile: File;
+  fileList: File[] = [];
+  listOfFiles: any[] = [];
+  urls: any[] = [];
+
+  onFileChanged(event: any) {
+    for (var i = 0; i <= event.target.files.length - 1; i++) {
+      var selectedFile = event.target.files[i];
+      this.fileList.push(selectedFile);
+      this.listOfFiles.push(selectedFile.name);
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        console.log(event.target.result);
+        this.urls.push(event.target.result);
+      }
+      reader.readAsDataURL(event.target.files[i]);
+    }
+    this.attachment.nativeElement.value = '';
   }
 
+  removeSelectedFile(index) {
+    // Delete the item from fileNames list
+    this.listOfFiles.splice(index, 1);
+    // delete file from FileList
+    this.fileList.splice(index, 1);
+    // delete file from image
+    this.urls.splice(index, 1);
+  }
+
+  // todo :Button upload image multi
+  // ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // !! แก้ตรง pro_id  ให้ตาม id ประกาศอสังหา 
+  onMultipleSubmit() {
+    const formData = new FormData();
+    // formData.append('pro_id', '1');
+    for (let img of this.fileList) {
+      formData.append('blogimage', img);
+    }
+
+    this.service.postImageProMulti(formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
+
+
+  //  ! onSubmit
   onClick() {
 
-    // console.log(this.firstFormGroup.value);
+    // console.log(this.firstFormGroup);
+
     const data = {
-      style1: this.Check1,
-      style2: this.Check2,
-      style3: this.Check3,
-
+      type_id: this.Type_pro,
+      pro_sell: this.Type_sell,
+      location_id: this.Location_id,
+      // d: this.Type_user,
+      pro_head: this.Pro_head,
+      pro_detail: this.Pro_detail,
+      email_id: this.user[0].email_id
     }
-    console.log(data)
-    this.service.postCheck(data).subscribe(
-      async (res) => {
+    console.log(data);
 
+    this.service.postProperty(data).subscribe(
+      async (res) => {
+        this.onMultipleSubmit();
+        this.onStyle();
 
       }
     )
 
-
   }
+
+
+  onStyle() {
+    const data = {
+      style1: this.Check1,
+      style2: this.Check2,
+      style3: this.Check3,
+      style4: this.Check4,
+      style5: this.Check5,
+      style6: this.Check6,
+      style7: this.Check7,
+      style8: this.Check8,
+      style9: this.Check9,
+      style10: this.Check10,
+    }
+    console.log(data)
+    this.service.postProStyle(data).subscribe(
+      (res) => {
+
+      }
+    )
+  }
+
+
+ 
+
+
 
 }
