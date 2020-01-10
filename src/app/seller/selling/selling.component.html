@@ -34,7 +34,8 @@
                             <mat-form-field appearance="outline" class="full-width">
                                 <mat-select [(ngModel)]="Type_pro" formControlName="Type_pro"
                                     placeholder="เลือกอสังหาริมทรัพย์">
-                                    <mat-option [value]="type.type_id" *ngFor="let type of types">{{type.type_name}}
+                                    <mat-option [value]="type.type_id" *ngFor="let type of types" required>
+                                        {{type.type_name}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -47,7 +48,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <mat-select [(ngModel)]="Type_sell" formControlName="Type_sell"
-                                    placeholder="เลือกประเภทการขาย">
+                                    placeholder="เลือกประเภทการขาย" required>
                                     <mat-option value="ขาย">ขาย</mat-option>
                                     <mat-option value="เช่า">เช่า</mat-option>
                                 </mat-select>
@@ -68,7 +69,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <mat-select [(ngModel)]="selectedValue" formControlName="Zone"
-                                    placeholder="เลือกภูมิภาค">
+                                    placeholder="เลือกภูมิภาค" required>
                                     <mat-option [value]="z.loc_zone" *ngFor="let z of zones"
                                         (click)="onLocation(selectedValue)">
                                         {{z.zone_name}}</mat-option>
@@ -83,7 +84,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <mat-select [(ngModel)]="Location_id" formControlName="Location_id"
-                                    placeholder="เลือกจังหวัด">
+                                    placeholder="เลือกจังหวัด" required>
                                     <mat-option [value]="p.location_id" *ngFor="let p of provins">{{p.loc_name}}
                                     </mat-option>
                                 </mat-select>
@@ -92,7 +93,7 @@
                     </div>
                 </div>
 
-                <div class="row" style="margin-left: 50px; margin-top: 15px;">
+                <!-- <div class="row" style="margin-left: 50px; margin-top: 15px;">
                     <div class="col-md-3">
                         <input class="form-check-input" type="radio" name="Type_user" id="owner" style="width: 20px;
               height: 20px; margin-top: 0px;" formControlName="Type_user" [value]="1">
@@ -104,7 +105,7 @@
               height: 20px; margin-top: 0px;" formControlName="Type_user" [value]="2">
                         <label class="form-check-label" style="margin-left: 10px" for="agent">ตัวแทนจำหน่าย</label>
                     </div>
-                </div>
+                </div> -->
                 <div>
                     <button mat-raised-button matStepperNext class="bt-next">ต่อไป</button>
                 </div>
@@ -124,7 +125,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <input matInput [(ngModel)]="Pro_head" formControlName="Pro_head"
-                                    placeholder="กรอกหัวข้ออสังหาริมทรัพย์...">
+                                    placeholder="กรอกหัวข้ออสังหาริมทรัพย์..." required>
                             </mat-form-field>
                         </div>
 
@@ -139,7 +140,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <textarea matInput [(ngModel)]="Pro_detail" formControlName="Pro_detail" rows="18"
-                                    placeholder="กรอกรายละเอียดอสังหาริมทรัพย์..."></textarea>
+                                    placeholder="กรอกรายละเอียดอสังหาริมทรัพย์..." required></textarea>
                             </mat-form-field>
                         </div>
                     </div>
@@ -166,10 +167,10 @@
                                 <input style="display: none" #attachments type="file" accept=" image/* "
                                     (change)="onFileChanged($event)" #fileInput multiple="true">
                             </div>
-                            <div class="col-md">
+                            <!-- <div class="col-md">
                                 <button mat-raised-button type="submit" (click)="onMultipleSubmit()"
                                     style="background-color: #1d6a96;color: snow">Upload</button>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="row" style="margin-top: 20px;">
                             <mat-card *ngFor='let url of urls; let index = index' style="background-color: #E8D0A9;">
@@ -204,7 +205,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <input matInput type="number" [(ngModel)]="Area" formControlName="Area"
-                                    placeholder="ตารางเมตร...">
+                                    placeholder="ตารางเมตร..." required>
                             </mat-form-field>
                         </div>
                     </div>
@@ -234,7 +235,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <input matInput type="number" [(ngModel)]="Price" formControlName="Price"
-                                    placeholder="บาท">
+                                    placeholder="บาท" required>
                             </mat-form-field>
                         </div>
                     </div>
@@ -373,7 +374,7 @@
                 <button mat-raised-button (click)="onSubmit()" class="bt-submit">ยืนยัน</button>
                 <button mat-raised-button (click)="onPostDraft()" class="bt-draft">บันทึกเป็นฉบับร่าง</button>
                 <button mat-button matStepperPrevious class="bt-Previous">ย้อนกลับ</button>
-                <button mat-raised-button (click)="onClickCheck()">Check</button>
+                <!-- <button mat-raised-button (click)="onClickCheck()">Check</button> -->
 
             </form>
         </mat-step>

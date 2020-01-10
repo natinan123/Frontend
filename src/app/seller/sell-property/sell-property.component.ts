@@ -31,6 +31,7 @@ export class SellPropertyComponent implements OnInit {
       (res) => {
         console.log(res);
         this.mypro = res;
+        
       }
     )
   }

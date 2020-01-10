@@ -111,36 +111,39 @@ export class SellingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.firstFormGroup = this._formBuilder.group({
-    //   Type_pro: ['', Validators.required],
-    //   Type_sell: ['', Validators.required],
-    //   Zone: ['', Validators.required],
-    //   Location_id: ['', Validators.required],
-    //   Type_user: ['', Validators.required]
-    // });
-    // this.secondFormGroup = this._formBuilder.group({
-    //   Pro_head: ['', Validators.required],
-    //   Pro_detail: ['', Validators.required]
-    // });
-    // this.thirdFormGroup = this._formBuilder.group({
-    //   Area: ['', Validators.required],
-    //   Price: ['', Validators.required],
-    //   Space: [''],
-    //   Badroom: [''],
-    //   Toilet: [''],
-    //   Floor: [''],
-    //   Check1: [''],
-    //   Check2: [''],
-    //   Check3: [''],
-    //   Check4: [''],
-    //   Check5: [''],
-    //   Check6: [''],
-    //   Check7: [''],
-    //   Check8: [''],
-    //   Check9: [''],
-    //   Check10: [''],
+    this.firstFormGroup = this._formBuilder.group({
+      Type_pro: ['', Validators.required],
+      Type_sell: ['', Validators.required],
+      Zone: ['', Validators.required],
+      Location_id: ['', Validators.required],
+      // Type_user: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      Pro_head: ['', Validators.required],
+      Pro_detail: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+    
+    });
+    this.fourthFormGroup = this._formBuilder.group({
+      Area: ['', Validators.required],
+      Price: ['', Validators.required],
+      Space: [''],
+      Badroom: [''],
+      Toilet: [''],
+      Floor: [''],
+      Check1: [''],
+      Check2: [''],
+      Check3: [''],
+      Check4: [''],
+      Check5: [''],
+      Check6: [''],
+      Check7: [''],
+      Check8: [''],
+      Check9: [''],
+      Check10: [''],
 
-    // });
+    });
 
     this.user = this.session.getActiveUser();
     // console.log(this.user);
@@ -312,7 +315,7 @@ export class SellingComponent implements OnInit {
     this.service.postProperty(data).subscribe(
       async (res) => {
         this.onStyle();
-        // this.onMultipleSubmit();
+        this.onMultipleSubmit();
         this.modalService.open(this.success);
         await delay(2000);
         this.closeModal();
@@ -365,9 +368,9 @@ export class SellingComponent implements OnInit {
 
   // todo : add รายการอสังหาริมทรัพย์ ร่าง
   onPostDraft() {
-    console.log(this.firstFormGroup.value)
-    console.log(this.secondFormGroup.value)
-    console.log(this.thirdFormGroup.value)
+    // console.log(this.firstFormGroup.value)
+    // console.log(this.secondFormGroup.value)
+    // console.log(this.thirdFormGroup.value)
 
     const data = {
       type_id: this.Type_pro,
@@ -390,6 +393,7 @@ export class SellingComponent implements OnInit {
     this.service.postProDraft(data).subscribe(
       async (res) => {
         this.onStyle();
+        this.onMultipleSubmit()
         this.modalService.open(this.draft);
         await delay(2000);
         this.closeModal();
@@ -446,22 +450,22 @@ export class SellingComponent implements OnInit {
   }
 
 
-  onClickCheck() {
-    console.log(this.thirdFormGroup.value)
+  // onClickCheck() {
+  //   console.log(this.thirdFormGroup.value)
    
 
-    const data = {
-      style1: this.Check1,
-      style2: this.Check2,
-      style3: this.Check3,
-      style4: this.Check4,
-      style5: this.Check5,
-      style6: this.Check6,
-      style7: this.Check7,
-      style8: this.Check8,
-      style9: this.Check9,
-      style10: this.Check10,
-    }
-    console.log(data)
-  }
+  //   const data = {
+  //     style1: this.Check1,
+  //     style2: this.Check2,
+  //     style3: this.Check3,
+  //     style4: this.Check4,
+  //     style5: this.Check5,
+  //     style6: this.Check6,
+  //     style7: this.Check7,
+  //     style8: this.Check8,
+  //     style9: this.Check9,
+  //     style10: this.Check10,
+  //   }
+  //   console.log(data)
+  // }
 }

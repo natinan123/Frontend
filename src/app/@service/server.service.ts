@@ -223,7 +223,10 @@ export class ServerService {
   getNameAvatar(data) {
     return this.http.get(urlServer.ipServer + 'getnameavatar/' + data)
   }
-
+  // รูป Property
+  getNamePro(data) {
+    return this.http.get(urlServer.ipServer + 'getnamepro/' + data)
+  }
 
 
   // ! END ^ Get -------------------------//
@@ -351,6 +354,10 @@ export class ServerService {
   // post เพิ่มอสังหา เนื้อหา
   postCheck(data) {
     return this.http.post(urlServer.ipServer + 'testcheck', data)
+  }
+  // test pro
+  getTestPro() {
+    return this.http.get(urlServer.ipServer + 'testGetpro')
   }
 
 
