@@ -15,6 +15,7 @@ import { AgmCoreModule } from "@agm/core";
 import { FileUploadModule } from 'ng2-file-upload';
 import { API } from './map-api';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
       libraries: ['places', 'geometry', 'drawing']
     }),//google api
     FileUploadModule,
+    Ng5SliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

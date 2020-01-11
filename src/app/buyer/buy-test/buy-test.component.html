@@ -1,0 +1,47 @@
+<div class="custom-slider">
+    <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+</div>
+
+
+
+<input [(value)]="value"  pattern="[0-9]{3},[0-9]{3} [0-9]{4}" type="number"  class="form-control" placeholder="กรอกราคา">
+
+
+<div class="">
+    {{value | number : '1.2-2'}} ฿ บาท
+</div>
+<div class="">
+    {{highValue | number : '1.2-2'}} ฿ บาท
+</div>
+
+<button mat-button (click)="onCheck(value,highValue)">check</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row" >
+   <div class="col-md-5">
+    <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+
+   </div>
+   
+</div> -->

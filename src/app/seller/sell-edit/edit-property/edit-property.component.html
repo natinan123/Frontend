@@ -1,368 +1,415 @@
 <!--! ยังไม่ได้  -->
 
 <div class="row" style="height: 100px;background-color: #014254">
-    <div class="col-md">
-        <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> แก้ไขประกาศ</h1>
-    </div>
-    <div class="col-md">
-        <p class="count">จำนวนอสังหาริมทรัพย์ ( {{count_pro}} / {{pro_limit}} )</p>
-    </div>
+  <div class="col-md">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> แก้ไขประกาศ</h1>
+  </div>
+  <div class="col-md">
+    <p class="count">จำนวนอสังหาริมทรัพย์ ( {{count_pro}} / {{pro_limit}} )</p>
+  </div>
 </div>
 
 
-<div class="row" style="margin-top: 8px;">
-    <div class="col-md-5" style="padding-right: 0px;">
+
+
+<mat-card style="width: 97%; margin-left: auto; margin-right: auto; top: 10px;background-color: snow;">
+
+
+  <!-- ! step 1 -->
+
+  <ng-template>ประเภทอสังหาริมทรัพย์</ng-template>
+  <form [formGroup]="firstFormGroup">
+    <div class="row">
+      <div class="col-md-4">
         <div class="label">
-            <mat-label>ราคาของอสังหาริมทรัพย์</mat-label>
+          <mat-label>ประเภทอสังหาริมทรัพย์</mat-label>
         </div>
         <div class="option">
-            <mat-form-field appearance="outline" class="full-width">
-                <input matInput type="number" [(ngModel)]="price" formControlName="price" placeholder="บาท">
-            </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="type_id" formControlName="type_id" placeholder="เลือกอสังหาริมทรัพย์">
+              <mat-option [value]="type.type_id" *ngFor="let type of types" required>
+                {{type.type_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="label">
+          <mat-label>ประเภทการขาย</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="pro_sell" formControlName="pro_sell" placeholder="เลือกประเภทการขาย" required>
+              <mat-option value="ขาย">ขาย</mat-option>
+              <mat-option value="เช่า">เช่า</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <button mat-raised-button (click)="openModalLocation(Location)" class="button"><i
+            class="material-icons">near_me</i> ที่ตั้งบนแผนที่</button>
+      </div>
     </div>
-    <div class="col-md-2" style="margin-top: 40px; padding-left: 5px">บาท</div>
-</div>
 
-<!-- <mat-card style="width: 97%; margin-left: auto; margin-right: auto; top: 10px;background-color: #BBD9EE">
-  
-    <mat-horizontal-stepper [linear]="!isLinear" #stepper>
-      <mat-step [stepControl]="firstFormGroup" class="steper">
-        <ng-template matStepLabel>ประเภทอสังหาริมทรัพย์</ng-template>
-        <form [formGroup]="firstFormGroup">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="label">
-                <mat-label>ประเภทอสังหาริมทรัพย์</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-select [(ngModel)]="Type_pro" formControlName="Type_pro" placeholder="เลือกอสังหาริมทรัพย์"
-                    required>
-                    <mat-option [value]="type.type_id" *ngFor="let type of types">{{type.type_name}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="label">
-                <mat-label>ประเภทการขาย</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-select [(ngModel)]="Type_sell" formControlName="Type_sell" placeholder="เลือกประเภทการขาย"
-                    required>
-                    <mat-option value="ขาย">ขาย</mat-option>
-                    <mat-option value="เช่า">เช่า</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <button mat-raised-button (click)="openModalLocation(Location)" class="button"><i
-                  class="material-icons">near_me</i> ที่ตั้งบนแผนที่</button>
-            </div>
+    <div class="row" style=" margin-top: 15px;">
+      <div class="col-md-4">
+        <div class="label">
+          <mat-label>ภูมิภาค</mat-label>
+        </div>
+        <div class="option">
+          <!-- (click)="onLocation(Loc_zone)" -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="loc_zone" formControlName="Loc_zone" placeholder="เลือกภูมิภาค" required>
+              <mat-option [value]="z.loc_zone" *ngFor="let z of zones">
+                {{z.zone_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="label">
+          <mat-label>จังหวัด</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="location_id" formControlName="location_id" placeholder="เลือกจังหวัด" required>
+              <mat-option [value]="p.location_id" *ngFor="let p of provins">{{p.loc_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row" style="margin-left: 50px; margin-top: 15px;">
+                <div class="col-md-3">
+                    <input class="form-check-input" type="radio" name="Type_user" id="owner" style="width: 20px;
+          height: 20px; margin-top: 0px;" formControlName="Type_user" [value]="1">
+                    <label class="form-check-label" style="margin-left: 10px"
+                        for="owner">เจ้าของอสังหาริมทรัพย์</label>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-check-input" type="radio" name="Type_user" id="agent" style="width: 20px;
+          height: 20px; margin-top: 0px;" formControlName="Type_user" [value]="2">
+                    <label class="form-check-label" style="margin-left: 10px" for="agent">ตัวแทนจำหน่าย</label>
+                </div>
+            </div> -->
+
+  </form>
+
+
+  <!-- ! step 2 -->
+
+  <form [formGroup]="secondFormGroup">
+    <ng-template>หัวข้ออสังหาริมทรัพย์</ng-template>
+
+    <div class="row" style="margin-top: 8px;">
+      <div class="col-md">
+        <div class="label">
+          <mat-label>หัวข้ออสังหาริมทรัพย์</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <input matInput [(ngModel)]="pro_head" formControlName="pro_head" placeholder="กรอกหัวข้ออสังหาริมทรัพย์..."
+              required>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 8px;">
+      <div class="col-md">
+        <div class="label">
+          <mat-label>รายละเอียดอสังหาริมทรัพย์</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <textarea matInput [(ngModel)]="pro_detail" formControlName="pro_detail" rows="18"
+              placeholder="กรอกรายละเอียดอสังหาริมทรัพย์..." required></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+
+
+  <!-- ! step 3 -->
+
+  <form [formGroup]="thirdFormGroup">
+    <ng-template>รูปภาพ</ng-template>
+    <div style="text-align: center">
+      <form>
+        <div class="row" style="margin-top: 20px;">
+          <div class="col-md">
+            <button mat-raised-button (click)="fileInput.click()">Select File</button>
+            <input style="display: none" #attachments type="file" accept=" image/* " (change)="onFileChanged($event)"
+              #fileInput multiple="true">
           </div>
-  
-          <div class="row" style=" margin-top: 15px;">
-            <div class="col-md-4">
-              <div class="label">
-                <mat-label>ภูมิภาค</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-select [(ngModel)]="zone_name" formControlName="Zone" placeholder="เลือกภูมิภาค" required>
-                    <mat-option [value]="z.loc_zone" *ngFor="let z of zones" (click)="onLocation(selectedValue)">
-                      {{z.zone_name}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="label">
-                <mat-label>จังหวัด</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-select [(ngModel)]="Location_id" formControlName="Location_id" placeholder="เลือกจังหวัด" required>
-                    <mat-option [value]="p.location_id" *ngFor="let p of provins">{{p.loc_name}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-  
-          <div class="row" style="margin-left: 50px; margin-top: 15px;">
-            <div class="col-md-3">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="owner" style="width: 20px;
-                height: 20px; margin-top: 0px;" formControlName="Type_user" [value]="1">
-              <label class="form-check-label" style="margin-left: 10px" for="owner">เจ้าของอสังหาริมทรัพย์</label>
-            </div>
-            <div class="col-md-3">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="agent" style="width: 20px;
-                height: 20px; margin-top: 0px;" formControlName="Type_user" [value]="2">
-              <label class="form-check-label" style="margin-left: 10px" for="agent">ตัวแทนจำหน่าย</label>
-            </div>
-          </div>
-          <div>
-            <button mat-raised-button matStepperNext class="bt-next">ต่อไป</button>
-          </div>
-        </form>
-      </mat-step>
-  
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>หัวข้ออสังหาริมทรัพย์</ng-template>
-  
-          <div class="row" style="margin-top: 8px;">
-            <div class="col-md">
-              <div class="label">
-                <mat-label>หัวข้ออสังหาริมทรัพย์</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <input matInput [(ngModel)]="Pro_head" formControlName="Pro_head"
-                    placeholder="กรอกหัวข้ออสังหาริมทรัพย์..." required>
-                </mat-form-field>
-              </div>
-  
-            </div>
-          </div>
-  
-          <div class="row" style="margin-top: 8px;">
-            <div class="col-md">
-              <div class="label">
-                <mat-label>รายละเอียดอสังหาริมทรัพย์</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <textarea matInput [(ngModel)]="Pro_detail" formControlName="Pro_detail" rows="18"
-                    placeholder="กรอกรายละเอียดอสังหาริมทรัพย์..." required></textarea>
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-          <div>
-  
-            <button mat-button matStepperNext class="bt-next">ต่อไป</button>
-            <button mat-button matStepperPrevious class="bt-Previous">ย้อนกลับ</button>
-  
-          </div>
-        </form>
-      </mat-step>
-  
-      <mat-step [stepControl]="thirdFormGroup">
-        <form [formGroup]="thirdFormGroup">
-          <ng-template matStepLabel>รายละเอียดอสังหาริมทรัพย์</ng-template>
-  
-          <div class="row" style="margin-top: 8px;">
-            <div class="col-md-4" style="padding-right: 0px;">
-              <div class="label">
-                <mat-label>ขนาดพื้นที่</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <input matInput type="number" [(ngModel)]="Area" formControlName="Area" placeholder="ตารางเมตร..."
-                    required>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="col-md-2" style="margin-top: 40px; padding-left: 5px">ตารางเมตร</div>
-  
-            <div class="col-md-4" style="padding-right: 0px;">
-              <div class="label">
-                <mat-label>พื้นที่ใช้สอย</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <input matInput type="number" [(ngModel)]="Space" formControlName="Space" placeholder="ตารางเมตร...">
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="col-md-2" style="margin-top: 40px; padding-left: 5px">ตารางเมตร</div>
-          </div>
-  
-  
-  
-          <div class="row" style="margin-top: 8px;">
-            <div class="col-md-5" style="padding-right: 0px;">
-              <div class="label">
-                <mat-label>ราคาของอสังหาริมทรัพย์</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <input matInput type="number" [(ngModel)]="Price" formControlName="Price" placeholder="บาท">
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="col-md-2" style="margin-top: 40px; padding-left: 5px">บาท</div>
-          </div>
-  
-          <div class="row" style="margin-top: 8px;">
-            <div class="col-md">
-              <div class="label">
-                <mat-label>ห้องนอน</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-select [(ngModel)]="Badroom" formControlName="Badroom" placeholder="เลือกกี่ห้องนอน">
-                    <mat-option [value]="1"> 1 ห้องนอน</mat-option>
-                    <mat-option [value]="2"> 2 ห้องนอน</mat-option>
-                    <mat-option [value]="3"> 3 ห้องนอน</mat-option>
-                    <mat-option [value]="4"> 4 ห้องนอน</mat-option>
-                    <mat-option [value]="5"> 5 ห้องนอน</mat-option>
-                    <mat-option [value]="6"> 6 ห้องนอน</mat-option>
-                    <mat-option [value]="7"> 7 ห้องนอน</mat-option>
-                    <mat-option [value]="8"> 8 ห้องนอน</mat-option>
-                    <mat-option [value]="9"> 9 ห้องนอน</mat-option>
-                    <mat-option [value]="10"> 10 ห้องนอน</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div>
-  
-            <div class="col-md">
-              <div class="label">
-                <mat-label>ห้องน้ำ</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-select [(ngModel)]="Toilet" formControlName="Toilet" placeholder="เลือกกี่ห้องน้ำ">
-                    <mat-option [value]="1"> 1 ห้องน้ำ</mat-option>
-                    <mat-option [value]="2"> 2 ห้องน้ำ</mat-option>
-                    <mat-option [value]="3"> 3 ห้องน้ำ</mat-option>
-                    <mat-option [value]="4"> 4 ห้องน้ำ</mat-option>
-                    <mat-option [value]="5"> 5 ห้องน้ำ</mat-option>
-                    <mat-option [value]="6"> 6 ห้องน้ำ</mat-option>
-                    <mat-option [value]="7"> 7 ห้องน้ำ</mat-option>
-                    <mat-option [value]="8"> 8 ห้องน้ำ</mat-option>
-                    <mat-option [value]="9"> 9 ห้องน้ำ</mat-option>
-                    <mat-option [value]="10"> 10 ห้องน้ำ</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="col-md">
-              <div class="label">
-                <mat-label>ชั้น</mat-label>
-              </div>
-              <div class="option">
-                <mat-form-field appearance="outline" class="full-width">
-                  <mat-select [(ngModel)]="Floor" formControlName="Floor" placeholder="เลือกชั้น">
-                    <mat-option [value]="1"> 1 ชั้น</mat-option>
-                    <mat-option [value]="2"> 2 ชั้น</mat-option>
-                    <mat-option [value]="3"> 3 ชั้น</mat-option>
-                    <mat-option [value]="4"> 4 ชั้น</mat-option>
-                    <mat-option [value]="5"> 5 ชั้น</mat-option>
-                    <mat-option [value]="6"> 6 ชั้น</mat-option>
-                    <mat-option [value]="7"> 7 ชั้น</mat-option>
-                    <mat-option [value]="8"> 8 ชั้น</mat-option>
-                    <mat-option [value]="9"> 9 ชั้น</mat-option>
-                    <mat-option [value]="10"> 10 ชั้น</mat-option>
-                    <mat-option [value]="11"> 11 ชั้น</mat-option>
-                    <mat-option [value]="12"> 12 ชั้น</mat-option>
-                    <mat-option [value]="13"> 13 ชั้น</mat-option>
-                    <mat-option [value]="14"> 14 ชั้น</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-  
-          <div class="row" style="margin-top: 8px; margin-left: 40px;">
-            <div class="col-md-4">
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check1" id="Check1">
-                <label class="form-check-label" for="Check1">ที่จอดรถ</label>
-              </div>
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check2" id="Check2">
-                <label class="form-check-label" for="Check2">ลานจอดรถ</label>
-              </div>
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check3" id="Check3">
-                <label class="form-check-label" for="Check3">รักษาความปลอดภัย</label>
-              </div>
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check4" id="Check4">
-                <label class="form-check-label" for="Check4">สระว่ายน้า</label>
-              </div>
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check5" id="Check5">
-                <label class="form-check-label" for="Check5">กล้องวงจรปิด</label>
-              </div>
-            </div>
-  
-            <div class="col-md-4">
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check6" id="Check6">
-                <label class="form-check-label" for="Check6">ฟิตเนส</label>
-              </div>
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check7" id="Check7">
-                <label class="form-check-label" for="Check7">สนามเด็กเล่น</label>
-              </div>
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check8" id="Check8">
-                <label class="form-check-label" for="Check8">มินิมาร์ท</label>
-              </div>
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check9" id="Check9">
-                <label class="form-check-label" for="Check9">ซัก อบ รีด</label>
-              </div>
-              <div class="check-list">
-                <input class="form-check-input" type="checkbox" [value]="1" formControlName="Check10" id="Check10">
-                <label class="form-check-label" for="Check10">ศาลาชมทิวทัศน์</label>
-              </div>
-            </div>
-          </div>
-          <button mat-raised-button (click)="onSubmit()" class="bt-submit">ยืนยัน</button>
-          <button mat-raised-button (click)="onPostDraft()" class="bt-draft">บันทึกเป็นฉบับร่าง</button>
-          <button mat-button matStepperPrevious class="bt-Previous">ย้อนกลับ</button>
-  
-        </form>
-      </mat-step>
-    </mat-horizontal-stepper>
-  
-  
-  
-  
-  </mat-card> -->
+          <!-- <div class="col-md">
+                            <button mat-raised-button type="submit" (click)="onMultipleSubmit()"
+                                style="background-color: #1d6a96;color: snow">Upload</button>
+                        </div> -->
+        </div>
+        <div class="row" style="margin-top: 20px;">
+          <mat-card *ngFor='let url of urls; let index = index' style="background-color: #E8D0A9;">
+            <i class="material-icons" style="float: right; cursor: pointer;"
+              (click)="removeSelectedFile(index)">cancel</i> <br>
+
+            <img [src]="url" style="height: 170px; width: 289px;">
+          </mat-card>
+        </div>
+
+
+      </form>
+    </div>
+
+  </form>
+
+
+  <!-- ! step 4 -->
+
+  <form [formGroup]="fourthFormGroup">
+    <ng-template>รายละเอียดอสังหาริมทรัพย์</ng-template>
+
+    <div class="row" style="margin-top: 8px;">
+      <div class="col-md-4" style="padding-right: 0px;">
+        <div class="label">
+          <mat-label>ขนาดพื้นที่</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <input matInput type="number" [(ngModel)]="pro_area" formControlName="pro_area" placeholder="ตารางเมตร..."
+              required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-2" style="margin-top: 40px; padding-left: 5px">ตารางเมตร</div>
+
+      <div class="col-md-4" style="padding-right: 0px;">
+        <div class="label">
+          <mat-label>พื้นที่ใช้สอย</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <input matInput type="number" [(ngModel)]="pro_space" formControlName="pro_space"
+              placeholder="ตารางเมตร...">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-2" style="margin-top: 40px; padding-left: 5px">ตารางเมตร</div>
+    </div>
+
+
+
+    <div class="row" style="margin-top: 8px;">
+      <div class="col-md-5" style="padding-right: 0px;">
+        <div class="label">
+          <mat-label>ราคาของอสังหาริมทรัพย์</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <input matInput type="number" [(ngModel)]="price" formControlName="price" placeholder="บาท" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-2" style="margin-top: 40px; padding-left: 5px">บาท</div>
+    </div>
+
+    <div class="row" style="margin-top: 8px;">
+      <div class="col-md">
+        <div class="label">
+          <mat-label>ห้องนอน</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="pro_bedroom" formControlName="pro_bedroom" placeholder="เลือกกี่ห้องนอน">
+              <mat-option [value]="1"> 1 ห้องนอน</mat-option>
+              <mat-option [value]="2"> 2 ห้องนอน</mat-option>
+              <mat-option [value]="3"> 3 ห้องนอน</mat-option>
+              <mat-option [value]="4"> 4 ห้องนอน</mat-option>
+              <mat-option [value]="5"> 5 ห้องนอน</mat-option>
+              <mat-option [value]="6"> 6 ห้องนอน</mat-option>
+              <mat-option [value]="7"> 7 ห้องนอน</mat-option>
+              <mat-option [value]="8"> 8 ห้องนอน</mat-option>
+              <mat-option [value]="9"> 9 ห้องนอน</mat-option>
+              <mat-option [value]="10"> 10 ห้องนอน</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-md">
+        <div class="label">
+          <mat-label>ห้องน้ำ</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="pro_toilet" formControlName="pro_toilet" placeholder="เลือกกี่ห้องน้ำ">
+              <mat-option [value]="1"> 1 ห้องน้ำ</mat-option>
+              <mat-option [value]="2"> 2 ห้องน้ำ</mat-option>
+              <mat-option [value]="3"> 3 ห้องน้ำ</mat-option>
+              <mat-option [value]="4"> 4 ห้องน้ำ</mat-option>
+              <mat-option [value]="5"> 5 ห้องน้ำ</mat-option>
+              <mat-option [value]="6"> 6 ห้องน้ำ</mat-option>
+              <mat-option [value]="7"> 7 ห้องน้ำ</mat-option>
+              <mat-option [value]="8"> 8 ห้องน้ำ</mat-option>
+              <mat-option [value]="9"> 9 ห้องน้ำ</mat-option>
+              <mat-option [value]="10"> 10 ห้องน้ำ</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="label">
+          <mat-label>ชั้น</mat-label>
+        </div>
+        <div class="option">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select [(ngModel)]="pro_floor" formControlName="pro_floor" placeholder="เลือกชั้น">
+              <mat-option [value]="1"> 1 ชั้น</mat-option>
+              <mat-option [value]="2"> 2 ชั้น</mat-option>
+              <mat-option [value]="3"> 3 ชั้น</mat-option>
+              <mat-option [value]="4"> 4 ชั้น</mat-option>
+              <mat-option [value]="5"> 5 ชั้น</mat-option>
+              <mat-option [value]="6"> 6 ชั้น</mat-option>
+              <mat-option [value]="7"> 7 ชั้น</mat-option>
+              <mat-option [value]="8"> 8 ชั้น</mat-option>
+              <mat-option [value]="9"> 9 ชั้น</mat-option>
+              <mat-option [value]="10"> 10 ชั้น</mat-option>
+              <mat-option [value]="11"> 11 ชั้น</mat-option>
+              <mat-option [value]="12"> 12 ชั้น</mat-option>
+              <mat-option [value]="13"> 13 ชั้น</mat-option>
+              <mat-option [value]="14"> 14 ชั้น</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 8px; margin-left: 40px;">
+      <div class="col-md-4">
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style1" formControlName="style1" id="Check1">
+          <label class="form-check-label" for="Check1">ที่จอดรถ</label>
+        </div>
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style2" formControlName="style2" id="Check2">
+          <label class="form-check-label" for="Check2">ลานจอดรถ</label>
+        </div>
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style3" formControlName="style3" id="Check3">
+          <label class="form-check-label" for="Check3">รักษาความปลอดภัย</label>
+        </div>
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style4" formControlName="style4" id="Check4">
+          <label class="form-check-label" for="Check4">สระว่ายน้า</label>
+        </div>
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style5" formControlName="style5" id="Check5">
+          <label class="form-check-label" for="Check5">กล้องวงจรปิด</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style6" formControlName="style6" id="Check6">
+          <label class="form-check-label" for="Check6">ฟิตเนส</label>
+        </div>
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style7" formControlName="style7" id="Check7">
+          <label class="form-check-label" for="Check7">สนามเด็กเล่น</label>
+        </div>
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style8" formControlName="style8" id="Check8">
+          <label class="form-check-label" for="Check8">มินิมาร์ท</label>
+        </div>
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style9" formControlName="style9" id="Check9">
+          <label class="form-check-label" for="Check9">ซัก อบ รีด</label>
+        </div>
+        <div class="check-list">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="style10" formControlName="style10" id="Check10">
+          <label class="form-check-label" for="Check10">ศาลาชมทิวทัศน์</label>
+        </div>
+      </div>
+    </div>
+    <button mat-raised-button (click)="onSubmit()" class="bt-submit">ยืนยัน</button>
+    <button mat-raised-button (click)="onPostDraft()" class="bt-draft">บันทึกเป็นฉบับร่าง</button>
+
+
+  </form>
+
+
+
+
+
+
+
+</mat-card>
 
 
 
 
 <!--   Map  -->
+<!-- <ng-template #Location let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">ตำแหน่งอสังหาริมทรัพย์</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+  <agm-map [latitude]="lat2" [longitude]="lng2" [zoom]="zoom" (mapClick)="placeMarker($event)">
+    <agm-marker [latitude]="latitude" [longitude]="longitude">
+    </agm-marker>
+  </agm-map>
+
+  <div class="modal-footer">
+    <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+    <button mat-raised-button (click)="closeModal()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+  </div>
+</ng-template> -->
 <ng-template #Location let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">ตำแหน่งอสังหาริมทรัพย์</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+  <div class="modal-header">
+    <h4 class="modal-title">ตำแหน่งอสังหาริมทรัพย์</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
+  <agm-map [latitude]="lat2" [longitude]="lng2">
+    <!-- หน้าเริ่ม -->
+    <agm-marker [latitude]="latitude" [longitude]="longtitude">
+      <!-- มาค์ก -->
+      <agm-info-window>
+        <h5><strong>{{type_name}} </strong></h5>
+        <p>{{pro_head}}</p>
+        <p>{{price}} บาท</p>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
 
-    <agm-map [latitude]="lat2" [longitude]="lng2" [zoom]="zoom" (mapClick)="placeMarker($event)">
-        <agm-marker [latitude]="latitude" [longitude]="longitude">
-        </agm-marker>
-    </agm-map>
-
-    <div class="modal-footer">
-        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
-        <button mat-raised-button (click)="closeModal()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
-    </div>
+  <div class="modal-footer">
+    <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+    <!-- <button mat-raised-button style="background-color: #1d6a96;color: snow">ยืนยัน</button> -->
+  </div>
 </ng-template>
-
 
 <!-- alert -->
 <ng-template #success let-modal>
-    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
-        ประกาศอสังหาริมทรัพย์ " สำเร็จ "
-    </div>
+  <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+    ประกาศอสังหาริมทรัพย์ " สำเร็จ "
+  </div>
 </ng-template>
 
 <ng-template #draft let-modal>
-    <div class="alert alert-warning" role="alert" style="margin-bottom: 0px;">
-        บันทึกอสังหาริมทรัพย์ในฉบับร่าง " สำเร็จ "
-    </div>
+  <div class="alert alert-warning" role="alert" style="margin-bottom: 0px;">
+    บันทึกอสังหาริมทรัพย์ในฉบับร่าง " สำเร็จ "
+  </div>
 </ng-template>

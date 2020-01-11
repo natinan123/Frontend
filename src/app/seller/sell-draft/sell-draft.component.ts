@@ -11,6 +11,7 @@ export class SellDraftComponent implements OnInit {
 
   user: any;
   prodraft: Object;
+  pro_pic: Object;
 
   constructor(
     private service: ServerService,
@@ -30,6 +31,7 @@ export class SellDraftComponent implements OnInit {
       (res) => {
         console.log(res);
         this.prodraft = res;
+      
       }
     )
   }

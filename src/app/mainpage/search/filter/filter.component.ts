@@ -16,6 +16,7 @@ export class FilterComponent implements OnInit {
   selected1 = '';
   selected2 = '';
   selected3 = '';
+  products_pic: Object;
 
   constructor(
     private service: ServerService,
@@ -34,8 +35,8 @@ export class FilterComponent implements OnInit {
     this.service.getProperty().subscribe(
       (res) => {
         console.log(res);
-
         this.products = res;
+        console.log(this.products);
 
       })
   }

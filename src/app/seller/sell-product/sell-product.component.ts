@@ -94,7 +94,7 @@ export class SellProductComponent implements OnInit {
       }
     )
     this.getUserLocation();
-    this.showImagePro();
+    // this.showImagePro();
     
   }
 
@@ -127,16 +127,16 @@ export class SellProductComponent implements OnInit {
           this.cus_detail = res[0].cus_detail,
           this.cus_status = res[0].cus_status,
           this.phone = res[0].phone,
-          // this.image1 = res[0].image1,
-          // this.image2 = res[0].image2,
-          // this.image3 = res[0].image3,
-          // this.image4 = res[0].image4,
-          // this.image5 = res[0].image5,
-          // this.image6 = res[0].image6,
-          // this.image7 = res[0].image7,
-          // this.image8 = res[0].image8,
-          // this.image9 = res[0].image9,
-          // this.image10 = res[0].image10,
+          this.image1 = res[0].image1,
+          this.image2 = res[0].image2,
+          this.image3 = res[0].image3,
+          this.image4 = res[0].image4,
+          this.image5 = res[0].image5,
+          this.image6 = res[0].image6,
+          this.image7 = res[0].image7,
+          this.image8 = res[0].image8,
+          this.image9 = res[0].image9,
+          this.image10 = res[0].image10,
           this.style1 = res[0].style1,
           this.style2 = res[0].style2,
           this.style3 = res[0].style3,
@@ -257,26 +257,26 @@ export class SellProductComponent implements OnInit {
   }
 
 
-  // รูป pro
-  showImagePro() {
+  // // รูป pro
+  // showImagePro() {
 
-    this.service.getNamePro(this.data).subscribe(
-      (res) => {
-        console.log(res);
-        this.image1 = res[0].image1,
-          this.image2 = res[0].image2,
-          this.image3 = res[0].image3,
-          this.image4 = res[0].image4,
-          this.image5 = res[0].image5,
-          this.image6 = res[0].image6,
-          this.image7 = res[0].image7,
-          this.image8 = res[0].image8,
-          this.image9 = res[0].image9,
-          this.image10 = res[0].image10
+  //   this.service.getNamePro(this.data).subscribe(
+  //     (res) => {
+  //       console.log(res);
+  //       this.image1 = res[0].image1,
+  //         this.image2 = res[0].image2,
+  //         this.image3 = res[0].image3,
+  //         this.image4 = res[0].image4,
+  //         this.image5 = res[0].image5,
+  //         this.image6 = res[0].image6,
+  //         this.image7 = res[0].image7,
+  //         this.image8 = res[0].image8,
+  //         this.image9 = res[0].image9,
+  //         this.image10 = res[0].image10
 
-      }
-    );
-  }
+  //     }
+  //   );
+  // }
 
 
 }

@@ -11,6 +11,7 @@ export class SellCloseComponent implements OnInit {
 
   user: any;
   prodclose: any;
+  pro_pic: Object;
 
   constructor(
     private service: ServerService,
@@ -28,8 +29,9 @@ export class SellCloseComponent implements OnInit {
   getMypro() {
     this.service.getProClose(this.user[0].email_id).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.prodclose = res;
+       
       }
     )
   }

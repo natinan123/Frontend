@@ -29,28 +29,26 @@ export class TestingComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getPro();
+    // this.getPro();
 
+
+    
   }
 
-  getPro() {
-    this.service.getTestPro().subscribe(
-      (res) => {
-        // console.log(res);
-        this.mypro = res.row;
-        console.log(this.mypro);
-        this.pro_pic = res.result;
-        console.log(this.pro_pic);
+  // getPro() {
+  //   this.service.getTestPro().subscribe(
+  //     (res) => {
+  //       // console.log(res);
+  //       this.mypro = res;
+  //       console.log(this.mypro);
+      
+
+  //     }
+  //   )
+  // }
 
 
-        // this.test = res;
-        // console.log(this.test);
-      }
-    )
-  }
-
-
-
+ 
 
 
 }

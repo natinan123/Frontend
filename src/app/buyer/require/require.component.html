@@ -44,14 +44,14 @@
         </div>
 
         <div class="range">
-            <label for="area">ขนาดพื้นที่สูงสุด : {{Area_max}} ตารางเมตร</label>
+            <label for="area">ขนาดพื้นที่สูงสุด : {{Area_max}} ตารางเมตร</label> <br>
             <input type="range" [(ngModel)]="Area_max" formControlName="Area_max" class="custom-range" min="0"
                 max="2000" step="5" id="area">
             <input [(ngModel)]="Area_max" formControlName="Area_max" class="form-control" placeholder="กรอกขนาด">
         </div>
 
         <div class="range">
-            <label for="area">ขนาดพื้นที่ต่ำสุด : {{Area_min}} ตารางเมตร</label>
+            <label for="area">ขนาดพื้นที่ต่ำสุด : {{Area_min}} ตารางเมตร</label> <br>
             <input type="range" [(ngModel)]="Area_min" formControlName="Area_min" class="custom-range" min="0"
                 max="2000" step="5" id="area">
             <input [(ngModel)]="Area_min" formControlName="Area_min" class="form-control" placeholder="กรอกขนาด">
@@ -59,17 +59,17 @@
 
 
         <div class="price">
-            <label for="price1">ราคาของพื้นที่สูงสุด : {{Price_max}} บาท</label>
+            <label for="price1">ราคาของพื้นที่สูงสุด : {{Price_max}} บาท</label> <br>
             <input type="range" [(ngModel)]="Price_max" formControlName="Price_max" class="custom-range" min="0"
                 max="2000" step="5" id="price1">
-            <input [(ngModel)]="Price_max" formControlName="Price_max" class="form-control" placeholder="กรอกขนาด">
+            <input [(ngModel)]="Price_max" formControlName="Price_max" class="form-control" placeholder="กรอกราคา">
         </div>
 
         <div class="price">
-            <label for="price1">ราคาของพื้นที่ต่ำสุด : {{Price_min}} บาท</label>
+            <label for="price1">ราคาของพื้นที่ต่ำสุด : {{Price_min}} บาท</label> <br>
             <input type="range" [(ngModel)]="Price_min" formControlName="Price_min" class="custom-range" min="0"
                 max="2000" step="5" id="price1">
-            <input [(ngModel)]="Price_min" formControlName="Price_min" class="form-control" placeholder="กรอกขนาด">
+            <input [(ngModel)]="Price_min" formControlName="Price_min" class="form-control" placeholder="กรอกราคา">
         </div>
 
         <button mat-button class="bt-submit" (click)="openModalAddreq(Addrequire)">ยืนยันความต้องการ</button>

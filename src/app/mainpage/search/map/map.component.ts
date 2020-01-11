@@ -23,6 +23,7 @@ export class MapComponent implements OnInit {
   markers: Object;
 
   type_id: any;
+  markers_pic: Object;
 
   constructor(
     private service: ServerService,
@@ -42,7 +43,7 @@ export class MapComponent implements OnInit {
 
         this.markers = res;
         console.log(this.markers);
-
+      
       })
     // this.onGetHouse();
 

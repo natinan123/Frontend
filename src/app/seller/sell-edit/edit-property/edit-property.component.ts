@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { delay } from 'q';
-import { FormGroup, FormControl, FormControlName, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormControlName, FormBuilder, Validators } from '@angular/forms';
 import { ServerService } from 'src/app/@service/server.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
@@ -20,127 +20,106 @@ export class EditPropertyComponent implements OnInit {
 
 
   public firstFormGroup = new FormGroup({
-    Type_pro: new FormControl(''),
-    Type_sell: new FormControl(''),
-    Zone: new FormControl(''),
-    Location_id: new FormControl(''),
+    type_id: new FormControl(''),
+    pro_sell: new FormControl(''),
+    Loc_zone: new FormControl(''),
+    location_id: new FormControl(''),
     Type_user: new FormControl(''),
 
   })
 
   public secondFormGroup = new FormGroup({
-    Pro_head: new FormControl(''),
-    Pro_detail: new FormControl(''),
+    pro_head: new FormControl(''),
+    pro_detail: new FormControl('')
   })
 
   public thirdFormGroup = new FormGroup({
-    Area: new FormControl(''),
-    Space: new FormControl(''),
-    Price: new FormControl(''),
-    Badroom: new FormControl(''),
-    Toilet: new FormControl(''),
-    Floor: new FormControl(''),
-    Check1: new FormControl(''),
-    Check2: new FormControl(''),
-    Check3: new FormControl(''),
-    Check4: new FormControl(''),
-    Check5: new FormControl(''),
-    Check6: new FormControl(''),
-    Check7: new FormControl(''),
-    Check8: new FormControl(''),
-    Check9: new FormControl(''),
-    Check10: new FormControl(''),
+
+  })
+
+
+  public fourthFormGroup = new FormGroup({
+    pro_area: new FormControl(''),
+    pro_space: new FormControl(''),
+    price: new FormControl(''),
+    pro_bedroom: new FormControl(''),
+    pro_toilet: new FormControl(''),
+    pro_floor: new FormControl(''),
+    style1: new FormControl(''),
+    style2: new FormControl(''),
+    style3: new FormControl(''),
+    style4: new FormControl(''),
+    style5: new FormControl(''),
+    style6: new FormControl(''),
+    style7: new FormControl(''),
+    style8: new FormControl(''),
+    style9: new FormControl(''),
+    style10: new FormControl(''),
   })
 
   // ! test
-  price: FormControlName;
+
 
   user: any;
-  zones: Object;
-  provins: Object;
-
-  Location_id: any;
-  selectedValue: any;
-  loc_zone: any;
-  types: Object;
   lat2: number;
   lng2: number;
-  Type_pro: any;
-  Type_sell: any;
-  Type_user: any;
-  Pro_head: any;
-  Pro_detail: any;
-  Area: any;
-  Space: any;
-  Price: any;
-  Badroom: any;
-  Toilet: any;
-  Floor: any;
-  Check1: any;
-  Check2: any;
-  Check3: any;
-  Check4: any;
-  Check5: any;
-  Check6: any;
-  Check7: any;
-  Check8: any;
-  Check9: any;
-  Check10: any;
-
-  Location: any;
   pro_limit: any;
   count_pro: any;
-
+  types: Object;
+  zones: Object;
+  provins: Object;
   pro_id: any;
+  type_id: any;
   pro_head: any;
-  type_name;
-  pro_sell;
-  pro_detail;
-  pro_area;
-  pro_space;
-  // price;
-  pro_floor;
-  pro_bedroom;
-  pro_toilet;
-  pro_status;
-  pro_map;
-  pro_post;
-  pro_views: string;
-  location_id;
-  email_id;
-  fname;
-  lname;
-  id_line;
-  facebook;
-  profile_pic;
-  cus_detail;
-  cus_status;
-  phone;
-
-  image1;
-  image2;
-  image3;
-  image4;
-  image5;
-  image6;
-  image7;
-  image8;
-  image9;
-  image10;
-
-  style1;
-  style2;
-  style3;
-  style4;
-  style5;
-  style6;
-  style7;
-  style8;
-  style9;
-  style10;
-
+  type_name: any;
+  pro_sell: any;
+  pro_detail: any;
+  pro_area: any;
+  pro_space: any;
+  price: any;
+  pro_floor: any;
+  pro_bedroom: any;
+  pro_toilet: any;
+  pro_status: any;
+  pro_map: any;
+  pro_post: any;
+  pro_views: any;
+  email_id: any;
+  fname: any;
+  lname: any;
+  id_line: any;
+  facebook: any;
+  profile_pic: any;
+  cus_detail: any;
+  cus_status: any;
+  phone: any;
+  image1: any;
+  image2: any;
+  image3: any;
+  image4: any;
+  image5: any;
+  image6: any;
+  image7: any;
+  image8: any;
+  image9: any;
+  image10: any;
+  style1: any;
+  style2: any;
+  style3: any;
+  style4: any;
+  style5: any;
+  style6: any;
+  style7: any;
+  style8: any;
+  style9: any;
+  style10: any;
+  location_id: any;
   loc_name: any;
+  loc_zone: any;
   zone_name: any;
+  Loc_zone: any;
+
+
 
   // latitude;
   // longitude;
@@ -157,20 +136,62 @@ export class EditPropertyComponent implements OnInit {
     this.data = this.route.snapshot.paramMap.getAll('pro_id');
     console.log(this.data)
 
+    this.firstFormGroup = this._formBuilder.group({
+      type_id: ['', Validators.required],
+      pro_sell: ['', Validators.required],
+      Loc_zone: ['', Validators.required],
+      location_id: ['', Validators.required],
+      // Type_user: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      pro_head: ['', Validators.required],
+      pro_detail: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
 
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      pro_area: ['', Validators.required],
+      price: ['', Validators.required],
+      pro_space: [''],
+      pro_bedroom: [''],
+      pro_toilet: [''],
+      pro_floor: [''],
+      style1: [''],
+      style2: [''],
+      style3: [''],
+      style4: [''],
+      style5: [''],
+      style6: [''],
+      style7: [''],
+      style8: [''],
+      style9: [''],
+      style10: [''],
+
+    });
 
     this.user = this.session.getActiveUser();
-    // console.log(this.user);
+    console.log(this.user);
     this.getUserLocation();
-    this.pro_limit = this.user[0].pro_limit;
-    this.getCountPro();
-    this.getDetail()
 
+    this.getCountPro();
+    this.getDetail();
+    this.getProfile();
     this.getZonePro();
     this.getType();
     this.onLocation();
   }
 
+
+  // profile
+  getProfile() {
+    this.service.getProfile(this.user[0].email_id).subscribe(
+      (res) => {
+        console.log(res);
+        this.pro_limit = res[0].pro_limit;
+      }
+    )
+  }
   // จำนวนอสังหา
   getCountPro() {
     this.service.getCountPro(this.user[0].email_id).subscribe(
@@ -202,9 +223,9 @@ export class EditPropertyComponent implements OnInit {
   }
   // จังหวัด
   onLocation() {
-    this.loc_zone = this.selectedValue
-    console.log(this.loc_zone)
-    this.service.getProvince(this.loc_zone).subscribe(
+    const zone = this.Loc_zone
+    console.log(zone)
+    this.service.getProvince(zone).subscribe(
       (res) => {
         console.log(res);
 
@@ -219,7 +240,10 @@ export class EditPropertyComponent implements OnInit {
   }
   // Modal recom
   openModalLocation(modal, user) {
-
+    this.lat2 = this.lat2;
+    this.lng2 = this.lng2;
+    this.latitude = this.latitude;
+    this.longtitude = this.longtitude;
     this.modalService.open(modal, { centered: true, size: "lg" })
   }
 
@@ -239,6 +263,7 @@ export class EditPropertyComponent implements OnInit {
       (res) => {
         console.log(res)
         this.pro_id = res[0].pro_id,
+          this.type_id = res[0].type_id,
           this.pro_head = res[0].pro_head,
           this.type_name = res[0].type_name,
           this.pro_sell = res[0].pro_sell,
@@ -253,7 +278,6 @@ export class EditPropertyComponent implements OnInit {
           this.pro_map = res[0].pro_map,
           this.pro_post = res[0].pro_post,
           this.pro_views = res[0].pro_views,
-          this.location_id = res[0].location_id,
           this.email_id = res[0].email_id,
           this.fname = res[0].fname,
           this.lname = res[0].lname,
@@ -273,17 +297,19 @@ export class EditPropertyComponent implements OnInit {
           this.image8 = res[0].image8,
           this.image9 = res[0].image9,
           this.image10 = res[0].image10,
-          this.style1 = res[0].style1.data,
-          this.style2 = res[0].style2.data,
-          this.style3 = res[0].style3.data,
-          this.style4 = res[0].style4.data,
-          this.style5 = res[0].style5.data,
-          this.style6 = res[0].style6.data,
-          this.style7 = res[0].style7.data,
-          this.style8 = res[0].style8.data,
-          this.style9 = res[0].style9.data,
-          this.style10 = res[0].style10.data,
+          this.style1 = res[0].style1,
+          this.style2 = res[0].style2,
+          this.style3 = res[0].style3,
+          this.style4 = res[0].style4,
+          this.style5 = res[0].style5,
+          this.style6 = res[0].style6,
+          this.style7 = res[0].style7,
+          this.style8 = res[0].style8,
+          this.style9 = res[0].style9,
+          this.style10 = res[0].style10,
+          this.location_id = res[0].location_id,
           this.loc_name = res[0].loc_name,
+          this.loc_zone = res[0].loc_zone,
           this.zone_name = res[0].zone_name,
           this.latitude = res[0].latitude,
           this.longtitude = res[0].longtitude
@@ -293,120 +319,7 @@ export class EditPropertyComponent implements OnInit {
   }
 
 
-  // todo : add รายการอสังหาริมทรัพย์ เผยแพร่
-  onSubmit() {
-    // console.log(this.firstFormGroup.value)
-    // console.log(this.secondFormGroup.value)
-    // console.log(this.thirdFormGroup.value)
 
-    const data = {
-      type_id: this.Type_pro,
-      pro_sell: this.Type_sell,
-      location_id: this.Location_id,
-      // d: this.Type_user,
-      pro_head: this.Pro_head,
-      pro_detail: this.Pro_detail,
-      pro_area: this.Area,
-      pro_space: this.Space,
-      price: this.Price,
-      pro_bedroom: this.Badroom,
-      pro_toilet: this.Toilet,
-      pro_floor: this.Floor,
-      latitude: this.latitude,
-      longtitude: this.longtitude,
-      email_id: this.user[0].email_id
-    }
-    console.log(data);
-
-    this.service.postProperty(data).subscribe(
-      async (res) => {
-        this.onStyle();
-        this.modalService.open(this.success);
-        await delay(2000);
-        this.closeModal();
-        this.router.navigate(['seller/seller/selle-property']);
-
-
-      }
-    )
-  }
-  onStyle() {
-    const data = {
-      style1: this.Check1,
-      style2: this.Check2,
-      style3: this.Check3,
-      style4: this.Check4,
-      style5: this.Check5,
-      style6: this.Check6,
-      style7: this.Check7,
-      style8: this.Check8,
-      style9: this.Check9,
-      style10: this.Check10,
-    }
-    console.log(data)
-    this.service.postProStyle(data).subscribe(
-      (res) => {
-
-      }
-    )
-  }
-
-  // todo : add รายการอสังหาริมทรัพย์ เผยแพร่
-  onPostDraft() {
-    console.log(this.firstFormGroup.value)
-    console.log(this.secondFormGroup.value)
-    console.log(this.thirdFormGroup.value)
-
-    const data = {
-      type_id: this.Type_pro,
-      pro_sell: this.Type_sell,
-      location_id: this.Location_id,
-      // d: this.Type_user,
-      pro_head: this.Pro_head,
-      pro_detail: this.Pro_detail,
-      pro_area: this.Area,
-      pro_space: this.Space,
-      price: this.Price,
-      pro_bedroom: this.Badroom,
-      pro_toilet: this.Toilet,
-      pro_floor: this.Floor,
-      latitude: this.latitude,
-      longtitude: this.longtitude,
-      email_id: this.user[0].email_id
-    }
-    console.log(data);
-    this.service.postProDraft(data).subscribe(
-      async (res) => {
-        this.onStyle();
-        this.modalService.open(this.draft);
-        await delay(2000);
-        this.closeModal();
-        this.router.navigate(['seller/seller/selle-property']);
-
-      }
-    )
-  }
-  onDraftStyle() {
-    const data = {
-      style1: this.Check1,
-      style2: this.Check2,
-      style3: this.Check3,
-      style4: this.Check4,
-      style5: this.Check5,
-      style6: this.Check6,
-      style7: this.Check7,
-      style8: this.Check8,
-      style9: this.Check9,
-      style10: this.Check10,
-    }
-    console.log(data)
-    this.service.postDraftStyle(data).subscribe(
-      async (res) => {
-
-
-      }
-    )
-  }
 
   // map
   latitude;

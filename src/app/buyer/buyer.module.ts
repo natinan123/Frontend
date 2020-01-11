@@ -16,9 +16,11 @@ import { ListRequireComponent } from './list-require/list-require.component';
 import { MatchesComponent } from './matches/matches.component';
 import { RequireComponent } from './require/require.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { BuyTestComponent } from './buy-test/buy-test.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
-  declarations: [BuyerComponent, BuyerhomeComponent, ListRequireComponent, MatchesComponent, RequireComponent],
+  declarations: [BuyerComponent, BuyerhomeComponent, ListRequireComponent, MatchesComponent, RequireComponent, BuyTestComponent],
   imports: [
     CommonModule,
     BuyerRoutingModule,
@@ -34,6 +36,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
       apiKey: API.GOOGLE_API_KEY,
       libraries: ['places','geometry','drawing']
     }),//google api
+    Ng5SliderModule,
   ]
 })
 export class BuyerModule { }

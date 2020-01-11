@@ -15,6 +15,7 @@ export class MatchesComponent implements OnInit {
   require: Object;
   test1: any;
   req_area_max: any;
+  match: Object;
 
 
   constructor(
@@ -29,7 +30,7 @@ export class MatchesComponent implements OnInit {
     console.log(this.user)
 
     this.getRequire();
-    this.getReqmatch();
+    this.getReqmatchList();
 
   }
 
@@ -51,15 +52,15 @@ export class MatchesComponent implements OnInit {
 
 
 
-  getReqmatch() {
-    const data = {
-      a: this.user[0].email_id
-    }
-    console.log(data)
-    this.service.getReqMatch(data).subscribe(
+  getReqmatchList() {
+    // const data = {
+    //   a: this.user[0].email_id
+    // }
+    // console.log(data)
+    this.service.getReqMatch().subscribe(
       (res) => {
         console.log(res);
-        this.require = res;
+        this.match = res;
 
 
       })

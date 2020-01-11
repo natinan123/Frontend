@@ -11,6 +11,7 @@ export class SellPropertyComponent implements OnInit {
 
   mypro: Object;
   user: any;
+  pro_pic: Object;
 
   constructor(
     private service: ServerService,
@@ -31,7 +32,8 @@ export class SellPropertyComponent implements OnInit {
       (res) => {
         console.log(res);
         this.mypro = res;
-        
+        console.log(this.mypro);
+       
       }
     )
   }

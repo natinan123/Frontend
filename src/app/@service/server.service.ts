@@ -187,8 +187,8 @@ export class ServerService {
     return this.http.get(urlServer.ipServer + 'requirement/' + data)
   }
   // รายการที่ตรงกัน
-  getReqMatch(data) {
-    return this.http.get(urlServer.ipServer + 'reqmatch/' + data)
+  getReqMatch() {
+    return this.http.get(urlServer.ipServer + 'reqmatch')
   }
   // ? page : seller
   // Mypro

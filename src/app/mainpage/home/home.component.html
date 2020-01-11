@@ -1,5 +1,5 @@
 <div class="row" style="height: 100px;background-color: #014254">
-    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> หน้าหลัก</h1>
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 50px; "> หน้าหลัก</h1>
 </div>
 
 
@@ -11,7 +11,7 @@
 
             <div class="image">
                 <img style="cursor: pointer;" [routerLink]="['/mainpage/mainpage/property' ,r.pro_id]" mat-card-image
-                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                src="data:image/jpg;base64,{{r.image1}}" />
             </div>
             <div class="detail">
                 <mat-card-content>
@@ -59,11 +59,11 @@
 <mat-card style="width: 1200px; margin-left: auto; margin-right: auto; top: 20px; background-color: #BBD9EE">
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการยอดนิยม</mat-toolbar>
     <div class="row">
-        <mat-card class="product-card" *ngFor="let pop of poppular">
+        <mat-card class="product-card" *ngFor="let pop of poppular ">
 
             <div class="image">
                 <img style="cursor: pointer;" [routerLink]="['/mainpage/mainpage/property' ,pop.pro_id]" mat-card-image
-                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    src="data:image/jpg;base64,{{pop.image1}}" />
             </div>
             <div class="detail">
                 <mat-card-content>
@@ -118,7 +118,7 @@
 
             <div class="image">
                 <img style="cursor: pointer;" [routerLink]="['/mainpage/mainpage/property' ,p.pro_id]" mat-card-image
-                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                src="data:image/jpg;base64,{{p.image1}}" />
             </div>
             <div class="detail">
                 <mat-card-content>

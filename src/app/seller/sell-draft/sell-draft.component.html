@@ -3,11 +3,11 @@
 
     <div class="row">
 
-        <mat-card class="product-card" *ngFor="let r of prodraft">
+        <mat-card class="product-card" *ngFor="let r of prodraft ">
 
             <div class="image">
                 <img style="cursor: pointer;" [routerLink]="['/seller/seller/ProductDetail' ,r.pro_id]" mat-card-image
-                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    src="data:image/jpg;base64,{{r.image1}}" />
             </div>
             <div class="detail">
                 <mat-card-content>

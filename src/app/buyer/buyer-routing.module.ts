@@ -5,6 +5,7 @@ import { BuyerhomeComponent } from './buyerhome/buyerhome.component';
 import { RequireComponent } from './require/require.component';
 import { ListRequireComponent } from './list-require/list-require.component';
 import { MatchesComponent } from './matches/matches.component';
+import { BuyTestComponent } from './buy-test/buy-test.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
       { // รายการความต้องการที่ตรงกัน
         path: 'matchas',
         component: MatchesComponent
+      },
+      { // test
+        path: 'buy-test',
+        component: BuyTestComponent
       },
     ]
   },

@@ -130,23 +130,23 @@
 </mat-card>
 
 <mat-card class="mat-card" style="top: 35px"
-    *ngIf="style1 && style2 && style3 && style4  && style5 && style6 && style7  && style8 && style9 && style10 != null">
+*ngIf="style1 || style2 || style3 || style4  || style5 || style6 || style7  || style8 || style9 || style10 == 'true'" >
     <mat-card-title>คุณลักษณะพื้นฐาน</mat-card-title>
     <div class="row">
 
 
         <div class="col-md-6">
             <mat-chip-list aria-label="Color selection">
-                <mat-chip *ngIf="style1 != 'false'"> ที่จอดรถ </mat-chip>
-                <mat-chip *ngIf="style2 != 'false'"> ลานจอดรถ </mat-chip>
-                <mat-chip *ngIf="style3 != 'false'"> รักษาความปลอดภัย </mat-chip>
-                <mat-chip *ngIf="style4 != 'false'"> สระว่ายน้า </mat-chip>
-                <mat-chip *ngIf="style5 != 'false'"> กล้องวงจรปิด </mat-chip>
-                <mat-chip *ngIf="style6 != 'false'"> ฟิตเนส </mat-chip>
-                <mat-chip *ngIf="style7 != 'false'"> สนามเด็กเล่น </mat-chip>
-                <mat-chip *ngIf="style8 != 'false'"> มินิมาร์ท </mat-chip>
-                <mat-chip *ngIf="style9 != 'false'"> ซัก อบ รีด </mat-chip>
-                <mat-chip *ngIf="style10 != 'false' "> ศาลาชมทิวทัศน์ </mat-chip>
+                <mat-chip *ngIf="style1 == 'true'"> ที่จอดรถ </mat-chip>
+                <mat-chip *ngIf="style2 == 'true'"> ลานจอดรถ </mat-chip>
+                <mat-chip *ngIf="style3 == 'true'"> รักษาความปลอดภัย </mat-chip>
+                <mat-chip *ngIf="style4 == 'true'"> สระว่ายน้า </mat-chip>
+                <mat-chip *ngIf="style5 == 'true'"> กล้องวงจรปิด </mat-chip>
+                <mat-chip *ngIf="style6 == 'true'"> ฟิตเนส </mat-chip>
+                <mat-chip *ngIf="style7 == 'true'"> สนามเด็กเล่น </mat-chip>
+                <mat-chip *ngIf="style8 == 'true'"> มินิมาร์ท </mat-chip>
+                <mat-chip *ngIf="style9 == 'true'"> ซัก อบ รีด </mat-chip>
+                <mat-chip *ngIf="style10 == 'true' "> ศาลาชมทิวทัศน์ </mat-chip>
             </mat-chip-list>
         </div>
 

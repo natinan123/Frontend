@@ -13,6 +13,9 @@ export class HomeComponent implements OnInit {
   products: Object;
   recoms: Object;
   poppular: Object;
+  pop_pic: Object;
+  recom_pic: Object;
+  products_pic: Object;
 
 
   constructor(
@@ -33,17 +36,19 @@ export class HomeComponent implements OnInit {
     this.service.getProperty().subscribe(
       (res) => {
         console.log(res);
-
         this.products = res;
-
+        console.log(this.products);
+  
       })
   }
-
+// 
   getPoppular() {
     this.service.getPoppular().subscribe(
       (res) => {
         console.log(res);
         this.poppular = res;
+        console.log(this.poppular);
+      
       })
   }
 
@@ -51,9 +56,10 @@ export class HomeComponent implements OnInit {
     this.service.getRecommainpage().subscribe(
       (res) => {
         console.log(res);
-
         this.recoms = res;
-
+        console.log(this.recoms);
+        // this.recom_pic = res.result;
+        // console.log(this.recom_pic);
       })
   }
 

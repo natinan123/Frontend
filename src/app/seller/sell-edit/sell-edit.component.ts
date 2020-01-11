@@ -11,6 +11,7 @@ export class SellEditComponent implements OnInit {
 
   user: any;
   proedit: Object;
+  pro_pic: Object;
 
   constructor(
     private service: ServerService,
@@ -30,6 +31,8 @@ export class SellEditComponent implements OnInit {
       (res) => {
         console.log(res);
         this.proedit = res;
+        // console.log(this.proedit);
+      
       }
     )
   }
