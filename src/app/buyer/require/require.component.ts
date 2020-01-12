@@ -5,6 +5,7 @@ import { SessionService } from 'src/app/@service/session.service';
 import { ServerService } from 'src/app/@service/server.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { Options } from 'ng5-slider';
 
 @Component({
   selector: 'app-require',
@@ -19,26 +20,53 @@ export class RequireComponent implements OnInit {
   zones: Object;
 
 
+
+
+
   public addReq = new FormGroup({
     Type_id: new FormControl(''),
     Loc_zone: new FormControl(''),
-    Location_id: new FormControl(''),
-    Area_max: new FormControl(''),
-    Area_min: new FormControl(''),
-    Price_max: new FormControl(''),
-    Price_min: new FormControl('')
+    Location_id: new FormControl('')
 
   })
+
+  Price_min: number = 0;
+  Price_max: number = 10000000;
+  options: Options = {
+    floor: 0,
+    ceil: 50000000,
+    // disabled: !element.active,
+    showSelectionBar: true,
+    step: 1000000,
+    showTicks: true,
+    translate: function (value) {
+      return value + ' ' + 'บาท'
+    },
+  };
+
+  Area_min: number = 0;
+  Area_max: number = 500;
+  options2: Options = {
+    floor: 0,
+    ceil: 1000,
+    // disabled: !element.active,
+    showSelectionBar: true,
+    step: 50,
+    showTicks: true,
+    translate: function (a) {
+      return a + ' ' + 'ตร.ม.'
+    },
+  };
+
 
   Type_id: any;
   Loc_zone: any;
   Location_id: any;
   user: any;
-  Area_max: any;
-  Area_min: any;
-  Price_max: any;
-  Price_min: any;
   provin: Object;
+  type_name: any;
+
+
 
   constructor(
     private session: SessionService,
@@ -80,7 +108,7 @@ export class RequireComponent implements OnInit {
   onLocation() {
     this.service.getProvince(this.Loc_zone).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
 
         this.provin = res;
 
@@ -88,22 +116,22 @@ export class RequireComponent implements OnInit {
 
   }
 
-  // getProvince
+  
 
 
   // Modal 
   openModalAddreq(modal, data) {
-
+   
     this.modalService.open(modal, { centered: true })
   }
-
+ 
 
   closeModal() {
     this.modalService.dismissAll();
   }
 
   onAddReq() {
-    console.log(this.Type_id, this.Loc_zone, this.Location_id)
+    // console.log(this.Type_id, this.Loc_zone, this.Location_id)
     const data = {
       type_id: this.Type_id,
       loc_zone: this.Loc_zone,

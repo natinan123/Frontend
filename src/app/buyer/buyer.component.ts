@@ -12,6 +12,9 @@ export class BuyerComponent implements OnInit {
   user: any;
   fname: any;
   lname: any;
+  data: any;
+  avatarname: any;
+  pic64: any;
 
   constructor(
     private session: SessionService,
@@ -26,16 +29,28 @@ export class BuyerComponent implements OnInit {
     this.service.getProfile(this.user[0].email_id).subscribe(
       (res) => {
         // console.log(res);
-
         this.fname = res[0].fname;
         this.lname = res[0].lname;
-
-
       }
     )
 
+    this.data = this.user[0].email_id;
+    this.showAvatar();
 
 
+  }
+
+  // รูป avatar
+  showAvatar() {
+    this.service.getNameAvatar(this.data).subscribe(
+      (res) => {
+        // console.log(res)
+        this.avatarname = res[0].filename,
+          this.pic64 = res[0].picBase64
+        // console.log(this.pic64);
+        // console.log(this.avatarname);
+      }
+    );
   }
   onLogout() {
     this.session.clearActiveUser();

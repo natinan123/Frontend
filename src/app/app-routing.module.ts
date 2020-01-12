@@ -19,7 +19,10 @@ const routes: Routes = [
     path: 'buyer',
     loadChildren: './buyer/buyer.module#BuyerModule'
   },
-
+  // {
+  //   path: 'shared',
+  //   loadChildren: './shared/shared.module#SharedModule'
+  // },
   {
     path: '',
     redirectTo: 'mainpage/mainpage/home',

@@ -12,18 +12,9 @@
             <label for="select1">อสังหาริมทรัพย์ที่ต้องการ</label>
             <select [(ngModel)]="Type_id" formControlName="Type_id" class="form-control" id="select1">
                 <option value="">เลือกรายการอสังหาริมทรัพย์</option>
-                <option [value]="t.type_id" *ngFor="let t of types">{{t.type_name}}</option>
+                <option [value]="row.type_id" *ngFor="let row of types">{{row.type_name}}</option>
             </select>
         </div>
-
-        <!-- <div class="select">
-        <label for="select2">ภูมิภาค</label>
-        <select [(ngModel)]="Loc_zone" formControlName="Loc_zone" class="form-control" id="select2">
-          <option value="">เลือกรายการภูมิภาค</option>
-          <option [value]="z.loc_zone" *ngFor="let z of zones">{{z.zone_name}}</option>
-        </select>
-      </div> -->
-
 
         <div class="select">
             <label for="select2">ภูมิภาค</label>
@@ -43,57 +34,44 @@
             </select>
         </div>
 
-        <div class="range">
-            <label for="area">ขนาดพื้นที่สูงสุด : {{Area_max}} ตารางเมตร</label> <br>
-            <input type="range" [(ngModel)]="Area_max" formControlName="Area_max" class="custom-range" min="0"
-                max="2000" step="5" id="area">
-            <input [(ngModel)]="Area_max" formControlName="Area_max" class="form-control" placeholder="กรอกขนาด">
-        </div>
-
-        <div class="range">
-            <label for="area">ขนาดพื้นที่ต่ำสุด : {{Area_min}} ตารางเมตร</label> <br>
-            <input type="range" [(ngModel)]="Area_min" formControlName="Area_min" class="custom-range" min="0"
-                max="2000" step="5" id="area">
-            <input [(ngModel)]="Area_min" formControlName="Area_min" class="form-control" placeholder="กรอกขนาด">
-        </div>
 
 
-        <div class="price">
-            <label for="price1">ราคาของพื้นที่สูงสุด : {{Price_max}} บาท</label> <br>
-            <input type="range" [(ngModel)]="Price_max" formControlName="Price_max" class="custom-range" min="0"
-                max="2000" step="5" id="price1">
-            <input [(ngModel)]="Price_max" formControlName="Price_max" class="form-control" placeholder="กรอกราคา">
+
+        <div class="custom-slider">
+            <label for="price">ราคาความต้องการ</label>
+            <ng5-slider [(value)]="Price_min" [(highValue)]="Price_max" [options]="options" id="price"></ng5-slider>
         </div>
 
-        <div class="price">
-            <label for="price1">ราคาของพื้นที่ต่ำสุด : {{Price_min}} บาท</label> <br>
-            <input type="range" [(ngModel)]="Price_min" formControlName="Price_min" class="custom-range" min="0"
-                max="2000" step="5" id="price1">
-            <input [(ngModel)]="Price_min" formControlName="Price_min" class="form-control" placeholder="กรอกราคา">
+        <div class="custom-slider">
+            <label for="area">ขนาดพื้นที่ความต้องการ</label>
+            <ng5-slider [(value)]="Area_min" [(highValue)]="Area_max" [options]="options2" id="area"></ng5-slider>
         </div>
+
+
+
 
         <button mat-button class="bt-submit" (click)="openModalAddreq(Addrequire)">ยืนยันความต้องการ</button>
-    </form>
 
+    </form>
 </mat-card>
 
 
 <ng-template #Addrequire let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">ต้องการลบ</h4>
+        <h4 class="modal-title">สร้างความต้องการ</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <p>ประเภทอสังหาริมทรัพย์ : {{Type_id}}</p>
-        <p>ภูมิภาค : {{Loc_zone}}</p>
-        <p>จังหวัด : {{Location_id}}</p>
-        <p>ขนาดพื้นที่สูงสุด : {{Area_max}} ตารางเมตร</p>
-        <p>ขนาดพื้นที่ต่ำสุด : {{Area_min}} ตารางเมตร</p>
-        <p>ราคาของพื้นที่สูงสุด : {{Price_max}} บาท</p>
-        <p>ราคาของพื้นที่ต่ำสุด : {{Price_min}} บาท</p>
 
+        <p>ประเภทอสังหาริมทรัพย์ : {{Type_id}} {{type_name}} </p>
+        <p>ภูมิภาค : {{Loc_zone}} </p>
+        <p>จังหวัด : {{Location_id}}</p>
+        <p>ขนาดพื้นที่ต่ำสุด : {{Area_min}} ตารางเมตร</p>
+        <p>ขนาดพื้นที่สูงสุด : {{Area_max}} ตารางเมตร</p>
+        <p>ราคาของพื้นที่ต่ำสุด : {{Price_min}} บาท</p>
+        <p>ราคาของพื้นที่สูงสุด : {{Price_max}} บาท</p>
     </div>
     <div class="modal-footer">
         <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>

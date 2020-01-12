@@ -6,6 +6,8 @@ import { RequireComponent } from './require/require.component';
 import { ListRequireComponent } from './list-require/list-require.component';
 import { MatchesComponent } from './matches/matches.component';
 import { BuyTestComponent } from './buy-test/buy-test.component';
+import { Com1Component } from '../shared/com1/com1.component';
+import { ChatComponent } from '../shared/chat/chat.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,14 @@ const routes: Routes = [
       { // test
         path: 'buy-test',
         component: BuyTestComponent
+      },
+      { // test shared 
+        path: 'com1',
+        component: Com1Component
+      },
+      { // test chat-shared 
+        path: 'chat',
+        component: ChatComponent
       },
     ]
   },

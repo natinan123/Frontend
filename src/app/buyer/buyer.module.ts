@@ -18,9 +18,20 @@ import { RequireComponent } from './require/require.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BuyTestComponent } from './buy-test/buy-test.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { Com1Component } from '../shared/com1/com1.component';
+import { ChatComponent } from '../shared/chat/chat.component';
 
 @NgModule({
-  declarations: [BuyerComponent, BuyerhomeComponent, ListRequireComponent, MatchesComponent, RequireComponent, BuyTestComponent],
+  declarations: [
+    BuyerComponent,
+    BuyerhomeComponent,
+    ListRequireComponent,
+    MatchesComponent,
+    RequireComponent,
+    BuyTestComponent,
+    Com1Component,
+    ChatComponent
+  ],
   imports: [
     CommonModule,
     BuyerRoutingModule,
@@ -30,13 +41,14 @@ import { Ng5SliderModule } from 'ng5-slider';
     MatNativeDateModule,
     ReactiveFormsModule,
     AngularFontAwesomeModule,
-    NgbPaginationModule, NgbAlertModule,NgbModule,
+    NgbPaginationModule, NgbAlertModule, NgbModule,
     CarouselModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: API.GOOGLE_API_KEY,
-      libraries: ['places','geometry','drawing']
+      libraries: ['places', 'geometry', 'drawing']
     }),//google api
     Ng5SliderModule,
+  
   ]
 })
 export class BuyerModule { }

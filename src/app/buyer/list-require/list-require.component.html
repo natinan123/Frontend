@@ -43,26 +43,41 @@
                     </tbody>
                 </table>
                 <button mat-button style="background-color: #ee8b22; color: snow"
-                    (click)="openModalReq(delectrequire)">ลบรายการ</button>
+                    (click)="openModalReq(row,delectrequire)">ลบรายการ</button>
             </mat-expansion-panel>
         </mat-accordion>
 
     </div>
 </mat-card>
 
+
+
+<!-- modla delete -->
 <ng-template #delectrequire let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">ต้องการลบ</h4>
+        <h4 class="modal-title">ลบรายการความต้องการอสังหาริมทรัพย์</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
+
     <div class="modal-body">
-
-
+        <p>ต้องการลบรายการความต้องการอสังหาริมทรัพย์</p>
+        <p>{{type_name}}</p>
+        <p>{{req_id}}</p>
     </div>
     <div class="modal-footer">
         <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
-        <button mat-raised-button style="background-color: #1d6a96;color: snow">ตกลง</button>
+        <button mat-raised-button (click)="onDeleteLReq()"
+            style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+<!-- alert -->
+<ng-template #delect let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: forestgreen">
+            offline_pin
+        </i> ลบสำเร็จ
     </div>
 </ng-template>

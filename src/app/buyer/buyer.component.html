@@ -20,7 +20,7 @@
     <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
 
         <div class="row col">
-            <button mat-button routerLink=""
+            <button mat-button 
                 style="background: #4579a0; margin-left: 5px; width: 100%;">หน้าหลัก</button>
         </div>
         <div class="row col">
@@ -61,7 +61,7 @@
         </div>
 
         <div class="row col">
-            <button mat-button routerLink=""
+            <button mat-button 
                 style="background: #4579a0 ;margin-left: 5px; width: 100%;">บทความโฆษณา</button>
         </div>
 
@@ -74,10 +74,10 @@
 <div class="row" style="width: 100%; height: 100%;">
     <div class="col-2" style="background: #1d6a96 ;">
         <mat-list>
-
-            <img src="../../assets/pic/buy/avtar-buy.png"
+            <img *ngIf="profile_pic == ''" src="../../assets/pic/sall/sall-avtar.png"
                 style="height: 100px;width: auto;  display: block; margin-left: auto; margin-right: auto; ">
 
+            <img *ngIf="pic64 != null" src="data:image/jpg;base64,{{pic64}}" class="circle" />
 
             <mat-list-item>
                 <button mat-button routerLink="/buyer/buyer/buyerhome" class="memu-left">{{fname}} &nbsp;
@@ -99,7 +99,7 @@
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
-                <button mat-button routerLink="" class="memu-left">ติดต่อสนทนา</button>
+                <button mat-button routerLink="/buyer/buyer/chat" class="memu-left">ติดต่อสนทนา</button>
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>

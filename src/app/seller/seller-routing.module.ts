@@ -4,7 +4,6 @@ import { SellerComponent } from './seller.component';
 import { SellerhomeComponent } from './sellerhome/sellerhome.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SellPropertyComponent } from './sell-property/sell-property.component';
-import { SellChatComponent } from './sell-chat/sell-chat.component';
 import { SellingComponent } from './selling/selling.component';
 import { SellDraftComponent } from './sell-draft/sell-draft.component';
 import { SellEditComponent } from './sell-edit/sell-edit.component';
@@ -14,6 +13,7 @@ import { EditPropertyComponent } from './sell-edit/edit-property/edit-property.c
 import { SellUpgradeComponent } from './sell-upgrade/sell-upgrade.component';
 import { TestingComponent } from './testing/testing.component';
 import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
+import { ChatComponent } from '../shared/chat/chat.component';
 
 
 
@@ -33,10 +33,6 @@ const routes: Routes = [
       { // รายการประกาศ
         path: 'selle-property',
         component: SellPropertyComponent
-      },
-      { // สนทนา
-        path: 'seller-chat',
-        component: SellChatComponent
       },
       { // ประกาศขาย
         path: 'selling',
@@ -65,6 +61,10 @@ const routes: Routes = [
       { // อัพเกรด
         path: 'upgrade',
         component: SellUpgradeComponent
+      },
+      { // test chat-shared 
+        path: 'chat',
+        component: ChatComponent
       },
       { // test
         path: 'test',

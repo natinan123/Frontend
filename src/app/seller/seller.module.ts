@@ -12,7 +12,6 @@ import { CarouselModule } from 'ngx-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
 import { ProfileComponent } from './profile/profile.component';
-import { SellChatComponent } from './sell-chat/sell-chat.component';
 import { SellCloseComponent } from './sell-close/sell-close.component';
 import { SellDraftComponent } from './sell-draft/sell-draft.component';
 import { SellEditComponent } from './sell-edit/sell-edit.component';
@@ -25,9 +24,25 @@ import { SellingComponent } from './selling/selling.component';
 import { TestingComponent } from './testing/testing.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
+import { ChatComponent } from '../shared/chat/chat.component';
 
 @NgModule({
-  declarations: [SellerComponent, ProfileComponent, SellChatComponent, SellCloseComponent, SellDraftComponent, SellEditComponent, EditPropertyComponent, SellProductComponent, SellPropertyComponent, SellUpgradeComponent, SellerhomeComponent, SellingComponent, TestingComponent, TestPostProComponent],
+  declarations: [
+    SellerComponent,
+    ProfileComponent,
+    SellCloseComponent,
+    SellDraftComponent,
+    SellEditComponent,
+    EditPropertyComponent,
+    SellProductComponent,
+    SellPropertyComponent,
+    SellUpgradeComponent,
+    SellerhomeComponent,
+    SellingComponent,
+    TestingComponent,
+    TestPostProComponent,
+    ChatComponent
+  ],
   imports: [
     CommonModule,
     SellerRoutingModule,

@@ -360,10 +360,27 @@ export class ServerService {
     return this.http.get(urlServer.ipServer + 'testGetpro')
   }
 
-
-
-
-
+  // todo: chat --------------------------//
+  // get chat
+  getChat(source, descination) {
+    return this.http.get(urlServer.ipServer + 'chat/' + source + '/' + descination)
+  }
+  // get chat
+  getChatUser(source) {
+    return this.http.get(urlServer.ipServer + 'userchat/' + source)
+  }
+  // post chat
+  postChat(data) {
+    return this.http.post(urlServer.ipServer + 'postchat', data)
+  }
+  // get SearchUser chat
+  getSearchUser(data) {
+    return this.http.get(urlServer.ipServer + 'searchuser/' + data)
+  }
+  // post first chat
+  postFirstChat(data) {
+    return this.http.post(urlServer.ipServer + 'firstchat', data)
+  }
   // // อสังหา แผนที่
   // getMpaProperty() {
   //   return this.http.get(urlServer.ipServer + 'promap')

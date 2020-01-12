@@ -19,7 +19,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   
 
   ],
