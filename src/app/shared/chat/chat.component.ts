@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ServerService } from 'src/app/@service/server.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
@@ -19,10 +19,11 @@ export class ChatComponent implements OnInit {
   Chatuser: Object;
   My: any;
   descination: any;
-  taxtChat = new FormControl();
+  taxtChat = new FormControl('');
   SearchInput = new FormControl();
   Member: Object;
   add_email: any;
+  Chatuser2: Object;
 
 
   constructor(
@@ -32,6 +33,7 @@ export class ChatComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private modal: NgbModal,
+    private _formBuilder: FormBuilder,
 
   ) { }
 
@@ -39,8 +41,11 @@ export class ChatComponent implements OnInit {
     this.user = this.session.getActiveUser();
     // console.log(this.user);
     this.getChatUser();
-    this.getChatDetail();
+    // this.getChatDetail();
     this.My = this.user[0].email_id;
+
+
+
 
   }
 
@@ -50,7 +55,7 @@ export class ChatComponent implements OnInit {
     const descination = this.descination;
     this.service.getChat(source, descination).subscribe(
       (res) => {
-        // console.log(res);
+        console.log(res);
         this.chat = res;
       })
   }
@@ -64,6 +69,10 @@ export class ChatComponent implements OnInit {
         this.Chatuser = res;
       })
   }
+
+
+
+
 
   // เข้าดูข้อความ
   onClick(u) {
@@ -100,7 +109,7 @@ export class ChatComponent implements OnInit {
     const data = this.SearchInput.value;
     this.service.getSearchUser(data).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.Member = res;
 
       })
@@ -114,10 +123,12 @@ export class ChatComponent implements OnInit {
 
 
 
-  addChat(i){
+  addChat(i) {
     console.log(i);
     this.add_email = i.email_id;
-    this.postFirstChat()
+    this.descination = i.email_id;
+    this.postFirstChat();
+
   }
   // ส่งข้อความติดต่อครั้งแรก
   postFirstChat() {
@@ -128,7 +139,10 @@ export class ChatComponent implements OnInit {
     console.log(data);
     this.service.postFirstChat(data).subscribe(
       async (res) => {
+        this.modalService.dismissAll();
+
         this.getChatUser();
+        this.getChatDetail();
       }
     )
   }

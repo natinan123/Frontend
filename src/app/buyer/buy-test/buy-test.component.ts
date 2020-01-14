@@ -12,14 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./buy-test.component.scss']
 })
 export class BuyTestComponent implements OnInit {
-  user: any;
-
-
-  chat: any;
-  Chatuser: Object;
-  My: any;
-  descination: any;
-  taxtChat = new FormControl();
+at = new FormControl();
 
   constructor(
     private service: ServerService,
@@ -30,61 +23,10 @@ export class BuyTestComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.session.getActiveUser();
-    // console.log(this.user);
-    this.getChatUser();
-    this.getChatDetail();
-    this.My = this.user[0].email_id;
-
+   
   }
 
-  getChatDetail() {
-    const source = this.user[0].email_id;
-    const descination = this.descination;
-    this.service.getChat(source, descination).subscribe(
-      (res) => {
-        console.log(res);
-        this.chat = res;
-      })
-  }
-
-  getChatUser() {
-    const source = this.user[0].email_id;
-    this.service.getChatUser(source).subscribe(
-      (res) => {
-        console.log(res);
-        this.Chatuser = res;
-      })
-  }
-
-  // เข้าดูข้อความ
-  onClick(u) {
-    console.log(u.descination);
-    this.descination = u.descination;
-    this.getChatDetail();
-  }
-
-  postTaxtChat() {
-
-    const data = {
-      source: this.user[0].email_id,
-      descination: this.descination,
-      mes_text: this.taxtChat.value
-    }
-    console.log(data);
-    this.service.postChat(data).subscribe(
-      async (res) => {
-        this.getChatDetail();
-        this.clearInputMethod1();
-
-      }
-    )
-  }
-
-  clearInputMethod1() {
-    this.taxtChat.reset();
-
-  }
+ 
 
 
 }

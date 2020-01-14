@@ -127,6 +127,14 @@ img {
   font-size: 12px;
   margin-bottom: 10px;
 }
+
+.time_date2 {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 10px;
+  float: right;
+}
 .received_withd_msg {
   width: 57%;
 }
@@ -151,7 +159,7 @@ img {
 }
 .sent_msg {
   float: right;
-  width: 46%;
+  width: auto;
 }
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;

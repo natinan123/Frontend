@@ -13,8 +13,6 @@ import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { AdsComponent } from './ads/ads.component';
-import { ChatComponent } from './chat/chat.component';
-import { ChattaxtComponent } from './chat/chattaxt/chattaxt.component';
 import { ManageLocationComponent } from './manage-location/manage-location.component';
 import { ManageMainpageComponent } from './manage-mainpage/manage-mainpage.component';
 import { RecommendComponent } from './manage-mainpage/recommend/recommend.component';
@@ -29,6 +27,7 @@ import { TastComponent } from './tast/tast.component';
 import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { WriteAdsComponent } from './write-ads/write-ads.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ChatComponent } from '../shared/chat/chat.component';
 
 
 
@@ -37,8 +36,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     AdminComponent,
     AdminhomeComponent,
     AdsComponent,
-    ChatComponent,
-    ChattaxtComponent,
     ManageLocationComponent,
     ManageMainpageComponent,
     RecommendComponent,
@@ -52,6 +49,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     TastComponent,
     UpgradMemberComponent,
     WriteAdsComponent,
+    ChatComponent,
     ],
   imports: [
     CommonModule,

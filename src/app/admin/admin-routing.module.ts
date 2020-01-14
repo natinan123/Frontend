@@ -8,7 +8,6 @@ import { ManageMemberComponent } from './manage-member/manage-member.component';
 import { MemberDetailComponent } from './manage-member/member-detail/member-detail.component';
 import { WriteAdsComponent } from './write-ads/write-ads.component';
 import { AdsComponent } from './ads/ads.component';
-import { ChatComponent } from './chat/chat.component';
 import { ManageMainpageComponent } from './manage-mainpage/manage-mainpage.component';
 import { RecommendComponent } from './manage-mainpage/recommend/recommend.component';
 import { ManageLocationComponent } from './manage-location/manage-location.component';
@@ -16,7 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SearchMapComponent } from './search/search-map/search-map.component';
 import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { TastComponent } from './tast/tast.component';
-import { ChattaxtComponent } from './chat/chattaxt/chattaxt.component';
+import { ChatComponent } from '../shared/chat/chat.component';
 
 
 const routes: Routes = [
@@ -25,7 +24,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
-        path: 'adminhome',
+        path: 'adminhome', //  ? ยังไม่ใช้
         component: AdminhomeComponent
       },
       {
@@ -53,17 +52,6 @@ const routes: Routes = [
         component: AdsComponent
       },
       {
-        path: 'chat',      // แชท
-        component: ChatComponent,
-        children: [
-          {
-            path: 'chattext/:descination',      // ข้อความแชท
-            component: ChattaxtComponent
-          },
-        ]
-      },
-
-      {
         path: 'managemainpage',       //รายการแนะนำ
         component: ManageMainpageComponent
       },
@@ -80,12 +68,16 @@ const routes: Routes = [
         component: ProfileComponent
       },
       {
-        path: 'searchmap',            // ค้นหาจากแผนที่
+        path: 'searchmap',            //  ? ค้นหาจากแผนที่
         component: SearchMapComponent
       },
       {
         path: 'upgrade',            // อัพเกรดระดับ sell
         component: UpgradMemberComponent
+      },
+      { // test chat-shared 
+        path: 'chat',
+        component: ChatComponent
       },
       {
         path: 'test',            //!  ไว้สำหรับบลอง

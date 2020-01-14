@@ -273,20 +273,6 @@ export class SellingComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // todo : add รายการอสังหาริมทรัพย์ เผยแพร่
   onSubmit() {
     // console.log(this.firstFormGroup.value)

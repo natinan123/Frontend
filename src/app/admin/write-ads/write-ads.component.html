@@ -3,4 +3,34 @@
 </div>
 
 
+<div class="example-container">
+    <mat-form-field>
+        <input matInput placeholder="Input">
+    </mat-form-field>
 
+    <mat-form-field>
+        <textarea matInput placeholder="Textarea" ref-textarea [(ngModel)]="textValue" rows="11"></textarea>
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+            <mat-select placeholder="Select">
+                <mat-option value="option">Option</mat-option>
+            </mat-select>
+        </mat-form-field> -->
+
+
+</div>
+<button mat-raised-button color="primary" (click)="logText(textarea.value)">Show</button>
+<button mat-raised-button color="accent" (click)="textValue=''">clear</button>
+<button mat-raised-button color="warn" (click)="log=''">Clean</button>
+
+<pre>{{log}}</pre>
+
+
+
+
+<!-- <h1>Text Area</h1>
+<textarea ref-textarea [(ngModel)]="textValue" rows="4"></textarea><br />
+<button (click)="logText(textarea.value)">Update Log</button>
+<button (click)="textValue=''">Clear</button>
+<h2>Log <button (click)="log=''">Clear</button></h2> -->

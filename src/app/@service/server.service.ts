@@ -174,14 +174,7 @@ export class ServerService {
   getArtDetail(data) {
     return this.http.get(urlServer.ipServer + 'artdetial/' + data)
   }
-  // รายละเอียด อสังหา
-  getMemberMessage(data) {
-    return this.http.get(urlServer.ipServer + 'message/' + data)
-  }
-  // รายละเอียด อสังหา
-  getTextMessage(data) {
-    return this.http.get(urlServer.ipServer + 'mestext/' + data)
-  }
+
   // รายการความต้องการ
   getRequire(data) {
     return this.http.get(urlServer.ipServer + 'requirement/' + data)
@@ -351,14 +344,16 @@ export class ServerService {
 
 
   // todo: test --------------------------//
-  // post เพิ่มอสังหา เนื้อหา
-  postCheck(data) {
-    return this.http.post(urlServer.ipServer + 'testcheck', data)
-  }
+
   // test pro
   getTestPro() {
     return this.http.get(urlServer.ipServer + 'testGetpro')
   }
+  // post first chat
+  postTestarea(data) {
+    return this.http.post(urlServer.ipServer + 'testinsert', data)
+  }
+
 
   // todo: chat --------------------------//
   // get chat
@@ -381,6 +376,11 @@ export class ServerService {
   postFirstChat(data) {
     return this.http.post(urlServer.ipServer + 'firstchat', data)
   }
+
+
+
+
+
   // // อสังหา แผนที่
   // getMpaProperty() {
   //   return this.http.get(urlServer.ipServer + 'promap')
