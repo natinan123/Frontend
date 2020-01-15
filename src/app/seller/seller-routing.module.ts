@@ -14,6 +14,8 @@ import { SellUpgradeComponent } from './sell-upgrade/sell-upgrade.component';
 import { TestingComponent } from './testing/testing.component';
 import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
 import { ChatComponent } from '../shared/chat/chat.component';
+import { ArticleComponent } from '../shared/article/article.component';
+import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
 
 
 
@@ -65,6 +67,14 @@ const routes: Routes = [
       { // test chat-shared 
         path: 'chat',
         component: ChatComponent
+      },
+      { // โฆษณา
+        path: 'article',
+        component: ArticleComponent
+      },
+      { // โฆษณา
+        path: 'artdetail/:article_id',
+        component: ArtDetailComponent
       },
       { // test
         path: 'test',

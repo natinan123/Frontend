@@ -12,7 +12,6 @@ function utf8_to_b64(str) {
 function b64_to_utf8(str) {
   return decodeURIComponent(escape(window.atob(str)));
 }
-
 @Component({
   selector: 'app-art-detail',
   templateUrl: './art-detail.component.html',
@@ -20,6 +19,7 @@ function b64_to_utf8(str) {
 })
 export class ArtDetailComponent implements OnInit {
 
+  
   data;
   article_id: any;
   articl_head: any;

@@ -12,7 +12,6 @@ import { CarouselModule } from 'ngx-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
-import { AdsComponent } from './ads/ads.component';
 import { ManageLocationComponent } from './manage-location/manage-location.component';
 import { ManageMainpageComponent } from './manage-mainpage/manage-mainpage.component';
 import { RecommendComponent } from './manage-mainpage/recommend/recommend.component';
@@ -28,6 +27,8 @@ import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { WriteAdsComponent } from './write-ads/write-ads.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ChatComponent } from '../shared/chat/chat.component';
+import { ArticleComponent } from '../shared/article/article.component';
+import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
 
 
 
@@ -35,7 +36,6 @@ import { ChatComponent } from '../shared/chat/chat.component';
   declarations: [
     AdminComponent,
     AdminhomeComponent,
-    AdsComponent,
     ManageLocationComponent,
     ManageMainpageComponent,
     RecommendComponent,
@@ -50,6 +50,8 @@ import { ChatComponent } from '../shared/chat/chat.component';
     UpgradMemberComponent,
     WriteAdsComponent,
     ChatComponent,
+    ArticleComponent,
+    ArtDetailComponent,
     ],
   imports: [
     CommonModule,

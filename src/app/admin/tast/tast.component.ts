@@ -12,6 +12,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./tast.component.scss']
 })
 export class TastComponent implements OnInit {
+  aaa: string;
+  a: string;
+  b: string;
 
 
 
@@ -44,30 +47,49 @@ export class TastComponent implements OnInit {
   public AdsFormGroup = new FormGroup({
     art_detail1: new FormControl(''),
     art_detail2: new FormControl(''),
-  
+
   })
- 
+
 
   logText(): void {
     this.log += `${this.textValue}\n`;
 
     var str = this.log;
     const enc = window.btoa(unescape(encodeURIComponent(str)));
-    console.log(enc);
-    const detail2 = window.btoa(unescape(encodeURIComponent(str)));
-    this.log2 = detail2
+    this.log2 = enc
+    const enc2 = decodeURIComponent(window.atob(enc))
+    this.aaa = enc2
 
 
-
-    this.test += `${this.textValue}\n`;
-    var str = this.test;
-    const abc = window.btoa(unescape(encodeURIComponent(str)));
+    this.test += `${this.textValue2}\n`;
+    var str2 = this.test;
+    const abc = window.btoa(unescape(encodeURIComponent(str2)));
     console.log(abc);
-    const abc2 = window.btoa(unescape(encodeURIComponent(str)));
-    this.test2 = abc2
+    this.test2 = abc
+
+    this.a = utf8_to_b64(this.log);
+    this.b = b64_to_utf8(this.a)
 
 
   }
 
 
+  onClear() {
+    this.log = ''
+    this.log2 = ''
+    this.test = ''
+    this.test2 = ''
+  }
+
 }
+
+
+// Endcode
+function utf8_to_b64(str) {
+  return window.btoa(unescape(encodeURIComponent(str)));
+}
+// Decode
+function b64_to_utf8(str) {
+  return decodeURIComponent(escape(window.atob(str)));
+}
+

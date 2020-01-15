@@ -8,6 +8,8 @@ import { MatchesComponent } from './matches/matches.component';
 import { BuyTestComponent } from './buy-test/buy-test.component';
 import { Com1Component } from '../shared/com1/com1.component';
 import { ChatComponent } from '../shared/chat/chat.component';
+import { ArticleComponent } from '../shared/article/article.component';
+import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
 
 
 const routes: Routes = [
@@ -42,6 +44,14 @@ const routes: Routes = [
       { // test chat-shared 
         path: 'chat',
         component: ChatComponent
+      },
+      { // โฆษณา
+        path: 'article',
+        component: ArticleComponent
+      },
+      { // โฆษณา
+        path: 'artdetail/:article_id',
+        component: ArtDetailComponent
       },
     ]
   },

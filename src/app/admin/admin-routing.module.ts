@@ -7,7 +7,6 @@ import { ProDetailComponent } from './manage-sale/pro-detail/pro-detail.componen
 import { ManageMemberComponent } from './manage-member/manage-member.component';
 import { MemberDetailComponent } from './manage-member/member-detail/member-detail.component';
 import { WriteAdsComponent } from './write-ads/write-ads.component';
-import { AdsComponent } from './ads/ads.component';
 import { ManageMainpageComponent } from './manage-mainpage/manage-mainpage.component';
 import { RecommendComponent } from './manage-mainpage/recommend/recommend.component';
 import { ManageLocationComponent } from './manage-location/manage-location.component';
@@ -16,6 +15,8 @@ import { SearchMapComponent } from './search/search-map/search-map.component';
 import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { TastComponent } from './tast/tast.component';
 import { ChatComponent } from '../shared/chat/chat.component';
+import { ArticleComponent } from '../shared/article/article.component';
+import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
 
 
 const routes: Routes = [
@@ -48,10 +49,6 @@ const routes: Routes = [
         component: WriteAdsComponent
       },
       {
-        path: 'ads',            // ? โฆษณา เอาออกไปใส่ใน แชร์ 
-        component: AdsComponent
-      },
-      {
         path: 'managemainpage',       //รายการแนะนำ
         component: ManageMainpageComponent
       },
@@ -78,6 +75,14 @@ const routes: Routes = [
       { // test chat-shared 
         path: 'chat',
         component: ChatComponent
+      },
+      { // โฆษณา
+        path: 'article',
+        component: ArticleComponent
+      },
+      { // โฆษณา
+        path: 'artdetail/:article_id',
+        component: ArtDetailComponent
       },
       {
         path: 'test',            //!  ไว้สำหรับบลอง

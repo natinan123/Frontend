@@ -20,6 +20,8 @@ import { BuyTestComponent } from './buy-test/buy-test.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { Com1Component } from '../shared/com1/com1.component';
 import { ChatComponent } from '../shared/chat/chat.component';
+import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
+import { ArticleComponent } from '../shared/article/article.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ChatComponent } from '../shared/chat/chat.component';
     RequireComponent,
     BuyTestComponent,
     Com1Component,
-    ChatComponent
+    ChatComponent,
+    ArticleComponent,
+    ArtDetailComponent,
   ],
   imports: [
     CommonModule,

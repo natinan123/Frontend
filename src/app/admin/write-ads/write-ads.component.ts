@@ -6,11 +6,22 @@ import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 
+// Endcode
+function utf8_to_b64(str) {
+  return window.btoa(unescape(encodeURIComponent(str)));
+}
+// Decode
+function b64_to_utf8(str) {
+  return decodeURIComponent(escape(window.atob(str)));
+}
+
+
 @Component({
   selector: 'app-write-ads',
   templateUrl: './write-ads.component.html',
   styleUrls: ['./write-ads.component.scss']
 })
+
 
 
 export class WriteAdsComponent implements OnInit {
@@ -24,10 +35,8 @@ export class WriteAdsComponent implements OnInit {
   })
   art_type: any;
   articl_head: any;
-  art_detail1: any;
-  art_detail2: any;
-  log1: string;
-  log2: string;
+ 
+
 
 
 
@@ -49,16 +58,16 @@ export class WriteAdsComponent implements OnInit {
   }
 
 
-  log = '';
+  // log = '';
 
-  logText(value: string): void {
-    this.log += `${value}\n`;
-    var str = this.log;
-    const enc = window.btoa(unescape(encodeURIComponent(str)));
-    console.log(enc);
-  
-  
-  }
+  // logText(value: string): void {
+  //   this.log += `${value}\n`;
+  //   var str = this.log;
+  //   const enc = window.btoa(unescape(encodeURIComponent(str)));
+  //   console.log(enc);
+
+
+  // }
 
 
 
@@ -107,57 +116,48 @@ export class WriteAdsComponent implements OnInit {
     );
   }
 
+  art_detail1 = '';
+  art_detail2 = '';
 
+  log = '';
+  log2 = '';
+  
 
-  detail1;
-  detail2;
   // post Art
-  onPostArt() {
-    this.log1 += `${this.art_detail1}\n`;
-    var str = this.log1;
-    this.detail1 = window.btoa(unescape(encodeURIComponent(str)));
+  onPostArt(): void {
+    // textarea1
+    this.log += `${this.art_detail1}\n`;
+    var str = this.log;
+    const detail1 = utf8_to_b64(this.log);
+    // this.a = utf8_to_b64(this.log);
+    // this.b = b64_to_utf8(this.a)
+
+    // textarea2
     this.log2 += `${this.art_detail2}\n`;
     var str2 = this.log2;
-    this.detail2 = window.btoa(unescape(encodeURIComponent(str2)));
-    console.log(this.log1);
-    console.log(this.log1);
+    const detail2 =  utf8_to_b64(this.log);
+   
 
-    // textValue = '';
-    // log = '';
-    // log2 = '';
-  
-    // logText(value: string): void {
-    //   this.log += `${value}\n`;
-  
-    //   var str = this.log;
-    //   const enc = window.btoa(unescape(encodeURIComponent(str)));
-    //   console.log(enc);
-    //   const detail2 = window.btoa(unescape(encodeURIComponent(str)));
-    //   this.log2 = detail2
-  
-    // }
+    const formData = new FormData();
+    formData.append('art_type', this.art_type);
+    formData.append('articl_head', this.articl_head);
+    formData.append('art_detail1', detail1);
+    formData.append('art_detail2', detail2);
+    for (let img of this.fileList) {
+      formData.append('blogimage', img);
+    }
 
-    
-    // const formData = new FormData();
-    // formData.append('art_type', this.art_type);
-    // formData.append('articl_head', this.articl_head);
-    // formData.append('art_detail1', this.detail1);
-    // formData.append('art_detail2', this.detail2);
-    // for (let img of this.fileList) {
-    //   formData.append('blogimage', img);
-    // }
-
-    // this.service.postArticle(formData).subscribe(
-    //   async (res) => {
-    //     console.log(res);
-    //   }
-    // )
+    this.service.postArticle(formData).subscribe(
+      async (res) => {
+        console.log(res);
+      }
+    )
 
 
 
   }
+  
 
 
- 
 
 }
