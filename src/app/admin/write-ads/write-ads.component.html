@@ -2,35 +2,58 @@
     <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> เขียนบทความโฆษณา</h1>
 </div>
 
+<button mat-raised-button (click)="onPostArt()">post</button>
 
-<div class="example-container">
+<form [formGroup]="AdsFormGroup" class="example-container">
     <mat-form-field>
-        <input matInput placeholder="Input">
+        <mat-select placeholder="Select" [(ngModel)]="art_type" formControlName="art_type">
+            <mat-option value="1">รีวิวอสังหาริมทรัพย์</mat-option>
+            <mat-option value="2">โฆษณา</mat-option>
+            <mat-option value="3">ข่าวสาร</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Input" [(ngModel)]="articl_head" formControlName="articl_head">
     </mat-form-field>
 
     <mat-form-field>
-        <textarea matInput placeholder="Textarea" ref-textarea [(ngModel)]="textValue" rows="11"></textarea>
+        <textarea matInput placeholder="Textarea1" ref-textarea [(ngModel)]="art_detail1" formControlName="art_detail1"
+            rows="8"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput placeholder="Textarea2" ref-textarea [(ngModel)]="art_detail2" formControlName="art_detail2"
+            rows="8"></textarea>
     </mat-form-field>
 
-    <!-- <mat-form-field>
-            <mat-select placeholder="Select">
-                <mat-option value="option">Option</mat-option>
-            </mat-select>
-        </mat-form-field> -->
+</form>
 
 
-</div>
-<button mat-raised-button color="primary" (click)="logText(textarea.value)">Show</button>
-<button mat-raised-button color="accent" (click)="textValue=''">clear</button>
+<button mat-raised-button color="primary" (click)="logText(art_detail1.value)">Show</button>
+<button mat-raised-button color="accent" (click)="art_detail1=''">clear</button>
 <button mat-raised-button color="warn" (click)="log=''">Clean</button>
 
 <pre>{{log}}</pre>
 
+<form>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md">
+            <button mat-raised-button (click)="fileInput.click()">Select File</button>
+            <input style="display: none" #attachments type="file" accept=" image/* " (change)="onFileChanged($event)"
+                #fileInput multiple="true">
+        </div>
+        <!-- <div class="col-md">
+            <button mat-raised-button type="submit" (click)="onMultipleSubmit()"
+                style="background-color: #1d6a96;color: snow">Upload</button>
+        </div> -->
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <mat-card *ngFor='let url of urls; let index = index' style="background-color: #E8D0A9;">
+            <i class="material-icons" style="float: right; cursor: pointer;"
+                (click)="removeSelectedFile(index)">cancel</i> <br>
+
+            <img [src]="url" style="height: 170px; width: 289px;">
+        </mat-card>
+    </div>
 
 
-
-<!-- <h1>Text Area</h1>
-<textarea ref-textarea [(ngModel)]="textValue" rows="4"></textarea><br />
-<button (click)="logText(textarea.value)">Update Log</button>
-<button (click)="textValue=''">Clear</button>
-<h2>Log <button (click)="log=''">Clear</button></h2> -->
+</form>

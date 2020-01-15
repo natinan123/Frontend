@@ -172,6 +172,15 @@
                 <input matInput placeholder="ID. Line" formControlName="Id_line" [(ngModel)]="Id_line">
             </mat-form-field>
 
+            <div class="status">
+                <label for="cheese">เลือกสถานะผู้ใช้งาน</label> <br>
+                <select class="custom-select" id="cheese" formControlName="Cus_status">
+                    <option selected>เลือกสถานะผู้ใช้งาน</option>
+                    <option value="seller">ผู้ขาย</option>
+                    <option value="buyer">ผู้ซื้อ</option>
+                  </select>
+            </div>
+            
             <div mat-dialog-actions>
                 <button mat-raised-button class="btlogin" (click)="onRegister()">สมัคสมาชิก</button>
             </div>

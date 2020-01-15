@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ServerService } from 'src/app/@service/server.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,23 +15,19 @@ import { HttpClient } from '@angular/common/http';
 
 export class WriteAdsComponent implements OnInit {
 
-  // public AdsFormGroup = new FormGroup({
-  //   head: new FormControl(''),
-  //   detail: new FormControl('')
-  // })
-  head: any;
-  Head: any;
-  detail: any;
-  Detail: any;
+  public AdsFormGroup = new FormGroup({
+    art_type: new FormControl(''),
+    articl_head: new FormControl(''),
+    art_detail1: new FormControl(''),
+    art_detail2: new FormControl('')
 
-  // onCheck() {
+  })
+  art_type: any;
+  articl_head: any;
+  art_detail1: any;
+  art_detail2: any;
 
-  //   this.Head = this.AdsFormGroup.value.head;
-  //   this.Detail = this.AdsFormGroup.value.detail;
-  //   console.log(this.Head);
-  //   console.log(this.Detail);
-  //   console.log(this.AdsFormGroup.value.detail);
-  // }
+
 
 
 
@@ -42,7 +38,6 @@ export class WriteAdsComponent implements OnInit {
     private dialog: MatDialog,
     private modalService: NgbModal,
     private modal: NgbModal,
-    private http: HttpClient,
     private formBuilder: FormBuilder,
 
   ) { }
@@ -51,28 +46,14 @@ export class WriteAdsComponent implements OnInit {
 
   }
 
-  textValue = '';
+
   log = '';
 
   logText(value: string): void {
     this.log += `${value}\n`;
-
-
-
-    // var str = this.log;
-    // const enc = window.btoa(str);
-    // console.log(enc);
-
-
     var str = this.log;
     const enc = window.btoa(unescape(encodeURIComponent(str)));
     console.log(enc);
-
-
-
-
-
-
     const data = {
       style1: enc
     }
@@ -80,11 +61,87 @@ export class WriteAdsComponent implements OnInit {
       async (res) => {
       }
     )
-
   }
 
 
 
+  //  todo : select รูป แบบหลายรูป ใช้อันนี้
+  @ViewChild('attachments', { static: false }) attachment: any;
+
+  selectedFile: File;
+  fileList: File[] = [];
+  listOfFiles: any[] = [];
+  urls: any[] = [];
+
+  onFileChanged(event: any) {
+    for (var i = 0; i <= event.target.files.length - 1; i++) {
+      var selectedFile = event.target.files[i];
+      this.fileList.push(selectedFile);
+      this.listOfFiles.push(selectedFile.name);
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        console.log(event.target.result);
+        this.urls.push(event.target.result);
+      }
+      reader.readAsDataURL(event.target.files[i]);
+    }
+    this.attachment.nativeElement.value = '';
+  }
+
+  removeSelectedFile(index) {
+    // Delete the item from fileNames list
+    this.listOfFiles.splice(index, 1);
+    // delete file from FileList
+    this.fileList.splice(index, 1);
+    // delete file from image
+    this.urls.splice(index, 1);
+  }
+
+  // todo :Button upload image multi
+  onMultipleSubmit() {
+    const formData = new FormData();
+    for (let img of this.fileList) {
+      formData.append('blogimage', img);
+    }
+
+    this.service.postImageProMulti(formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
+
+
+  // post Art
+  onPostArt() {
+    const formData = new FormData();
+    for (let img of this.fileList) {
+      formData.append('blogimage', img);
+    }
+    this.log += `${this.art_detail1.value}\n`;
+    var str = this.log;
+    const detail1 = window.btoa(unescape(encodeURIComponent(str)));
+    this.log += `${this.art_detail2.value}\n`;
+    var str2 = this.log;
+    const detail2 = window.btoa(unescape(encodeURIComponent(str2)));
+
+
+
+    const data = {
+      art_type: this.art_type,
+      articl_head: this.articl_head,
+      art_detail1: detail1,
+      art_detail2: detail2,
+      formData
+    }
+    console.log(data);
+    this.service.postArticle(data).subscribe(
+      async (res) => {
+        console.log(res);
+      }
+    )
+  }
+
+ 
 
 
 }

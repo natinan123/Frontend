@@ -45,6 +45,7 @@ export class MainpageComponent implements OnInit {
     Repassword: new FormControl(''),
     Phone: new FormControl(''),
     Id_line: new FormControl(''),
+    Cus_status: new FormControl(''),
   })
   Fname: any;
   Lname: any;
@@ -53,6 +54,7 @@ export class MainpageComponent implements OnInit {
   Repassword: any;
   Phone: any;
   Id_line: any;
+  Cus_status: any;
   getErrorMessage() {
     return this.email_id.hasError('required') ? 'You must enter a value' :
       this.email_id.hasError('email_id') ? 'Not a valid email' :
@@ -167,6 +169,7 @@ export class MainpageComponent implements OnInit {
   // Register
   openModalRegister(modal) {
     this.modalService.open(modal, { centered: true })
+    // this.modalService.open(modal, { centered: true, size: "lg" })
   }
 
   onRegister() {
@@ -178,7 +181,9 @@ export class MainpageComponent implements OnInit {
       password: this.Password,
       repassword: this.Repassword,
       phone: this.Phone,
-      id_line: this.Id_line
+      id_line: this.Id_line,
+      cus_status: this.Cus_status
+      
     }
     console.log(data)//if  ทุก คอลัมไม่เท่ากับว่าง
     if (this.repassword === this.password) {
