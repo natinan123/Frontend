@@ -42,14 +42,22 @@ export class ArtDetailComponent implements OnInit {
       async (res) => {
       }
     )
+
+    // this.detail1 = decodeURIComponent(window.atob(this.art_detail1));
+
+
+
   }
 
   getDetail() {
     this.service.getArtDetail(this.data).subscribe(
       (res) => {
+
         this.article_id = res[0].article_id,
           this.articl_head = res[0].articl_head,
-          this.art_detail1 = res[0].art_detail1,
+          // this.art_detail1 = res[0].art_detail1,
+          this.art_detail1 = decodeURIComponent(window.atob(res[0].art_detail1)),
+          console.log(this.art_detail1);
           this.art_detail2 = res[0].art_detail2,
           this.art_pic1 = res[0].art_pic1,
           this.art_pic2 = res[0].art_pic2,
@@ -57,7 +65,6 @@ export class ArtDetailComponent implements OnInit {
           this.art_type = res[0].art_type,
           this.art_date = res[0].art_date,
           this.art_view = res[0].art_view
-
 
       }
     )

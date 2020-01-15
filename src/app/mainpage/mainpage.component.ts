@@ -116,14 +116,14 @@ export class MainpageComponent implements OnInit {
 
 
   onLogin() {
-    console.log(this.loginUser.value)
-    // const data = {
-    //   email_id: this.email_id.value,
-    //   password: this.password.value
-    // }
-    // console.log(this.)
+    // console.log(this.loginUser.value)
+    const data = {
+      email_id: this.email_id,
+      password: this.password
+    }
+    console.log(data)
     if (this.email_id != null && this.password != null) {
-      this.service.getLogin(this.loginUser.value).subscribe(
+      this.service.getLogin(data).subscribe(
         async (res) => {
           this.session.setActiveUser(res);
           if (res[0].cus_status === "admin") {

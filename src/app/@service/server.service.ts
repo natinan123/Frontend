@@ -349,10 +349,7 @@
     getTestPro() {
       return this.http.get(urlServer.ipServer + 'testGetpro')
     }
-    // post first chat
-    postTestarea(data) {
-      return this.http.post(urlServer.ipServer + 'testinsert', data)
-    }
+  
     // post Article
     postArticle(data) {
       return this.http.post(urlServer.ipServer + 'postArticle', data)

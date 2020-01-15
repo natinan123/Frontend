@@ -18,14 +18,16 @@ export class WriteAdsComponent implements OnInit {
   public AdsFormGroup = new FormGroup({
     art_type: new FormControl(''),
     articl_head: new FormControl(''),
-    art_detail1: new FormControl(''),
-    art_detail2: new FormControl('')
+    Art_detail1: new FormControl(''),
+    Art_detail2: new FormControl('')
 
   })
   art_type: any;
   articl_head: any;
   art_detail1: any;
   art_detail2: any;
+  log1: string;
+  log2: string;
 
 
 
@@ -54,13 +56,8 @@ export class WriteAdsComponent implements OnInit {
     var str = this.log;
     const enc = window.btoa(unescape(encodeURIComponent(str)));
     console.log(enc);
-    const data = {
-      style1: enc
-    }
-    this.service.postTestarea(data).subscribe(
-      async (res) => {
-      }
-    )
+  
+  
   }
 
 
@@ -71,7 +68,7 @@ export class WriteAdsComponent implements OnInit {
   selectedFile: File;
   fileList: File[] = [];
   listOfFiles: any[] = [];
-  urls: any[] = [];
+  urls: any[1] = [];
 
   onFileChanged(event: any) {
     for (var i = 0; i <= event.target.files.length - 1; i++) {
@@ -111,37 +108,56 @@ export class WriteAdsComponent implements OnInit {
   }
 
 
+
+  detail1;
+  detail2;
   // post Art
   onPostArt() {
-    const formData = new FormData();
-    for (let img of this.fileList) {
-      formData.append('blogimage', img);
-    }
-    this.log += `${this.art_detail1.value}\n`;
-    var str = this.log;
-    const detail1 = window.btoa(unescape(encodeURIComponent(str)));
-    this.log += `${this.art_detail2.value}\n`;
-    var str2 = this.log;
-    const detail2 = window.btoa(unescape(encodeURIComponent(str2)));
+    this.log1 += `${this.art_detail1}\n`;
+    var str = this.log1;
+    this.detail1 = window.btoa(unescape(encodeURIComponent(str)));
+    this.log2 += `${this.art_detail2}\n`;
+    var str2 = this.log2;
+    this.detail2 = window.btoa(unescape(encodeURIComponent(str2)));
+    console.log(this.log1);
+    console.log(this.log1);
+
+    // textValue = '';
+    // log = '';
+    // log2 = '';
+  
+    // logText(value: string): void {
+    //   this.log += `${value}\n`;
+  
+    //   var str = this.log;
+    //   const enc = window.btoa(unescape(encodeURIComponent(str)));
+    //   console.log(enc);
+    //   const detail2 = window.btoa(unescape(encodeURIComponent(str)));
+    //   this.log2 = detail2
+  
+    // }
+
+    
+    // const formData = new FormData();
+    // formData.append('art_type', this.art_type);
+    // formData.append('articl_head', this.articl_head);
+    // formData.append('art_detail1', this.detail1);
+    // formData.append('art_detail2', this.detail2);
+    // for (let img of this.fileList) {
+    //   formData.append('blogimage', img);
+    // }
+
+    // this.service.postArticle(formData).subscribe(
+    //   async (res) => {
+    //     console.log(res);
+    //   }
+    // )
 
 
 
-    const data = {
-      art_type: this.art_type,
-      articl_head: this.articl_head,
-      art_detail1: detail1,
-      art_detail2: detail2,
-      formData
-    }
-    console.log(data);
-    this.service.postArticle(data).subscribe(
-      async (res) => {
-        console.log(res);
-      }
-    )
   }
 
- 
 
+ 
 
 }

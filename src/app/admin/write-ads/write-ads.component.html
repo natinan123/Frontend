@@ -4,56 +4,53 @@
 
 <button mat-raised-button (click)="onPostArt()">post</button>
 
-<form [formGroup]="AdsFormGroup" class="example-container">
-    <mat-form-field>
+<form [formGroup]="AdsFormGroup" class="form">
+    <mat-form-field class="example-container">
         <mat-select placeholder="Select" [(ngModel)]="art_type" formControlName="art_type">
             <mat-option value="1">รีวิวอสังหาริมทรัพย์</mat-option>
             <mat-option value="2">โฆษณา</mat-option>
             <mat-option value="3">ข่าวสาร</mat-option>
         </mat-select>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="example-container">
         <input matInput placeholder="Input" [(ngModel)]="articl_head" formControlName="articl_head">
     </mat-form-field>
 
-    <mat-form-field>
-        <textarea matInput placeholder="Textarea1" ref-textarea [(ngModel)]="art_detail1" formControlName="art_detail1"
+    <div class="">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md">
+                <button mat-raised-button (click)="fileInput.click()"><i class="fa fa-picture-o" aria-hidden="true"></i>
+                    Select File</button>
+                <input style="display: none" #attachments type="file" accept=" image/* "
+                    (change)="onFileChanged($event)" #fileInput multiple="true">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <mat-card *ngFor='let url of urls; let index = index' style="background-color: #E8D0A9;">
+                <i class="material-icons" style="float: right; cursor: pointer;"
+                    (click)="removeSelectedFile(index)">cancel</i> <br>
+
+                <img [src]="url" style="height: 170px; width: 289px;">
+            </mat-card>
+        </div>
+    </div>
+    <mat-form-field class="example-container">
+        <textarea matInput placeholder="Textarea1" ref-textarea [(ngModel)]="art_detail1" formControlName="Art_detail1"
             rows="8"></textarea>
     </mat-form-field>
-    <mat-form-field>
-        <textarea matInput placeholder="Textarea2" ref-textarea [(ngModel)]="art_detail2" formControlName="art_detail2"
+    <mat-form-field class="example-container">
+        <textarea matInput placeholder="Textarea2" ref-textarea [(ngModel)]="art_detail2" formControlName="Art_detail2"
             rows="8"></textarea>
     </mat-form-field>
 
 </form>
 
+<button mat-raised-button (click)="onCheck(art_detail1.value)">text</button>
+
+<pre>{{log}}</pre>
 
 <button mat-raised-button color="primary" (click)="logText(art_detail1.value)">Show</button>
 <button mat-raised-button color="accent" (click)="art_detail1=''">clear</button>
 <button mat-raised-button color="warn" (click)="log=''">Clean</button>
 
-<pre>{{log}}</pre>
 
-<form>
-    <div class="row" style="margin-top: 20px;">
-        <div class="col-md">
-            <button mat-raised-button (click)="fileInput.click()">Select File</button>
-            <input style="display: none" #attachments type="file" accept=" image/* " (change)="onFileChanged($event)"
-                #fileInput multiple="true">
-        </div>
-        <!-- <div class="col-md">
-            <button mat-raised-button type="submit" (click)="onMultipleSubmit()"
-                style="background-color: #1d6a96;color: snow">Upload</button>
-        </div> -->
-    </div>
-    <div class="row" style="margin-top: 20px;">
-        <mat-card *ngFor='let url of urls; let index = index' style="background-color: #E8D0A9;">
-            <i class="material-icons" style="float: right; cursor: pointer;"
-                (click)="removeSelectedFile(index)">cancel</i> <br>
-
-            <img [src]="url" style="height: 170px; width: 289px;">
-        </mat-card>
-    </div>
-
-
-</form>

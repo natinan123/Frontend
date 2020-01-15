@@ -1,0 +1,37 @@
+<form [formGroup]="AdsFormGroup">
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="Input">
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput placeholder="Textarea" ref-textarea [(ngModel)]="textValue" formControlName="art_detail1"
+                rows="11"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput placeholder="Textarea" ref-textarea [(ngModel)]="textValue2" formControlName="art_detail2"
+                rows="11"></textarea>
+        </mat-form-field>
+
+      
+
+
+    </div>
+</form>
+
+<button mat-raised-button color="primary" (click)="logText()">Show</button>
+
+
+
+
+<button mat-raised-button color="accent" (click)="textValue=''">clear</button>
+<button mat-raised-button color="warn" (click)="log=''" (click)="log2=''">Clean</button>
+
+
+
+<pre>{{log}}</pre>
+<pre>{{log2}}</pre>
+
+<pre>{{test}}</pre>
+<pre>{{test2}}</pre>
