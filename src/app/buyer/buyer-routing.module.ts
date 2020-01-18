@@ -6,10 +6,11 @@ import { RequireComponent } from './require/require.component';
 import { ListRequireComponent } from './list-require/list-require.component';
 import { MatchesComponent } from './matches/matches.component';
 import { BuyTestComponent } from './buy-test/buy-test.component';
-import { Com1Component } from '../shared/com1/com1.component';
 import { ChatComponent } from '../shared/chat/chat.component';
 import { ArticleComponent } from '../shared/article/article.component';
 import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
+import { HomeComponent } from '../shared/home/home.component';
+import { DetailComponent } from '../shared/detail/detail.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,18 @@ const routes: Routes = [
     path: 'buyer',
     component: BuyerComponent,
     children: [
+        // ! home page
+        { // หน้าหลัก
+          path: 'home',
+          component: HomeComponent
+        },
+        { // รายละเอียด
+          path: 'detail/:pro_id',
+          component: DetailComponent
+        },
+  
+  
+        // ! end home
       { // หน้าหลัก
         path: 'buyerhome',
         component: BuyerhomeComponent
@@ -36,10 +49,6 @@ const routes: Routes = [
       { // test
         path: 'buy-test',
         component: BuyTestComponent
-      },
-      { // test shared 
-        path: 'com1',
-        component: Com1Component
       },
       { // test chat-shared 
         path: 'chat',

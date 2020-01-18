@@ -6,14 +6,14 @@
 
 <form [formGroup]="AdsFormGroup" class="form">
     <mat-form-field class="example-container">
-        <mat-select placeholder="Select" [(ngModel)]="art_type" formControlName="art_type">
-            <mat-option value="1">รีวิวอสังหาริมทรัพย์</mat-option>
-            <mat-option value="2">โฆษณา</mat-option>
-            <mat-option value="3">ข่าวสาร</mat-option>
+        <mat-select placeholder="เลือกประเภทบทความโฆษณา" [(ngModel)]="art_type" formControlName="art_type">
+            <mat-option value="รีวิวอสังหาริมทรัพย์">รีวิวอสังหาริมทรัพย์</mat-option>
+            <mat-option value="โฆษณา">โฆษณา</mat-option>
+            <mat-option value="ข่าวสาร">ข่าวสาร</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field class="example-container">
-        <input matInput placeholder="Input" [(ngModel)]="articl_head" formControlName="articl_head">
+        <input matInput placeholder="หัวข้อบทความโฆษณา" [(ngModel)]="articl_head" formControlName="articl_head">
     </mat-form-field>
 
     <div class="">
@@ -35,11 +35,11 @@
         </div>
     </div>
     <mat-form-field class="example-container">
-        <textarea matInput placeholder="Textarea1" ref-textarea [(ngModel)]="art_detail1" formControlName="Art_detail1"
+        <textarea matInput placeholder="รายละเอียดที่ 1" ref-textarea [(ngModel)]="art_detail1" formControlName="Art_detail1"
             rows="8"></textarea>
     </mat-form-field>
     <mat-form-field class="example-container">
-        <textarea matInput placeholder="Textarea2" ref-textarea [(ngModel)]="art_detail2" formControlName="Art_detail2"
+        <textarea matInput placeholder="รายละเอียดที่ 2" ref-textarea [(ngModel)]="art_detail2" formControlName="Art_detail2"
             rows="8"></textarea>
     </mat-form-field>
 
@@ -54,5 +54,3 @@
 <button mat-raised-button color="primary" (click)="logText(art_detail1.value)">Show</button>
 <button mat-raised-button color="accent" (click)="art_detail1=''">clear</button>
 <button mat-raised-button color="warn" (click)="log=''">Clean</button> -->
-
-

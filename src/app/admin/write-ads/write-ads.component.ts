@@ -37,11 +37,6 @@ export class WriteAdsComponent implements OnInit {
   articl_head: any;
  
 
-
-
-
-
-
   constructor(
     private service: ServerService,
     private route: ActivatedRoute,
@@ -77,7 +72,7 @@ export class WriteAdsComponent implements OnInit {
   selectedFile: File;
   fileList: File[] = [];
   listOfFiles: any[] = [];
-  urls: any[1] = [];
+  urls: any[] = [];
 
   onFileChanged(event: any) {
     for (var i = 0; i <= event.target.files.length - 1; i++) {

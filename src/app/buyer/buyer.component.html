@@ -19,50 +19,45 @@
 
     <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
 
-        <div class="row col">
-            <button mat-button style="background: #4579a0; margin-left: 5px; width: 100%;">หน้าหลัก</button>
-        </div>
-        <div class="row col">
-            <button mat-button [matMenuTriggerFor]="belowMenu1"
-                style="background: #4579a0; margin-left: 5px; width: 100%;">ขายอสังหาริมทรัพย์</button>
-            <mat-menu #belowMenu1="matMenu">
-                <button mat-menu-item style="width: 400px">ขายบ้านเดี่ยว</button>
-                <button mat-menu-item>ขายทาวน์เฮ้าส์</button>
-                <button mat-menu-item>ขายอพาร์ทเมนท์</button>
-                <button mat-menu-item>ขายอาคารพาณิชย์</button>
-                <button mat-menu-item>ขายคอนโดมิเนียม</button>
-                <button mat-menu-item>ขายที่ดิน</button>
-            </mat-menu>
-        </div>
-        <div class="row col">
-            <button mat-button [matMenuTriggerFor]="belowMenu2"
-                style="background: #4579a0 ;margin-left: 5px;width: 100%;">เช่าอสังหาริมทรัพย์</button>
-            <mat-menu #belowMenu2="matMenu">
-                <button mat-menu-item style="width: 400px"> เช่าบ้านเดี่ยว</button>
-                <button mat-menu-item>เช่าทาวน์เฮ้าส์</button>
-                <button mat-menu-item>เช่าอพาร์ทเมนท์</button>
-                <button mat-menu-item>เช่าอาคารพาณิชย์</button>
-                <button mat-menu-item>เช่าคอนโดมิเนียม</button>
-                <button mat-menu-item>เช่าที่ดิน</button>
-            </mat-menu>
-        </div>
-        <div class="row col">
 
-            <button mat-button [matMenuTriggerFor]="belowMenu3"
-                style="background: #4579a0 ;margin-left: 5px;width: 100%;">ค้นหาอสังหาริมทรัพย์</button>
-            <mat-menu #belowMenu3="matMenu">
-                <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
-                <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
-                <button mat-menu-item>ค้นหาจากความนิยม</button>
-                <button mat-menu-item>ค้นหาจากแผนที่</button>
-                <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
-            </mat-menu>
-        </div>
+        <button mat-button class="tool" [routerLink]="['/buyer/buyer/home']" routerLinkActive="router-link-active"
+            style="margin-left: 10px; ">หน้าหลัก</button>
 
-        <div class="row col">
-            <button mat-button routerLink="/buyer/buyer/article"
-                style="background: #4579a0 ;margin-left: 5px; width: 100%;">บทความโฆษณา</button>
-        </div>
+        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu1">ขายอสังหาริมทรัพย์</button>
+        <mat-menu #belowMenu1="matMenu">
+            <button mat-menu-item style="width: 400px">ขายบ้านเดี่ยว</button>
+            <button mat-menu-item>ขายทาวน์เฮ้าส์</button>
+            <button mat-menu-item>ขายอพาร์ทเมนท์</button>
+            <button mat-menu-item>ขายอาคารพาณิชย์</button>
+            <button mat-menu-item>ขายคอนโดมิเนียม</button>
+            <button mat-menu-item>ขายที่ดิน</button>
+        </mat-menu>
+
+        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu2">เช่าอสังหาริมทรัพย์</button>
+        <mat-menu #belowMenu2="matMenu">
+            <button mat-menu-item style="width: 400px"> เช่าบ้านเดี่ยว</button>
+            <button mat-menu-item>เช่าทาวน์เฮ้าส์</button>
+            <button mat-menu-item>เช่าอพาร์ทเมนท์</button>
+            <button mat-menu-item>เช่าอาคารพาณิชย์</button>
+            <button mat-menu-item>เช่าคอนโดมิเนียม</button>
+            <button mat-menu-item>เช่าที่ดิน</button>
+        </mat-menu>
+
+        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3">ค้นหาอสังหาริมทรัพย์</button>
+        <mat-menu #belowMenu3="matMenu">
+            <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
+            <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
+            <button mat-menu-item>ค้นหาจากความนิยม</button>
+            <button mat-menu-item>ค้นหาจากแผนที่</button>
+            <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+        </mat-menu>
+
+
+        <button mat-button class="tool" routerLink="/buyer/buyer/article">บทความโฆษณา</button>
+
+
+
+
 
 
     </mat-toolbar-row>
@@ -71,7 +66,7 @@
 
 
 <div class="row" style="width: 100%; height: 100%;">
-    <div class="col-2" style="background: #1d6a96 ;">
+    <div class="col-md-2" style="background: #1d6a96 ;">
         <mat-list>
             <img *ngIf="profile_pic == ''" src="../../assets/pic/sall/sall-avtar.png"
                 style="height: 100px;width: auto;  display: block; margin-left: auto; margin-right: auto; ">
@@ -109,7 +104,7 @@
 
     </div>
 
-    <div class="col-10">
+    <div class="col-md-10">
         <router-outlet></router-outlet>
     </div>
 </div>

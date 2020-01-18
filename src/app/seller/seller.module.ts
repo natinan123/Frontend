@@ -24,9 +24,8 @@ import { SellingComponent } from './selling/selling.component';
 import { TestingComponent } from './testing/testing.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
-import { ChatComponent } from '../shared/chat/chat.component';
-import { ArticleComponent } from '../shared/article/article.component';
-import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
+import { Ng5SliderModule } from 'ng5-slider';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -43,9 +42,6 @@ import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.comp
     SellingComponent,
     TestingComponent,
     TestPostProComponent,
-    ChatComponent,
-    ArticleComponent,
-    ArtDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +58,8 @@ import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.comp
       apiKey: API.GOOGLE_API_KEY,
       libraries: ['places', 'geometry', 'drawing']
     }),//google api
+    Ng5SliderModule,
+    SharedModule,
 
   ]
 })

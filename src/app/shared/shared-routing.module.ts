@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { Com1Component } from './com1/com1.component';
 import { ChatComponent } from './chat/chat.component';
 import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
+import { HomeComponent } from './home/home.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 const routes: Routes = [
@@ -11,8 +12,12 @@ const routes: Routes = [
     path: 'shared',
     children: [
       { // หน้าหลัก
-        path: 'com1',
-        component: Com1Component
+        path: 'home',
+        component: HomeComponent
+      },
+      { // รายละเอียด
+        path: 'detail/:pro_id',
+        component: DetailComponent
       },
       { // แชท
         path: 'chat',

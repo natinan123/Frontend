@@ -1,0 +1,253 @@
+<div class="row" style="height: 100px;background-color: #014254">
+    <div class="col-md-7">
+        <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> อสังหาริมทรัพย์ {{type_name}}</h1>
+    </div>
+
+
+</div>
+
+
+
+<mat-card class="mat-card">
+    <div class="row">
+        <div class="col-md-9">
+            <mat-chip-list>
+                <mat-chip class="tag-sell"><i class="material-icons">home_work</i>&nbsp; ประเภท{{pro_sell}}</mat-chip>
+            </mat-chip-list>
+        </div>
+
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-9">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{pro_head}}</mat-card-title>
+                <mat-card-subtitle>{{zone_name}}&nbsp; {{loc_name}}</mat-card-subtitle>
+
+            </mat-card-header>
+            <mat-card-subtitle>
+                <div class="row" style="margin-left: 20px;">
+                    <div class="col-md-3">
+                        <i class="fa-icon" class="fa fa-object-group" aria-hidden="true">&nbsp; {{pro_area}}
+                            ตร.ม.</i>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fa-icon" class="fa fa-bed" aria-hidden="true">&nbsp; {{pro_bedroom}} ห้องนอน</i>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fa-icon" class="fa fa-bath" aria-hidden="true">&nbsp; {{pro_toilet}} ห้องน้ำ</i>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fa-icon" class="fa fa-building-o" aria-hidden="true">&nbsp; {{pro_floor}} ชั้น</i>
+                    </div>
+                </div>
+            </mat-card-subtitle>
+        </div>
+        <div class="col-md-3">
+            <mat-card-header class="price">
+                <mat-card-title>{{price | number : '1.2-2'}} บาท</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions style="margin-right: 30px;">
+                <button mat-button class="bt-map" (click)="openModalLocation(Location)"><i
+                        class="material-icons">navigation
+                    </i> ดูตำแหน่งในแผนที่</button>
+            </mat-card-actions>
+        </div>
+    </div>
+</mat-card>
+
+
+<mat-card class="mat-card" style="top: 20px">
+    <img *ngIf="image1 != null" mat-card-lg-image class="image" src="data:image/jpg;base64,{{image1}}" />
+    <p>
+
+
+        <img *ngIf="image1 != null" mat-card-md-image src="data:image/jpg;base64,{{image1}}" />
+        <img *ngIf="image2 != null" mat-card-md-image src="data:image/jpg;base64,{{image2}}" />
+        <img *ngIf="image3 != null" mat-card-md-image src="data:image/jpg;base64,{{image3}}" />
+        <img *ngIf="image4 != null" mat-card-md-image src="data:image/jpg;base64,{{image4}}" />
+        <img *ngIf="image5 != null" mat-card-md-image src="data:image/jpg;base64,{{image5}}" />
+        <img *ngIf="image6 != null" mat-card-md-image src="data:image/jpg;base64,{{image6}}" />
+        <img *ngIf="image7 != null" mat-card-md-image src="data:image/jpg;base64,{{image7}}" />
+        <img *ngIf="image8 != null" mat-card-md-image src="data:image/jpg;base64,{{image8}}" />
+        <img *ngIf="image9 != null" mat-card-md-image src="data:image/jpg;base64,{{image9}}" />
+        <img *ngIf="image10 != null" mat-card-md-image src="data:image/jpg;base64,{{image10}}" />
+
+    </p>
+
+    <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="data:image/jpg;base64,{{image1}}" alt="Random first slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="data:image/jpg;base64,{{image2}}" alt="Random second slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="data:image/jpg;base64,{{image3}}" alt="Random third slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+
+</mat-card>
+<mat-card class="mat-card" style="top: 30px">
+    <mat-card-title>
+        <p>รายละเอียด</p>
+        {{pro_detail}}
+    </mat-card-title>
+</mat-card>
+
+<mat-card class="mat-card" style="top: 35px"
+    *ngIf="style1 || style2 || style3 || style4  || style5 || style6 || style7  || style8 || style9 || style10 == 'true'">
+    <mat-card-title>คุณลักษณะพื้นฐาน</mat-card-title>
+    <div class="row">
+
+
+        <div class="col-md-6">
+            <mat-chip-list aria-label="Color selection">
+                <mat-chip *ngIf="style1 == 'true'"> ที่จอดรถ </mat-chip>
+                <mat-chip *ngIf="style2 == 'true'"> ลานจอดรถ </mat-chip>
+                <mat-chip *ngIf="style3 == 'true'"> รักษาความปลอดภัย </mat-chip>
+                <mat-chip *ngIf="style4 == 'true'"> สระว่ายน้า </mat-chip>
+                <mat-chip *ngIf="style5 == 'true'"> กล้องวงจรปิด </mat-chip>
+                <mat-chip *ngIf="style6 == 'true'"> ฟิตเนส </mat-chip>
+                <mat-chip *ngIf="style7 == 'true'"> สนามเด็กเล่น </mat-chip>
+                <mat-chip *ngIf="style8 == 'true'"> มินิมาร์ท </mat-chip>
+                <mat-chip *ngIf="style9 == 'true'"> ซัก อบ รีด </mat-chip>
+                <mat-chip *ngIf="style10 == 'true' "> ศาลาชมทิวทัศน์ </mat-chip>
+            </mat-chip-list>
+        </div>
+
+    </div>
+</mat-card>
+
+
+
+<mat-card class="mat-card" style="top: 40px">
+    <mat-card-title>ติดต่อผู้ใช้งาน</mat-card-title>
+    <div class="col-md-6">
+        <p>{{email_id}}</p>
+        <p>{{fname}}</p>
+        <p>{{lname}}</p>
+        <p>{{id_line}}</p>
+        <p>{{facebook}}</p>
+        <p>{{profile_pic}}</p>
+        <p>{{cus_detail}}</p>
+        <p>{{phone}}</p>
+    </div>
+
+</mat-card>
+
+
+<!--   Map  -->
+<ng-template #Location let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ตำแหน่งอสังหาริมทรัพย์</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <agm-map [latitude]="lat2" [longitude]="lng2">
+        <!-- หน้าเริ่ม -->
+        <agm-marker [latitude]="latitude" [longitude]="longtitude">
+            <!-- มาค์ก -->
+            <agm-info-window>
+                <h5><strong>{{type_name}} </strong></h5>
+                <p>{{pro_head}}</p>
+                <p>{{price}} บาท</p>
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
+
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <!-- <button mat-raised-button style="background-color: #1d6a96;color: snow">ยืนยัน</button> -->
+    </div>
+</ng-template>
+
+
+<!-- todo : ngModal -->
+<ng-template #Public let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">เผยแพร่อสังหาริมทรัพย์</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>ต้องการเผยแพร่อสังหาริมทรัพย์หรือไม่</p>
+        <p><strong>{{pro_head}}</strong></p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onProPublic()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+<ng-template #Draft let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ร่างอสังหาริมทรัพย์</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>ต้องการเก็บอสังหาริมทรัพย์ในฉบับร่างหรือไม่</p>
+        <p><strong>{{pro_head}}</strong></p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onProDraft()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+<ng-template #Modifly let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">รอการแก้ไขอสังหาริมทรัพย์</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>ต้องการเก็บรอการแก้ไขอสังหาริมทรัพย์หรือไม่</p>
+        <p><strong>{{pro_head}}</strong></p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onProModifly()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>
+
+<ng-template #Close let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ปิดการขายอสังหาริมทรัพย์</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>ต้องการปิดการขายอสังหาริมทรัพย์หรือไม่</p>
+        <p><strong>{{pro_head}}</strong></p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button (click)="onProClose()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+    </div>
+</ng-template>

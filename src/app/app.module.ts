@@ -20,8 +20,6 @@ import { Ng5SliderModule } from 'ng5-slider';
 @NgModule({
   declarations: [
     AppComponent
-  
-
   ],
   imports: [
     BrowserModule,
@@ -44,6 +42,7 @@ import { Ng5SliderModule } from 'ng5-slider';
     }),//google api
     FileUploadModule,
     Ng5SliderModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,113 @@
+<div class="row" style="height: 100px;background-color: #014254">
+    <div class="col-md-8">
+        <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; ">แก้ไขบทความโฆษณา</h1>
+
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button class="button-edit" (click)="openModalEdit(EditAds)">บันทึกการแก้ไข</button>
+    </div>
+</div>
+
+<!-- <form action="">
+    <p>{{article_id}}</p>
+    <p> {{articl_head}}</p>
+    <div style="width: 70%;">
+        <pre>{{art_detail1}}</pre>
+    </div>
+
+    <div style="width: 70%;">
+        <pre>{{art_detail2}}</pre>
+    </div>
+
+    <div class="image">
+        <img mat-card-image src="data:image/jpg;base64,{{art_pic1}}" />
+    </div>
+    <div class="image">
+        <img mat-card-image src="data:image/jpg;base64,{{art_pic2}}" />
+    </div>
+    <div class="image">
+        <img mat-card-image src="data:image/jpg;base64,{{art_pic3}}" />
+    </div>
+
+    <p>{{art_type}}</p>
+    <p>{{art_date}}</p>
+    <p>{{art_view}}</p>
+
+</form> -->
+
+
+<form [formGroup]="AdsFormGroup" class="form">
+    <mat-form-field class="example-container">
+        <mat-select placeholder="Select" [(ngModel)]="art_type" formControlName="art_type">
+            <mat-option value="รีวิวอสังหาริมทรัพย์">รีวิวอสังหาริมทรัพย์</mat-option>
+            <mat-option value="โฆษณา">โฆษณา</mat-option>
+            <mat-option value="ข่าวสาร">ข่าวสาร</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-container">
+        <input matInput placeholder="หัวข้อบทความโฆษณา" [(ngModel)]="articl_head" formControlName="articl_head">
+    </mat-form-field>
+
+    <div class="">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md">
+                <button mat-raised-button (click)="fileInput.click()"><i class="fa fa-picture-o" aria-hidden="true"></i>
+                    Select File</button>
+                <input style="display: none" #attachments type="file" accept=" image/* "
+                    (change)="onFileChanged($event)" #fileInput multiple="true">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <mat-card *ngFor='let url of urls; let index = index' style="background-color: #E8D0A9;">
+                <i class="material-icons" style="float: right; cursor: pointer;"
+                    (click)="removeSelectedFile(index)">cancel</i> <br>
+
+                <img [src]="url" style="height: 170px; width: 289px;">
+            </mat-card>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <mat-card style="background-color: #E8D0A9;">
+                <i class="material-icons" style="float: right; cursor: pointer;">cancel</i> <br>
+                <img src="data:image/jpg;base64,{{art_pic1}}" style="height: 170px; width: 289px;">
+            </mat-card>
+
+            <mat-card style="background-color: #E8D0A9;">
+                <i class="material-icons" style="float: right; cursor: pointer;">cancel</i> <br>
+                <img src="data:image/jpg;base64,{{art_pic2}}" style="height: 170px; width: 289px;">
+            </mat-card>
+
+            <mat-card style="background-color: #E8D0A9;">
+                <i class="material-icons" style="float: right; cursor: pointer;">cancel</i> <br>
+                <img src="data:image/jpg;base64,{{art_pic3}}" style="height: 170px; width: 289px;">
+            </mat-card>
+        </div>
+    </div>
+    <mat-form-field class="example-container">
+        <textarea matInput placeholder="รายละเอียด ที่ 1" ref-textarea [(ngModel)]="art_detail1"
+            formControlName="Art_detail1" rows="20"></textarea>
+    </mat-form-field>
+    <mat-form-field class="example-container">
+        <textarea matInput placeholder="รายละเอียด ที่ 2" ref-textarea [(ngModel)]="art_detail2"
+            formControlName="Art_detail2" rows="20"></textarea>
+    </mat-form-field>
+
+</form>
+
+
+
+<ng-template #EditAds let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">บันทึกการแก้ไข</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <button mat-raised-button style="background-color: #1d6a96;color: snow">บันทึก</button>
+    </div>
+</ng-template>

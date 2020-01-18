@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/@service/server.service';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SessionService } from 'src/app/@service/session.service';
 
 @Component({
   selector: 'app-home',
@@ -9,23 +10,28 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   products: Object;
   recoms: Object;
   poppular: Object;
   pop_pic: Object;
   recom_pic: Object;
   products_pic: Object;
+  user: any;
+  status: any;
 
 
   constructor(
     private service: ServerService,
     private dialog: MatDialog,
     private modalService: NgbModal,
+    private session: SessionService,
 
   ) { }
 
   ngOnInit() {
+    
+    this.user = this.session.getActiveUser();
+    this.status = this.user[0].cus_status;
     this.getProperty();
     this.getRecom();
     this.getPoppular();
@@ -62,5 +68,6 @@ export class HomeComponent implements OnInit {
         // console.log(this.recom_pic);
       })
   }
+
 
 }

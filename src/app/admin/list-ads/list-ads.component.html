@@ -1,0 +1,57 @@
+<div class="row" style="height: 100px;background-color: #014254">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; ">บทความโฆษณา</h1>
+</div>
+
+<mat-card style="width: 1100px; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
+    <mat-toolbar style="background-color: #4579a0;color: snow">รายการโฆษณา</mat-toolbar>
+    <!-- !admin -->
+    <div class="row">
+        <mat-card class="product-card" *ngFor="let a of articles">
+            <div class="routerLink" [routerLink]="['/admin/admin/editArticle' ,a.article_id]">
+                <div class="image">
+                    <img style="cursor: pointer;" mat-card-image src="data:image/jpg;base64,{{a.art_pic1}}"
+                        style="width: 318px;height: 159px;" />
+                </div>
+                <div class="detail">
+                    <mat-card-content>
+                        <p class="head">
+                            {{a.articl_head}}
+                        </p>
+                    </mat-card-content>
+
+                    <mat-chip-list>
+                        <mat-chip *ngIf="a.art_type == 'รีวิวอสังหาริมทรัพย์'" style="background-color: #73B66B">รีวิว
+                        </mat-chip>
+                        <mat-chip *ngIf="a.art_type == 'โฆษณา'" style="background-color: #FFCB18">ไอเดีย</mat-chip>
+                        <mat-chip *ngIf="a.art_type == 'ข่าวสาร'" style="background-color: rgb(228, 90, 27)">ข่าวสาร
+                        </mat-chip>
+
+                    </mat-chip-list>
+
+                    <mat-card-actions style="font-size: small">
+                        <!-- <div class="row">
+              <div class="col-6">
+                <p class="p_icon1"><i class="fa fa-object-group" aria-hidden="true"></i>&nbsp; {{r.pro_area}} ตร.ม.</p>
+                <p class="p_icon1"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp; {{r.pro_bedroom}} ห้องนอน</p>
+              </div>
+              <div class="col-6">
+                <p class="p_icon2"><i class="fa fa-bath" aria-hidden="true"></i>&nbsp; {{r.pro_toilet}} ห้องน้ำ</p>
+                <p class="p_icon2"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp; {{r.pro_floor}} ชั้น</p>
+              </div>
+            </div> -->
+                        <mat-card-subtitle>
+                            <p style="margin-bottom: 2px;"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i>{{a.art_date | date : 'fullDate'  }}</p>
+                            <p style="margin-bottom: 5px;"><i class="fa fa-eye" aria-hidden="true"></i> เข้าชม
+                                {{a.art_view}} ครั้ง</p>
+                        </mat-card-subtitle>
+
+                    </mat-card-actions>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+
+
+</mat-card>

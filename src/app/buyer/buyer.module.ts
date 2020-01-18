@@ -18,10 +18,7 @@ import { RequireComponent } from './require/require.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BuyTestComponent } from './buy-test/buy-test.component';
 import { Ng5SliderModule } from 'ng5-slider';
-import { Com1Component } from '../shared/com1/com1.component';
-import { ChatComponent } from '../shared/chat/chat.component';
-import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
-import { ArticleComponent } from '../shared/article/article.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -31,10 +28,6 @@ import { ArticleComponent } from '../shared/article/article.component';
     MatchesComponent,
     RequireComponent,
     BuyTestComponent,
-    Com1Component,
-    ChatComponent,
-    ArticleComponent,
-    ArtDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +45,7 @@ import { ArticleComponent } from '../shared/article/article.component';
       libraries: ['places', 'geometry', 'drawing']
     }),//google api
     Ng5SliderModule,
+    SharedModule,
   
   ]
 })

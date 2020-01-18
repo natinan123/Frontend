@@ -14,44 +14,44 @@
     </mat-toolbar-row>
 
     <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
-        <div class="row col">
-            <button mat-button routerLink="/seller/seller/selle-property"
-                style="background: #4579a0 ; margin-left: 5px; width: 100%;">หน้าหลัก</button>
-        </div>
-        <div class="row col">
-            <button mat-button [matMenuTriggerFor]="belowMenu1"
-                style="background: #4579a0 ;margin-left: 5px;width: 100%;">ประเภทอสังหาริมทรัพย์</button>
-            <mat-menu #belowMenu1="matMenu">
-                <button mat-menu-item style="width: 400px">บ้านเดี่ยว</button>
-                <button mat-menu-item>ทาวน์เฮ้าส์</button>
-                <button mat-menu-item>อพาร์ทเมนท์</button>
-                <button mat-menu-item>อาคารพาณิชย์</button>
-                <button mat-menu-item>คอนโดมิเนียม</button>
-                <button mat-menu-item>ที่ดิน</button>
-            </mat-menu>
-        </div>
-        <div class="row col">
 
-            <button mat-button [matMenuTriggerFor]="belowMenu3"
-                style="background: #4579a0 ;margin-left: 5px;width: 100%;">ค้นหาอสังหาริมทรัพย์</button>
-            <mat-menu #belowMenu3="matMenu">
-                <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
-                <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
-                <button mat-menu-item>ค้นหาจากความนิยม</button>
-                <button mat-menu-item>ค้นหาจากแผนที่</button>
-                <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
-            </mat-menu>
-        </div>
+        <button mat-button class="tool" [routerLink]="['/seller/seller/home']"
+            style="background: #4579a0 ; ">หน้าหลัก</button>
 
-        <div class="row col">
-            <button mat-button routerLink="/seller/seller/article" style="background: #4579a0 ;margin-left: 5px; width: 100%;">โฆษณา</button>
-        </div>
-        <div class="row col">
-            <button mat-button routerLink="/seller/seller/selling"
-                style="background: #e55c25; margin-left: 5px; width: 100%;"><i class="material-icons">
-                    add_location
-                </i>ประกาศขายอสังหาริมทรัพย์</button>
-        </div>
+
+        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu1"
+            style="background: #4579a0 ;">ประเภทอสังหาริมทรัพย์</button>
+        <mat-menu #belowMenu1="matMenu">
+            <button mat-menu-item style="width: 400px">บ้านเดี่ยว</button>
+            <button mat-menu-item>ทาวน์เฮ้าส์</button>
+            <button mat-menu-item>อพาร์ทเมนท์</button>
+            <button mat-menu-item>อาคารพาณิชย์</button>
+            <button mat-menu-item>คอนโดมิเนียม</button>
+            <button mat-menu-item>ที่ดิน</button>
+        </mat-menu>
+    
+
+
+        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3"
+            style="background: #4579a0 ;">ค้นหาอสังหาริมทรัพย์</button>
+        <mat-menu #belowMenu3="matMenu">
+            <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
+            <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
+            <button mat-menu-item>ค้นหาจากความนิยม</button>
+            <button mat-menu-item>ค้นหาจากแผนที่</button>
+            <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+        </mat-menu>
+
+
+
+        <button mat-button class="tool" [routerLink]="['/seller/seller/article']"
+            style="background: #4579a0 ;">โฆษณา</button>
+
+        <button mat-button class="tool" routerLink="/seller/seller/selling" style="background: #e55c25;"><i
+                class="material-icons">
+                add_location
+            </i>ประกาศขายอสังหาริมทรัพย์</button>
+
 
     </mat-toolbar-row>
 </mat-toolbar>
@@ -59,7 +59,7 @@
 
 
 <div class="row" style="height: 100%;">
-    <div class="col-2" style="background-color: #1d6a96 ; ">
+    <div class="col-md-2" style="background-color: #1d6a96 ; ">
         <mat-list>
 
             <img *ngIf="pic64 == ''" src="../../assets/pic/sall/sall-avtar.png"
@@ -124,7 +124,7 @@
 
     </div>
     <!-- ss -->
-    <div class="col">
+    <div class="col-md-10">
         <router-outlet></router-outlet>
     </div>
 </div>

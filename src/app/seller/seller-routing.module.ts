@@ -16,6 +16,8 @@ import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
 import { ChatComponent } from '../shared/chat/chat.component';
 import { ArticleComponent } from '../shared/article/article.component';
 import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
+import { HomeComponent } from '../shared/home/home.component';
+import { DetailComponent } from '../shared/detail/detail.component';
 
 
 
@@ -24,6 +26,18 @@ const routes: Routes = [
     path: 'seller',
     component: SellerComponent,
     children: [
+      // ! home page
+      { // หน้าหลัก
+        path: 'home',
+        component: HomeComponent
+      },
+      { // รายละเอียด
+        path: 'detail/:pro_id',
+        component: DetailComponent
+      },
+
+
+      // ! end home
       { // หน้าหลัก
         path: 'sellerhome',
         component: SellerhomeComponent

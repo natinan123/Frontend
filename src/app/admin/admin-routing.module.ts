@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { ManageSaleComponent } from './manage-sale/manage-sale.component';
 import { ProDetailComponent } from './manage-sale/pro-detail/pro-detail.component';
 import { ManageMemberComponent } from './manage-member/manage-member.component';
@@ -11,12 +10,15 @@ import { ManageMainpageComponent } from './manage-mainpage/manage-mainpage.compo
 import { RecommendComponent } from './manage-mainpage/recommend/recommend.component';
 import { ManageLocationComponent } from './manage-location/manage-location.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SearchMapComponent } from './search/search-map/search-map.component';
 import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { TastComponent } from './tast/tast.component';
 import { ChatComponent } from '../shared/chat/chat.component';
 import { ArticleComponent } from '../shared/article/article.component';
 import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
+import { HomeComponent } from '../shared/home/home.component';
+import { DetailComponent } from '../shared/detail/detail.component';
+import { ListAdsComponent } from './list-ads/list-ads.component';
+import { EditAdsComponent } from './edit-ads/edit-ads.component';
 
 
 const routes: Routes = [
@@ -24,20 +26,29 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      {
-        path: 'adminhome', //  ? ยังไม่ใช้
-        component: AdminhomeComponent
+      // ! toolbar
+      { // หน้าหลัก
+        path: 'home',
+        component: HomeComponent
       },
+      { // รายละเอียด
+        path: 'detail/:pro_id',
+        component: DetailComponent
+      },
+
+      // ! END toolbar
+
+
       {
-        path: 'managesale',    // รายการอสังหา
+        path: 'managesale',               // รายการอสังหา
         component: ManageSaleComponent,
       },
       {
-        path: 'prodetail/:pro_id',  //รายละเอียดอสังหา
+        path: 'prodetail/:pro_id',        //รายละเอียดอสังหา
         component: ProDetailComponent
       },
       {
-        path: 'managemember',       // รายการสมาชิก
+        path: 'managemember',             // รายการสมาชิก
         component: ManageMemberComponent
       },
       {
@@ -45,11 +56,19 @@ const routes: Routes = [
         component: MemberDetailComponent
       },
       {
-        path: 'writerads',        // เขียนโฆษณา
+        path: 'writerads',                // เขียนโฆษณา
         component: WriteAdsComponent
       },
+      {                                   // รายการโฆษณา
+        path: 'listArticle',
+        component: ListAdsComponent
+      },
+      {                                   // แก้ไข-รายการโฆษณา
+        path: 'editArticle/:article_id',
+        component: EditAdsComponent
+      },
       {
-        path: 'managemainpage',       //รายการแนะนำ
+        path: 'managemainpage',           //รายการแนะนำ
         component: ManageMainpageComponent
       },
       {
@@ -57,35 +76,34 @@ const routes: Routes = [
         component: RecommendComponent
       },
       {
-        path: 'managelocation',     //จัดการทำเล
+        path: 'managelocation',           //จัดการทำเล
         component: ManageLocationComponent
       },
       {
-        path: 'profile',
+        path: 'profile',                    // ! ยังไม่ใช้
         component: ProfileComponent
       },
       {
-        path: 'searchmap',            //  ? ค้นหาจากแผนที่
-        component: SearchMapComponent
-      },
-      {
-        path: 'upgrade',            // อัพเกรดระดับ sell
+        path: 'upgrade',                     // อัพเกรดระดับ sell
         component: UpgradMemberComponent
       },
-      { // test chat-shared 
+
+      // ! page shared
+      {                                       // chat-shared 
         path: 'chat',
         component: ChatComponent
       },
-      { // โฆษณา
+      {                                       // โฆษณา
         path: 'article',
         component: ArticleComponent
       },
-      { // โฆษณา
+      {                                       // รายละเอียดโฆษณา
         path: 'artdetail/:article_id',
         component: ArtDetailComponent
       },
+
       {
-        path: 'test',            //!  ไว้สำหรับบลอง
+        path: 'test',                         //!  ไว้สำหรับบลอง
         component: TastComponent
       },
     ]

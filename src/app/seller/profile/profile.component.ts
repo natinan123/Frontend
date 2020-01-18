@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
         this.facebook = res[0].facebook;
         this.pro_limit = res[0].pro_limit;
         this.cus_detail = res[0].cus_detail;
-
+        // this.profile_pic = res[0].profile_pic;
       }
     )
 

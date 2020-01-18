@@ -11,7 +11,6 @@ import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng
 import { CarouselModule } from 'ngx-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
-import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { ManageLocationComponent } from './manage-location/manage-location.component';
 import { ManageMainpageComponent } from './manage-mainpage/manage-mainpage.component';
 import { RecommendComponent } from './manage-mainpage/recommend/recommend.component';
@@ -20,22 +19,19 @@ import { MemberDetailComponent } from './manage-member/member-detail/member-deta
 import { ManageSaleComponent } from './manage-sale/manage-sale.component';
 import { ProDetailComponent } from './manage-sale/pro-detail/pro-detail.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SearchComponent } from './search/search.component';
-import { SearchMapComponent } from './search/search-map/search-map.component';
 import { TastComponent } from './tast/tast.component';
 import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { WriteAdsComponent } from './write-ads/write-ads.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ChatComponent } from '../shared/chat/chat.component';
-import { ArticleComponent } from '../shared/article/article.component';
-import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
+import { SharedModule } from '../shared/shared.module';
+import { ListAdsComponent } from './list-ads/list-ads.component';
+import { EditAdsComponent } from './edit-ads/edit-ads.component';
 
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    AdminhomeComponent,
     ManageLocationComponent,
     ManageMainpageComponent,
     RecommendComponent,
@@ -44,14 +40,11 @@ import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.comp
     ManageSaleComponent,
     ProDetailComponent,
     ProfileComponent,
-    SearchComponent,
-    SearchMapComponent,
     TastComponent,
     UpgradMemberComponent,
     WriteAdsComponent,
-    ChatComponent,
-    ArticleComponent,
-    ArtDetailComponent,
+    ListAdsComponent,
+    EditAdsComponent,
     ],
   imports: [
     CommonModule,
@@ -68,7 +61,7 @@ import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.comp
       apiKey: API.GOOGLE_API_KEY,
       libraries: ['places', 'geometry', 'drawing']
     }),//google api
-
+    SharedModule,
   ]
 })
 export class AdminModule { }

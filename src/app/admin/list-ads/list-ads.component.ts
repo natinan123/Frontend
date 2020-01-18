@@ -4,14 +4,13 @@ import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
 
-
-
 @Component({
-  selector: 'app-article',
-  templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss']
+  selector: 'app-list-ads',
+  templateUrl: './list-ads.component.html',
+  styleUrls: ['./list-ads.component.scss']
 })
-export class ArticleComponent implements OnInit {
+export class ListAdsComponent implements OnInit {
+
   articles: Object;
   user: any;
   status: any;
@@ -21,7 +20,6 @@ export class ArticleComponent implements OnInit {
     private dialog: MatDialog,
     private modalService: NgbModal,
     private session: SessionService,
-
   ) { }
 
   ngOnInit() {

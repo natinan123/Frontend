@@ -43,11 +43,11 @@
                             <div class="received_withd_msg" *ngIf="row.source != My">
                                 <span class="name"> {{row.fname}} {{row.lname}}</span>
                                 <p>{{row.mes_text}}</p>
-                                <span class="time_date"> {{row.time_stamp | date : 'short'}}</span>
+                                <span class="time_date"> {{row.time_stamp | date : 'short' }}</span>
                             </div>
                             <div class="sent_msg" *ngIf="row.source == My">
                                 <p>{{row.mes_text}}</p>
-                                <span class="time_date2"> {{row.time_stamp | date : 'short'}}</span>
+                                <span class="time_date2"> {{row.time_stamp | date : 'short' }}</span>
                             </div>
 
                         </div>
@@ -55,8 +55,9 @@
                 </div>
                 <div class="type_msg">
                     <div class="input_msg_write">
-                        <input type="text" class="write_msg" maxlength="70" placeholder="พิมพ์ข้อความ" [formControl]="taxtChat" required/>
- 
+                        <input type="text" class="write_msg" maxlength="70" placeholder="พิมพ์ข้อความ"
+                            [formControl]="taxtChat" required />
+
                         <button class="msg_send_btn" type="button" (click)="postTaxtChat()"><i
                                 class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                     </div>

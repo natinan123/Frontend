@@ -1,0 +1,31 @@
+.image {
+  width: 800px;
+  height: auto;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.button-edit {
+  margin-top: 35px;
+  margin-left: 25px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 70%;
+}
+
+.example-container > * {
+  width: 70%;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.form {
+  color: #126f80;
+}

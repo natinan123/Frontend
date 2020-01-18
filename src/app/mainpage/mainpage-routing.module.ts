@@ -49,58 +49,6 @@ const routes: Routes = [
         component: ArtDetailComponent
       },
 
-      // todo ! ยังไม่ได้สร้าง พวก เช่า- ขาย
-      // // todo : ขาย
-      // { // ขาย บ้าน
-      //   path: 'sellhouse',
-      //   component: HouseComponent
-      // },
-      // { // ขาย ทาวน์เฮ้าส์
-      //   path: 'selltownhouse',
-      //   component: TownhouseComponent
-      // },
-      // { // ขาย อพาร์ทเม้น
-      //   path: 'sellapartment',
-      //   component: ApartmentComponent
-      // },
-      // { // ขาย เชิงพาณิชย์
-      //   path: 'sellcommercial',
-      //   component: CommercialComponent
-      // },
-      // { // ขาย คอนโดมิเนียม
-      //   path: 'sellcondominium',
-      //   component: CondominiumComponent
-      // },
-      // { // ขาย ที่ดิน
-      //   path: 'sellland',
-      //   component: LandComponent
-      // },
-
-      // // todo : เช่า
-      // { // เช่า บ้าน
-      //   path: 'renthouse',
-      //   component: RenthouseComponent
-      // },
-      // { // เช่า ทาวน์เฮ้าส์
-      //   path: 'renttownhouse',
-      //   component: RenttownhouseComponent
-      // },
-      // { // เช่า อพาร์ทเม้น
-      //   path: 'rentapartment',
-      //   component: RentapartmentComponent
-      // },
-      // { // เช่า เชิงพาณิชย์
-      //   path: 'rentcommercial',
-      //   component: RentcommercialComponent
-      // },
-      // { // เช่า คอนโดมิเนียม
-      //   path: 'rentcondominium',
-      //   component: RentcondominiumComponent
-      // },
-      // { // เช่า ที่ดิน
-      //   path: 'rentland',
-      //   component: RentlandComponent
-      // },
     ]
   },
   {

@@ -45,7 +45,7 @@ export class MapComponent implements OnInit {
         console.log(this.markers);
       
       })
-    // this.onGetHouse();
+    // this.onGetHouse();   
 
   }
 
