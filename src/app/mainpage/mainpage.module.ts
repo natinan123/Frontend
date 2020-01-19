@@ -19,6 +19,8 @@ import { MapComponent } from './search/map/map.component';
 import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
       apiKey: API.GOOGLE_API_KEY,
       libraries: ['places', 'geometry', 'drawing']
     }),//google api
+    Ng2SearchPipeModule,
+    SharedModule,
+    
   ]
 })
 export class MainpageModule { }

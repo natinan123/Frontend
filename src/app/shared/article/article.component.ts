@@ -15,6 +15,7 @@ export class ArticleComponent implements OnInit {
   articles: Object;
   user: any;
   status: any;
+  searchText;
 
   constructor(
     private service: ServerService,

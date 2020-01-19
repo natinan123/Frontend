@@ -26,6 +26,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { SharedModule } from '../shared/shared.module';
 import { ListAdsComponent } from './list-ads/list-ads.component';
 import { EditAdsComponent } from './edit-ads/edit-ads.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -62,6 +63,9 @@ import { EditAdsComponent } from './edit-ads/edit-ads.component';
       libraries: ['places', 'geometry', 'drawing']
     }),//google api
     SharedModule,
+    Ng2SearchPipeModule,
+
+    
   ]
 })
 export class AdminModule { }

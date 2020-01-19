@@ -12,6 +12,7 @@ export class SellCloseComponent implements OnInit {
   user: any;
   prodclose: any;
   pro_pic: Object;
+  searchText;
 
   constructor(
     private service: ServerService,

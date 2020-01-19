@@ -34,6 +34,7 @@ export class ManageMemberComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  
   getTableMember() {
     this.service.getMember().subscribe(
       (res) => {

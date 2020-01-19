@@ -2,6 +2,10 @@
     <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> รายการร้องขออัพเกรด</h1>
 </div>
 
+<div class="search-hero">
+    <input class="form-control" placeholder="ค้นหารายการ" name="search" [(ngModel)]="searchText">
+</div>
+
 <form>
     <table class="table table-bordered">
         <thead>
@@ -15,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let row of lists">
+            <tr *ngFor="let row of lists | filter:searchText">
 
                 <td> {{row.fname}} {{row.lname}}</td>
                 <td>{{row.limit_id}}</td>

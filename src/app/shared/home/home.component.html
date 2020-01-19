@@ -2,14 +2,18 @@
     <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 50px; "> หน้าหลัก</h1>
 </div>
 
+<div class="search-hero">
+    <input class="form-control" placeholder="ค้นหารายการ" name="search" [(ngModel)]="searchText">
+</div>
+
 <!-- ! admin -->
-<div class="admin" *ngIf="status === 'admin'">
+<div class="admin" *ngIf="status == 'admin'">
 
     <!-- รายการแนะนำ -->
     <mat-card style=" margin-top: 10px;  background-color: #BBD9EE">
         <mat-toolbar style="background-color: #4579a0;color: snow">รายการแนะนำ</mat-toolbar>
         <div class="row">
-            <mat-card class="product-card" *ngFor="let r of recoms">
+            <mat-card class="product-card" *ngFor="let r of recoms | filter:searchText">
 
                 <div class="image">
                     <img style="cursor: pointer;" [routerLink]="['/admin/admin/detail' ,r.pro_id]" mat-card-image
@@ -65,7 +69,7 @@
     <mat-card style="width: 1200px; margin-left: auto; margin-right: auto; top: 20px; background-color: #BBD9EE">
         <mat-toolbar style="background-color: #4579a0;color: snow">รายการยอดนิยม</mat-toolbar>
         <div class="row">
-            <mat-card class="product-card" *ngFor="let pop of poppular ">
+            <mat-card class="product-card" *ngFor="let pop of poppular | filter:searchText">
 
                 <div class="image">
                     <img style="cursor: pointer;" [routerLink]="['/admin/admin/detail' ,pop.pro_id]" mat-card-image
@@ -123,13 +127,13 @@
 
 
 <!--! sell -->
-<div class="seller" *ngIf="status === 'seller'">
+<div class="seller" *ngIf="status == 'seller'">
 
     <!-- รายการแนะนำ -->
     <mat-card style=" margin-top: 10px; background-color: #BBD9EE">
         <mat-toolbar style="background-color: #4579a0;color: snow">รายการแนะนำ</mat-toolbar>
         <div class="row">
-            <mat-card class="product-card" *ngFor="let r of recoms">
+            <mat-card class="product-card" *ngFor="let r of recoms | filter:searchText">
 
                 <div class="image">
                     <img style="cursor: pointer;" [routerLink]="['/seller/seller/detail' ,r.pro_id]" mat-card-image
@@ -184,7 +188,7 @@
     <mat-card style="width: 1200px; margin-left: auto; margin-right: auto; top: 20px; background-color: #BBD9EE">
         <mat-toolbar style="background-color: #4579a0;color: snow">รายการยอดนิยม</mat-toolbar>
         <div class="row">
-            <mat-card class="product-card" *ngFor="let pop of poppular ">
+            <mat-card class="product-card" *ngFor="let pop of poppular | filter:searchText">
 
                 <div class="image">
                     <img style="cursor: pointer;" [routerLink]="['/seller/seller/detail' ,pop.pro_id]" mat-card-image
@@ -242,13 +246,13 @@
 
 
 <!-- ! buyer -->
-<div class="buyer" *ngIf="status === 'buyer'">
+<div class="buyer" *ngIf="status == 'buyer'">
 
     <!-- รายการแนะนำ -->
     <mat-card style=" margin-top: 10px; background-color: #BBD9EE">
         <mat-toolbar style="background-color: #4579a0;color: snow">รายการแนะนำ</mat-toolbar>
         <div class="row">
-            <mat-card class="product-card" *ngFor="let r of recoms">
+            <mat-card class="product-card" *ngFor="let r of recoms | filter:searchText">
 
                 <div class="image">
                     <img style="cursor: pointer;" [routerLink]="['/buyer/buyer/detail' ,r.pro_id]" mat-card-image
@@ -304,7 +308,7 @@
     <mat-card style="width: 1200px; margin-left: auto; margin-right: auto; top: 20px; background-color: #BBD9EE">
         <mat-toolbar style="background-color: #4579a0;color: snow">รายการยอดนิยม</mat-toolbar>
         <div class="row">
-            <mat-card class="product-card" *ngFor="let pop of poppular ">
+            <mat-card class="product-card" *ngFor="let pop of poppular | filter:searchText">
 
                 <div class="image">
                     <img style="cursor: pointer;" [routerLink]="['/buyer/buyer/detail' ,pop.pro_id]" mat-card-image

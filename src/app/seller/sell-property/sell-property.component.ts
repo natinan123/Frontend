@@ -11,7 +11,7 @@ export class SellPropertyComponent implements OnInit {
 
   mypro: Object;
   user: any;
-  pro_pic: Object;
+  searchText;
 
   constructor(
     private service: ServerService,

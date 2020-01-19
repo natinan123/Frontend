@@ -92,7 +92,7 @@ export class MainpageComponent implements OnInit {
         this.route.navigate(['/admin/admin/home'])
       }
       if (this.user[0].cus_status === "seller" && this.user[0].cus_status != null && this.user[0].cus_status !== "") {
-        this.route.navigate(['/seller/seller/sellerhome'])
+        this.route.navigate(['/seller/seller/selle-property'])
       }
       if (this.user[0].cus_status === "buyer" && this.user[0].cus_status != null && this.user[0].cus_status !== "") {
         this.route.navigate(['/buyer/buyer/buyerhome'])

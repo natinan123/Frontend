@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   products_pic: Object;
   user: any;
   status: any;
+  searchText;
 
 
   constructor(

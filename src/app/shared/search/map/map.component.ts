@@ -4,6 +4,7 @@ import { ServerService } from 'src/app/@service/server.service';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SessionService } from 'src/app/@service/session.service';
 
 @Component({
   selector: 'app-map',
@@ -11,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+
 
   lat2: number;
   lng2: number;
@@ -21,9 +23,11 @@ export class MapComponent implements OnInit {
   pro_type: string = '';
   type_id = new FormControl('');
   markers: Object;
-
+  buyer: any = "admin"
 
   markers_pic: Object;
+  user: any;
+  status: any;
 
   constructor(
     private service: ServerService,
@@ -31,16 +35,18 @@ export class MapComponent implements OnInit {
     private modalService: NgbModal,
     private modal: NgbModal,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+    private session: SessionService,
 
+  ) { }
   ngOnInit() {
+    this.user = this.session.getActiveUser();
+    this.status = this.user[0].cus_status;
     this.getUserLocation();
 
     this.getMappro();
     this.getUserLocation();
     // this.onGetHouse();   
-
   }
 
   // ที่อยู่ผู้ใช้

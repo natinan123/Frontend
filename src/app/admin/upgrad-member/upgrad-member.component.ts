@@ -22,6 +22,7 @@ export class UpgradMemberComponent implements OnInit {
   email_id: any;
   requp: any;
   cou: any;
+  searchText;
 
 
 

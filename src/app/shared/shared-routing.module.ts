@@ -5,6 +5,7 @@ import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
+import { MapComponent } from './search/map/map.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
       { // โฆษณา
         path: 'artdetail/:article_id',
         component: ArtDetailComponent
+      },
+      { // แผนที่
+        path: 'map',
+        component: MapComponent
       },
     ]
   }

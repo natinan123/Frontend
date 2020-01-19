@@ -12,6 +12,7 @@ export class SellDraftComponent implements OnInit {
   user: any;
   prodraft: Object;
   pro_pic: Object;
+  searchText;
 
   constructor(
     private service: ServerService,

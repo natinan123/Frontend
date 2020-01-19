@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SellerComponent } from './seller.component';
-import { SellerhomeComponent } from './sellerhome/sellerhome.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SellPropertyComponent } from './sell-property/sell-property.component';
 import { SellingComponent } from './selling/selling.component';
@@ -18,6 +17,7 @@ import { ArticleComponent } from '../shared/article/article.component';
 import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
 import { HomeComponent } from '../shared/home/home.component';
 import { DetailComponent } from '../shared/detail/detail.component';
+import { MapComponent } from '../shared/search/map/map.component';
 
 
 
@@ -35,13 +35,13 @@ const routes: Routes = [
         path: 'detail/:pro_id',
         component: DetailComponent
       },
-
+      { // แผนที่
+        path: 'map',
+        component: MapComponent
+      },
 
       // ! end home
-      { // หน้าหลัก
-        path: 'sellerhome',
-        component: SellerhomeComponent
-      },
+     
       { // ข้อมูลส่วนตัว
         path: 'profile',
         component: ProfileComponent

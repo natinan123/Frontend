@@ -11,6 +11,7 @@ import { ArticleComponent } from '../shared/article/article.component';
 import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.component';
 import { HomeComponent } from '../shared/home/home.component';
 import { DetailComponent } from '../shared/detail/detail.component';
+import { MapComponent } from '../shared/search/map/map.component';
 
 
 const routes: Routes = [
@@ -18,18 +19,21 @@ const routes: Routes = [
     path: 'buyer',
     component: BuyerComponent,
     children: [
-        // ! home page
-        { // หน้าหลัก
-          path: 'home',
-          component: HomeComponent
-        },
-        { // รายละเอียด
-          path: 'detail/:pro_id',
-          component: DetailComponent
-        },
-  
-  
-        // ! end home
+      // ! home page
+      { // หน้าหลัก
+        path: 'home',
+        component: HomeComponent
+      },
+      { // รายละเอียด
+        path: 'detail/:pro_id',
+        component: DetailComponent
+      },
+      { // แผนที่
+        path: 'map',
+        component: MapComponent
+      },
+
+      // ! end home
       { // หน้าหลัก
         path: 'buyerhome',
         component: BuyerhomeComponent

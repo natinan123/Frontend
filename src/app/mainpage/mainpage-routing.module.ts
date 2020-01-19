@@ -10,6 +10,7 @@ import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
 
 
+
 const routes: Routes = [
   {
     path: 'mainpage',
@@ -48,7 +49,10 @@ const routes: Routes = [
         path: 'artdetail/:article_id',
         component: ArtDetailComponent
       },
-
+      { // หน้าหลัก
+        path: 'home',
+        component: HomeComponent
+      },
     ]
   },
   {

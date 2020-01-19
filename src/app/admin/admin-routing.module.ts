@@ -19,6 +19,7 @@ import { HomeComponent } from '../shared/home/home.component';
 import { DetailComponent } from '../shared/detail/detail.component';
 import { ListAdsComponent } from './list-ads/list-ads.component';
 import { EditAdsComponent } from './edit-ads/edit-ads.component';
+import { MapComponent } from '../shared/search/map/map.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
       { // รายละเอียด
         path: 'detail/:pro_id',
         component: DetailComponent
+      },
+      { // แผนที่
+        path: 'map',
+        component: MapComponent
       },
 
       // ! END toolbar

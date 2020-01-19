@@ -19,13 +19,13 @@ import { EditPropertyComponent } from './sell-edit/edit-property/edit-property.c
 import { SellProductComponent } from './sell-product/sell-product.component';
 import { SellPropertyComponent } from './sell-property/sell-property.component';
 import { SellUpgradeComponent } from './sell-upgrade/sell-upgrade.component';
-import { SellerhomeComponent } from './sellerhome/sellerhome.component';
 import { SellingComponent } from './selling/selling.component';
 import { TestingComponent } from './testing/testing.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SharedModule } from '../shared/shared.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { SharedModule } from '../shared/shared.module';
     SellProductComponent,
     SellPropertyComponent,
     SellUpgradeComponent,
-    SellerhomeComponent,
     SellingComponent,
     TestingComponent,
     TestPostProComponent,
@@ -60,6 +59,7 @@ import { SharedModule } from '../shared/shared.module';
     }),//google api
     Ng5SliderModule,
     SharedModule,
+    Ng2SearchPipeModule,
 
   ]
 })

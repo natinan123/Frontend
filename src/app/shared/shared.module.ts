@@ -17,6 +17,8 @@ import { API } from '../map-api';
 import { Ng5SliderModule } from 'ng5-slider';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MapComponent } from './search/map/map.component';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { DetailComponent } from './detail/detail.component';
     ArtDetailComponent,
     HomeComponent,
     DetailComponent,
+    MapComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,8 @@ import { DetailComponent } from './detail/detail.component';
       libraries: ['places', 'geometry', 'drawing']
     }),//google api
     Ng5SliderModule,
+    Ng2SearchPipeModule,
+
   ]
 })
 export class SharedModule { }

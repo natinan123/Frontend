@@ -19,6 +19,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BuyTestComponent } from './buy-test/buy-test.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SharedModule } from '../shared/shared.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { SharedModule } from '../shared/shared.module';
     }),//google api
     Ng5SliderModule,
     SharedModule,
+    Ng2SearchPipeModule,
   
   ]
 })

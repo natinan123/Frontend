@@ -12,6 +12,7 @@ export class SellEditComponent implements OnInit {
   user: any;
   proedit: Object;
   pro_pic: Object;
+  searchText;
 
   constructor(
     private service: ServerService,

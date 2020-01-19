@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServerService } from 'src/app/@service/server.service';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +14,7 @@ export class ListAdsComponent implements OnInit {
   articles: Object;
   user: any;
   status: any;
-
+  searchText;
   constructor(
     private service: ServerService,
     private dialog: MatDialog,
@@ -37,8 +37,11 @@ export class ListAdsComponent implements OnInit {
         console.log(res);
 
         this.articles = res;
-
       })
   }
+
+
+
+
 
 }

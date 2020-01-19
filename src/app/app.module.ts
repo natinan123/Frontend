@@ -16,6 +16,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { API } from './map-api';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng5SliderModule } from 'ng5-slider';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     }),//google api
     FileUploadModule,
     Ng5SliderModule,
-    
+    Ng2SearchPipeModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -50,11 +52,3 @@ import { Ng5SliderModule } from 'ng5-slider';
 export class AppModule { }
 
 
- //  อาจจะไม่ใช้
-//  "@angular/platform-server": "^8.0.0",
-//  "angular-alert-module": "^2.0.3",
-//  "angular-authentication-service": "^1.1.8",
-//  "angular-font-awesome": "^3.1.2",
-//  "angular-image-slider": "0.0.8",
-//  "font-awesome": "^4.7.0",
-//  "ngx-papaparse": "^3.0.2",
