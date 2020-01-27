@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
       (res) => {
         console.log(res);
         this.products = res;
-        console.log(this.products);
   
       })
   }

@@ -11,11 +11,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LocationComponent implements OnInit {
 
-  displayedColumns: string[] = ['a', 'b', 'c', 'd', 'e'];
-  dataSource: MatTableDataSource<[any]>;
-
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
 
 
@@ -25,21 +20,12 @@ export class LocationComponent implements OnInit {
 
   })
 
-  province: Object;
   zones: Object;
   Loc_zones: any;
   loc_zone: any;
   selectedValue: any;
   provins: Object;
-
-
-  //How do I filter based on selected value? 
-  search(selectedValue: string, selectedValueEle: string) {
-    selectedValue = selectedValue.trim(); // Remove whitespace
-    selectedValue = selectedValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = selectedValue || selectedValueEle;
-
-  }
+  products: Object;
 
 
   constructor(
@@ -62,42 +48,32 @@ export class LocationComponent implements OnInit {
   getZonePro() {
     this.service.getZone().subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.zones = res;
       }
     )
   }
   // จังหวัด
-  onLocation() {
-    this.loc_zone = this.selectedValue
+  onLocation(selectedValue) {
+    this.loc_zone = selectedValue
     console.log(this.loc_zone)
     this.service.getProvince(this.loc_zone).subscribe(
       (res) => {
-        console.log(res);
-
+        // console.log(res);
         this.provins = res;
-
       })
-
-  }
-
-  // ตัวกรอง
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 
   getTablepro() {
     this.service.getProperty().subscribe(
       (res) => {
-        this.dataSource = new MatTableDataSource(res as any[]);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+        // console.log(res);
+        this.products = res;
+
       }
     )
   }
+
 
 
 }

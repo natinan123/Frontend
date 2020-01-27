@@ -29,7 +29,7 @@
             <button mat-menu-item>คอนโดมิเนียม</button>
             <button mat-menu-item>ที่ดิน</button>
         </mat-menu>
-    
+
 
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3"
@@ -38,7 +38,8 @@
             <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
             <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
             <button mat-menu-item>ค้นหาจากความนิยม</button>
-            <button mat-menu-item [routerLink]="['/seller/seller/map']" routerLinkActive="router-link-active" >ค้นหาจากแผนที่</button>
+            <button mat-menu-item [routerLink]="['/seller/seller/map']"
+                routerLinkActive="router-link-active">ค้นหาจากแผนที่</button>
             <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
         </mat-menu>
 
@@ -71,57 +72,63 @@
                 <button mat-button routerLink="/seller/seller/profile" class="memu-left">{{user[0].fname}} &nbsp;
                     {{user[0].lname}}</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
+
             <mat-list-item>
-                <button mat-button routerLink="/seller/seller/selle-property"
+                <button mat-button routerLink="/seller/seller/selle-property" routerLinkActive="router-link-active"
                     class="memu-left">อสังหาริมทรัพย์ที่ประกาศ</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
+
             <mat-list-item>
                 <button mat-button routerLink="/seller/seller/draft" class="memu-left">อสังหาริมทรัพย์ที่ร่าง</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
+
             <mat-list-item>
                 <button mat-button routerLink="/seller/seller/edit" class="memu-left">อสังหาริมทรัพย์ที่รอแก้ไข</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
+
             <mat-list-item>
                 <button mat-button routerLink="/seller/seller/CloseProperty"
                     class="memu-left">อสังหาริมทรัพย์ที่ปิดประกาศ</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
+
             <mat-list-item>
                 <button mat-button routerLink="/seller/seller/chat" class="memu-left">ติดต่อสนทนา</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
+
             <mat-list-item>
                 <button mat-button routerLink="/seller/seller/upgrade" class="upgrade"><i class="material-icons">
                         star
                     </i> Upgrade</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
+
             <mat-list-item>
                 <button mat-button routerLink="/seller/seller/test" class="memu-left"><i class="fa fa-cogs"
                         aria-hidden="true"></i> ไว้ทดสอบ</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
+
             <mat-list-item>
                 <button mat-button routerLink="/seller/seller/testPost" class="memu-left"><i class="fa fa-cogs"
                         aria-hidden="true"></i> ประกาศขาย</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
+
             <mat-list-item>
                 <button mat-button class="memu-left"> ทดสอบ 2</button>
             </mat-list-item>
-            <mat-divider></mat-divider>
 
-            <mat-button-toggle-group>
-                <mat-button-toggle mat-button routerLink="/seller/seller/profile">Bold</mat-button-toggle>
-                <mat-button-toggle mat-button>Italic</mat-button-toggle>
-                <mat-button-toggle mat-button>Underline</mat-button-toggle>
-            </mat-button-toggle-group>
+
+
         </mat-list>
 
+        <!-- <mat-list role="list">
+            <mat-list-item role="listitem" [routerLink]="['/seller/seller/selle-property']" routerLinkActive="active">
+                Item 1</mat-list-item>
+            <mat-list-item role="listitem" [routerLink]="['/seller/seller/draft']" routerLinkActive="active">Item 2
+            </mat-list-item>
+            <mat-list-item role="listitem" [routerLink]="['/seller/seller/edit']" routerLinkActive="active">Item 3
+            </mat-list-item>
+        </mat-list> -->
+
+       
     </div>
     <!-- ss -->
     <div class="col-md-10">

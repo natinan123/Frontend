@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { google } from '@agm/core/services/google-maps-types';
 
 @Component({
   selector: 'app-testing',
@@ -11,11 +12,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./testing.component.scss']
 })
 export class TestingComponent implements OnInit {
-  mypro: Object;
-  pro_pic: Object;
-  pro_id: Object;
-  test: Object;
-
 
 
   constructor(
@@ -28,27 +24,9 @@ export class TestingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    // this.getPro();
-
-
     
   }
 
-  // getPro() {
-  //   this.service.getTestPro().subscribe(
-  //     (res) => {
-  //       // console.log(res);
-  //       this.mypro = res;
-  //       console.log(this.mypro);
-      
-
-  //     }
-  //   )
-  // }
-
-
-  currentRate: any;
-
+  
 
 }
