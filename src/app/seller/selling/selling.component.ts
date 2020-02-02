@@ -21,6 +21,7 @@ export class SellingComponent implements OnInit {
     Type_pro: new FormControl(''),
     Type_sell: new FormControl(''),
     Zone: new FormControl(''),
+    Province_id: new FormControl(''),
     Location_id: new FormControl(''),
     Type_user: new FormControl(''),
 
@@ -53,6 +54,16 @@ export class SellingComponent implements OnInit {
     Check8: new FormControl(''),
     Check9: new FormControl(''),
     Check10: new FormControl(''),
+    Check11: new FormControl(''),
+    Check12: new FormControl(''),
+    Check13: new FormControl(''),
+    Check14: new FormControl(''),
+    Check15: new FormControl(''),
+    Check16: new FormControl(''),
+    Check17: new FormControl(''),
+    Check18: new FormControl(''),
+    Check19: new FormControl(''),
+    Check20: new FormControl(''),
   })
 
   public MapFormGroup = new FormGroup({
@@ -64,10 +75,8 @@ export class SellingComponent implements OnInit {
 
   zones: Object;
   provins: Object;
-
+  Province_id: any;
   Location_id: any;
-  selectedValue: any;
-  loc_zone: any;
   types: Object;
   lat2: number;
   lng2: number;
@@ -92,10 +101,22 @@ export class SellingComponent implements OnInit {
   Check8: any = false;
   Check9: any = false;
   Check10: any = false;
+  Check11: any = false;
+  Check12: any = false;
+  Check13: any = false;
+  Check14: any = false;
+  Check15: any = false;
+  Check16: any = false;
+  Check17: any = false;
+  Check18: any = false;
+  Check19: any = false;
+  Check20: any = false;
   user: any;
   Location: any;
   pro_limit: any;
   count_pro: any;
+  district: Object;
+  location_id: any;
 
 
 
@@ -115,6 +136,7 @@ export class SellingComponent implements OnInit {
       Type_pro: ['', Validators.required],
       Type_sell: ['', Validators.required],
       Zone: ['', Validators.required],
+      Province_id: ['', Validators.required],
       Location_id: ['', Validators.required],
       // Type_user: ['', Validators.required]
     });
@@ -123,7 +145,7 @@ export class SellingComponent implements OnInit {
       Pro_detail: ['', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
-    
+
     });
     this.fourthFormGroup = this._formBuilder.group({
       Area: ['', Validators.required],
@@ -142,7 +164,16 @@ export class SellingComponent implements OnInit {
       Check8: [''],
       Check9: [''],
       Check10: [''],
-
+      Check11: [''],
+      Check12: [''],
+      Check13: [''],
+      Check14: [''],
+      Check15: [''],
+      Check16: [''],
+      Check17: [''],
+      Check18: [''],
+      Check19: [''],
+      Check20: [''],
     });
 
     this.user = this.session.getActiveUser();
@@ -150,11 +181,9 @@ export class SellingComponent implements OnInit {
 
 
     this.getCountPro();
-    this.getProfile();
     this.getUserLocation();
     this.getZonePro();
     this.getType();
-    this.onLocation();
   }
 
   // จำนวนอสังหา
@@ -167,15 +196,7 @@ export class SellingComponent implements OnInit {
       }
     )
   }
-  // โปรไฟล์
-  getProfile() {
-    this.service.getProfile(this.user[0].email_id).subscribe(
-      (res) => {
-        console.log(res);
-        this.pro_limit = res[0].pro_limit;
-      }
-    )
-  }
+
   // ประเภทอสังหา
   getType() {
     this.service.getType().subscribe(
@@ -195,17 +216,21 @@ export class SellingComponent implements OnInit {
     )
   }
   // จังหวัด
-  onLocation() {
-    this.loc_zone = this.selectedValue
-    console.log(this.loc_zone)
-    this.service.getProvince(this.loc_zone).subscribe(
+  onProvince(zone_id) {
+    this.service.getProvince(zone_id).subscribe(
       (res) => {
         console.log(res);
-
         this.provins = res;
-
       })
-
+  }
+  // เขต
+  onLocation(province_id) {
+    console.log(province_id);
+    this.service.getLocOfPro(province_id).subscribe(
+      (res) => {
+        console.log(res);
+        this.district = res;
+      })
   }
 
   // กดตกลง ใน map
@@ -282,8 +307,7 @@ export class SellingComponent implements OnInit {
     const data = {
       type_id: this.Type_pro,
       pro_sell: this.Type_sell,
-      location_id: this.Location_id,
-      // d: this.Type_user,
+      location_id: this.location_id,
       pro_head: this.Pro_head,
       pro_detail: this.Pro_detail,
       pro_area: this.Area,
@@ -323,6 +347,16 @@ export class SellingComponent implements OnInit {
       style8: this.Check8,
       style9: this.Check9,
       style10: this.Check10,
+      style11: this.Check11,
+      style12: this.Check12,
+      style13: this.Check13,
+      style14: this.Check14,
+      style15: this.Check15,
+      style16: this.Check16,
+      style17: this.Check17,
+      style18: this.Check18,
+      style19: this.Check19,
+      style20: this.Check20,
     }
     console.log(data)
     this.service.postProStyle(data).subscribe(
@@ -361,8 +395,7 @@ export class SellingComponent implements OnInit {
     const data = {
       type_id: this.Type_pro,
       pro_sell: this.Type_sell,
-      location_id: this.Location_id,
-      // d: this.Type_user,
+      location_id: this.location_id,
       pro_head: this.Pro_head,
       pro_detail: this.Pro_detail,
       pro_area: this.Area,
@@ -400,6 +433,16 @@ export class SellingComponent implements OnInit {
       style8: this.Check8,
       style9: this.Check9,
       style10: this.Check10,
+      style11: this.Check11,
+      style12: this.Check12,
+      style13: this.Check13,
+      style14: this.Check14,
+      style15: this.Check15,
+      style16: this.Check16,
+      style17: this.Check17,
+      style18: this.Check18,
+      style19: this.Check19,
+      style20: this.Check20,
     }
     console.log(data)
     this.service.postDraftStyle(data).subscribe(
@@ -438,7 +481,7 @@ export class SellingComponent implements OnInit {
 
   // onClickCheck() {
   //   console.log(this.thirdFormGroup.value)
-   
+
 
   //   const data = {
   //     style1: this.Check1,

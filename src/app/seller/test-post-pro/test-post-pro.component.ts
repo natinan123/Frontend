@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ServerService } from 'src/app/@service/server.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
@@ -13,8 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TestPostProComponent implements OnInit {
   user: any;
  
-
-
+ 
 
   constructor(
     private service: ServerService,
@@ -29,12 +28,11 @@ export class TestPostProComponent implements OnInit {
     this.user = this.session.getActiveUser();
     // console.log(this.user);
 
- 
+  
 
   }
 
 
- 
 
 
 

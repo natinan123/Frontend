@@ -9,7 +9,6 @@ import { SellEditComponent } from './sell-edit/sell-edit.component';
 import { SellCloseComponent } from './sell-close/sell-close.component';
 import { SellProductComponent } from './sell-product/sell-product.component';
 import { EditPropertyComponent } from './sell-edit/edit-property/edit-property.component';
-import { SellUpgradeComponent } from './sell-upgrade/sell-upgrade.component';
 import { TestingComponent } from './testing/testing.component';
 import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
 import { ChatComponent } from '../shared/chat/chat.component';
@@ -18,6 +17,7 @@ import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.comp
 import { HomeComponent } from '../shared/home/home.component';
 import { DetailComponent } from '../shared/detail/detail.component';
 import { MapComponent } from '../shared/search/map/map.component';
+import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pending-approval.component';
 
 
 
@@ -54,6 +54,10 @@ const routes: Routes = [
         path: 'selling',
         component: SellingComponent
       },
+      { // รออนุมัติ
+        path: 'approval',
+        component: SellPendingApprovalComponent
+      },
       { // ฉบับร่าง
         path: 'draft',
         component: SellDraftComponent
@@ -66,7 +70,7 @@ const routes: Routes = [
         path: 'CloseProperty',
         component: SellCloseComponent
       },
-      { // รายละเอียดอสังหา
+      { // รายละเอียดอสังหาแก้ไขสถานะ
         path: 'ProductDetail/:pro_id',
         component: SellProductComponent
       },
@@ -74,10 +78,7 @@ const routes: Routes = [
         path: 'editproperty/:pro_id',
         component: EditPropertyComponent
       },
-      { // อัพเกรด
-        path: 'upgrade',
-        component: SellUpgradeComponent
-      },
+      
       { // test chat-shared 
         path: 'chat',
         component: ChatComponent

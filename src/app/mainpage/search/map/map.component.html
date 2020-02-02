@@ -22,22 +22,24 @@
     </mat-form-field>
 
 
-    <agm-map [latitude]="lat2" [longitude]="lng2">
+    <agm-map [latitude]="lat2" [longitude]="lng2" [zoom]="6">
+        <agm-marker-cluster
+            imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+            <!-- หน้าเริ่ม -->
+            <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude">
+                <!-- มาค์ก -->
 
-        <!-- หน้าเริ่ม -->
-        <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude">
-            <!-- มาค์ก -->
+                <agm-info-window>
+                    <h5><strong>{{m.type_name}} </strong></h5>
 
-            <agm-info-window>
-                <h5><strong>{{m.type_name}} </strong></h5>
+                    <p>{{m.pro_head}}</p>
+                    <p>{{m.price}} บาท</p>
 
-                <p>{{m.pro_head}}</p>
-                <p>{{m.price}} บาท</p>
-             
-            </agm-info-window>
+                </agm-info-window>
 
-        </agm-marker>
-
+            </agm-marker>
+        </agm-marker-cluster>
     </agm-map>
 
 </div>
+

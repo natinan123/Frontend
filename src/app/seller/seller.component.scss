@@ -1,7 +1,17 @@
-.memu-left {
-  width: 100%;
+.pic{
+  text-align: center;
+  margin-top: 10px;
   color: snow;
 }
+
+.user{
+  margin-top: 4px;
+  color: #f78e1e;
+}
+.name{
+  margin-top: 5px;
+}
+
 
 .upgrade {
   width: 100%;
@@ -38,9 +48,39 @@
 .tool {
   width: 260px;
   margin-left: 5px;
+  background: #4579a0 ;
 }
 
-.active { 
-  border: solid; 
-  background-color: snow;
+.tool-post {
+  width: 260px;
+  margin-left: 5px;
+  background: #e55c25 ;
+}
+
+.menu {
+  color: snow;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.active-head{
+  background-color: #d1dddb;
+  color: #1d6a96;
+}
+
+.active-selling{
+  background-color: #e8c7b6;
+  color: #32435f;
+}
+
+.active {
+  border: solid;
+  background-color: #85b8cb;
+  color: snow;
+}
+
+.material-icons {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 7px;
 }

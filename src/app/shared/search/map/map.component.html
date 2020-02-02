@@ -22,28 +22,31 @@
     </mat-form-field>
 
     <agm-map [latitude]="lat2" [longitude]="lng2">
-        <!-- หน้าเริ่ม -->
-        <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude">
-            <!-- มาค์ก -->
+        <agm-marker-cluster
+            imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+            <!-- หน้าเริ่ม -->
+            <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude">
+                <!-- มาค์ก -->
 
-            <agm-info-window>
-                <h5><strong>{{m.type_name}} </strong></h5>
-                <p>{{m.pro_head}}</p>
-                <p>{{m.price | number : '1.2-2'}} บาท</p>
-                <p>{{m.pro_area | number : '1.2-2'}} ตร.ม.</p>
-                
-                <button class="btn btn-primary btn-sm" [routerLink]="['/admin/admin/detail' ,m.pro_id]"
-                    *ngIf="status == 'admin'">ดูรายละเอียด</button>
+                <agm-info-window>
+                    <h5><strong>{{m.type_name}} </strong></h5>
+                    <p>{{m.pro_head}}</p>
+                    <p>{{m.price | number : '1.2-2'}} บาท</p>
+                    <p>{{m.pro_area | number : '1.2-2'}} ตร.ม.</p>
 
-                <button class="btn btn-primary btn-sm" [routerLink]="['/seller/seller/detail' ,m.pro_id]"
-                    *ngIf="status == 'seller'">ดูรายละเอียด</button>
+                    <button class="btn btn-primary btn-sm" [routerLink]="['/admin/admin/detail' ,m.pro_id]"
+                        *ngIf="status == 'admin'">ดูรายละเอียด</button>
 
-                <button class="btn btn-primary btn-sm" [routerLink]="['/buyer/buyer/detail' ,m.pro_id]"
-                    *ngIf="status == 'buyer'">ดูรายละเอียด</button>
+                    <button class="btn btn-primary btn-sm" [routerLink]="['/seller/seller/detail' ,m.pro_id]"
+                        *ngIf="status == 'seller'">ดูรายละเอียด</button>
 
-            </agm-info-window>
+                    <button class="btn btn-primary btn-sm" [routerLink]="['/buyer/buyer/detail' ,m.pro_id]"
+                        *ngIf="status == 'buyer'">ดูรายละเอียด</button>
 
-        </agm-marker>
+                </agm-info-window>
+
+            </agm-marker>
+        </agm-marker-cluster>
 
     </agm-map>
 

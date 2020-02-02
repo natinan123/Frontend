@@ -25,6 +25,7 @@ export class AdminComponent implements OnInit {
   limit_id: any;
   avatarname: any;
   pic64: any;
+  count_wait: any;
 
   constructor(
     private session: SessionService,
@@ -56,7 +57,7 @@ export class AdminComponent implements OnInit {
     );
 
     this.showAvatar();
-
+    this.getCountProWait();
   }
 
 
@@ -74,6 +75,16 @@ export class AdminComponent implements OnInit {
           this.pic64 = res[0].picBase64
         // console.log(this.pic64);
         // console.log(this.avatarname);
+      }
+    );
+  }
+
+  // นับอสังหารอตรวจสอบ
+  getCountProWait() {
+    this.service.getCountProWait().subscribe(
+      (res) => {
+        console.log(res);
+        this.count_wait = res[0].count_wait
       }
     );
   }

@@ -6,6 +6,7 @@ import { ArtDetailComponent } from './article/art-detail/art-detail.component';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
 import { MapComponent } from './search/map/map.component';
+import { LocationComponent } from './search/location/location.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
       { // แผนที่
         path: 'map',
         component: MapComponent
+      },
+      { // ที่ตั้ง
+        path: 'location',
+        component: LocationComponent
       },
     ]
   }

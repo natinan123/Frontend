@@ -19,6 +19,11 @@ import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MapComponent } from './search/map/map.component';
+import { GalleryModule } from '@ngx-gallery/core';
+import { LightboxModule } from '@ngx-gallery/lightbox';
+import { GallerizeModule } from '@ngx-gallery/gallerize';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { LocationComponent } from './search/location/location.component';
 
 
 @NgModule({
@@ -29,6 +34,7 @@ import { MapComponent } from './search/map/map.component';
     HomeComponent,
     DetailComponent,
     MapComponent,
+    LocationComponent,
   ],
   imports: [
     CommonModule,
@@ -47,7 +53,10 @@ import { MapComponent } from './search/map/map.component';
     }),//google api
     Ng5SliderModule,
     Ng2SearchPipeModule,
-
+    AgmJsMarkerClustererModule,
+    GalleryModule,
+    LightboxModule,
+    GallerizeModule,
   ]
 })
 export class SharedModule { }

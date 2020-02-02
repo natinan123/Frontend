@@ -20,7 +20,7 @@
 
 
         <button mat-button class="tool" [routerLink]="['/admin/admin/home']"
-            routerLinkActive="router-link-active">หน้าหลัก</button>
+            routerLinkActive="active-head">หน้าหลัก</button>
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu1">ขายอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu1="matMenu">
@@ -47,12 +47,15 @@
             <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
             <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
             <button mat-menu-item>ค้นหาจากความนิยม</button>
-            <button mat-menu-item [routerLink]="['/admin/admin/map']" routerLinkActive="router-link-active" >ค้นหาจากแผนที่</button>
-            <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/map']"
+                routerLinkActive="active-head">ค้นหาจากแผนที่</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/location']"
+                routerLinkActive="active-head">ค้นหาจากเขตที่ตั้ง</button>
         </mat-menu>
 
 
-        <button mat-button class="tool" routerLink="/admin/admin/article">บทความโฆษณา</button>
+        <button mat-button class="tool" [routerLink]="['/admin/admin/article']"
+            routerLinkActive="active-head">บทความโฆษณา</button>
 
 
 
@@ -62,56 +65,92 @@
 
 
 <div class="row" style="height: 100%;">
-    <div class="col-md-2" style="background-color: #1d6a96 ;width: 100%;">
-        <mat-list>
+    <div class="col-md-2" style="background-color: #535d55 ; padding-right: 0px; ">
 
+        <div class="pic">
             <img *ngIf="profile_pic == ''" src="../../assets/pic/admin/admin-icon.png"
                 style="height: 100px;width: auto;  display: block; margin-left: auto; margin-right: auto; ">
-
-
             <img *ngIf="pic64 != null" src="data:image/jpg;base64,{{pic64}}" class="circle" />
+            <div class="user">
+                <h5>ผู้ดูแลระบบ</h5>
+            </div>
+            <div>
+                <p class="name">{{user[0].fname}} &nbsp; {{user[0].lname}}</p>
+            </div>
 
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/profile" class="memu-left">{{user[0].fname}} &nbsp;
-                    {{user[0].lname}}</button>
+        </div>
+        <mat-list>
+
+            <mat-list-item class="menu" [routerLink]="['/admin/admin/managesale']" routerLinkActive="active">
+                <i class="material-icons">
+                    apartment
+                </i> &nbsp;
+                จัดการรายการประกาศขาย
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/managesale" class="memu-left">จัดการรายการประกาศขาย</button>
+            <mat-list-item [routerLink]="['/admin/admin/managemainpage']" routerLinkActive="active" class="menu">
+                <i class="material-icons">
+                    domain
+                </i> &nbsp;
+                จัดการหน้าหลัก
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/managemainpage" class="memu-left">จัดการหน้าหลัก</button>
+            <mat-list-item [routerLink]="['/admin/admin/managemember']" routerLinkActive="active" class="menu">
+                <i class="material-icons">
+                    people
+                </i> &nbsp;
+                จัดการข้อมูลสมาชิก
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/managemember" class="memu-left">จัดการข้อมูลสมาชิก</button>
+
+            <mat-list-item [routerLink]="['/admin/admin/chat']" routerLinkActive="active" class="menu">
+                <i class="material-icons">
+                    message
+                </i> &nbsp;
+                รายการสนทนา
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/upgrade" class="memu-left">รายการร้องขอ Upgrade</button>
+
+            <mat-list-item [routerLink]="['/admin/admin/managelocation']" routerLinkActive="active" class="menu">
+                <i class="material-icons">
+                    add_location
+                </i> &nbsp;
+                จัดการรายการทำเลที่ตั้ง
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/chat" class="memu-left">รายการสนทนา</button>
+
+            <mat-list-item [routerLink]="['/admin/admin/list-approve']" routerLinkActive="active" class="menu">
+                <i class="material-icons">
+                    library_add_check
+                </i> &nbsp; &nbsp;
+                <span *ngIf="count_wait == 0">อนุมัติอสังหา</span>
+                <span matBadge="{{count_wait}}" matBadgeOverlap="false" *ngIf="count_wait > 0"
+                    matBadgeColor="warn">อนุมัติอสังหา</span>
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/managelocation"
-                    class="memu-left">จัดการรายการทำเลที่ตั้ง</button>
+
+            <mat-list-item [routerLink]="['/admin/admin/writerads']" routerLinkActive="active" class="menu">
+                <i class="material-icons">
+                    description
+                </i> &nbsp;
+                เขียนบทความโฆษณา
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/writerads" class="memu-left">เขียนบทความโฆษณา</button>
+
+            <mat-list-item [routerLink]="['/admin/admin/listArticle']" routerLinkActive="active" class="menu">
+                <i class="material-icons">
+                    assessment
+                </i> &nbsp;
+                รายการโฆษณา
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/listArticle" class="memu-left">รายการโฆษณา</button>
+
+            <mat-list-item [routerLink]="['/admin/admin/test']" routerLinkActive="active" class="menu">ไว้สำหรับลอง
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/admin/admin/test" class="memu-left">ไว้สำหรับลอง</button>
-            </mat-list-item>
+
+            <mat-list-item class="menu">
+                <i class="fa fa-cogs" aria-hidden="true"></i> ไว้ทดสอบ</mat-list-item>
             <mat-divider></mat-divider>
         </mat-list>
 

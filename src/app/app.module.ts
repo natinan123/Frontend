@@ -17,6 +17,10 @@ import { API } from './map-api';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng5SliderModule } from 'ng5-slider';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { GalleryModule } from  '@ngx-gallery/core';
+import { LightboxModule } from  '@ngx-gallery/lightbox';
+import { GallerizeModule } from  '@ngx-gallery/gallerize';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FileUploadModule,
     Ng5SliderModule,
     Ng2SearchPipeModule,
-
+    AgmJsMarkerClustererModule,
+    GalleryModule,
+    LightboxModule,
+    GallerizeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

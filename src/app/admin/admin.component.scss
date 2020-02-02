@@ -1,7 +1,17 @@
-.memu-left {
-  width: 100%;
+.pic {
+  text-align: center;
+  margin-top: 10px;
   color: snow;
 }
+.user {
+  margin-top: 4px;
+  color: #f78e1e;
+}
+.name {
+  margin-top: 5px;
+  color: #dbdbe5;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -33,4 +43,28 @@
   width: 260px;
   margin-left: 5px;
   background: #4579a0;
+}
+
+.active-head {
+  background-color: #d1dddb;
+  color: #1d6a96;
+}
+
+.menu {
+  color: snow;
+  font-size: 14px;
+  cursor: pointer;
+}
+.active {
+  border: solid;
+  background-color: #a5b7c1;
+  color: snow;
+  .material-icons{
+    color: #535d55;
+  }
+}
+.material-icons {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 7px;
 }

@@ -3,22 +3,15 @@
         <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> ประกาศขาย - เช่า</h1>
     </div>
     <div class="col-md">
-        <p class="count">จำนวนอสังหาริมทรัพย์ ( {{count_pro}} / {{pro_limit}} )</p>
+        <p class="count">จำนวนอสังหาริมทรัพย์ {{count_pro}} รายการ</p>
     </div>
 </div>
 
-<!-- *ngIf="count_pro >= pro_limit" -->
-<div *ngIf="count_pro >= pro_limit" style="width: 90%; margin-top: 40px;" class="alert alert-danger" role="alert">
-    <h4 class="alert-heading"><i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i> เตือนอสังหาริมทรัพย์!
-    </h4>
-    <p>คุณได้ประกาศอสังหาริมทรัพย์ครบตามกำหนด</p>
-    <hr>
-    <p class="mb-0">หากต้องการประกาศเพิ่ม สามารถติดต่อได้ที่ผู้ดูแลเว็บไซต์ได้</p>
-</div>
 
 
-<!-- *ngIf="pro_limit >= count_pro" -->
-<mat-card *ngIf="pro_limit >= count_pro" class="card">
+
+
+<mat-card class="card">
 
     <!-- ! step 1 -->
     <mat-horizontal-stepper [linear]="!isLinear" #stepper>
@@ -68,10 +61,9 @@
                         </div>
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
-                                <mat-select [(ngModel)]="selectedValue" formControlName="Zone"
-                                    placeholder="เลือกภูมิภาค" required>
-                                    <mat-option [value]="z.loc_zone" *ngFor="let z of zones"
-                                        (click)="onLocation(selectedValue)">
+                                <mat-select [(ngModel)]="zone_id" formControlName="Zone" placeholder="เลือกภูมิภาค"
+                                    (ngModelChange)="onProvince($event)" required>
+                                    <mat-option [value]="z.zone_id" *ngFor="let z of zones">
                                         {{z.zone_name}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -83,14 +75,32 @@
                         </div>
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
-                                <mat-select [(ngModel)]="Location_id" formControlName="Location_id"
-                                    placeholder="เลือกจังหวัด" required>
-                                    <mat-option [value]="p.location_id" *ngFor="let p of provins">{{p.loc_name}}
+                                <mat-select [(ngModel)]="province_id" formControlName="Province_id"
+                                    placeholder="เลือกจังหวัด" (ngModelChange)="onLocation($event)" required>
+                                    <mat-option [value]="p.province_id" *ngFor="let p of provins">{{p.provin_name}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
                     </div>
+                </div>
+
+                <div class="row" style=" margin-top: 15px;">
+                    <div class="col-md-4">
+                        <div class="label">
+                            <mat-label>เขต/อำเภอ</mat-label>
+                        </div>
+                        <div class="option">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-select [(ngModel)]="location_id" formControlName="Location_id"
+                                    placeholder="เลือกจังหวัด" required>
+                                    <mat-option [value]="dis.location_id" *ngFor="let dis of district">{{dis.loc_name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- <div class="row" style="margin-left: 50px; margin-top: 15px;">
@@ -341,9 +351,6 @@
                                 formControlName="Check5" id="Check5">
                             <label class="form-check-label" for="Check5">กล้องวงจรปิด</label>
                         </div>
-                    </div>
-
-                    <div class="col-md-4">
                         <div class="check-list">
                             <input class="form-check-input" type="checkbox" [(ngModel)]="Check6"
                                 formControlName="Check6" id="Check6">
@@ -368,6 +375,59 @@
                             <input class="form-check-input" type="checkbox" [(ngModel)]="Check10"
                                 formControlName="Check10" id="Check10">
                             <label class="form-check-label" for="Check10">ศาลาชมทิวทัศน์</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check11"
+                                formControlName="Check11" id="Check11">
+                            <label class="form-check-label" for="Check11">ที่จอดรถ</label>
+                        </div>
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check12"
+                                formControlName="Check12" id="Check12">
+                            <label class="form-check-label" for="Check12">ลานจอดรถ</label>
+                        </div>
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check13"
+                                formControlName="Check13" id="Check13">
+                            <label class="form-check-label" for="Check13">รักษาความปลอดภัย</label>
+                        </div>
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check14"
+                                formControlName="Check14" id="Check14">
+                            <label class="form-check-label" for="Check14">สระว่ายน้า</label>
+                        </div>
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check15"
+                                formControlName="Check15" id="Check15">
+                            <label class="form-check-label" for="Check15">กล้องวงจรปิด</label>
+                        </div>
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check16"
+                                formControlName="Check16" id="Check16">
+                            <label class="form-check-label" for="Check16">ฟิตเนส</label>
+                        </div>
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check17"
+                                formControlName="Check17" id="Check17">
+                            <label class="form-check-label" for="Check17">สนามเด็กเล่น</label>
+                        </div>
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check18"
+                                formControlName="Check18" id="Check18">
+                            <label class="form-check-label" for="Check18">มินิมาร์ท</label>
+                        </div>
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check19"
+                                formControlName="Check19" id="Check19">
+                            <label class="form-check-label" for="Check19">ซัก อบ รีด</label>
+                        </div>
+                        <div class="check-list">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check20"
+                                formControlName="Check20" id="Check20">
+                            <label class="form-check-label" for="Check20">ศาลาชมทิวทัศน์</label>
                         </div>
                     </div>
                 </div>

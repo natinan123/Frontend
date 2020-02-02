@@ -1,3 +1,20 @@
+.tool {
+  width: 260px;
+  margin-left: 5px;
+  background: #4579a0;
+  color: snow;
+}
+
+.tool-post {
+  width: 260px;
+  margin-left: 5px;
+  background: #e55c25 ;
+}
+
+.active-head {
+  background-color: #d1dddb;
+  color: #1d6a96;
+}
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -70,8 +87,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-
-
 // ? select option status
 .status {
   width: 80%;
@@ -81,63 +96,64 @@
   color: #126f80;
 }
 .s-hidden {
-    visibility:hidden;
-    padding-right:10px;
+  visibility: hidden;
+  padding-right: 10px;
 }
 .select {
-    cursor:pointer;
-    display:inline-block;
-    position:relative;
-    font:normal 11px/22px Arial, Sans-Serif;
-    color:black;
-    border:1px solid #ccc;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font: normal 11px/22px Arial, Sans-Serif;
+  color: black;
+  border: 1px solid #ccc;
 }
 .styledSelect {
-    position:absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    background-color:white;
-    padding:0 10px;
-    font-weight:bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  padding: 0 10px;
+  font-weight: bold;
 }
 .styledSelect:after {
-    content:"";
-    width:0;
-    height:0;
-    border:5px solid transparent;
-    border-color:black transparent transparent transparent;
-    position:absolute;
-    top:9px;
-    right:6px;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-color: black transparent transparent transparent;
+  position: absolute;
+  top: 9px;
+  right: 6px;
 }
-.styledSelect:active, .styledSelect.active {
-    background-color:#eee;
+.styledSelect:active,
+.styledSelect.active {
+  background-color: #eee;
 }
 .options {
-    display:none;
-    position:absolute;
-    top:100%;
-    right:0;
-    left:0;
-    z-index:999;
-    margin:0 0;
-    padding:0 0;
-    list-style:none;
-    border:1px solid #ccc;
-    background-color:white;
-    -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
-    box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  margin: 0 0;
+  padding: 0 0;
+  list-style: none;
+  border: 1px solid #ccc;
+  background-color: white;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .options li {
-    padding:0 6px;
-    margin:0 0;
-    padding:0 10px;
+  padding: 0 6px;
+  margin: 0 0;
+  padding: 0 10px;
 }
 .options li:hover {
-    background-color:#39f;
-    color:white;
+  background-color: #39f;
+  color: white;
 }
 // ? End select option status

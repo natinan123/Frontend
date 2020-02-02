@@ -20,52 +20,62 @@
 
 
 
-    <mat-toolbar-row class="shadow" style="background: #013b63 ;color: snow">
+    <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
 
 
-        <button mat-button routerLink="/mainpage/mainpage/home"
-            style="background: #4579a0 ; width: 100%;">หน้าหลัก</button>
+        <button mat-button class="tool" [routerLink]="['/mainpage/mainpage/home']"
+            routerLinkActive="active-head">หน้าหลัก</button>
 
-        <button mat-button [matMenuTriggerFor]="belowMenu1"
-            style="background: #4579a0 ;width: 100%; margin-left: 5px;">ขายอสังหาริมทรัพย์</button>
+        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu1">ขายอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu1="matMenu">
-            <button routerLink="/mainpage/mainpage/sellhouse" mat-menu-item style="width: 400px">ขายบ้านเดี่ยว</button>
-            <button routerLink="/mainpage/mainpage/selltownhouse" mat-menu-item>ขายทาวน์เฮ้าส์</button>
-            <button routerLink="/mainpage/mainpage/sellapartment" mat-menu-item>ขายอพาร์ทเมนท์</button>
-            <button routerLink="/mainpage/mainpage/sellcommercial" mat-menu-item>ขายอาคารพาณิชย์</button>
-            <button routerLink="/mainpage/mainpage/sellcondominium" mat-menu-item>ขายคอนโดมิเนียม</button>
-            <button routerLink="/mainpage/mainpage/sellland" mat-menu-item>ขายที่ดิน</button>
+            <button [routerLink]="['/mainpage/mainpage/sellhouse']" routerLinkActive="active-head" mat-menu-item
+                style="width: 400px">ขายบ้านเดี่ยว</button>
+            <button [routerLink]="['/mainpage/mainpage/selltownhouse']" routerLinkActive="active-head"
+                mat-menu-item>ขายทาวน์เฮ้าส์</button>
+            <button [routerLink]="['/mainpage/mainpage/sellapartment']" routerLinkActive="active-head"
+                mat-menu-item>ขายอพาร์ทเมนท์</button>
+            <button [routerLink]="['/mainpage/mainpage/sellcommercial']" routerLinkActive="active-head"
+                mat-menu-item>ขายอาคารพาณิชย์</button>
+            <button [routerLink]="['/mainpage/mainpage/sellcondominium']" routerLinkActive="active-head"
+                mat-menu-item>ขายคอนโดมิเนียม</button>
+            <button [routerLink]="['/mainpage/mainpage/sellland']" routerLinkActive="active-head"
+                mat-menu-item>ขายที่ดิน</button>
         </mat-menu>
 
 
-        <button mat-button [matMenuTriggerFor]="belowMenu2"
-            style="background: #4579a0 ;width: 100%;margin-left: 5px;">เช่าอสังหาริมทรัพย์</button>
+        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu2">เช่าอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu2="matMenu">
-            <button routerLink="/mainpage/mainpage/renthouse" mat-menu-item style="width: 400px">
+            <button [routerLink]="['/mainpage/mainpage/renthouse']" routerLinkActive="active-head" mat-menu-item
+                style="width: 400px">
                 เช่าบ้านเดี่ยว</button>
-            <button routerLink="/mainpage/mainpage/renttownhouse" mat-menu-item>เช่าทาวน์เฮ้าส์</button>
-            <button routerLink="/mainpage/mainpage/rentapartment" mat-menu-item>เช่าอพาร์ทเมนท์</button>
-            <button routerLink="/mainpage/mainpage/rentcommercial" mat-menu-item>เช่าอาคารพาณิชย์</button>
-            <button routerLink="/mainpage/mainpage/rentcondominium" mat-menu-item>เช่าคอนโดมิเนียม</button>
-            <button routerLink="/mainpage/mainpage/rentland" mat-menu-item>เช่าที่ดิน</button>
+            <button [routerLink]="['/mainpage/mainpage/renttownhouse']" routerLinkActive="active-head"
+                mat-menu-item>เช่าทาวน์เฮ้าส์</button>
+            <button [routerLink]="['/mainpage/mainpage/rentapartment']" routerLinkActive="active-head"
+                mat-menu-item>เช่าอพาร์ทเมนท์</button>
+            <button [routerLink]="['/mainpage/mainpage/rentcommercial']" routerLinkActive="active-head"
+                mat-menu-item>เช่าอาคารพาณิชย์</button>
+            <button [routerLink]="['/mainpage/mainpage/rentcondominium']" routerLinkActive="active-head"
+                mat-menu-item>เช่าคอนโดมิเนียม</button>
+            <button [routerLink]="['/mainpage/mainpage/rentland']" routerLinkActive="active-head"
+                mat-menu-item>เช่าที่ดิน</button>
         </mat-menu>
 
-        <button mat-button [matMenuTriggerFor]="belowMenu3"
-            style="background: #4579a0 ;width: 100%;margin-left: 5px;">ค้นหาอสังหาริมทรัพย์</button>
+        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3">ค้นหาอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu3="matMenu">
-            <button routerLink="/mainpage/mainpage/fillter" mat-menu-item
+            <button [routerLink]="['/mainpage/mainpage/fillter']" routerLinkActive="active-head" mat-menu-item
                 style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
             <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
-            <button routerLink="/mainpage/mainpage/map" mat-menu-item>ค้นหาจากแผนที่</button>
-            <button routerLink="/mainpage/mainpage/location" mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+            <button [routerLink]="['/mainpage/mainpage/map']" routerLinkActive="active-head"
+                mat-menu-item>ค้นหาจากแผนที่</button>
+            <button [routerLink]="['/mainpage/mainpage/location']" routerLinkActive="active-head"
+                mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
         </mat-menu>
 
-        <button mat-button routerLink="/mainpage/mainpage/article"
-            style="background: #4579a0 ; width: 100%; margin-left: 5px;">บทความโฆษณา</button>
+        <button mat-button class="tool" [routerLink]="['/mainpage/mainpage/article']"
+            routerLinkActive="active-head">บทความโฆษณา</button>
 
 
-        <button mat-button (click)="openModalLogin(Login)" style="background: #e55c25; width: 100%;margin-left: 5px;"><i
-                class="material-icons">
+        <button mat-button class="tool-post" (click)="openModalLogin(Login)"><i class="material-icons">
                 add_location
             </i>ประกาศขายอสังหาริมทรัพย์</button>
 
@@ -98,7 +108,7 @@
             <mat-form-field class="emailcss" appearance="outline">
                 <mat-label>รหัสผ่าน</mat-label>
                 <input matInput formControlName="password" [(ngModel)]="password" placeholder="รหัสผ่าน"
-                    [type]="hide ? 'password' : 'text'">
+                    [type]="hide ? 'password' : 'text'" (keydown.enter)="onLogin()">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -106,7 +116,7 @@
             </mat-form-field>
 
             <div mat-dialog-actions>
-                <button mat-raised-button class="btlogin" (click)="onLogin()">เข้าระบบ</button>
+                <button mat-raised-button class="btlogin" (click)="onLogin()">เข้าสู่ระบบ</button>
             </div>
 
         </form>
@@ -177,9 +187,9 @@
                     <option selected>เลือกสถานะผู้ใช้งาน</option>
                     <option value="seller">ผู้ขาย</option>
                     <option value="buyer">ผู้ซื้อ</option>
-                  </select>
+                </select>
             </div>
-            
+
             <div mat-dialog-actions>
                 <button mat-raised-button class="btlogin" (click)="onRegister()">สมัคสมาชิก</button>
             </div>

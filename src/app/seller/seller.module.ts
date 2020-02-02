@@ -18,7 +18,6 @@ import { SellEditComponent } from './sell-edit/sell-edit.component';
 import { EditPropertyComponent } from './sell-edit/edit-property/edit-property.component';
 import { SellProductComponent } from './sell-product/sell-product.component';
 import { SellPropertyComponent } from './sell-property/sell-property.component';
-import { SellUpgradeComponent } from './sell-upgrade/sell-upgrade.component';
 import { SellingComponent } from './selling/selling.component';
 import { TestingComponent } from './testing/testing.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -26,6 +25,11 @@ import { TestPostProComponent } from './test-post-pro/test-post-pro.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SharedModule } from '../shared/shared.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { GalleryModule } from '@ngx-gallery/core';
+import { LightboxModule } from '@ngx-gallery/lightbox';
+import { GallerizeModule } from '@ngx-gallery/gallerize';
+import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pending-approval.component';
 
 @NgModule({
   declarations: [
@@ -37,10 +41,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     EditPropertyComponent,
     SellProductComponent,
     SellPropertyComponent,
-    SellUpgradeComponent,
     SellingComponent,
     TestingComponent,
     TestPostProComponent,
+    SellPendingApprovalComponent,
   ],
   imports: [
     CommonModule,
@@ -60,7 +64,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     Ng5SliderModule,
     SharedModule,
     Ng2SearchPipeModule,
-
+    AgmJsMarkerClustererModule,
+    GalleryModule,
+    LightboxModule,
+    GallerizeModule,
   ]
 })
 export class SellerModule { }

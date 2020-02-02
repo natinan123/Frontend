@@ -1,17 +1,11 @@
 <div class="row" style="height: 100px;background-color: #014254">
     <div class="col-md-7">
-        <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> อสังหาริมทรัพย์ {{type_name}}</h1>
+        <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> อนุมัติอสังหาริมทรัพย์</h1>
     </div>
-    <div class="col-md-4" style="margin-top: 55px;">
-        <button mat-raised-button *ngIf="pro_status != 'เผยแพร่'" (click)="openModalPublic(Public)"
-            class="public">เผยแพร่</button>
-        <button mat-raised-button *ngIf="pro_status != 'ร่าง'" (click)="openModalDraft(Draft)"
-            class="draft">เก็บในฉบับร่าง</button>
-        <button mat-raised-button *ngIf="pro_status != 'รอแก้ไข' " (click)="openModalModifly(Modifly)"
-            class="edit">รอแก้ไข</button>
-        <button mat-raised-button *ngIf="pro_status != 'ปิดการขาย'" (click)="openModalClosePro(Close)"
-            class="proclose">ปิดการขาย</button>
 
+    <div class="col-md">
+        <button mat-raised-button color="primary" (click)="onApprove()">อนุมัติ</button>
+        <button mat-raised-button color="warn">ไม่อนุมัติ</button>
     </div>
 
 </div>
@@ -24,12 +18,6 @@
             <mat-chip-list>
                 <mat-chip class="tag-sell"><i class="material-icons">home_work</i>&nbsp; ประเภท{{pro_sell}}</mat-chip>
             </mat-chip-list>
-        </div>
-        <div class="col-md-3">
-            <button mat-raised-button *ngIf="pro_status == 'รอแก้ไข'" class="edit-pro"
-                [routerLink]="['/seller/seller/editproperty' ,pro_id]"><i class="fa fa-wrench fa-2x"
-                    aria-hidden="true"></i>
-                แก้ไขอสังหาริมทรัพย์</button>
         </div>
 
     </div>
@@ -73,10 +61,10 @@
 </mat-card>
 
 
-<!-- <mat-card class="mat-card" style="top: 20px">
+<mat-card class="mat-card" style="top: 20px">
     <img *ngIf="image1 != null" mat-card-lg-image class="image" src="data:image/jpg;base64,{{image1}}" />
     <p>
-        
+
 
         <img *ngIf="image1 != null" mat-card-md-image src="data:image/jpg;base64,{{image1}}" />
         <img *ngIf="image2 != null" mat-card-md-image src="data:image/jpg;base64,{{image2}}" />
@@ -93,38 +81,35 @@
 
     <ngb-carousel *ngIf="images">
         <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img src="data:image/jpg;base64,{{image1}}" alt="Random first slide">
-          </div>
-          <div class="carousel-caption">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div>
+            <div class="picsum-img-wrapper">
+                <img src="data:image/jpg;base64,{{image1}}" alt="Random first slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
         </ng-template>
         <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img src="data:image/jpg;base64,{{image2}}" alt="Random second slide">
-          </div>
-          <div class="carousel-caption">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
+            <div class="picsum-img-wrapper">
+                <img src="data:image/jpg;base64,{{image2}}" alt="Random second slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
         </ng-template>
         <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img src="data:image/jpg;base64,{{image3}}" alt="Random third slide">
-          </div>
-          <div class="carousel-caption">
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </div>
+            <div class="picsum-img-wrapper">
+                <img src="data:image/jpg;base64,{{image3}}" alt="Random third slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
         </ng-template>
-      </ngb-carousel>
+    </ngb-carousel>
 
-</mat-card> -->
-
-<gallery [items]="items" thumbPosition="left"></gallery>
-
+</mat-card>
 <mat-card class="mat-card" style="top: 30px">
     <mat-card-title>
         <p>รายละเอียด</p>
@@ -133,7 +118,7 @@
 </mat-card>
 
 <mat-card class="mat-card" style="top: 35px"
-*ngIf="style1 || style2 || style3 || style4  || style5 || style6 || style7  || style8 || style9 || style10 == 'true'" >
+    *ngIf="style1 || style2 || style3 || style4  || style5 || style6 || style7  || style8 || style9 || style10 == 'true'">
     <mat-card-title>คุณลักษณะพื้นฐาน</mat-card-title>
     <div class="row">
 

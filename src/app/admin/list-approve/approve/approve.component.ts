@@ -3,26 +3,13 @@ import { ServerService } from 'src/app/@service/server.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Gallery, GalleryItem, ImageItem, ImageSize, ThumbnailsPosition } from '@ngx-gallery/core';
-import { Lightbox } from '@ngx-gallery/lightbox';
-
-
-// Endcode
-function utf8_to_b64(str) {
-  return window.btoa(unescape(encodeURIComponent(str)));
-}
-// Decode
-function b64_to_utf8(str) {
-  return decodeURIComponent(escape(window.atob(str)));
-}
 
 @Component({
-  selector: 'app-sell-product',
-  templateUrl: './sell-product.component.html',
-  styleUrls: ['./sell-product.component.scss']
+  selector: 'app-approve',
+  templateUrl: './approve.component.html',
+  styleUrls: ['./approve.component.scss']
 })
-export class SellProductComponent implements OnInit {
-
+export class ApproveComponent implements OnInit {
 
 
   data;
@@ -82,48 +69,20 @@ export class SellProductComponent implements OnInit {
   latitude: any;
   longtitude: any;
 
-
-
-
-  // ? image 
-  items: GalleryItem[];
-  data123 = [
-    {
-      srcUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg',
-      previewUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg'
-    },
-    {
-      srcUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg',
-      previewUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg'
-    },
-    {
-      srcUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg',
-      previewUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg'
-    },
-    {
-      srcUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg',
-      previewUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg'
-    }
-  ];
-  imageData = this.data123;
-
-  // ? end ^
   constructor(
     private service: ServerService,
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog,
     private modalService: NgbModal,
-    private modal: NgbModal,
-    public gallery: Gallery,
-    public lightbox: Lightbox,
+    private modal: NgbModal
   ) { }
 
   ngOnInit() {
     this.data = this.route.snapshot.paramMap.getAll('pro_id');
-    // this.views = this.route.snapshot.paramMap.getAll('pro_views');
 
     console.log(this.data)
+    // console.log(this.views)
 
     this.getDetail();
 
@@ -133,31 +92,7 @@ export class SellProductComponent implements OnInit {
       }
     )
     this.getUserLocation();
-
-    // todo :image
-    /** Basic Gallery Example */
-
-    // Creat gallery items
-    this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
-
-
-    /** Lightbox Example */
-
-    // Get a lightbox gallery ref
-    const lightboxRef = this.gallery.ref('lightbox');
-
-    // Add custom gallery config to the lightbox (optional)
-    lightboxRef.setConfig({
-      imageSize: ImageSize.Cover,
-      thumbPosition: ThumbnailsPosition.Top
-    });
-
-    // Load items into the lightbox gallery ref
-    lightboxRef.load(this.items);
-
-    // todo ^^^
-
-
+    // this.showImagePro();
 
   }
 
@@ -243,84 +178,17 @@ export class SellProductComponent implements OnInit {
     this.longtitude = this.longtitude;
     this.modalService.open(modal, { centered: true, size: "lg" })
   }
-  // modal เผยแพร่
-  openModalPublic(content) {
-    this.modalService.open(content);
-  }
-  // modal ร่าง
-  openModalDraft(content) {
-    this.modalService.open(content);
-  }// modal รอแก้ไข
-  openModalModifly(content) {
-    this.modalService.open(content);
-  }// modal ปิดการขาย
-  openModalClosePro(content) {
-    this.modalService.open(content);
-  }
 
-
-  // เผยแพร่
-  onProPublic() {
-    const data = {
-      pro_id: this.pro_id
-    }
-    // console.log(data)
-    this.service.putPropublish(data).subscribe(
+  // อนุมัติ
+  onApprove() {
+    this.service.putPropublish(this.data).subscribe(
       async (res) => {
-        // await delay(1000);
-        this.closeModal();
-        this.router.navigate(['seller/seller/selle-property']);
+        this.router.navigate(['admin/admin/list-approve']);
+
+        location.reload();
       }
     )
   }
-
-  // ร่าง
-  onProDraft() {
-    const data = {
-      pro_id: this.pro_id
-    }
-    // console.log(data)
-    this.service.putProdraft(data).subscribe(
-      async (res) => {
-        // await delay(1000);
-        this.closeModal();
-        this.router.navigate(['seller/seller/selle-property']);
-      }
-    )
-  }
-
-  // ปรับปรุง
-  onProModifly() {
-    const data = {
-      pro_id: this.pro_id
-    }
-    // console.log(data)
-    this.service.putPromodify(data).subscribe(
-      async (res) => {
-        // await delay(1000);
-        this.closeModal();
-        this.router.navigate(['seller/seller/selle-property']);
-      }
-    )
-  }
-
-  // ปิดการขาย
-  onProClose() {
-    const data = {
-      pro_id: this.pro_id
-    }
-    // console.log(data)
-    this.service.putProclose(data).subscribe(
-      async (res) => {
-        // await delay(1000);
-        this.closeModal();
-        this.router.navigate(['seller/seller/selle-property']);
-      }
-    )
-  }
-
-
 
 
 }
-

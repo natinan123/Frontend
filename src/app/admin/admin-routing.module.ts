@@ -9,8 +9,6 @@ import { WriteAdsComponent } from './write-ads/write-ads.component';
 import { ManageMainpageComponent } from './manage-mainpage/manage-mainpage.component';
 import { RecommendComponent } from './manage-mainpage/recommend/recommend.component';
 import { ManageLocationComponent } from './manage-location/manage-location.component';
-import { ProfileComponent } from './profile/profile.component';
-import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { TastComponent } from './tast/tast.component';
 import { ChatComponent } from '../shared/chat/chat.component';
 import { ArticleComponent } from '../shared/article/article.component';
@@ -20,6 +18,9 @@ import { DetailComponent } from '../shared/detail/detail.component';
 import { ListAdsComponent } from './list-ads/list-ads.component';
 import { EditAdsComponent } from './edit-ads/edit-ads.component';
 import { MapComponent } from '../shared/search/map/map.component';
+import { ListApproveComponent } from './list-approve/list-approve.component';
+import { ApproveComponent } from './list-approve/approve/approve.component';
+import { LocationComponent } from '../shared/search/location/location.component';
 
 
 const routes: Routes = [
@@ -85,13 +86,14 @@ const routes: Routes = [
         component: ManageLocationComponent
       },
       {
-        path: 'profile',                    // ! ยังไม่ใช้
-        component: ProfileComponent
+        path: 'list-approve',           //รายการอนุมัติ
+        component: ListApproveComponent
       },
       {
-        path: 'upgrade',                     // อัพเกรดระดับ sell
-        component: UpgradMemberComponent
+        path: 'approve/:pro_id',       //อนุมัติ อสังหา
+        component: ApproveComponent
       },
+
 
       // ! page shared
       {                                       // chat-shared 
@@ -106,7 +108,10 @@ const routes: Routes = [
         path: 'artdetail/:article_id',
         component: ArtDetailComponent
       },
-
+      {                                       // ที่ตั้ง
+        path: 'location',
+        component: LocationComponent
+      },
       {
         path: 'test',                         //!  ไว้สำหรับบลอง
         component: TastComponent

@@ -21,6 +21,10 @@ import { ArtDetailComponent } from './article/art-detail/art-detail.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SharedModule } from '../shared/shared.module';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { GalleryModule } from '@ngx-gallery/core';
+import { LightboxModule } from '@ngx-gallery/lightbox';
+import { GallerizeModule } from '@ngx-gallery/gallerize';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,10 @@ import { SharedModule } from '../shared/shared.module';
     }),//google api
     Ng2SearchPipeModule,
     SharedModule,
-    
+    AgmJsMarkerClustererModule,
+    GalleryModule,
+    LightboxModule,
+    GallerizeModule,
   ]
 })
 export class MainpageModule { }

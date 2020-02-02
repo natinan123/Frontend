@@ -18,15 +18,19 @@ import { ManageMemberComponent } from './manage-member/manage-member.component';
 import { MemberDetailComponent } from './manage-member/member-detail/member-detail.component';
 import { ManageSaleComponent } from './manage-sale/manage-sale.component';
 import { ProDetailComponent } from './manage-sale/pro-detail/pro-detail.component';
-import { ProfileComponent } from './profile/profile.component';
 import { TastComponent } from './tast/tast.component';
-import { UpgradMemberComponent } from './upgrad-member/upgrad-member.component';
 import { WriteAdsComponent } from './write-ads/write-ads.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { SharedModule } from '../shared/shared.module';
 import { ListAdsComponent } from './list-ads/list-ads.component';
 import { EditAdsComponent } from './edit-ads/edit-ads.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { GalleryModule } from '@ngx-gallery/core';
+import { LightboxModule } from '@ngx-gallery/lightbox';
+import { GallerizeModule } from '@ngx-gallery/gallerize';
+import { ListApproveComponent } from './list-approve/list-approve.component';
+import { ApproveComponent } from './list-approve/approve/approve.component';
 
 
 
@@ -40,12 +44,12 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MemberDetailComponent,
     ManageSaleComponent,
     ProDetailComponent,
-    ProfileComponent,
     TastComponent,
-    UpgradMemberComponent,
     WriteAdsComponent,
     ListAdsComponent,
     EditAdsComponent,
+    ListApproveComponent,
+    ApproveComponent,
     ],
   imports: [
     CommonModule,
@@ -64,7 +68,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     }),//google api
     SharedModule,
     Ng2SearchPipeModule,
-
+    AgmJsMarkerClustererModule,
+    GalleryModule,
+    LightboxModule,
+    GallerizeModule,
     
   ]
 })
