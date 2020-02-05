@@ -18,6 +18,9 @@ import { HomeComponent } from '../shared/home/home.component';
 import { DetailComponent } from '../shared/detail/detail.component';
 import { MapComponent } from '../shared/search/map/map.component';
 import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pending-approval.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
+import { LocationComponent } from '../shared/search/location/location.component';
+import { PriceComponent } from '../shared/search/price/price.component';
 
 
 
@@ -39,7 +42,14 @@ const routes: Routes = [
         path: 'map',
         component: MapComponent
       },
-
+      {                                       // ที่ตั้ง
+        path: 'location',
+        component: LocationComponent
+      },
+      {                                       //ค้นหาตามราคา
+        path: 'price',
+        component: PriceComponent
+      },
       // ! end home
      
       { // ข้อมูลส่วนตัว
@@ -78,7 +88,6 @@ const routes: Routes = [
         path: 'editproperty/:pro_id',
         component: EditPropertyComponent
       },
-      
       { // test chat-shared 
         path: 'chat',
         component: ChatComponent
@@ -90,6 +99,10 @@ const routes: Routes = [
       { // โฆษณา
         path: 'artdetail/:article_id',
         component: ArtDetailComponent
+      },
+      { // ส่งไปรายการแนะนำ
+        path: 'suggestion',
+        component: SuggestionComponent
       },
       { // test
         path: 'test',

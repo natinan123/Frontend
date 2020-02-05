@@ -72,7 +72,6 @@ import { ApproveComponent } from './list-approve/approve/approve.component';
     GalleryModule,
     LightboxModule,
     GallerizeModule,
-    
   ]
 })
 export class AdminModule { }

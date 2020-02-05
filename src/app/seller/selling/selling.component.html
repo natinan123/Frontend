@@ -16,7 +16,7 @@
     <!-- ! step 1 -->
     <mat-horizontal-stepper [linear]="!isLinear" #stepper>
         <mat-step [stepControl]="firstFormGroup" class="steper">
-            <ng-template matStepLabel>ประเภทอสังหาริมทรัพย์</ng-template>
+            <ng-template matStepLabel class="overview">ประเภทอสังหาริมทรัพย์</ng-template>
             <form [formGroup]="firstFormGroup">
                 <div class="row">
                     <div class="col-md-4">
@@ -324,113 +324,79 @@
                     </div>
                 </div>
 
-                <div class="row" style="margin-top: 8px; margin-left: 40px;">
+                <div class="row" style="margin-top: 8px; margin-left: 40px;" [formGroup]="fourthFormGroup">
                     <div class="col-md-4">
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check1"
-                                formControlName="Check1" id="Check1">
-                            <label class="form-check-label" for="Check1">ที่จอดรถ</label>
+                            <mat-checkbox [(ngModel)]="Check1" formControlName="Check1">ใกล้รถไฟฟ้า MRT</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check2"
-                                formControlName="Check2" id="Check2">
-                            <label class="form-check-label" for="Check2">ลานจอดรถ</label>
+                            <mat-checkbox [(ngModel)]="Check2" formControlName="Check2">ใกล้รถไฟฟ้า BTS</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check3"
-                                formControlName="Check3" id="Check3">
-                            <label class="form-check-label" for="Check3">รักษาความปลอดภัย</label>
+                            <mat-checkbox [(ngModel)]="Check3" formControlName="Check3">ใกล้ห้างสรรพสินค้า
+                            </mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check4"
-                                formControlName="Check4" id="Check4">
-                            <label class="form-check-label" for="Check4">สระว่ายน้า</label>
+                            <mat-checkbox [(ngModel)]="Check4" formControlName="Check4">ใกล้สถานพยาบาล</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check5"
-                                formControlName="Check5" id="Check5">
-                            <label class="form-check-label" for="Check5">กล้องวงจรปิด</label>
+                            <mat-checkbox [(ngModel)]="Check5" formControlName="Check5">ใกล้มหาวิทยาลัย</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check6"
-                                formControlName="Check6" id="Check6">
-                            <label class="form-check-label" for="Check6">ฟิตเนส</label>
+                            <mat-checkbox [(ngModel)]="Check6" formControlName="Check6">ใกล้โรงเรียน</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check7"
-                                formControlName="Check7" id="Check7">
-                            <label class="form-check-label" for="Check7">สนามเด็กเล่น</label>
+                            <mat-checkbox [(ngModel)]="Check7" formControlName="Check7">ใกล้รถโดยสารสาธารณะ
+                            </mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check8"
-                                formControlName="Check8" id="Check8">
-                            <label class="form-check-label" for="Check8">มินิมาร์ท</label>
+                            <mat-checkbox [(ngModel)]="Check8" formControlName="Check8">ใกล้สถานบันเทิง</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check9"
-                                formControlName="Check9" id="Check9">
-                            <label class="form-check-label" for="Check9">ซัก อบ รีด</label>
+                            <mat-checkbox [(ngModel)]="Check9" formControlName="Check9">ใกล้ร้านอาหาร คาเฟ่
+                            </mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check10"
-                                formControlName="Check10" id="Check10">
-                            <label class="form-check-label" for="Check10">ศาลาชมทิวทัศน์</label>
+                            <mat-checkbox [(ngModel)]="Check10" formControlName="Check10">สวนสาธารณะ</mat-checkbox>
                         </div>
+
                     </div>
 
                     <div class="col-md-4">
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check11"
-                                formControlName="Check11" id="Check11">
-                            <label class="form-check-label" for="Check11">ที่จอดรถ</label>
+                            <mat-checkbox [(ngModel)]="Check11" formControlName="Check11">ที่จอดรถ</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check12"
-                                formControlName="Check12" id="Check12">
-                            <label class="form-check-label" for="Check12">ลานจอดรถ</label>
+                            <mat-checkbox [(ngModel)]="Check12" formControlName="Check12">ลานจอดรถ</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check13"
-                                formControlName="Check13" id="Check13">
-                            <label class="form-check-label" for="Check13">รักษาความปลอดภัย</label>
+                            <mat-checkbox [(ngModel)]="Check13" formControlName="Check13">รักษาความปลอดภัย
+                            </mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check14"
-                                formControlName="Check14" id="Check14">
-                            <label class="form-check-label" for="Check14">สระว่ายน้า</label>
+                            <mat-checkbox [(ngModel)]="Check14" formControlName="Check14">สระว่ายน้า</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check15"
-                                formControlName="Check15" id="Check15">
-                            <label class="form-check-label" for="Check15">กล้องวงจรปิด</label>
+                            <mat-checkbox [(ngModel)]="Check15" formControlName="Check15">กล้องวงจรปิด</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check16"
-                                formControlName="Check16" id="Check16">
-                            <label class="form-check-label" for="Check16">ฟิตเนส</label>
+                            <mat-checkbox [(ngModel)]="Check16" formControlName="Check16">ฟิตเนส</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check17"
-                                formControlName="Check17" id="Check17">
-                            <label class="form-check-label" for="Check17">สนามเด็กเล่น</label>
+                            <mat-checkbox [(ngModel)]="Check17" formControlName="Check17">สนามเด็กเล่น</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check18"
-                                formControlName="Check18" id="Check18">
-                            <label class="form-check-label" for="Check18">มินิมาร์ท</label>
+                            <mat-checkbox [(ngModel)]="Check18" formControlName="Check18">มินิมาร์ท</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check19"
-                                formControlName="Check19" id="Check19">
-                            <label class="form-check-label" for="Check19">ซัก อบ รีด</label>
+                            <mat-checkbox [(ngModel)]="Check19" formControlName="Check19">ซัก อบ รีด</mat-checkbox>
                         </div>
                         <div class="check-list">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="Check20"
-                                formControlName="Check20" id="Check20">
-                            <label class="form-check-label" for="Check20">ศาลาชมทิวทัศน์</label>
+                            <mat-checkbox [(ngModel)]="Check20" formControlName="Check20">ศาลาชมทิวทัศน์</mat-checkbox>
                         </div>
                     </div>
                 </div>
+
                 <button mat-raised-button (click)="onSubmit()" class="bt-submit">ยืนยัน</button>
                 <button mat-raised-button (click)="onPostDraft()" class="bt-draft">บันทึกเป็นฉบับร่าง</button>
                 <button mat-button matStepperPrevious class="bt-Previous">ย้อนกลับ</button>

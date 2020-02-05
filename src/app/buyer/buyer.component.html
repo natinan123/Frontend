@@ -46,10 +46,9 @@
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3">ค้นหาอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu3="matMenu">
             <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
-            <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
-            <button mat-menu-item>ค้นหาจากความนิยม</button>
-            <button mat-menu-item [routerLink]="['/buyer/buyer/map']" routerLinkActive="router-link-active" >ค้นหาจากแผนที่</button>
-            <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/price']" routerLinkActive="active-head">ค้นหาจากราคาพื้นที่</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/map']" routerLinkActive="active-head" >ค้นหาจากแผนที่</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/location']" routerLinkActive="active-head">ค้นหาจากทำเลที่ตั้ง</button>
         </mat-menu>
 
 

@@ -24,6 +24,7 @@ import { LightboxModule } from '@ngx-gallery/lightbox';
 import { GallerizeModule } from '@ngx-gallery/gallerize';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { LocationComponent } from './search/location/location.component';
+import { PriceComponent } from './search/price/price.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { LocationComponent } from './search/location/location.component';
     DetailComponent,
     MapComponent,
     LocationComponent,
+    PriceComponent,
   ],
   imports: [
     CommonModule,
@@ -57,6 +59,7 @@ import { LocationComponent } from './search/location/location.component';
     GalleryModule,
     LightboxModule,
     GallerizeModule,
+
   ]
 })
 export class SharedModule { }

@@ -1,20 +1,29 @@
+<div class="row" style="height: 100px;background-color: #014254">
+    <div class="col-md">
+        <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> ส่งข้อมูลไปรายการแนะนำ </h1>
+    </div>
+
+
+</div>
+
+
 <div class="search-hero">
     <input class="form-control" placeholder="ค้นหารายการ" name="search" [(ngModel)]="searchText">
 </div>
 
 
 <mat-card style="width: 98%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
-    <mat-toolbar style="background-color: #4579a0;color: snow">รายการที่รออนุมัติ</mat-toolbar>
+    <mat-toolbar style="background-color: #4579a0;color: snow">รายการที่ประกาศ</mat-toolbar>
     <div class="row">
         <mat-card class="product-card" *ngFor="let r of mypro | filter:searchText ">
 
             <div class="image">
-                <img style="cursor: pointer;" [routerLink]="['/seller/seller/detail' ,r.pro_id]" mat-card-image
-                src="data:image/jpg;base64,{{r.image1}}" />
+                <img style="cursor: pointer;" [routerLink]="['/seller/seller/ProductDetail' ,r.pro_id]" mat-card-image
+                    src="data:image/jpg;base64,{{r.image1}}" />
             </div>
             <div class="detail">
                 <mat-card-content>
-                    <p class="head" [routerLink]="['/seller/seller/detail' ,r.pro_id]">
+                    <p class="head" [routerLink]="['/seller/seller/ProductDetail' ,r.pro_id]">
                         {{r.pro_head}}
                     </p>
                 </mat-card-content>

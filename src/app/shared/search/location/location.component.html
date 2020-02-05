@@ -1,1 +1,59 @@
-<p>location works!</p>
+<mat-card [formGroup]="firstFormGroup" class="mat-card-Zone">
+    <mat-card-header class="mat-header">
+        <mat-card-title>เลือกเขตที่ตั้งที่ต้องการ</mat-card-title>
+        <mat-card-subtitle>สามารถเลือกเขตที่ตั้งเพื่อแสดงตามต้องการ</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+        <div class="row" style=" margin-top: 15px;">
+            <div class="col-md-3">
+                <div class="label">
+                    <mat-label>ภูมิภาค</mat-label>
+                </div>
+                <div class="option">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-select [(ngModel)]="zone_id" formControlName="Zone" placeholder="เลือกภูมิภาค"
+                            (ngModelChange)="onProvince($event)" required>
+                            <mat-option [value]="z.zone_id" *ngFor="let z of zones">
+                                {{z.zone_name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="label">
+                    <mat-label>จังหวัด</mat-label>
+                </div>
+                <div class="option">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-select [(ngModel)]="province_id" formControlName="Province_id" placeholder="เลือกจังหวัด"
+                            (ngModelChange)="onLocation($event)" required>
+                            <mat-option [value]="p.province_id" *ngFor="let p of provins">{{p.provin_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="label">
+                    <mat-label>เขต/อำเภอ</mat-label>
+                </div>
+                <div class="option">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-select [(ngModel)]="location_id" formControlName="Location_id" placeholder="เลือกจังหวัด"
+                            required>
+                            <mat-option [value]="dis.location_id" *ngFor="let dis of district">{{dis.loc_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="onProFromLocat(location_id)">Ok</button>
+    </mat-card-actions>
+</mat-card>
+

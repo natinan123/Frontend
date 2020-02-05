@@ -34,11 +34,12 @@
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu2">ค้นหาอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu2="matMenu">
             <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
-            <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
-            <button mat-menu-item>ค้นหาจากความนิยม</button>
+            <button mat-menu-item [routerLink]="['/seller/seller/price']"
+            routerLinkActive="active-head">ค้นหาจากราคาพื้นที่</button>
             <button mat-menu-item [routerLink]="['/seller/seller/map']"
                 routerLinkActive="active-head">ค้นหาจากแผนที่</button>
-            <button mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+            <button mat-menu-item [routerLink]="['/seller/seller/location']"
+                routerLinkActive="active-head">ค้นหาจากเขตที่ตั้ง</button>
         </mat-menu>
 
 
@@ -58,7 +59,7 @@
 
 
 <div class="row" style="height: 100%;">
-    <div class="col-md-2" style="background-color: #1d6a96 ; padding-right: 0px; ">
+    <div class="col-md-2" style="background-color: #3a5a69 ; padding-right: 0px; ">
 
         <div class="pic">
             <img *ngIf="pic64 == ''" src="../../assets/pic/sall/sall-avtar.png"
@@ -122,6 +123,13 @@
             </mat-list-item>
             <mat-divider></mat-divider>
 
+            <mat-list-item class="menu" [routerLink]="['/seller/seller/suggestion']" routerLinkActive="active">
+                <i class="material-icons">
+                    layers
+                </i> &nbsp;
+                ส่งรายการแนะนำ
+            </mat-list-item>
+            <mat-divider></mat-divider>
 
             <mat-list-item class="menu" [routerLink]="['/seller/seller/test']" routerLinkActive="active">
                 <i class="fa fa-cogs" aria-hidden="true"></i> ไว้ทดสอบ</mat-list-item>

@@ -12,6 +12,8 @@ import { ArtDetailComponent } from '../shared/article/art-detail/art-detail.comp
 import { HomeComponent } from '../shared/home/home.component';
 import { DetailComponent } from '../shared/detail/detail.component';
 import { MapComponent } from '../shared/search/map/map.component';
+import { LocationComponent } from '../shared/search/location/location.component';
+import { PriceComponent } from '../shared/search/price/price.component';
 
 
 const routes: Routes = [
@@ -31,6 +33,14 @@ const routes: Routes = [
       { // แผนที่
         path: 'map',
         component: MapComponent
+      },
+      {                                       // ที่ตั้ง
+        path: 'location',
+        component: LocationComponent
+      },
+      {                                       //ค้นหาตามราคา
+        path: 'price',
+        component: PriceComponent
       },
 
       // ! end home

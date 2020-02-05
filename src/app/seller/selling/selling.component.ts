@@ -206,6 +206,7 @@ export class SellingComponent implements OnInit {
       }
     )
   }
+  
   // ภาค
   getZonePro() {
     this.service.getZone().subscribe(

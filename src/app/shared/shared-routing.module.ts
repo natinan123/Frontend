@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
 import { MapComponent } from './search/map/map.component';
 import { LocationComponent } from './search/location/location.component';
+import { PriceComponent } from './search/price/price.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,10 @@ const routes: Routes = [
       { // ที่ตั้ง
         path: 'location',
         component: LocationComponent
+      },
+      { //ค้นหาตามราคา
+        path: 'price',
+        component: PriceComponent
       },
     ]
   }

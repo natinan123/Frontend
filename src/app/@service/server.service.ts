@@ -237,7 +237,14 @@ export class ServerService {
   getNamePro(data) {
     return this.http.get(urlServer.ipServer + 'getnamepro/' + data)
   }
-
+  // อสังหาจากเขต
+  getProFromLocat(data) {
+    return this.http.get(urlServer.ipServer + 'proFromLocat/' + data)
+  }
+  // อสังหาจากจังหวัด
+  getProFromProvin(data) {
+    return this.http.get(urlServer.ipServer + 'proFromProvin/' + data)
+  }
 
   // ! END ^ Get -------------------------//
 

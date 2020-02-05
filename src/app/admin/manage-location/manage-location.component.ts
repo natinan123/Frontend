@@ -58,6 +58,7 @@ export class ManageLocationComponent implements OnInit {
   getTable() {
     this.service.getLocation().subscribe(
       (res) => {
+        
         this.dataSource = new MatTableDataSource(res as any[]);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

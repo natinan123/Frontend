@@ -27,7 +27,7 @@ export class SellerComponent implements OnInit {
     this.data = this.user[0].email_id;
     this.showAvatar();
 
-    
+
 
   }
   onLogout() {
@@ -42,20 +42,19 @@ export class SellerComponent implements OnInit {
         // console.log(res)
         this.avatarname = res[0].filename,
           this.pic64 = res[0].picBase64
-        // console.log(this.pic64);
-        // console.log(this.avatarname);
+
       }
     );
   }
 
-  onButtonGroupClick($event){
+  onButtonGroupClick($event) {
     let clickedElement = $event.target || $event.srcElement;
 
-    if( clickedElement.nodeName === "BUTTON" ) {
+    if (clickedElement.nodeName === "BUTTON") {
 
       let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".active");
       // if a Button already has Class: .active
-      if( isCertainButtonAlreadyActive ) {
+      if (isCertainButtonAlreadyActive) {
         isCertainButtonAlreadyActive.classList.remove("active");
       }
 

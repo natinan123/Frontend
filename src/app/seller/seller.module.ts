@@ -30,6 +30,7 @@ import { GalleryModule } from '@ngx-gallery/core';
 import { LightboxModule } from '@ngx-gallery/lightbox';
 import { GallerizeModule } from '@ngx-gallery/gallerize';
 import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pending-approval.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pendi
     TestingComponent,
     TestPostProComponent,
     SellPendingApprovalComponent,
+    SuggestionComponent,
   ],
   imports: [
     CommonModule,
