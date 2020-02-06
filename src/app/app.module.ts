@@ -21,9 +21,11 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { GalleryModule } from '@ngx-gallery/core';
 import { LightboxModule } from '@ngx-gallery/lightbox';
 import { GallerizeModule } from '@ngx-gallery/gallerize';
+import { AreaComponent } from './search/area/area.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AreaComponent
   ],
   imports: [
     BrowserModule,

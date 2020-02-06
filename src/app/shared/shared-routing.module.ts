@@ -8,6 +8,7 @@ import { DetailComponent } from './detail/detail.component';
 import { MapComponent } from './search/map/map.component';
 import { LocationComponent } from './search/location/location.component';
 import { PriceComponent } from './search/price/price.component';
+import { AreaComponent } from './search/area/area.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,10 @@ const routes: Routes = [
       { //ค้นหาตามราคา
         path: 'price',
         component: PriceComponent
+      },
+      { //ค้นหาตามขนาดพื้นที่
+        path: 'area',
+        component: AreaComponent
       },
     ]
   }

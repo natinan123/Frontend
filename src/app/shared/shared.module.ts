@@ -25,6 +25,7 @@ import { GallerizeModule } from '@ngx-gallery/gallerize';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { LocationComponent } from './search/location/location.component';
 import { PriceComponent } from './search/price/price.component';
+import { AreaComponent } from './search/area/area.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { PriceComponent } from './search/price/price.component';
     MapComponent,
     LocationComponent,
     PriceComponent,
+    AreaComponent,
   ],
   imports: [
     CommonModule,

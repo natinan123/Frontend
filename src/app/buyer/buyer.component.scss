@@ -1,9 +1,37 @@
-.memu-left {
+.pic{
+  text-align: center;
+  margin-top: 10px;
+  color: snow;
+}
+
+.user{
+  margin-top: 4px;
+  color: #f78e1e;
+
+}
+.name{
+  margin-top: 5px;
+}
+
+
+.upgrade {
   width: 100%;
   color: snow;
+  background-color: #f78e1e;
 }
 .example-spacer {
   flex: 1 1 auto;
+}
+
+.text {
+  font-size: 30px;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, #456990 10%, #e5446d 50%, #ffe66d 80%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .circle {
@@ -21,10 +49,39 @@
 .tool {
   width: 260px;
   margin-left: 5px;
-  background: #4579a0;
+  background: #4579a0 ;
 }
 
-.active-head {
+.tool-post {
+  width: 260px;
+  margin-left: 5px;
+  background: #e55c25 ;
+}
+
+.menu {
+  color: snow;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.active-head{
   background-color: #d1dddb;
   color: #1d6a96;
+}
+
+.active-selling{
+  background-color: #e8c7b6;
+  color: #32435f;
+}
+
+.active {
+  border: solid;
+  background-color: #869dab;
+  color: snow;
+}
+
+.material-icons {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 7px;
 }

@@ -14,6 +14,7 @@ import { DetailComponent } from '../shared/detail/detail.component';
 import { MapComponent } from '../shared/search/map/map.component';
 import { LocationComponent } from '../shared/search/location/location.component';
 import { PriceComponent } from '../shared/search/price/price.component';
+import { AreaComponent } from '../shared/search/area/area.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,10 @@ const routes: Routes = [
         path: 'price',
         component: PriceComponent
       },
-
+      {                                       //ค้นหาตามขนาดพื้นที่
+        path: 'area',
+        component: AreaComponent
+      },
       // ! end home
       { // หน้าหลัก
         path: 'buyerhome',

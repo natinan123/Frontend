@@ -20,7 +20,7 @@
     <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
 
 
-        <button mat-button class="tool" [routerLink]="['/buyer/buyer/home']" routerLinkActive="router-link-active"
+        <button mat-button class="tool" [routerLink]="['/buyer/buyer/home']" routerLinkActive="active-head"
             style="margin-left: 10px; ">หน้าหลัก</button>
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu1">ขายอสังหาริมทรัพย์</button>
@@ -45,14 +45,19 @@
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3">ค้นหาอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu3="matMenu">
-            <button mat-menu-item style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
-            <button mat-menu-item [routerLink]="['/buyer/buyer/price']" routerLinkActive="active-head">ค้นหาจากราคาพื้นที่</button>
-            <button mat-menu-item [routerLink]="['/buyer/buyer/map']" routerLinkActive="active-head" >ค้นหาจากแผนที่</button>
-            <button mat-menu-item [routerLink]="['/buyer/buyer/location']" routerLinkActive="active-head">ค้นหาจากทำเลที่ตั้ง</button>
+            <button mat-menu-item style="width: 400px" [routerLink]="['/buyer/buyer/area']"
+            routerLinkActive="active-head">ค้นหาจากขนาดพื้นที่</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/price']"
+                routerLinkActive="active-head">ค้นหาจากราคาพื้นที่</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/map']"
+                routerLinkActive="active-head">ค้นหาจากแผนที่</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/location']"
+                routerLinkActive="active-head">ค้นหาจากทำเลที่ตั้ง</button>
         </mat-menu>
 
 
-        <button mat-button class="tool" routerLink="/buyer/buyer/article">บทความโฆษณา</button>
+        <button mat-button class="tool" [routerLink]="['/buyer/buyer/article']"
+            routerLinkActive="active-head">บทความโฆษณา</button>
 
 
 
@@ -65,38 +70,55 @@
 
 
 <div class="row" style="width: 100%; height: 100%;">
-    <div class="col-md-2" style="background: #1d6a96 ;">
-        <mat-list>
-            <img *ngIf="profile_pic == ''" src="../../assets/pic/sall/sall-avtar.png"
+    <div class="col-md-2" style="background-color: #40686a ; padding-right: 0px; ">
+        <div class="pic">
+            <img *ngIf="pic64 == ''" src="../../assets/pic/sall/sall-avtar.png"
                 style="height: 100px;width: auto;  display: block; margin-left: auto; margin-right: auto; ">
-
             <img *ngIf="pic64 != null" src="data:image/jpg;base64,{{pic64}}" class="circle" />
+            <div class="user">
+                <h5>ผู้ต้องการซื้อ</h5>
+            </div>
+            <div>
+                <p class="name">{{user[0].fname}} &nbsp; {{user[0].lname}}</p>
+            </div>
 
-            <mat-list-item>
-                <button mat-button routerLink="/buyer/buyer/buyerhome" class="memu-left">{{fname}} &nbsp;
-                    {{user[0].lname}}</button>
+        </div>
+        <mat-list>
+
+            <mat-divider></mat-divider>
+            <mat-list-item class="menu" [routerLink]="['/buyer/buyer/require']" routerLinkActive="active">
+                <i class="material-icons">
+                    pageview
+                </i> &nbsp;
+                กรอกความต้องการ
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/buyer/buyer/require"
-                    class="memu-left">อสังหาริมทรัพย์ที่ต้องการซื้อ</button>
+            <mat-list-item class="menu" [routerLink]="['/buyer/buyer/listrequire']" routerLinkActive="active">
+                <i class="material-icons">
+                    list_alt
+                </i> &nbsp;
+                รายการความต้องการ
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/buyer/buyer/listrequire"
-                    class="memu-left">รายการความต้องการต้องการ</button>
+            <mat-list-item class="menu" [routerLink]="['/buyer/buyer/matchas']" routerLinkActive="active">
+                <i class="material-icons">
+                    swap_horizontal_circle
+                </i> &nbsp;
+                อสังหาริมทรัพย์ที่ตรงกัน
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/buyer/buyer/matchas" class="memu-left">อสังหาริมทรัพย์ที่ตรงกัน</button>
+            <mat-list-item class="menu" [routerLink]="['/buyer/buyer/chat']" routerLinkActive="active">
+                <i class="material-icons">
+                    chat
+                </i> &nbsp;
+                ติดต่อสนทนา
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/buyer/buyer/chat" class="memu-left">ติดต่อสนทนา</button>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>
-                <button mat-button routerLink="/buyer/buyer/buy-test" class="memu-left">ทดสอบ</button>
+            <mat-list-item class="menu" [routerLink]="['/buyer/buyer/buy-test']" routerLinkActive="active">
+                <i class="material-icons">
+                    settings
+                </i> &nbsp;
+                ทดสอบ
             </mat-list-item>
             <mat-divider></mat-divider>
         </mat-list>

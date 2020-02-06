@@ -1,43 +1,75 @@
-
-
-
-
-
 <div class="row" style="height: 100px;background-color: #014254;">
     <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; ">
         ความต้องการอสังหาริมทรัพย์ที่ต้องการซื้อ
     </h1>
 </div>
 
-<mat-card style="width: 97%; margin-left: auto; margin-right: auto; top: 10px;background-color: #BBD9EE">
+<mat-card style="width: 97%; margin-left: auto; margin-right: auto; top: 10px; background: #BBD9EE">
 
     <form [formGroup]="addReq">
 
-        <div class="select">
-            <label for="select1">อสังหาริมทรัพย์ที่ต้องการ</label>
-            <select [(ngModel)]="Type_id" formControlName="Type_id" class="form-control" id="select1">
-                <option value="">เลือกรายการอสังหาริมทรัพย์</option>
-                <option [value]="row.type_id" *ngFor="let row of types">{{row.type_name}}</option>
-            </select>
-        </div>
-
-        <div class="select">
-            <label for="select2">ภูมิภาค</label>
-            <select [(ngModel)]="Loc_zone" (click)="onLocation(Loc_zone)" formControlName="Loc_zone"
-                class="form-control" id="select2">
-                <option>เลือกรายการภูมิภาค</option>
-                <option [value]="z.loc_zone" *ngFor="let z of zones">{{z.zone_name}}</option>
-            </select>
-        </div>
 
 
         <div class="select">
-            <label for="select3">จังหวัด</label>
-            <select [(ngModel)]="Location_id" formControlName="Location_id" class="form-control" id="select3">
-                <option value="">เลือกรายการจังหวัด</option>
-                <option [value]="p.location_id" *ngFor="let p of provin">{{p.loc_name}}</option>
-            </select>
+            <div class="label">
+                <mat-label>อสังหาริมทรัพย์ที่ต้องการ</mat-label>
+            </div>
+            <div class="option">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-select [(ngModel)]="Type_id" formControlName="Type_id" placeholder="ประเภทอสังหาริมทรัพย์"
+                        required>
+                        <mat-option [value]="row.type_id" *ngFor="let row of types">
+                            {{row.type_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
+
+        <div class="select">
+            <div class="label">
+                <mat-label>ภูมิภาค</mat-label>
+            </div>
+            <div class="option">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-select [(ngModel)]="zone_id" formControlName="Zone" placeholder="เลือกภูมิภาค"
+                        (ngModelChange)="onProvince($event)" required>
+                        <mat-option [value]="z.zone_id" *ngFor="let z of zones">
+                            {{z.zone_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="select">
+            <div class="label">
+                <mat-label>จังหวัด</mat-label>
+            </div>
+            <div class="option">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-select [(ngModel)]="province_id" formControlName="Province_id" placeholder="เลือกจังหวัด"
+                        (ngModelChange)="onLocation($event)" required>
+                        <mat-option [value]="p.province_id" *ngFor="let p of provins">{{p.provin_name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="select">
+            <div class="label">
+                <mat-label>เขต/อำเภอ</mat-label>
+            </div>
+            <div class="option">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-select [(ngModel)]="location_id" formControlName="Location_id" placeholder="เลือกจังหวัด"
+                        required>
+                        <mat-option [value]="dis.location_id" *ngFor="let dis of district">{{dis.loc_name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+
 
 
 
@@ -70,9 +102,10 @@
     </div>
     <div class="modal-body">
 
-        <p>ประเภทอสังหาริมทรัพย์ : {{Type_id}} {{type_name}} </p>
-        <p>ภูมิภาค : {{Loc_zone}} </p>
-        <p>จังหวัด : {{Location_id}}</p>
+        <p>ประเภทอสังหาริมทรัพย์ : {{Type_id}} {{a}} </p>
+        <p>ภูมิภาค : {{zone_id}} </p>
+        <p>จังหวัด : {{province_id}}</p>
+        <p>เขต/อำเภอ : {{location_id.loc_name}}</p>
         <p>ขนาดพื้นที่ต่ำสุด : {{Area_min}} ตารางเมตร</p>
         <p>ขนาดพื้นที่สูงสุด : {{Area_max}} ตารางเมตร</p>
         <p>ราคาของพื้นที่ต่ำสุด : {{Price_min}} บาท</p>

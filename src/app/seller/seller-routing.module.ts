@@ -21,6 +21,7 @@ import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pendi
 import { SuggestionComponent } from './suggestion/suggestion.component';
 import { LocationComponent } from '../shared/search/location/location.component';
 import { PriceComponent } from '../shared/search/price/price.component';
+import { AreaComponent } from '../shared/search/area/area.component';
 
 
 
@@ -49,6 +50,10 @@ const routes: Routes = [
       {                                       //ค้นหาตามราคา
         path: 'price',
         component: PriceComponent
+      },
+      { //ค้นหาตามขนาดพื้นที่
+        path: 'area',
+        component: AreaComponent
       },
       // ! end home
      

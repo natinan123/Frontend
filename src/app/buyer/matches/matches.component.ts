@@ -53,11 +53,8 @@ export class MatchesComponent implements OnInit {
 
 
   getReqmatchList() {
-    // const data = {
-    //   a: this.user[0].email_id
-    // }
-    // console.log(data)
-    this.service.getReqMatch().subscribe(
+
+    this.service.getReqMatch(this.user[0].email_id).subscribe(
       (res) => {
         console.log(res);
         this.match = res;

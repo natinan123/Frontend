@@ -1,9 +1,11 @@
-.select {
-  white-space: nowrap;
-  margin-left: 10px;
-  width: 500px;
-  margin-top: 15px;
+.option {
+  width: 50%;
 }
+
+.full-width{
+  width: 100%;
+}
+
 
 .range {
   width: 500px;
@@ -23,7 +25,6 @@
   left: 150px;
   margin-top: 30px;
 }
-
 
 // slider
 // We need to use ::ng-deep to overcome view encapsulation
@@ -72,10 +73,9 @@
     background: orange;
   }
 
-  .custom-slider{
-    width:70%;
+  .custom-slider {
+    width: 70%;
     margin-top: 20px;
     margin-left: 10px;
   }
-  
 }

@@ -22,6 +22,7 @@ import { ListApproveComponent } from './list-approve/list-approve.component';
 import { ApproveComponent } from './list-approve/approve/approve.component';
 import { LocationComponent } from '../shared/search/location/location.component';
 import { PriceComponent } from '../shared/search/price/price.component';
+import { AreaComponent } from '../shared/search/area/area.component';
 
 
 const routes: Routes = [
@@ -116,6 +117,10 @@ const routes: Routes = [
       {                                       //ค้นหาตามราคา
         path: 'price',
         component: PriceComponent
+      },
+      {                                        //ค้นหาตามขนาดพื้นที่
+        path: 'area',
+        component: AreaComponent
       },
       {
         path: 'test',                         //!  ไว้สำหรับบลอง

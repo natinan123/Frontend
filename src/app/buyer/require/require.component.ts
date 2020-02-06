@@ -25,8 +25,9 @@ export class RequireComponent implements OnInit {
 
   public addReq = new FormGroup({
     Type_id: new FormControl(''),
-    Loc_zone: new FormControl(''),
-    Location_id: new FormControl('')
+    Zone: new FormControl(''),
+    Province_id: new FormControl(''),
+    Location_id: new FormControl(''),
 
   })
 
@@ -63,8 +64,13 @@ export class RequireComponent implements OnInit {
   Loc_zone: any;
   Location_id: any;
   user: any;
-  provin: Object;
   type_name: any;
+  provins: Object;
+  district: Object;
+  province_id: any;
+  a: any;
+  Zone: any;
+  location_id: any;
 
 
 
@@ -105,18 +111,25 @@ export class RequireComponent implements OnInit {
     )
   }
   // จังหวัด
-  onLocation() {
-    this.service.getProvince(this.Loc_zone).subscribe(
+  onProvince(zone_id) {
+    this.service.getProvince(zone_id).subscribe(
       (res) => {
         // console.log(res);
-
-        this.provin = res;
-
+        this.provins = res;
       })
-
+  }
+  // เขต
+  onLocation(province_id) {
+    console.log(province_id);
+    this.service.getLocOfPro(province_id).subscribe(
+      (res) => {
+        // console.log(res);
+        this.district = res;
+      })
   }
 
-  
+
+
 
 
   // Modal 
@@ -124,7 +137,6 @@ export class RequireComponent implements OnInit {
    
     this.modalService.open(modal, { centered: true })
   }
- 
 
   closeModal() {
     this.modalService.dismissAll();
@@ -134,15 +146,15 @@ export class RequireComponent implements OnInit {
     // console.log(this.Type_id, this.Loc_zone, this.Location_id)
     const data = {
       type_id: this.Type_id,
-      loc_zone: this.Loc_zone,
-      location_id: this.Location_id,
+      province_id: this.province_id,
+      location_id: this.location_id,
       req_area_max: this.Area_max,
       req_area_min: this.Area_min,
       req_price_max: this.Price_max,
       req_price_min: this.Price_min,
       email_id: this.user[0].email_id
     }
-    // console.log(data);
+    console.log(data);
     // console.log(this.AddLocation)
 
     this.service.postRequire(data).subscribe(

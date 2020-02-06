@@ -185,8 +185,8 @@ export class ServerService {
     return this.http.get(urlServer.ipServer + 'requirement/' + data)
   }
   // รายการที่ตรงกัน
-  getReqMatch() {
-    return this.http.get(urlServer.ipServer + 'reqmatch')
+  getReqMatch(data) {
+    return this.http.get(urlServer.ipServer + 'reqmatch/' + data)
   }
   // รายการรอตรวจสอบ
   getListProWait() {
@@ -245,7 +245,10 @@ export class ServerService {
   getProFromProvin(data) {
     return this.http.get(urlServer.ipServer + 'proFromProvin/' + data)
   }
-
+  // อสังหาจากราคา
+  getProFromprice(data) {
+    return this.http.post(urlServer.ipServer + 'proFromprice', data)
+  }
   // ! END ^ Get -------------------------//
 
 

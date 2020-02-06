@@ -1,0 +1,66 @@
+.head {
+  margin-top: 10px;
+  background-color: #f2f3f5;
+}
+.input-price1 {
+  margin-left: 65px;
+  width: 20%;
+}
+.input-price2 {
+  width: 20%;
+}
+.type-select {
+  width: 40%;
+  margin-left: 50px;
+}
+.goto {
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-top: 35px;
+}
+// We need to use ::ng-deep to overcome view encapsulation
+::ng-deep {
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: #ffe4d1;
+    height: 2px;
+  }
+  .custom-slider .ng5-slider .ng5-slider-selection {
+    background: orange;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer {
+    width: 12px;
+    height: 15px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: #478fcd;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-bubble {
+    bottom: 14px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-limit {
+    font-weight: bold;
+    color: #5fad46;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #ffe4d1;
+    top: -1px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+    background: #5fad46;
+  }
+}
