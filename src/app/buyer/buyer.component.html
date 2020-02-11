@@ -46,7 +46,7 @@
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3">ค้นหาอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu3="matMenu">
             <button mat-menu-item style="width: 400px" [routerLink]="['/buyer/buyer/area']"
-            routerLinkActive="active-head">ค้นหาจากขนาดพื้นที่</button>
+                routerLinkActive="active-head">ค้นหาจากขนาดพื้นที่</button>
             <button mat-menu-item [routerLink]="['/buyer/buyer/price']"
                 routerLinkActive="active-head">ค้นหาจากราคาพื้นที่</button>
             <button mat-menu-item [routerLink]="['/buyer/buyer/map']"
@@ -107,11 +107,25 @@
                 อสังหาริมทรัพย์ที่ตรงกัน
             </mat-list-item>
             <mat-divider></mat-divider>
+            <mat-list-item class="menu" [routerLink]="['/buyer/buyer/favorite']" routerLinkActive="active">
+                <i class="material-icons">
+                    favorite
+                </i> &nbsp;
+                รายการที่ถูกใจ
+            </mat-list-item>
+            <mat-divider></mat-divider>
             <mat-list-item class="menu" [routerLink]="['/buyer/buyer/chat']" routerLinkActive="active">
                 <i class="material-icons">
                     chat
                 </i> &nbsp;
                 ติดต่อสนทนา
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="menu" [routerLink]="['/buyer/buyer/buyerhome']" routerLinkActive="active">
+                <i class="material-icons">
+                    portrait
+                </i> &nbsp;
+                ข้อมูลส่วนตัว
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item class="menu" [routerLink]="['/buyer/buyer/buy-test']" routerLinkActive="active">

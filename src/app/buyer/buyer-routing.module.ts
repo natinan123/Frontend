@@ -15,6 +15,7 @@ import { MapComponent } from '../shared/search/map/map.component';
 import { LocationComponent } from '../shared/search/location/location.component';
 import { PriceComponent } from '../shared/search/price/price.component';
 import { AreaComponent } from '../shared/search/area/area.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,14 @@ const routes: Routes = [
         path: 'area',
         component: AreaComponent
       },
+      { // โฆษณา
+        path: 'article',
+        component: ArticleComponent
+      },
+      { // โฆษณา
+        path: 'artdetail/:article_id',
+        component: ArtDetailComponent
+      },
       // ! end home
       { // หน้าหลัก
         path: 'buyerhome',
@@ -64,6 +73,10 @@ const routes: Routes = [
         path: 'matchas',
         component: MatchesComponent
       },
+      { // รายการชื่นชอบ
+        path: 'favorite',
+        component: FavoriteComponent
+      },
       { // test
         path: 'buy-test',
         component: BuyTestComponent
@@ -72,14 +85,7 @@ const routes: Routes = [
         path: 'chat',
         component: ChatComponent
       },
-      { // โฆษณา
-        path: 'article',
-        component: ArticleComponent
-      },
-      { // โฆษณา
-        path: 'artdetail/:article_id',
-        component: ArtDetailComponent
-      },
+    
     ]
   },
   {

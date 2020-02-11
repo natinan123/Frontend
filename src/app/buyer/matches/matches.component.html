@@ -5,7 +5,7 @@
         <mat-card class="product-card" *ngFor="let r of match">
 
             <div class="image">
-                <img style="cursor: pointer;" [routerLink]="['/mainpage/mainpage/property' ,r.pro_id]" mat-card-image
+                <img style="cursor: pointer;" [routerLink]="['/buyer/buyer/detail' ,r.pro_id]" mat-card-image
                     src="data:image/jpg;base64,{{r.image1}}" />
             </div>
             <div class="detail">

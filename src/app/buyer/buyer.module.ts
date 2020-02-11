@@ -24,6 +24,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { GalleryModule } from '@ngx-gallery/core';
 import { LightboxModule } from '@ngx-gallery/lightbox';
 import { GallerizeModule } from '@ngx-gallery/gallerize';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { GallerizeModule } from '@ngx-gallery/gallerize';
     MatchesComponent,
     RequireComponent,
     BuyTestComponent,
+    FavoriteComponent,
   ],
   imports: [
     CommonModule,

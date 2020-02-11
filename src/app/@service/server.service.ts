@@ -249,6 +249,18 @@ export class ServerService {
   getProFromprice(data) {
     return this.http.post(urlServer.ipServer + 'proFromprice', data)
   }
+  // อสังหาจากขนาดพื้นที่
+  getProFromArea(data) {
+    return this.http.post(urlServer.ipServer + 'proFromArea', data)
+  }
+  // อสังหา ที่ติดตาม
+  getProFollow(data) {
+    return this.http.get(urlServer.ipServer + 'profollow/' + data)
+  }
+  // เช็คการติดตาม
+  getfollow(data) {
+    return this.http.post(urlServer.ipServer + 'follow' , data)
+  }
   // ! END ^ Get -------------------------//
 
 
@@ -295,7 +307,10 @@ export class ServerService {
   postImageProMulti(formData) {
     return this.http.post(urlServer.ipServer + 'postproimage', formData)
   }
-
+  // post follow
+  postFavorate(data) {
+    return this.http.post(urlServer.ipServer + 'postFavorate', data)
+  }
   // ! END ^ Post -------------------------//
 
 
@@ -363,7 +378,10 @@ export class ServerService {
   deleteReqUpgerde(data) {
     return this.http.delete(urlServer.ipServer + 'deleteupgrade/' + data)
   }
-
+  // delete Unfollow
+  deleteUnfollow(data) {
+    return this.http.post(urlServer.ipServer + 'unfollow', data)
+  }
 
 
   // ! END ^ Delete -------------------------//

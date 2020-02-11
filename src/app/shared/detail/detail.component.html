@@ -15,7 +15,19 @@
                 <mat-chip class="tag-sell"><i class="material-icons">home_work</i>&nbsp; ประเภท{{pro_sell}}</mat-chip>
             </mat-chip-list>
         </div>
+        <div class="col-md-3">
+            <button mat-raised-button (click)="onClickFollow()" *ngIf="follow == 0" style="color: #253f58;"><i
+                    class="material-icons">
+                    add_box
+                </i> ติดตาม</button>
+            <button mat-raised-button (click)="onUnFollow()" *ngIf="follow == 1" style="color: #d92139;"><i
+                    class="material-icons">
+                    favorite
+                </i> เลิกติดตาม</button>
 
+
+
+        </div>
     </div>
     <div class="row" style="margin-top: 15px;">
         <div class="col-md-9">

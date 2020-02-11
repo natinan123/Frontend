@@ -60,15 +60,17 @@
                 mat-menu-item>เช่าที่ดิน</button>
         </mat-menu>
 
+
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3">ค้นหาอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu3="matMenu">
-            <button [routerLink]="['/mainpage/mainpage/fillter']" routerLinkActive="active-head" mat-menu-item
-                style="width: 400px">ค้นหาจากขนาดพื้นที่</button>
-            <button mat-menu-item>ค้นหาจากราคาพื้นที่</button>
-            <button [routerLink]="['/mainpage/mainpage/map']" routerLinkActive="active-head"
-                mat-menu-item>ค้นหาจากแผนที่</button>
-            <button [routerLink]="['/mainpage/mainpage/location']" routerLinkActive="active-head"
-                mat-menu-item>ค้นหาจากทำเลที่ตั้ง</button>
+            <button mat-menu-item style="width: 400px" [routerLink]="['/mainpage/mainpage/area']"
+                routerLinkActive="active-head">ค้นหาจากขนาดพื้นที่</button>
+            <button mat-menu-item [routerLink]="['/mainpage/mainpage/price']"
+                routerLinkActive="active-head">ค้นหาจากราคาพื้นที่</button>
+            <button mat-menu-item [routerLink]="['/mainpage/mainpage/map']"
+                routerLinkActive="active-head">ค้นหาจากแผนที่</button>
+            <button mat-menu-item [routerLink]="['/mainpage/mainpage/location']"
+                routerLinkActive="active-head">ค้นหาจากทำเลที่ตั้ง</button>
         </mat-menu>
 
         <button mat-button class="tool" [routerLink]="['/mainpage/mainpage/article']"

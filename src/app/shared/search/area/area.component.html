@@ -1,1 +1,42 @@
-<p>area works!</p>
+<mat-card class="head">
+    <mat-card-header>
+        <mat-card-title>ใส่ขนาดพื้นที่เพื่อค้นหา</mat-card-title>
+        <mat-card-subtitle>ใส่ขนาดพื้นที่ค้นหาอสังหาอสังหาริมทรัพย์ที่ต้องการได้</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="type-select">
+            <label for="type_id">เลือกประเภทอสังหาริมทรัพย์</label>
+            <select class="form-control" id="type_id" [(ngModel)]="Type_id">
+                <option [value]="row.type_id" *ngFor="let row of types">
+                    {{row.type_name}}</option>
+
+            </select>
+        </div>
+        <div class="row" style="margin-top: 5px;">
+            <div class="input-price1">
+                <label for="price1">ขนาดพื้นที่ต่ำสุด :</label>
+                <input class="form-control" id="price1" type="number" [(ngModel)]="minValue" maxlength="8">
+            </div>
+            <p class="goto">ไปถึง</p>
+            <div class="input-price2">
+                <label for="price1">ขนาดพื้นที่สูงสุด :</label>
+                <input class="form-control" type="number" [(ngModel)]="maxValue" maxlength="8">
+            </div>
+            <p class="goto">หน่วยเป็นตารางเมตร</p>
+
+        </div>
+
+        <div class="custom-slider">
+            <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+        </div>
+
+
+    </mat-card-content>
+    <mat-card-actions style="text-align: center; margin-bottom: 10px;">
+        <button mat-button class="submit" (click)="onCheck(minValue,maxValue,Type_id)">
+            <i class="material-icons">
+                search
+            </i> &nbsp;
+            ค้นหา</button>
+    </mat-card-actions>
+</mat-card>

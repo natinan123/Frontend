@@ -27,7 +27,7 @@ export class MatchesComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getActiveUser();
-    console.log(this.user)
+    // console.log(this.user)
 
     this.getRequire();
     this.getReqmatchList();
@@ -38,7 +38,7 @@ export class MatchesComponent implements OnInit {
   getRequire() {
     this.service.getRequire(this.user[0].email_id).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.require = res;
 
       }

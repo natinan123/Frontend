@@ -13,9 +13,6 @@ import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
 import { HomeComponent } from './home/home.component';
 import { PropertyComponent } from './product/property/property.component';
-import { FilterComponent } from './search/filter/filter.component';
-import { LocationComponent } from './search/location/location.component';
-import { MapComponent } from './search/map/map.component';
 import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -31,9 +28,6 @@ import { GallerizeModule } from '@ngx-gallery/gallerize';
     MainpageComponent,
     HomeComponent,
     PropertyComponent,
-    FilterComponent,
-    LocationComponent,
-    MapComponent,
     ArticleComponent,
     ArtDetailComponent
   ],

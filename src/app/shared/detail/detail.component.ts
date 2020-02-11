@@ -3,6 +3,7 @@ import { ServerService } from 'src/app/@service/server.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SessionService } from 'src/app/@service/session.service';
 
 @Component({
   selector: 'app-detail',
@@ -12,7 +13,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class DetailComponent implements OnInit {
 
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  
+
   data;
   pro_id: any;
   pro_head: any;
@@ -69,9 +70,12 @@ export class DetailComponent implements OnInit {
   lng2: number;
   latitude: any;
   longtitude: any;
+  user: any;
+  follow: any;
 
   constructor(
     private service: ServerService,
+    private session: SessionService,
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog,
@@ -81,9 +85,9 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.data = this.route.snapshot.paramMap.getAll('pro_id');
-
     console.log(this.data)
-    // console.log(this.views)
+    this.user = this.session.getActiveUser();
+
 
     this.getDetail();
 
@@ -94,7 +98,7 @@ export class DetailComponent implements OnInit {
     )
     this.getUserLocation();
     // this.showImagePro();
-    
+    this.getfollow();
   }
 
   getDetail() {
@@ -179,5 +183,56 @@ export class DetailComponent implements OnInit {
     this.longtitude = this.longtitude;
     this.modalService.open(modal, { centered: true, size: "lg" })
   }
+
+  getfollow() {
+    const data = {
+      email_id: this.user[0].email_id,
+      pro_id: this.route.snapshot.paramMap.get('pro_id')
+    }
+    this.service.getfollow(data).subscribe(
+      (res) => {
+        console.log(res)
+        this.follow = res[0].follow
+
+      }
+    )
+  }
+
+  // follow
+  onClickFollow() {
+    const data = {
+      email_id: this.user[0].email_id,
+      pro_id: this.route.snapshot.paramMap.get('pro_id')
+    }
+    console.log(data);
+
+    this.service.postFavorate(data).subscribe(
+      async (res) => {
+        console.log(res);
+        this.getfollow()
+
+      }
+    )
+  }
+
+  // Unfollow
+  onUnFollow() {
+    const data = {
+      email_id: this.user[0].email_id,
+      pro_id: this.route.snapshot.paramMap.get('pro_id')
+    }
+    console.log(data);
+
+    this.service.deleteUnfollow(data).subscribe(
+      async (res) => {
+        console.log(res);
+        this.getfollow()
+      }
+    )
+
+  }
+
+
+
   
 }
