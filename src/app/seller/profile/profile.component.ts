@@ -61,7 +61,6 @@ export class ProfileComponent implements OnInit {
         this.phone = res[0].phone;
         this.id_line = res[0].id_line;
         this.facebook = res[0].facebook;
-        this.pro_limit = res[0].pro_limit;
         this.cus_detail = res[0].cus_detail;
         // this.profile_pic = res[0].profile_pic;
       }

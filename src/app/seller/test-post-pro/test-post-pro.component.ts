@@ -61,7 +61,6 @@ export class TestPostProComponent implements OnInit {
     // console.log(this.user);
     this.data = this.user[0].email_id;
 
-    this.showAvatar();
 
 
     this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
@@ -76,16 +75,10 @@ export class TestPostProComponent implements OnInit {
   }
 
 
-  // รูป avatar
-  showAvatar() {
-    this.service.getNameAvatar(this.data).subscribe(
-      (res) => {
-        console.log(res)
-          this.pic64 = res[0].picBase64
-
-      }
-    );
-  }
 
 
+
+
+
+  
 }

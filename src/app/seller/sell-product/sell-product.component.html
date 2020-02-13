@@ -16,8 +16,6 @@
 
 </div>
 
-
-
 <mat-card class="mat-card">
     <div class="row">
         <div class="col-md-9">
@@ -31,7 +29,6 @@
                     aria-hidden="true"></i>
                 แก้ไขอสังหาริมทรัพย์</button>
         </div>
-
     </div>
     <div class="row" style="margin-top: 15px;">
         <div class="col-md-9">
@@ -39,7 +36,6 @@
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{pro_head}}</mat-card-title>
                 <mat-card-subtitle>{{zone_name}}&nbsp; {{loc_name}}</mat-card-subtitle>
-
             </mat-card-header>
             <mat-card-subtitle>
                 <div class="row" style="margin-left: 20px;">
@@ -73,12 +69,10 @@
 </mat-card>
 
 
-<!-- <mat-card class="mat-card" style="top: 20px">
-    <img *ngIf="image1 != null" mat-card-lg-image class="image" src="data:image/jpg;base64,{{image1}}" />
+<mat-card class="mat-card" style="top: 20px">
+    <!-- <img *ngIf="image1 != null" mat-card-lg-image class="image" src="data:image/jpg;base64,{{image1}}" /> -->
     <p>
-        
-
-        <img *ngIf="image1 != null" mat-card-md-image src="data:image/jpg;base64,{{image1}}" />
+        <!-- <img *ngIf="image1 != null" mat-card-md-image src="data:image/jpg;base64,{{image1}}" />
         <img *ngIf="image2 != null" mat-card-md-image src="data:image/jpg;base64,{{image2}}" />
         <img *ngIf="image3 != null" mat-card-md-image src="data:image/jpg;base64,{{image3}}" />
         <img *ngIf="image4 != null" mat-card-md-image src="data:image/jpg;base64,{{image4}}" />
@@ -87,41 +81,14 @@
         <img *ngIf="image7 != null" mat-card-md-image src="data:image/jpg;base64,{{image7}}" />
         <img *ngIf="image8 != null" mat-card-md-image src="data:image/jpg;base64,{{image8}}" />
         <img *ngIf="image9 != null" mat-card-md-image src="data:image/jpg;base64,{{image9}}" />
-        <img *ngIf="image10 != null" mat-card-md-image src="data:image/jpg;base64,{{image10}}" />
+        <img *ngIf="image10 != null" mat-card-md-image src="data:image/jpg;base64,{{image10}}" /> -->
+
 
     </p>
+    <img [src]="imagePath">
 
-    <ngb-carousel *ngIf="images">
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img src="data:image/jpg;base64,{{image1}}" alt="Random first slide">
-          </div>
-          <div class="carousel-caption">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img src="data:image/jpg;base64,{{image2}}" alt="Random second slide">
-          </div>
-          <div class="carousel-caption">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img src="data:image/jpg;base64,{{image3}}" alt="Random third slide">
-          </div>
-          <div class="carousel-caption">
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </div>
-        </ng-template>
-      </ngb-carousel>
 
-</mat-card> -->
+</mat-card>
 
 <gallery [items]="items" thumbPosition="left"></gallery>
 
@@ -133,7 +100,7 @@
 </mat-card>
 
 <mat-card class="mat-card" style="top: 35px"
-*ngIf="style1 || style2 || style3 || style4  || style5 || style6 || style7  || style8 || style9 || style10 == 'true'" >
+    *ngIf="style1 || style2 || style3 || style4  || style5 || style6 || style7  || style8 || style9 || style10 == 'true'">
     <mat-card-title>คุณลักษณะพื้นฐาน</mat-card-title>
     <div class="row">
 

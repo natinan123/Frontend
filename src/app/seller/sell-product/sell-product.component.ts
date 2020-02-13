@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Gallery, GalleryItem, ImageItem, ImageSize, ThumbnailsPosition } from '@ngx-gallery/core';
 import { Lightbox } from '@ngx-gallery/lightbox';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 // Endcode
@@ -82,6 +83,8 @@ export class SellProductComponent implements OnInit {
   latitude: any;
   longtitude: any;
 
+  imagePath: any;
+  // tastimage: any;
 
 
 
@@ -89,8 +92,8 @@ export class SellProductComponent implements OnInit {
   items: GalleryItem[];
   data123 = [
     {
-      srcUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg',
-      previewUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg'
+      srcUrl: this.imagePath,
+      previewUrl: this.imagePath
     },
     {
       srcUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg',
@@ -117,6 +120,7 @@ export class SellProductComponent implements OnInit {
     private modal: NgbModal,
     public gallery: Gallery,
     public lightbox: Lightbox,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -213,11 +217,16 @@ export class SellProductComponent implements OnInit {
           this.loc_name = res[0].loc_name,
           this.zone_name = res[0].zone_name,
           this.latitude = res[0].latitude,
-          this.longtitude = res[0].longtitude
-
+          this.longtitude = res[0].longtitude,
+          this.imagePath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' +
+            this.image2)
+        console.log(res[0].readStream);
       }
     )
   }
+
+
+
 
   closeModal() {
     this.modalService.dismissAll();
