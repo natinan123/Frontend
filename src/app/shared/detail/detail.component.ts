@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ServerService } from 'src/app/@service/server.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-detail',
@@ -13,6 +14,9 @@ import { SessionService } from 'src/app/@service/session.service';
 export class DetailComponent implements OnInit {
 
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+
+  @ViewChild('success', { static: false }) success: ElementRef;
+  @ViewChild('unfollow', { static: false }) unfollow: ElementRef;
 
   data;
   pro_id: any;
@@ -80,7 +84,8 @@ export class DetailComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private modalService: NgbModal,
-    private modal: NgbModal
+    private modal: NgbModal,
+    
   ) { }
 
   ngOnInit() {
@@ -210,7 +215,9 @@ export class DetailComponent implements OnInit {
       async (res) => {
         console.log(res);
         this.getfollow()
-
+        this.modalService.open(this.success);
+        await delay(2000);
+        this.modalService.dismissAll();
       }
     )
   }
@@ -227,6 +234,9 @@ export class DetailComponent implements OnInit {
       async (res) => {
         console.log(res);
         this.getfollow()
+        this.modalService.open(this.unfollow);
+        await delay(2000);
+        this.modalService.dismissAll();
       }
     )
 

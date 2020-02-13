@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ServerService } from 'src/app/@service/server.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SessionService } from 'src/app/@service/session.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -40,10 +41,15 @@ export class MemberDetailComponent implements OnInit {
   pro_limit: any;
   limit_id: any;
   limit: Object;
+  user: any;
+  My: any;
+  add_email: any;
+  descination: any;
   // Pro_limit: any;
   constructor(
     private service: ServerService,
     private route: ActivatedRoute,
+    private session: SessionService,
     private dialog: MatDialog,
     private modalService: NgbModal,
     private router: Router,
@@ -51,7 +57,9 @@ export class MemberDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getLimit();
+    this.user = this.session.getActiveUser();
+    this.My = this.user[0].email_id;
+
     this.data = this.route.snapshot.paramMap.getAll('email_id');
 
     // console.log(this.id)
@@ -59,6 +67,7 @@ export class MemberDetailComponent implements OnInit {
 
     this.service.getProfile(this.data).subscribe(
       (res) => {
+        console.log(res);
         this.email_id = res[0].email_id,
           this.fname = res[0].fname,
           this.lname = res[0].lname,
@@ -67,9 +76,8 @@ export class MemberDetailComponent implements OnInit {
           this.profile_pic = res[0].profile_pic,
           this.cus_detail = res[0].cus_detail,
           this.cus_status = res[0].cus_status,
-          this.phone = res[0].phone,
-          this.pro_limit = res[0].pro_limit,
-          this.limit_id = res[0].limit_id
+          this.phone = res[0].phone
+   
 
       }
     )
@@ -78,40 +86,28 @@ export class MemberDetailComponent implements OnInit {
 
   }
 
-  // ระดับ
-  getLimit() {
-    this.service.getLimited().subscribe(
-      (res) => {
-        console.log(res);
-        this.limit = res;
-      }
-    )
-  }
+  
+  addChat() {
+    console.log();
+    this.add_email = this.email_id;
+    this.descination = this.email_id;
+    this.postFirstChat();
 
-  onUpdateLimit() {
+  }
+  // ส่งข้อความติดต่อครั้งแรก
+  postFirstChat() {
     const data = {
-      limit_id: this.limit_id,
-      email_id: this.email_id
+      source: this.user[0].email_id,
+      descination: this.add_email
     }
-
     console.log(data);
-    console.log(this.edit_detail);
-    this.service.postProLimit(data).subscribe(
+    this.service.postFirstChat(data).subscribe(
       async (res) => {
-        this.modalService.open(this.success);
-
-
-        await delay(2000);
-        this.router.navigate(['admin/admin/managemember']);
         this.modalService.dismissAll();
+        this.router.navigate(['admin/admin/chat']);
+
       }
     )
-  }
-
-
-  // modal สิทธิ์ประกาศ
-  openModalLimit(content) {
-    this.modalService.open(content);
   }
 
   closeModal() {

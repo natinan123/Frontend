@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,6 +20,8 @@ export class HomeComponent implements OnInit {
   user: any;
   status: any;
   searchText;
+  link: string;
+  time: any;
 
 
   constructor(
@@ -30,13 +33,26 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+
     this.user = this.session.getActiveUser();
     this.status = this.user[0].cus_status;
     this.getProperty();
     this.getRecom();
     this.getPoppular();
 
+
+    if (this.user[0].cus_status == null || this.user[0].cus_status == "") {
+      this.link = '/mainpage/mainpage/detail';
+    }
+    if (this.user[0].cus_status == "admin") {
+      this.link = '/admin/admin/detail';
+    }
+    if (this.user[0].cus_status == "seller") {
+      this.link = '/seller/seller/detail';
+    }
+    if (this.user[0].cus_status == "buyer") {
+      this.link = '/buyer/buyer/detail';
+    }
   }
 
   getProperty() {
@@ -45,7 +61,7 @@ export class HomeComponent implements OnInit {
         console.log(res);
         this.products = res;
         console.log(this.products);
-  
+
       })
   }
 
@@ -55,7 +71,7 @@ export class HomeComponent implements OnInit {
         console.log(res);
         this.poppular = res;
         console.log(this.poppular);
-      
+
       })
   }
 
@@ -64,11 +80,10 @@ export class HomeComponent implements OnInit {
       (res) => {
         console.log(res);
         this.recoms = res;
-        console.log(this.recoms);
-        // this.recom_pic = res.result;
-        // console.log(this.recom_pic);
+      
       })
   }
 
+ 
 
 }

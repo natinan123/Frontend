@@ -43,11 +43,11 @@
                             <div class="received_withd_msg" *ngIf="row.source != My">
                                 <span class="name"> {{row.fname}} {{row.lname}}</span>
                                 <p>{{row.mes_text}}</p>
-                                <span class="time_date"> {{row.time_stamp | date : 'short' }}</span>
+                                <span class="time_date"> {{row.time_stamp}}</span>
                             </div>
                             <div class="sent_msg" *ngIf="row.source == My">
                                 <p>{{row.mes_text}}</p>
-                                <span class="time_date2"> {{row.time_stamp | date : 'short' }}</span>
+                                <span class="time_date2"> {{row.time_stamp}}</span>
                             </div>
 
                         </div>

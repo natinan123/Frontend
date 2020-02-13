@@ -9,7 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./manage-member.component.scss']
 })
 export class ManageMemberComponent implements OnInit {
-  displayedColumns: string[] = ['a', 'b', 'd', 'e', 'f'];
+  displayedColumns: string[] = ['a', 'b', 'd',  'f'];
   dataSource: MatTableDataSource<[any]>;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

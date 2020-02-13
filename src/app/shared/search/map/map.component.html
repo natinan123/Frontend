@@ -34,14 +34,8 @@
                     <p>{{m.price | number : '1.2-2'}} บาท</p>
                     <p>{{m.pro_area | number : '1.2-2'}} ตร.ม.</p>
 
-                    <button class="btn btn-primary btn-sm" [routerLink]="['/admin/admin/detail' ,m.pro_id]"
-                        *ngIf="status == 'admin'">ดูรายละเอียด</button>
+                    <button class="btn btn-primary btn-sm" [routerLink]="[link ,m.pro_id]">ดูรายละเอียด</button>
 
-                    <button class="btn btn-primary btn-sm" [routerLink]="['/seller/seller/detail' ,m.pro_id]"
-                        *ngIf="status == 'seller'">ดูรายละเอียด</button>
-
-                    <button class="btn btn-primary btn-sm" [routerLink]="['/buyer/buyer/detail' ,m.pro_id]"
-                        *ngIf="status == 'buyer'">ดูรายละเอียด</button>
 
                 </agm-info-window>
 

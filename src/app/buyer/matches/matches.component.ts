@@ -45,13 +45,6 @@ export class MatchesComponent implements OnInit {
     )
   }
 
-
-
-
-
-
-
-
   getReqmatchList() {
 
     this.service.getReqMatch(this.user[0].email_id).subscribe(

@@ -34,6 +34,10 @@ export class PriceComponent implements OnInit {
     }
   };
   types: Object;
+  ProFromprice: Object;
+  user: any;
+  status: any;
+  link: string;
   constructor(
     private service: ServerService,
     private modalService: NgbModal,
@@ -45,6 +49,21 @@ export class PriceComponent implements OnInit {
 
   ngOnInit() {
     this.getType()
+
+    this.user = this.session.getActiveUser();
+    this.status = this.user[0].cus_status;
+    if (this.user[0].cus_status == null || this.user[0].cus_status == "") {
+      this.link = '/mainpage/mainpage/detail';
+    }
+    if (this.user[0].cus_status == "admin") {
+      this.link = '/admin/admin/detail';
+    }
+    if (this.user[0].cus_status == "seller") {
+      this.link = '/seller/seller/detail';
+    } 
+    if (this.user[0].cus_status == "buyer") {
+      this.link = '/buyer/buyer/detail';
+    }
   }
 
   // ประเภท
@@ -69,7 +88,7 @@ export class PriceComponent implements OnInit {
     this.service.getProFromprice(data).subscribe(
       (res) => {
         console.log(res);
-        // this.provins = res;
+        this.ProFromprice = res;
       })
   }
 

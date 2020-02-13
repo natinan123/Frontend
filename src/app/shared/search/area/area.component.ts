@@ -14,26 +14,30 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AreaComponent implements OnInit {
 
 
-  minValue: number = 1000000;
-  maxValue: number = 40000000;
+  minValue: number = 1000;
+  maxValue: number = 30000;
   options: Options = {
     floor: 0,
-    ceil: 50000000,
-    step: 100000,
+    ceil: 50000,
+    step: 100,
     noSwitching: true,
 
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return '<b>ราคาต่ำสุด:</b> ฿ ' + value;
+          return '<b>ขนาดต่ำสุด:</b> ' + value + ' ตร.ม.';
         case LabelType.High:
-          return '<b>ราคาสูงสุด:</b> ฿ ' + value;
+          return '<b>ขนาดสูงสุด:</b> ' + value + ' ตร.ม.';
         default:
-          return '฿ ' + value;
+          return value + ' ตร.ม.' ;
       }
     }
   };
   types: Object;
+  ProFromArea: Object;
+  user: any;
+  status: any;
+  link: string;
   constructor(
     private service: ServerService,
     private modalService: NgbModal,
@@ -45,6 +49,21 @@ export class AreaComponent implements OnInit {
 
   ngOnInit() {
     this.getType()
+
+    this.user = this.session.getActiveUser();
+    this.status = this.user[0].cus_status;
+    if (this.user[0].cus_status == null || this.user[0].cus_status == "") {
+      this.link = '/mainpage/mainpage/detail';
+    }
+    if (this.user[0].cus_status == "admin") {
+      this.link = '/admin/admin/detail';
+    }
+    if (this.user[0].cus_status == "seller") {
+      this.link = '/seller/seller/detail';
+    } 
+    if (this.user[0].cus_status == "buyer") {
+      this.link = '/buyer/buyer/detail';
+    }
   }
 
   // ประเภท
@@ -69,7 +88,7 @@ export class AreaComponent implements OnInit {
     this.service.getProFromArea(data).subscribe(
       (res) => {
         console.log(res);
-        // this.provins = res;
+        this.ProFromArea = res;
       })
   }
 

@@ -195,71 +195,15 @@
 </ng-template>
 
 
-<!-- todo : ngModal -->
-<ng-template #Public let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">เผยแพร่อสังหาริมทรัพย์</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <p>ต้องการเผยแพร่อสังหาริมทรัพย์หรือไม่</p>
-        <p><strong>{{pro_head}}</strong></p>
-    </div>
-    <div class="modal-footer">
-        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
-        <button mat-raised-button (click)="onProPublic()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+<!-- alert -->
+<ng-template #success let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        คุณได้ติดตามรายการอสังหาริมทรัพย์นี้
     </div>
 </ng-template>
 
-<ng-template #Draft let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">ร่างอสังหาริมทรัพย์</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <p>ต้องการเก็บอสังหาริมทรัพย์ในฉบับร่างหรือไม่</p>
-        <p><strong>{{pro_head}}</strong></p>
-    </div>
-    <div class="modal-footer">
-        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
-        <button mat-raised-button (click)="onProDraft()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
-    </div>
-</ng-template>
-
-<ng-template #Modifly let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">รอการแก้ไขอสังหาริมทรัพย์</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <p>ต้องการเก็บรอการแก้ไขอสังหาริมทรัพย์หรือไม่</p>
-        <p><strong>{{pro_head}}</strong></p>
-    </div>
-    <div class="modal-footer">
-        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
-        <button mat-raised-button (click)="onProModifly()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
-    </div>
-</ng-template>
-
-<ng-template #Close let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">ปิดการขายอสังหาริมทรัพย์</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <p>ต้องการปิดการขายอสังหาริมทรัพย์หรือไม่</p>
-        <p><strong>{{pro_head}}</strong></p>
-    </div>
-    <div class="modal-footer">
-        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
-        <button mat-raised-button (click)="onProClose()" style="background-color: #1d6a96;color: snow">ยืนยัน</button>
+<ng-template #unfollow let-modal>
+    <div class="alert alert-warning" role="alert" style="margin-bottom: 0px;">
+        คุณได้ 'ยกเลิก' การติดตามรายการอสังหาริมทรัพย์นี้
     </div>
 </ng-template>

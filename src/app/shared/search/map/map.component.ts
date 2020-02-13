@@ -23,11 +23,12 @@ export class MapComponent implements OnInit {
   pro_type: string = '';
   type_id = new FormControl('');
   markers: Object;
-  buyer: any = "admin"
+
 
   markers_pic: Object;
   user: any;
   status: any;
+  link: string;
 
   constructor(
     private service: ServerService,
@@ -47,6 +48,19 @@ export class MapComponent implements OnInit {
     this.getMappro();
     this.getUserLocation();
     // this.onGetHouse();   
+
+    if (this.user[0].cus_status == null || this.user[0].cus_status == "") {
+      this.link = '/mainpage/mainpage/detail';
+    }
+    if (this.user[0].cus_status == "admin") {
+      this.link = '/admin/admin/detail';
+    }
+    if (this.user[0].cus_status == "seller") {
+      this.link = '/seller/seller/detail';
+    } 
+    if (this.user[0].cus_status == "buyer") {
+      this.link = '/buyer/buyer/detail';
+    }
   }
 
   // ที่อยู่ผู้ใช้

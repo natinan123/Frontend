@@ -22,6 +22,9 @@ export class LocationComponent implements OnInit {
   district: Object;
   FromLocat: Object;
   FromProvin: Object;
+  link: any;
+  user: any;
+
 
   constructor(
     private service: ServerService,
@@ -33,6 +36,8 @@ export class LocationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.user = this.session.getActiveUser();
+    console.log(this.user[0].cus_status)
     this.getZonePro();
 
     this.firstFormGroup = this._formBuilder.group({
@@ -40,6 +45,23 @@ export class LocationComponent implements OnInit {
       Province_id: ['', Validators.required],
       Location_id: ['', Validators.required],
     });
+
+
+    if (this.user[0].cus_status == null || this.user[0].cus_status == "") {
+      this.link = '/mainpage/mainpage/detail';
+    }
+    if (this.user[0].cus_status == "admin") {
+      this.link = '/admin/admin/detail';
+    }
+    if (this.user[0].cus_status == "seller") {
+      this.link = '/seller/seller/detail';
+    } 
+    if (this.user[0].cus_status == "buyer") {
+      this.link = '/buyer/buyer/detail';
+    }
+
+
+
 
 
   }
@@ -73,7 +95,7 @@ export class LocationComponent implements OnInit {
   }
 
   // อสังหาจากเขต
-  onProFromLocat(location_id) {
+  onProFromLocat(location_id, province_id) {
     console.log(location_id);
     this.service.getProFromLocat(location_id).subscribe(
       (res) => {
@@ -81,7 +103,7 @@ export class LocationComponent implements OnInit {
         this.FromLocat = res;
       })
     // อสังหาจากจังหวัด
-    this.service.getProFromProvin(location_id).subscribe(
+    this.service.getProFromProvin(province_id).subscribe(
       (res) => {
         console.log(res);
         this.FromProvin = res;
