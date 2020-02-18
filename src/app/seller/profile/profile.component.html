@@ -19,7 +19,7 @@
 
     <div class="row">
         <div class="col-md-3">
-            <img src="data:image/jpg;base64,{{pic64}}" class="circle" />
+            <img src="data:image/jpeg;base64,{{pic64}}" class="circle" />
         </div>
         <div class="col-md-3">
             <button mat-raised-button style="margin-top: 70px;" (click)="openModalAvatar(editAvatar)"><i
@@ -160,7 +160,7 @@
             <img *ngIf="url == null && pic64 == null" src="../../../assets/pic/mainpage/user_avatar.png"
                 class="circle2">
             <img *ngIf="url != null" [src]="url" class="circle2">
-            <img *ngIf="url == null && pic64 != null" src="data:image/jpg;base64,{{pic64}}" class="circle2" />
+            <img *ngIf="url == null && pic64 != null" src="data:image/jpeg;base64,{{pic64}}" class="circle2" />
         </div>
         <div>
             <input type='file' accept=" image/* " (change)="onSelectFile($event)">

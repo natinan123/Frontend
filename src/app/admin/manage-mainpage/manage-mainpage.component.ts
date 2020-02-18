@@ -20,6 +20,7 @@ export class ManageMainpageComponent implements OnInit {
   @ViewChild('success', { static: false }) success: ElementRef;
   recom_id: any;
   pro_id: any;
+  recom: Object;
   constructor(
     private service: ServerService,
     private dialog: MatDialog,
@@ -37,6 +38,7 @@ export class ManageMainpageComponent implements OnInit {
         this.dataSource1 = new MatTableDataSource(res as any[]);
         this.dataSource1.sort = this.sort;
         this.dataSource1.paginator = this.paginator;
+        this.recom = res
       }
     )
   }

@@ -24,20 +24,27 @@ export class ManageLocationComponent implements OnInit {
   loc_name;
 
 
+
+
   public AddLocation = new FormGroup({
     Loc_name: new FormControl(''),
-    Zone: new FormControl('')
+    Zone: new FormControl(''),
+    Province_id: new FormControl(''),
+    Location_id: new FormControl(''),
   })
 
   public updateLoc = new FormGroup({
     loc_name: new FormControl(''),
     Zone: new FormControl(''),
-
+    Province_id: new FormControl(''),
   })
   location_id: any;
   zones: Object;
   Zone: any;
   Loc_name: any;
+  provins: Object;
+  zone_id: any;
+  province_id: any;
 
   constructor(
     private service: ServerService,
@@ -54,11 +61,39 @@ export class ManageLocationComponent implements OnInit {
 
   }
 
+  // ภาค
+  getZonePro() {
+    this.service.getZone().subscribe(
+      (res) => {
+        // console.log(res);
+        this.zones = res;
+      }
+    )
+  }
+  // จังหวัด
+  onProvince(zone_id) {
+    // console.log(zone_id);
+    // const zone_id = this.zone_id
+    this.service.getProvince(zone_id).subscribe(
+      (res) => {
+        console.log(res);
+        this.provins = res;
+      })
+  }
+  // เขต
+  // onLocation(province_id) {
+  //   console.log(province_id);
+  //   this.service.getLocOfPro(province_id).subscribe(
+  //     (res) => {
+  //       // console.log(res);
+  //       this.district = res;
+  //     })
+  // }
 
   getTable() {
     this.service.getLocation().subscribe(
       (res) => {
-        
+        console.log(res);
         this.dataSource = new MatTableDataSource(res as any[]);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -80,19 +115,20 @@ export class ManageLocationComponent implements OnInit {
   openModalEditLoc(data, modal) {
     console.log(data);
     this.loc_name = data.loc_name;
-    this.Zone = data.Zone;
+    this.zone_id = data.zone_id;
+    this.province_id = data.province_id;
     this.location_id = data.location_id;
 
-    this.modal.open(modal, { centered: true })
+    this.dialog.open(modal)
   }
 
 
 
-  onUpdateLoc() {
-    console.log(this.updateLoc.value)
+  onUpdateLoc(loc_name,zone_id,province_id) {
+
     const data = {
-      loc_name: this.loc_name,
-      loc_zone: this.Zone,
+      loc_name: loc_name,
+      province_id: province_id,
       location_id: this.location_id
     }
     console.log(data)
@@ -101,8 +137,8 @@ export class ManageLocationComponent implements OnInit {
         this.modalService.open(this.success)
         this.getTable();
         await delay(1000);
-        this.closeModal();
-
+        this.modalService.dismissAll();
+        this.dialog.closeAll();
       }
     )
   }
@@ -114,7 +150,7 @@ export class ManageLocationComponent implements OnInit {
   // Modal 
   openModalAddloc(modal, data) {
 
-    this.modalService.open(modal, { centered: true })
+    this.dialog.open(modal)
   }
 
   onModalDelete(data, modal) {
@@ -132,10 +168,10 @@ export class ManageLocationComponent implements OnInit {
       }
     )
   }
-  onAddlocation() {
+  onAddlocation(Loc_name, province_id) {
     const data = {
-      loc_name: this.Loc_name,
-      loc_zone: this.Zone
+      loc_name: Loc_name,
+      province_id: province_id
     }
     console.log(data);
 
@@ -152,13 +188,5 @@ export class ManageLocationComponent implements OnInit {
     )
   }
 
-  // ภาค
-  getZonePro() {
-    this.service.getZone().subscribe(
-      (res) => {
-        console.log(res);
-        this.zones = res;
-      }
-    )
-  }
+
 }

@@ -185,7 +185,7 @@ export class ApproveComponent implements OnInit {
       async (res) => {
         this.router.navigate(['admin/admin/list-approve']);
 
-        location.reload();
+        // location.reload();
       }
     )
   }

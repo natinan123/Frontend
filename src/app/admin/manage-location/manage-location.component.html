@@ -10,7 +10,10 @@
 <button mat-raised-button (click)="openModalAddloc(AddLoc)"
     style="background: #1d6a96 ; color: snow; margin-left: 50px"><i class="material-icons">
         add_box
-    </i> เพิ่มทำเล</button>
+    </i>
+    เพิ่มทำเล
+</button>
+
 
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
@@ -57,8 +60,7 @@
 <ng-template #AddLoc let-modal>
     <div style="margin: 20px;">
         <form style="padding-top: 10px;padding-left: 20px;padding-right: 20px;" [formGroup]="AddLocation">
-            <h1 mat-dialog-title>แก้ไขทำเล</h1>
-
+            <h1 mat-dialog-title><i class="material-icons">playlist_add</i> เพิ่มเขต/อำเภอที่ตั้งของอสังหาริมทรัพย์</h1>
 
             <div class="row" style="margin-top: 8px;">
                 <div class="col-md">
@@ -73,19 +75,40 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md">
-                    <label for="Zone2">ภูมิภาค</label>
-                    <select class="form-control" [(ngModel)]="Zone" formControlName="Zone">
-                        <option [value]="z.loc_zone" *ngFor="let z of zones">{{z.zone_name}}</option>
-                    </select>
+                    <div class="label">
+                        <mat-label>ภูมิภาค</mat-label>
+                    </div>
+                    <div class="option">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-select [(ngModel)]="zone_id" formControlName="Zone" placeholder="เลือกภูมิภาค"
+                                (ngModelChange)="onProvince($event)" required>
+                                <mat-option [value]="z.zone_id" *ngFor="let z of zones">
+                                    {{z.zone_name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-md">
+                    <div class="label">
+                        <mat-label>จังหวัด</mat-label>
+                    </div>
+                    <div class="option">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-select [(ngModel)]="province_id" formControlName="Province_id"
+                                placeholder="เลือกจังหวัด" required>
+                                <mat-option [value]="p.province_id" *ngFor="let p of provins">{{p.provin_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
             <div mat-dialog-actions>
-                <button mat-raised-button class="submit" (click)="onAddlocation()">
+                <button mat-raised-button class="submit" (click)="onAddlocation(Loc_name,province_id)">
                     เพิ่มทำเลที่ตั้ง </button>
             </div>
         </form>
@@ -96,25 +119,57 @@
 <ng-template #EditLoc let-modal>
     <div style="margin: 20px;">
         <form style="padding-top: 10px;padding-left: 20px;padding-right: 20px;" [formGroup]="updateLoc">
-            <h1 mat-dialog-title>เพิ่มเขต/อำเภอที่ตั้งของอสังหาริมทรัพย์</h1>
+            <h1 mat-dialog-title>แก้ไขเขต/อำเภอที่ตั้งของอสังหาริมทรัพย์</h1>
 
-            <mat-form-field style="width: 100%">
-                <mat-label>ชื่อทำเล</mat-label>
-                <input matInput formControlName="loc_name" style="color: #1d6a96" [(ngModel)]="loc_name">
-            </mat-form-field>
 
-            <div class="row">
+            <div class="row" style="margin-top: 8px;">
                 <div class="col-md">
-                    <label for="Zone2">ภูมิภาค</label>
-                    <select class="form-control" [(ngModel)]="Zone" formControlName="Zone">
-                        <option [value]="z.loc_zone" *ngFor="let z of zones">{{z.zone_name}}</option>
-                    </select>
+                    <div class="label">
+                        <mat-label>ชื่อทำเล</mat-label>
+                    </div>
+                    <div class="option">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <input matInput [(ngModel)]="loc_name" formControlName="loc_name" placeholder="กรอกทำเล"
+                                style="color: #1d6a96">
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
-
-
+            <div class="row">
+                <div class="col-md">
+                    <div class="label">
+                        <mat-label>ภูมิภาค</mat-label>
+                    </div>
+                    <div class="option">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-select [(ngModel)]="zone_id" formControlName="Zone" placeholder="เลือกภูมิภาค"
+                                (ngModelChange)="onProvince($event)" required>
+                                <mat-option [value]="z.zone_id" *ngFor="let z of zones">
+                                    {{z.zone_name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <div class="label">
+                        <mat-label>จังหวัด</mat-label>
+                    </div>
+                    <div class="option">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-select [(ngModel)]="province_id" formControlName="Province_id"
+                                placeholder="เลือกจังหวัด" required>
+                                <mat-option [value]="p.province_id" *ngFor="let p of provins">{{p.provin_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
             <div mat-dialog-actions>
-                <button mat-raised-button class="submit" (click)="onUpdateLoc()">ยืนยันการแก้ไข</button>
+                <button mat-raised-button class="submit"
+                    (click)="onUpdateLoc(loc_name,zone_id,province_id)">ยืนยันการแก้ไข</button>
             </div>
         </form>
     </div>

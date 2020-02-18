@@ -53,16 +53,7 @@ export class WriteAdsComponent implements OnInit {
   }
 
 
-  // log = '';
 
-  // logText(value: string): void {
-  //   this.log += `${value}\n`;
-  //   var str = this.log;
-  //   const enc = window.btoa(unescape(encodeURIComponent(str)));
-  //   console.log(enc);
-
-
-  // }
 
 
 
@@ -130,7 +121,7 @@ export class WriteAdsComponent implements OnInit {
     // textarea2
     this.log2 += `${this.art_detail2}\n`;
     var str2 = this.log2;
-    const detail2 =  utf8_to_b64(this.log);
+    const detail2 =  utf8_to_b64(this.log2);
    
 
     const formData = new FormData();

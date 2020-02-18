@@ -26,9 +26,6 @@ import { ListAdsComponent } from './list-ads/list-ads.component';
 import { EditAdsComponent } from './edit-ads/edit-ads.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
-import { GalleryModule } from '@ngx-gallery/core';
-import { LightboxModule } from '@ngx-gallery/lightbox';
-import { GallerizeModule } from '@ngx-gallery/gallerize';
 import { ListApproveComponent } from './list-approve/list-approve.component';
 import { ApproveComponent } from './list-approve/approve/approve.component';
 
@@ -69,9 +66,6 @@ import { ApproveComponent } from './list-approve/approve/approve.component';
     SharedModule,
     Ng2SearchPipeModule,
     AgmJsMarkerClustererModule,
-    GalleryModule,
-    LightboxModule,
-    GallerizeModule,
   ]
 })
 export class AdminModule { }

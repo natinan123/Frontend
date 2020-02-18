@@ -28,13 +28,22 @@
             <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude">
                 <!-- มาค์ก -->
 
-                <agm-info-window>
+                <agm-info-window style="width: 223px; height: auto;">
                     <h5><strong>{{m.type_name}} </strong></h5>
                     <p>{{m.pro_head}}</p>
-                    <p>{{m.price | number : '1.2-2'}} บาท</p>
-                    <p>{{m.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <p>ราคา : {{m.price | number : '1.2-2'}} บาท</p>
+                            <p>ขนาดพื้นที่ :{{m.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                            <button class="btn btn-primary btn-sm" [routerLink]="[link ,m.pro_id]">ดูรายละเอียด</button>
+                        </div>
+                        <div class="col-md-7">
+                            <img class="image-size" mat-card-image src="data:image/jpg;base64,{{m.image1}}" />
+                        </div>
+                    </div>
 
-                    <button class="btn btn-primary btn-sm" [routerLink]="[link ,m.pro_id]">ดูรายละเอียด</button>
+
+
 
 
                 </agm-info-window>

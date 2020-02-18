@@ -6,6 +6,15 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+// Endcode
+function utf8_to_b64(str) {
+  return window.btoa(unescape(encodeURIComponent(str)));
+}
+// Decode
+function b64_to_utf8(str) {
+  return decodeURIComponent(escape(window.atob(str)));
+}
+
 @Component({
   selector: 'app-selling',
   templateUrl: './selling.component.html',
@@ -84,7 +93,7 @@ export class SellingComponent implements OnInit {
   Type_sell: any;
   Type_user: any;
   Pro_head: any;
-  Pro_detail: any;
+  Pro_detail = '';
   Area: any;
   Space: any;
   Price: any;
@@ -117,6 +126,10 @@ export class SellingComponent implements OnInit {
   count_pro: any;
   district: Object;
   location_id: any;
+  log2 = '';
+  test123: string;
+  test12345: string;
+  guide_price: Object;
 
 
 
@@ -184,6 +197,17 @@ export class SellingComponent implements OnInit {
     this.getUserLocation();
     this.getZonePro();
     this.getType();
+  
+  }
+
+  // ราคาแนะนำ
+  getGuide_price(Area) {
+    this.service.getGuide_price(Area).subscribe(
+      (res) => {
+        console.log(res);
+        this.guide_price = res[0].guide_price;
+      }
+    )
   }
 
   // จำนวนอสังหา
@@ -206,7 +230,7 @@ export class SellingComponent implements OnInit {
       }
     )
   }
-  
+
   // ภาค
   getZonePro() {
     this.service.getZone().subscribe(
@@ -296,21 +320,25 @@ export class SellingComponent implements OnInit {
 
 
 
-
+  onTest() {
+    this.log2 += `${this.Pro_detail}\n`;
+    this.test123 = utf8_to_b64(this.log2);
+    this.test12345 = b64_to_utf8(this.test123);
+  }
 
 
   // todo : add รายการอสังหาริมทรัพย์ เผยแพร่
   onSubmit() {
-    // console.log(this.firstFormGroup.value)
-    // console.log(this.secondFormGroup.value)
-    // console.log(this.thirdFormGroup.value)
+    // textarea2
+    this.log2 += `${this.Pro_detail}\n`;
+    const Pro_detail = utf8_to_b64(this.log2);
 
     const data = {
       type_id: this.Type_pro,
       pro_sell: this.Type_sell,
       location_id: this.location_id,
       pro_head: this.Pro_head,
-      pro_detail: this.Pro_detail,
+      pro_detail: Pro_detail,
       pro_area: this.Area,
       pro_space: this.Space,
       price: this.Price,

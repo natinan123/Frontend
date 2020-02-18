@@ -3,10 +3,7 @@ import { ServerService } from 'src/app/@service/server.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Gallery, GalleryItem, ImageItem, ImageSize, ThumbnailsPosition } from '@ngx-gallery/core';
-import { Lightbox } from '@ngx-gallery/lightbox';
 import { DomSanitizer } from '@angular/platform-browser';
-
 
 // Endcode
 function utf8_to_b64(str) {
@@ -63,6 +60,16 @@ export class SellProductComponent implements OnInit {
   image8;
   image9;
   image10;
+  image11: any;
+  image12: any;
+  image13: any;
+  image14: any;
+  image15: any;
+  image16: any;
+  image17: any;
+  image18: any;
+  image19: any;
+  image20: any;
 
   style1: any;
   style2;
@@ -74,6 +81,16 @@ export class SellProductComponent implements OnInit {
   style8;
   style9;
   style10;
+  style11: any;
+  style12: any;
+  style13: any;
+  style14: any;
+  style15: any;
+  style16: any;
+  style17: any;
+  style18: any;
+  style19: any;
+  style20: any;
   // views: string[];
   // count: any;
   loc_name: any;
@@ -84,31 +101,12 @@ export class SellProductComponent implements OnInit {
   longtitude: any;
 
   imagePath: any;
-  // tastimage: any;
 
 
 
-  // ? image 
-  items: GalleryItem[];
-  data123 = [
-    {
-      srcUrl: this.imagePath,
-      previewUrl: this.imagePath
-    },
-    {
-      srcUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg',
-      previewUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg'
-    },
-    {
-      srcUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg',
-      previewUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg'
-    },
-    {
-      srcUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg',
-      previewUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg'
-    }
-  ];
-  imageData = this.data123;
+
+
+
 
   // ? end ^
   constructor(
@@ -118,8 +116,6 @@ export class SellProductComponent implements OnInit {
     private dialog: MatDialog,
     private modalService: NgbModal,
     private modal: NgbModal,
-    public gallery: Gallery,
-    public lightbox: Lightbox,
     private sanitizer: DomSanitizer
   ) { }
 
@@ -137,33 +133,15 @@ export class SellProductComponent implements OnInit {
       }
     )
     this.getUserLocation();
-
+    this.getimageTast();
     // todo :image
-    /** Basic Gallery Example */
-
-    // Creat gallery items
-    this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
-
-
-    /** Lightbox Example */
-
-    // Get a lightbox gallery ref
-    const lightboxRef = this.gallery.ref('lightbox');
-
-    // Add custom gallery config to the lightbox (optional)
-    lightboxRef.setConfig({
-      imageSize: ImageSize.Cover,
-      thumbPosition: ThumbnailsPosition.Top
-    });
-
-    // Load items into the lightbox gallery ref
-    lightboxRef.load(this.items);
 
     // todo ^^^
 
 
-
   }
+
+
 
   getDetail() {
     this.service.getProDetail(this.data).subscribe(
@@ -173,7 +151,7 @@ export class SellProductComponent implements OnInit {
           this.pro_head = res[0].pro_head,
           this.type_name = res[0].type_name,
           this.pro_sell = res[0].pro_sell,
-          this.pro_detail = res[0].pro_detail,
+          this.pro_detail = b64_to_utf8(res[0].pro_detail),
           this.pro_area = res[0].pro_area,
           this.pro_space = res[0].pro_space,
           this.price = res[0].price,
@@ -204,6 +182,16 @@ export class SellProductComponent implements OnInit {
           this.image8 = res[0].image8,
           this.image9 = res[0].image9,
           this.image10 = res[0].image10,
+          this.image11 = res[0].image11,
+          this.image12 = res[0].image12,
+          this.image13 = res[0].image13,
+          this.image14 = res[0].image14,
+          this.image15 = res[0].image15,
+          this.image16 = res[0].image16,
+          this.image17 = res[0].image17,
+          this.image18 = res[0].image18,
+          this.image19 = res[0].image19,
+          this.image20 = res[0].image20,
           this.style1 = res[0].style1,
           this.style2 = res[0].style2,
           this.style3 = res[0].style3,
@@ -214,18 +202,38 @@ export class SellProductComponent implements OnInit {
           this.style8 = res[0].style8,
           this.style9 = res[0].style9,
           this.style10 = res[0].style10,
+          this.style11 = res[0].style11,
+          this.style12 = res[0].style12,
+          this.style13 = res[0].style13,
+          this.style14 = res[0].style14,
+          this.style15 = res[0].style15,
+          this.style16 = res[0].style16,
+          this.style17 = res[0].style17,
+          this.style18 = res[0].style18,
+          this.style19 = res[0].style19,
+          this.style20 = res[0].style20,
           this.loc_name = res[0].loc_name,
           this.zone_name = res[0].zone_name,
           this.latitude = res[0].latitude,
           this.longtitude = res[0].longtitude,
           this.imagePath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' +
-            this.image2)
-        console.log(res[0].readStream);
+            this.image1)
+
       }
     )
   }
 
 
+
+  getimageTast() {
+    this.service.getimageTast().subscribe(
+      (res) => {
+        console.log(res)
+        // this.file_pic = res;
+        // console.log(this.file_pic);
+      }
+    )
+  }
 
 
   closeModal() {

@@ -48,7 +48,7 @@ export class RecommendComponent implements OnInit {
     }
   }
   getTableProperty() {
-    this.service.getProperty().subscribe(
+    this.service.getPro_public().subscribe(
       (res) => {
         this.dataSource = new MatTableDataSource(res as any[]);
         this.dataSource.sort = this.sort;

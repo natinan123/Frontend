@@ -21,9 +21,6 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { SharedModule } from '../shared/shared.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
-import { GalleryModule } from '@ngx-gallery/core';
-import { LightboxModule } from '@ngx-gallery/lightbox';
-import { GallerizeModule } from '@ngx-gallery/gallerize';
 import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
@@ -55,9 +52,6 @@ import { FavoriteComponent } from './favorite/favorite.component';
     SharedModule,
     Ng2SearchPipeModule,
     AgmJsMarkerClustererModule,
-    GalleryModule,
-    LightboxModule,
-    GallerizeModule,
   ]
 })
 export class BuyerModule { }

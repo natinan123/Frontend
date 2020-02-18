@@ -259,7 +259,19 @@ export class ServerService {
   }
   // เช็คการติดตาม
   getfollow(data) {
-    return this.http.post(urlServer.ipServer + 'follow' , data)
+    return this.http.post(urlServer.ipServer + 'follow', data)
+  }
+  // ราคาแนะนำ
+  getGuide_price(data) {
+    return this.http.get(urlServer.ipServer + 'guide_price/' + data)
+  }
+  // รายการ อสัง เผยแพร่
+  getPro_public() {
+    return this.http.get(urlServer.ipServer + 'pro_public')
+  }
+  // todo ทดสอบ
+  getimageTast() {
+    return this.http.get(urlServer.ipServer + 'testgetimage')
   }
   // ! END ^ Get -------------------------//
 

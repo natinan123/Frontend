@@ -1,266 +1,403 @@
 <div class="row" style="height: 100px;background-color: #014254">
-    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> จัดการรายการประกาศขาย</h1>
+    <div class="col-md">
+        <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> จัดการรายการประกาศขาย</h1>
+
+    </div>
+    <div class="col-md search-hero">
+        <input class="form-control" placeholder="ค้นหารายการ" name="search" [(ngModel)]="searchText">
+
+    </div>
+    
 </div>
 
 
 
-<p>ค้นหารายการประกาศ</p>
-<mat-form-field appearance="outline" style="width: 50%;">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="ค้นหารายการ">
-</mat-form-field>
-
-<mat-tab-group animationDuration="1000ms" mat-align-tabs="center" style="color-interpolation-filters: initial">
+<mat-tab-group class="tab-group">
     <mat-tab label="บ้านเดี่ยว">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource">
+        <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
+            <div class="row" style="margin-left: 20px;">
+                <mat-card class="product-card" *ngFor="let r of houses | filter:searchText "
+                    [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
-                <ng-container matColumnDef="1">
-                    <th mat-header-cell *matHeaderCellDef> ชื่ออสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row" style="width: 500px"> {{row.pro_head}} </td>
-                </ng-container>
+                    <div class="data sell-box">
+                        <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
+                        <div class="sell-corner sell-SUB" *ngIf="r.pro_sell == 'เช่า'">{{r.pro_sell}}</div>
+                        <img class="image-size" style="cursor: pointer;" mat-card-image
+                            src="data:image/jpg;base64,{{r.image1}}" />
+                    </div>
+                    <div class="listing-cost">฿ {{r.price | number : '1.2-2'}} บาท</div>
+                    <div class="detail">
+                        <mat-card-content>
+                            <p class="head">
+                                {{r.pro_head}}
+                            </p>
+                        </mat-card-content>
+                        <!-- <mat-divider></mat-divider> -->
+                        <mat-card-subtitle class="date-post">
+                            <div class="row">
+                                <div class="col-md">
+                                    <i class="fa fa-pencil-square-o fa-lg"> {{r.pro_post}}</i>
+                                </div>
+                                <div class="col-md" style=" text-align: right;">
+                                    <i class="fa fa-eye fa-lg"> {{r.pro_views}}</i>
+                                </div>
+                            </div>
+                        </mat-card-subtitle>
 
-                <ng-container matColumnDef="2">
-                    <th mat-header-cell *matHeaderCellDef> เจ้าของอสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.fname}} &nbsp; {{row.lname}}</td>
-                </ng-container>
+                        <div class="type">
+                            <i class="material-icons" style="color: #7a96a2;">
+                                style
+                            </i> <span style="opacity: 0.85;  font-size: 14px;"> {{r.type_name}}</span>
+                        </div>
 
-                <ng-container matColumnDef="3">
-                    <th mat-header-cell *matHeaderCellDef> ยอดเข้าชม </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_views}}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="4">
-                    <th mat-header-cell *matHeaderCellDef> วันลงประกาศ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_post}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="5">
-                    <th mat-header-cell *matHeaderCellDef> ดูรายละเอียด </th>
-                    <td mat-cell *matCellDef="let row">
-                        <button mat-raised-button [routerLink]="['/admin/admin/prodetail' ,row.pro_id]"
-                            style="background: #1d6a96 ; color: snow; ">
-                            <i class="material-icons">
-                                search
-                            </i>&nbsp; เข้าดู</button>
-                    </td>
-                </ng-container>
-
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-
-            <mat-paginator [pageSizeOptions]="[ 10, 20 ,50 ]" showFirstLastButtons></mat-paginator>
-        </div>
+                        <div class="loca">
+                            <i class="material-icons" style="color: #abbf4e;">place</i>
+                            <span style="opacity: 0.85;">{{r.loc_name}} {{r.provin_name}} </span>
+                        </div>
+                        <hr style="margin-top: 4px; margin-bottom: 2px;">
+                        <div class="row">
+                            <div class="col-7">
+                                <p class="p_icon1"><i class="fa fa-object-group" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                                <p class="p_icon1"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp; {{r.pro_bedroom}}
+                                    ห้องนอน</p>
+                            </div>
+                            <div class="col-5">
+                                <p class="p_icon2"><i class="fa fa-bath" aria-hidden="true"></i>&nbsp; {{r.pro_toilet}}
+                                    ห้องน้ำ</p>
+                                <p class="p_icon2"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_floor}}
+                                    ชั้น</p>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </mat-card>
     </mat-tab>
 
     <mat-tab label="ทาวน์เฮ้าส์">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource2">
+        <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #e5d67b">
+            <div class="row" style="margin-left: 20px;">
+                <mat-card class="product-card" *ngFor="let r of townhouses | filter:searchText "
+                    [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
-                <ng-container matColumnDef="6">
-                    <th mat-header-cell *matHeaderCellDef> ชื่ออสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_head}} </td>
-                </ng-container>
+                    <div class="data sell-box">
+                        <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
+                        <div class="sell-corner sell-SUB" *ngIf="r.pro_sell == 'เช่า'">{{r.pro_sell}}</div>
+                        <img class="image-size" style="cursor: pointer;" mat-card-image
+                            src="data:image/jpg;base64,{{r.image1}}" />
+                    </div>
 
-                <ng-container matColumnDef="7">
-                    <th mat-header-cell *matHeaderCellDef> เจ้าของอสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.fname}} &nbsp; {{row.lname}}</td>
-                </ng-container>
 
-                <ng-container matColumnDef="8">
-                    <th mat-header-cell *matHeaderCellDef> ยอดเข้าชม </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_views}}</td>
-                </ng-container>
+                    <div class="listing-cost">฿ {{r.price | number : '1.2-2'}} บาท</div>
+                    <div class="detail">
+                        <mat-card-content>
+                            <p class="head">
+                                {{r.pro_head}}
+                            </p>
+                        </mat-card-content>
+                        <!-- <mat-divider></mat-divider> -->
+                        <mat-card-subtitle class="date-post">
+                            <div class="row">
+                                <div class="col-md">
+                                    <i class="fa fa-pencil-square-o fa-lg"> {{r.pro_post}}</i>
+                                </div>
+                                <div class="col-md" style=" text-align: right;">
+                                    <i class="fa fa-eye fa-lg"> {{r.pro_views}}</i>
+                                </div>
+                            </div>
+                        </mat-card-subtitle>
 
-                <ng-container matColumnDef="9">
-                    <th mat-header-cell *matHeaderCellDef> วันลงประกาศ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_post}} </td>
-                </ng-container>
+                        <div class="type">
+                            <i class="material-icons" style="color: #7a96a2;">
+                                style
+                            </i> <span style="opacity: 0.85;  font-size: 14px;"> {{r.type_name}}</span>
+                        </div>
 
-                <ng-container matColumnDef="10">
-                    <th mat-header-cell *matHeaderCellDef> ดูรายละเอียด </th>
-                    <td mat-cell *matCellDef="let row">
-                        <button mat-raised-button [routerLink]="['/admin/admin/prodetail' ,row.pro_id]"
-                            style="background: #1d6a96 ; color: snow; ">
-                            <i class="material-icons">
-                                search
-                            </i>&nbsp; เข้าดู</button>
-                    </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
-            </table>
-
-            <mat-paginator [pageSizeOptions]="[ 10, 20 ,50 ]" showFirstLastButtons></mat-paginator>
-        </div>
+                        <div class="loca">
+                            <i class="material-icons" style="color: #abbf4e;">place</i>
+                            <span style="opacity: 0.85;">{{r.loc_name}} {{r.provin_name}} </span>
+                        </div>
+                        <hr style="margin-top: 4px; margin-bottom: 2px;">
+                        <div class="row">
+                            <div class="col-7">
+                                <p class="p_icon1"><i class="fa fa-object-group" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                                <p class="p_icon1"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp; {{r.pro_bedroom}}
+                                    ห้องนอน</p>
+                            </div>
+                            <div class="col-5">
+                                <p class="p_icon2"><i class="fa fa-bath" aria-hidden="true"></i>&nbsp; {{r.pro_toilet}}
+                                    ห้องน้ำ</p>
+                                <p class="p_icon2"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_floor}}
+                                    ชั้น</p>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </mat-card>
     </mat-tab>
+
     <mat-tab label="อพาร์ทเมนท์">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource3">
+        <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #f6e0ae">
+            <div class="row" style="margin-left: 20px;">
+                <mat-card class="product-card" *ngFor="let r of apartment | filter:searchText "
+                    [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
-                <ng-container matColumnDef="11">
-                    <th mat-header-cell *matHeaderCellDef> ชื่ออสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_head}} </td>
-                </ng-container>
+                    <div class="data sell-box">
+                        <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
+                        <div class="sell-corner sell-SUB" *ngIf="r.pro_sell == 'เช่า'">{{r.pro_sell}}</div>
+                        <img class="image-size" style="cursor: pointer;" mat-card-image
+                            src="data:image/jpg;base64,{{r.image1}}" />
 
-                <ng-container matColumnDef="12">
-                    <th mat-header-cell *matHeaderCellDef> เจ้าของอสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.fname}} &nbsp; {{row.lname}}</td>
-                </ng-container>
+                    </div>
 
-                <ng-container matColumnDef="13">
-                    <th mat-header-cell *matHeaderCellDef> ยอดเข้าชม </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_views}}</td>
-                </ng-container>
+                    <div class="listing-cost">฿ {{r.price | number : '1.2-2'}} บาท</div>
+                    <div class="detail">
+                        <mat-card-content>
+                            <p class="head">
+                                {{r.pro_head}}
+                            </p>
+                        </mat-card-content>
+                        <!-- <mat-divider></mat-divider> -->
+                        <mat-card-subtitle class="date-post">
+                            <div class="row">
+                                <div class="col-md">
+                                    <i class="fa fa-pencil-square-o fa-lg"> {{r.pro_post}}</i>
+                                </div>
+                                <div class="col-md" style=" text-align: right;">
+                                    <i class="fa fa-eye fa-lg"> {{r.pro_views}}</i>
+                                </div>
+                            </div>
+                        </mat-card-subtitle>
 
-                <ng-container matColumnDef="14">
-                    <th mat-header-cell *matHeaderCellDef> วันลงประกาศ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_post}} </td>
-                </ng-container>
+                        <div class="type">
+                            <i class="material-icons" style="color: #7a96a2;">
+                                style
+                            </i> <span style="opacity: 0.85;  font-size: 14px;"> {{r.type_name}}</span>
+                        </div>
 
-                <ng-container matColumnDef="15">
-                    <th mat-header-cell *matHeaderCellDef> ดูรายละเอียด </th>
-                    <td mat-cell *matCellDef="let row">
-                        <button mat-raised-button [routerLink]="['/admin/admin/prodetail' ,row.pro_id]"
-                            style="background: #1d6a96 ; color: snow; "> <i class="material-icons">
-                                search
-                            </i>&nbsp; เข้าดู</button>
-
-
-                    </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
-            </table>
-
-            <mat-paginator [pageSizeOptions]="[ 10, 20 ,50 ]" showFirstLastButtons></mat-paginator>
-        </div>
+                        <div class="loca">
+                            <i class="material-icons" style="color: #abbf4e;">place</i>
+                            <span style="opacity: 0.85;">{{r.loc_name}} {{r.provin_name}} </span>
+                        </div>
+                        <hr style="margin-top: 4px; margin-bottom: 2px;">
+                        <div class="row">
+                            <div class="col-7">
+                                <p class="p_icon1"><i class="fa fa-object-group" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                                <p class="p_icon1"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp; {{r.pro_bedroom}}
+                                    ห้องนอน</p>
+                            </div>
+                            <div class="col-5">
+                                <p class="p_icon2"><i class="fa fa-bath" aria-hidden="true"></i>&nbsp; {{r.pro_toilet}}
+                                    ห้องน้ำ</p>
+                                <p class="p_icon2"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_floor}}
+                                    ชั้น</p>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </mat-card>
     </mat-tab>
+
     <mat-tab label="อาคารพาณิชย์">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource4">
+        <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #e5d1ac">
+            <div class="row" style="margin-left: 20px;">
+                <mat-card class="product-card" *ngFor="let r of commercial | filter:searchText "
+                    [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
-                <ng-container matColumnDef="16">
-                    <th mat-header-cell *matHeaderCellDef> ชื่ออสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_head}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="17">
-                    <th mat-header-cell *matHeaderCellDef> เจ้าของอสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.fname}} &nbsp; {{row.lname}}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="18">
-                    <th mat-header-cell *matHeaderCellDef> ยอดเข้าชม </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_views}}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="19">
-                    <th mat-header-cell *matHeaderCellDef> วันลงประกาศ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_post}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="20">
-                    <th mat-header-cell *matHeaderCellDef> ดูรายละเอียด </th>
-                    <td mat-cell *matCellDef="let row">
-                        <button mat-raised-button [routerLink]="['/admin/admin/prodetail' ,row.pro_id]"
-                            style="background: #1d6a96 ; color: snow; "> <i class="material-icons">
-                                search
-                            </i>&nbsp; เข้าดู</button>
+                    <div class="data sell-box">
+                        <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
+                        <div class="sell-corner sell-SUB" *ngIf="r.pro_sell == 'เช่า'">{{r.pro_sell}}</div>
+                        <img class="image-size" style="cursor: pointer;" mat-card-image
+                            src="data:image/jpg;base64,{{r.image1}}" />
+                    </div>
 
 
-                    </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns4;"></tr>
-            </table>
+                    <div class="listing-cost">฿ {{r.price | number : '1.2-2'}} บาท</div>
+                    <div class="detail">
+                        <mat-card-content>
+                            <p class="head">
+                                {{r.pro_head}}
+                            </p>
+                        </mat-card-content>
+                        <!-- <mat-divider></mat-divider> -->
+                        <mat-card-subtitle class="date-post">
+                            <div class="row">
+                                <div class="col-md">
+                                    <i class="fa fa-pencil-square-o fa-lg"> {{r.pro_post}}</i>
+                                </div>
+                                <div class="col-md" style=" text-align: right;">
+                                    <i class="fa fa-eye fa-lg"> {{r.pro_views}}</i>
+                                </div>
+                            </div>
+                        </mat-card-subtitle>
 
-            <mat-paginator [pageSizeOptions]="[ 10, 20 ,50 ]" showFirstLastButtons></mat-paginator>
-        </div>
+                        <div class="type">
+                            <i class="material-icons" style="color: #7a96a2;">
+                                style
+                            </i> <span style="opacity: 0.85;  font-size: 14px;"> {{r.type_name}}</span>
+                        </div>
+
+                        <div class="loca">
+                            <i class="material-icons" style="color: #abbf4e;">place</i>
+                            <span style="opacity: 0.85;">{{r.loc_name}} {{r.provin_name}} </span>
+                        </div>
+                        <hr style="margin-top: 4px; margin-bottom: 2px;">
+                        <div class="row">
+                            <div class="col-7">
+                                <p class="p_icon1"><i class="fa fa-object-group" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                                <p class="p_icon1"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp; {{r.pro_bedroom}}
+                                    ห้องนอน</p>
+                            </div>
+                            <div class="col-5">
+                                <p class="p_icon2"><i class="fa fa-bath" aria-hidden="true"></i>&nbsp; {{r.pro_toilet}}
+                                    ห้องน้ำ</p>
+                                <p class="p_icon2"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_floor}}
+                                    ชั้น</p>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </mat-card>
     </mat-tab>
+
     <mat-tab label="คอนโดมิเนียม">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource5">
+        <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #e8c7b6">
+            <div class="row" style="margin-left: 20px;">
+                <mat-card class="product-card" *ngFor="let r of condos | filter:searchText "
+                    [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
-                <ng-container matColumnDef="21">
-                    <th mat-header-cell *matHeaderCellDef> ชื่ออสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_head}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="22">
-                    <th mat-header-cell *matHeaderCellDef> เจ้าของอสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.fname}} &nbsp; {{row.lname}}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="23">
-                    <th mat-header-cell *matHeaderCellDef> ยอดเข้าชม </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_views}}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="24">
-                    <th mat-header-cell *matHeaderCellDef> วันลงประกาศ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_post}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="25">
-                    <th mat-header-cell *matHeaderCellDef> ดูรายละเอียด </th>
-                    <td mat-cell *matCellDef="let row">
-                        <button mat-raised-button [routerLink]="['/admin/admin/prodetail' ,row.pro_id]"
-                            style="background: #1d6a96 ; color: snow; "> <i class="material-icons">
-                                search
-                            </i>&nbsp; เข้าดู</button>
+                    <div class="data sell-box">
+                        <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
+                        <div class="sell-corner sell-SUB" *ngIf="r.pro_sell == 'เช่า'">{{r.pro_sell}}</div>
+                        <img class="image-size" style="cursor: pointer;" mat-card-image
+                            src="data:image/jpg;base64,{{r.image1}}" />
+                    </div>
 
 
-                    </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns5"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns5;"></tr>
-            </table>
+                    <div class="listing-cost">฿ {{r.price | number : '1.2-2'}} บาท</div>
+                    <div class="detail">
+                        <mat-card-content>
+                            <p class="head">
+                                {{r.pro_head}}
+                            </p>
+                        </mat-card-content>
+                        <!-- <mat-divider></mat-divider> -->
+                        <mat-card-subtitle class="date-post">
+                            <div class="row">
+                                <div class="col-md">
+                                    <i class="fa fa-pencil-square-o fa-lg"> {{r.pro_post}}</i>
+                                </div>
+                                <div class="col-md" style=" text-align: right;">
+                                    <i class="fa fa-eye fa-lg"> {{r.pro_views}}</i>
+                                </div>
+                            </div>
+                        </mat-card-subtitle>
 
-            <mat-paginator [pageSizeOptions]="[ 10, 20 ,50 ]" showFirstLastButtons></mat-paginator>
-        </div>
+                        <div class="type">
+                            <i class="material-icons" style="color: #7a96a2;">
+                                style
+                            </i> <span style="opacity: 0.85;  font-size: 14px;"> {{r.type_name}}</span>
+                        </div>
+
+                        <div class="loca">
+                            <i class="material-icons" style="color: #abbf4e;">place</i>
+                            <span style="opacity: 0.85;">{{r.loc_name}} {{r.provin_name}} </span>
+                        </div>
+                        <hr style="margin-top: 4px; margin-bottom: 2px;">
+                        <div class="row">
+                            <div class="col-7">
+                                <p class="p_icon1"><i class="fa fa-object-group" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                                <p class="p_icon1"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp; {{r.pro_bedroom}}
+                                    ห้องนอน</p>
+                            </div>
+                            <div class="col-5">
+                                <p class="p_icon2"><i class="fa fa-bath" aria-hidden="true"></i>&nbsp; {{r.pro_toilet}}
+                                    ห้องน้ำ</p>
+                                <p class="p_icon2"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_floor}}
+                                    ชั้น</p>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </mat-card>
     </mat-tab>
+
     <mat-tab label="ที่ดิน">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource6">
+        <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #ddf7b8">
+            <div class="row" style="margin-left: 20px;">
+                <mat-card class="product-card" *ngFor="let r of lands | filter:searchText "
+                    [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
-                <ng-container matColumnDef="26">
-                    <th mat-header-cell *matHeaderCellDef> ชื่ออสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_head}} </td>
-                </ng-container>
+                    <div class="data sell-box">
+                        <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
+                        <div class="sell-corner sell-SUB" *ngIf="r.pro_sell == 'เช่า'">{{r.pro_sell}}</div>
+                        <img class="image-size" style="cursor: pointer;" mat-card-image
+                            src="data:image/jpg;base64,{{r.image1}}" />
+                    </div>
 
-                <ng-container matColumnDef="27">
-                    <th mat-header-cell *matHeaderCellDef> เจ้าของอสังหาริมทรัพย์ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.fname}} &nbsp; {{row.lname}}</td>
-                </ng-container>
+                    <div class="listing-cost">฿ {{r.price | number : '1.2-2'}} บาท</div>
+                    <div class="detail">
+                        <mat-card-content>
+                            <p class="head">
+                                {{r.pro_head}}
+                            </p>
+                        </mat-card-content>
+                        <!-- <mat-divider></mat-divider> -->
+                        <mat-card-subtitle class="date-post">
+                            <div class="row">
+                                <div class="col-md">
+                                    <i class="fa fa-pencil-square-o fa-lg"> {{r.pro_post}}</i>
+                                </div>
+                                <div class="col-md" style=" text-align: right;">
+                                    <i class="fa fa-eye fa-lg"> {{r.pro_views}}</i>
+                                </div>
+                            </div>
+                        </mat-card-subtitle>
 
-                <ng-container matColumnDef="28">
-                    <th mat-header-cell *matHeaderCellDef> ยอดเข้าชม </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_views}}</td>
-                </ng-container>
+                        <div class="type">
+                            <i class="material-icons" style="color: #7a96a2;">
+                                style
+                            </i> <span style="opacity: 0.85;  font-size: 14px;"> {{r.type_name}}</span>
+                        </div>
 
-                <ng-container matColumnDef="29">
-                    <th mat-header-cell *matHeaderCellDef> วันลงประกาศ </th>
-                    <td mat-cell *matCellDef="let row"> {{row.pro_post}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="30">
-                    <th mat-header-cell *matHeaderCellDef> ดูรายละเอียด </th>
-                    <td mat-cell *matCellDef="let row">
-                        <button mat-raised-button [routerLink]="['/admin/admin/prodetail' ,row.pro_id]"
-                            style="background: #1d6a96 ; color: snow; "> <i class="material-icons">
-                                search
-                            </i>&nbsp; เข้าดู</button>
-
-                        .
-                    </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns6"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns6;"></tr>
-            </table>
-
-            <mat-paginator [pageSizeOptions]="[ 10, 20 ,50 ]" showFirstLastButtons></mat-paginator>
-        </div>
+                        <div class="loca">
+                            <i class="material-icons" style="color: #abbf4e;">place</i>
+                            <span style="opacity: 0.85;">{{r.loc_name}} {{r.provin_name}} </span>
+                        </div>
+                        <hr style="margin-top: 4px; margin-bottom: 2px;">
+                        <div class="row">
+                            <div class="col-7">
+                                <p class="p_icon1"><i class="fa fa-object-group" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                                <p class="p_icon1"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp; {{r.pro_bedroom}}
+                                    ห้องนอน</p>
+                            </div>
+                            <div class="col-5">
+                                <p class="p_icon2"><i class="fa fa-bath" aria-hidden="true"></i>&nbsp; {{r.pro_toilet}}
+                                    ห้องน้ำ</p>
+                                <p class="p_icon2"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;
+                                    {{r.pro_floor}}
+                                    ชั้น</p>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </mat-card>
     </mat-tab>
+
 </mat-tab-group>

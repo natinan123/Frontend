@@ -26,11 +26,9 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { SharedModule } from '../shared/shared.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
-import { GalleryModule } from '@ngx-gallery/core';
-import { LightboxModule } from '@ngx-gallery/lightbox';
-import { GallerizeModule } from '@ngx-gallery/gallerize';
 import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pending-approval.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { GalleryModule } from '@ks89/angular-modal-gallery';
 
 @NgModule({
   declarations: [
@@ -67,9 +65,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
     SharedModule,
     Ng2SearchPipeModule,
     AgmJsMarkerClustererModule,
-    GalleryModule,
-    LightboxModule,
-    GallerizeModule,
+    GalleryModule.forRoot(),
   ]
 })
 export class SellerModule { }

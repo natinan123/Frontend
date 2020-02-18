@@ -10,23 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./manage-sale.component.scss']
 })
 export class ManageSaleComponent implements OnInit {
+  houses: Object;
+  townhouses: Object;
+  apartment: Object;
+  commercial: Object;
+  condos: Object;
+  lands: Object;
 
-  displayedColumns: string[] = ['1', '2', '3', '4', '5'];
-  dataSource: MatTableDataSource<[any]>;
-  displayedColumns2: string[] = ['6', '7', '8', '9', '10'];
-  dataSource2: MatTableDataSource<[any]>;
-  displayedColumns3: string[] = ['11', '12', '13', '14', '15'];
-  dataSource3: MatTableDataSource<[any]>;
-  displayedColumns4: string[] = ['16', '17', '18', '19', '20'];
-  dataSource4: MatTableDataSource<[any]>;
-  displayedColumns5: string[] = ['21', '22', '23', '24', '25'];
-  dataSource5: MatTableDataSource<[any]>;
-  displayedColumns6: string[] = ['26', '27', '28', '29', '30'];
-  dataSource6: MatTableDataSource<[any]>;
+  searchText;
 
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+
+
   constructor(
     private service: ServerService,
     private dialog: MatDialog,
@@ -50,10 +45,8 @@ export class ManageSaleComponent implements OnInit {
   getTableHouse() {
     this.service.getHouse().subscribe(
       (res) => {
-        this.dataSource = new MatTableDataSource(res as any[]);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-
+        // console.log(res);
+        this.houses = res;
       }
     )
   }
@@ -61,55 +54,48 @@ export class ManageSaleComponent implements OnInit {
   getTableTownhouse() {
     this.service.getTownhouse().subscribe(
       (res) => {
-        this.dataSource2 = new MatTableDataSource(res as any[]);
-        this.dataSource2.sort = this.sort;
-        this.dataSource2.paginator = this.paginator;
+        // console.log(res);
+        this.townhouses = res;
       }
     )
   }
   getTableApartment() {
     this.service.getApartment().subscribe(
       (res) => {
-        this.dataSource3 = new MatTableDataSource(res as any[]);
-        this.dataSource3.sort = this.sort;
-        this.dataSource3.paginator = this.paginator;
+        // console.log(res);
+        this.apartment = res;
+
       }
     )
   }
   getTableCommercial() {
     this.service.getCommercial().subscribe(
       (res) => {
-        this.dataSource4 = new MatTableDataSource(res as any[]);
-        this.dataSource4.sort = this.sort;
-        this.dataSource4.paginator = this.paginator;
+        // console.log(res);
+        this.commercial = res;
+
       }
     )
   }
   getTableCondominium() {
     this.service.getCondominium().subscribe(
       (res) => {
-        this.dataSource5 = new MatTableDataSource(res as any[]);
-        this.dataSource5.sort = this.sort;
-        this.dataSource5.paginator = this.paginator;
+        // console.log(res);
+        this.condos = res;
+
       }
     )
   }
   getTableLand() {
     this.service.getLand().subscribe(
       (res) => {
-        this.dataSource6 = new MatTableDataSource(res as any[]);
-        this.dataSource6.sort = this.sort;
-        this.dataSource6.paginator = this.paginator;
+        // console.log(res);
+        this.lands = res;
+
       }
     )
   }
-  // ตัวกรอง
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
+
 
 
 }

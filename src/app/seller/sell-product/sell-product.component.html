@@ -69,34 +69,71 @@
 </mat-card>
 
 
+
+
+
+
+
+
+
 <mat-card class="mat-card" style="top: 20px">
-    <!-- <img *ngIf="image1 != null" mat-card-lg-image class="image" src="data:image/jpg;base64,{{image1}}" /> -->
+    <!-- <img *ngIf="image1 != null" mat-card-lg-image class="image" src="data:image/jpeg;base64,{{image1}}" />
     <p>
-        <!-- <img *ngIf="image1 != null" mat-card-md-image src="data:image/jpg;base64,{{image1}}" />
-        <img *ngIf="image2 != null" mat-card-md-image src="data:image/jpg;base64,{{image2}}" />
-        <img *ngIf="image3 != null" mat-card-md-image src="data:image/jpg;base64,{{image3}}" />
-        <img *ngIf="image4 != null" mat-card-md-image src="data:image/jpg;base64,{{image4}}" />
-        <img *ngIf="image5 != null" mat-card-md-image src="data:image/jpg;base64,{{image5}}" />
-        <img *ngIf="image6 != null" mat-card-md-image src="data:image/jpg;base64,{{image6}}" />
-        <img *ngIf="image7 != null" mat-card-md-image src="data:image/jpg;base64,{{image7}}" />
-        <img *ngIf="image8 != null" mat-card-md-image src="data:image/jpg;base64,{{image8}}" />
-        <img *ngIf="image9 != null" mat-card-md-image src="data:image/jpg;base64,{{image9}}" />
-        <img *ngIf="image10 != null" mat-card-md-image src="data:image/jpg;base64,{{image10}}" /> -->
+        <img *ngIf="image1 != null" mat-card-md-image src="data:image/jpeg;base64,{{image1}}" />
+        <img *ngIf="image2 != null" mat-card-md-image src="data:image/jpeg;base64,{{image2}}" />
+        <img *ngIf="image3 != null" mat-card-md-image src="data:image/jpeg;base64,{{image3}}" />
+        <img *ngIf="image4 != null" mat-card-md-image src="data:image/jpeg;base64,{{image4}}" />
+        <img *ngIf="image5 != null" mat-card-md-image src="data:image/jpeg;base64,{{image5}}" />
+        <img *ngIf="image6 != null" mat-card-md-image src="data:image/jpeg;base64,{{image6}}" />
+        <img *ngIf="image7 != null" mat-card-md-image src="data:image/jpeg;base64,{{image7}}" />
+        <img *ngIf="image8 != null" mat-card-md-image src="data:image/jpeg;base64,{{image8}}" />
+        <img *ngIf="image9 != null" mat-card-md-image src="data:image/jpeg;base64,{{image9}}" />
+        <img *ngIf="image10 != null" mat-card-md-image src="data:image/jpeg;base64,{{image10}}" />
 
 
-    </p>
+    </p> -->
+
     <img [src]="imagePath">
-
+    <!-- <img src="../../../assets/pic/mainpage/user_avatar.png" style="height: 64px;width: auto;"> -->
 
 </mat-card>
 
-<gallery [items]="items" thumbPosition="left"></gallery>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <mat-card class="mat-card" style="top: 30px">
     <mat-card-title>
         <p>รายละเอียด</p>
-        {{pro_detail}}
     </mat-card-title>
+
+    <p>{{pro_detail}}</p>
 </mat-card>
 
 <mat-card class="mat-card" style="top: 35px"
@@ -122,9 +159,6 @@
 
     </div>
 </mat-card>
-
-
-
 <mat-card class="mat-card" style="top: 40px">
     <mat-card-title>ติดต่อผู้ใช้งาน</mat-card-title>
     <div class="col-md-6">
@@ -141,7 +175,7 @@
 </mat-card>
 
 
-<!--   Map  -->
+
 <ng-template #Location let-modal>
     <div class="modal-header">
         <h4 class="modal-title">ตำแหน่งอสังหาริมทรัพย์</h4>
@@ -151,9 +185,9 @@
     </div>
 
     <agm-map [latitude]="lat2" [longitude]="lng2">
-        <!-- หน้าเริ่ม -->
+
         <agm-marker [latitude]="latitude" [longitude]="longtitude">
-            <!-- มาค์ก -->
+
             <agm-info-window>
                 <h5><strong>{{type_name}} </strong></h5>
                 <p>{{pro_head}}</p>
@@ -164,9 +198,9 @@
 
     <div class="modal-footer">
         <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
-        <!-- <button mat-raised-button style="background-color: #1d6a96;color: snow">ยืนยัน</button> -->
+
     </div>
-</ng-template>
+</ng-template> -->
 
 
 <!-- todo : ngModal -->

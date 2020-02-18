@@ -12,7 +12,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./tast.component.scss']
 })
 export class TastComponent implements OnInit {
- 
+  private bodyText: string;
 
 
 
@@ -24,7 +24,8 @@ export class TastComponent implements OnInit {
     private modalService: NgbModal,
     private modal: NgbModal,
     private session: SessionService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    
 
   ) { }
 

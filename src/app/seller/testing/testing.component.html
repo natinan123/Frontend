@@ -1,0 +1,17 @@
+<section>
+
+  <br>
+  <ks-carousel [id]="115" [images]="imagesRect" [carouselImageConfig]="{description: {strategy: 2}}">
+
+  </ks-carousel>
+</section>
+
+
+<div class="option" [formGroup]="fourthFormGroup">
+  <mat-form-field appearance="outline" class="full-width">
+      <input matInput type="number" [(ngModel)]="area" formControlName="Area"   (ngModelChange)="getGuide_price($event)" 
+          placeholder="ตารางเมตร..." required>
+  </mat-form-field>
+</div>
+
+<button (click)="getGuide_price()">check</button>

@@ -149,10 +149,16 @@
                         </div>
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
-                                <textarea matInput [(ngModel)]="Pro_detail" formControlName="Pro_detail" rows="18"
-                                    placeholder="กรอกรายละเอียดอสังหาริมทรัพย์..." required></textarea>
+                                <textarea matInput [(ngModel)]="Pro_detail" ref-textarea formControlName="Pro_detail"
+                                    rows="18" placeholder="กรอกรายละเอียดอสังหาริมทรัพย์..." required></textarea>
                             </mat-form-field>
                         </div>
+                        <div class="">
+                            <button (click)="onTest()">test</button>
+                        </div>
+
+                        <p>{{test123}}</p>
+                        <p>{{test12345}}</p>
                     </div>
                 </div>
                 <div>
@@ -215,7 +221,7 @@
                         <div class="option">
                             <mat-form-field appearance="outline" class="full-width">
                                 <input matInput type="number" [(ngModel)]="Area" formControlName="Area"
-                                    placeholder="ตารางเมตร..." required>
+                                    (ngModelChange)="getGuide_price($event)" placeholder="ตารางเมตร..." required>
                             </mat-form-field>
                         </div>
                     </div>
@@ -249,10 +255,21 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <div class="col-md-2" style="margin-top: 40px; padding-left: 5px">บาท</div>
+                    <div class="col-md-1" style="margin-top: 40px; padding-left: 5px">บาท</div>
+                    <div class="col-md-4">
+                        <mat-card class="guide_price">
+                            <mat-card-header>
+                                <mat-card-title><i class="fa fa-info-circle" aria-hidden="true"></i> ราคาแนะนำ</mat-card-title>
+                                <mat-card-subtitle>ราคาแนะนำตามขนาดของพื้นที่อสังหาริมทรัพย์</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                {{guide_price | number : '1.2-2'}}  บาท
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
                 </div>
 
-                <div class="row" style="margin-top: 8px;">
+                <div class="row" style="margin-top: 30px;">
                     <div class="col-md">
                         <div class="label">
                             <mat-label>ห้องนอน</mat-label>
