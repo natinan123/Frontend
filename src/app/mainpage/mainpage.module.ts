@@ -20,6 +20,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SharedModule } from '../shared/shared.module';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
+
 @NgModule({
   declarations: [
     MainpageComponent,

@@ -1,9 +1,9 @@
-<div class="row" style="height: 100px;background-color: #014254">
+<!-- <div class="row" style="height: 100px;background-color: #014254">
     <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 50px; "> หน้าหลัก</h1>
 </div>
 
 
-<!-- รายการแนะนำ -->
+
 <mat-card style="width: 1200px; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการแนะนำ</mat-toolbar>
     <div class="row">
@@ -11,7 +11,7 @@
 
             <div class="image">
                 <img style="cursor: pointer;" [routerLink]="['/mainpage/mainpage/property' ,r.pro_id]" mat-card-image
-                src="data:image/jpg;base64,{{r.image1}}" />
+                    src="data:image/jpg;base64,{{r.image1}}" />
             </div>
             <div class="detail">
                 <mat-card-content>
@@ -44,7 +44,7 @@
 
                     <mat-card-subtitle>
                         <p style="margin-bottom: 2px;"><i class="fa fa-pencil-square-o"
-                                aria-hidden="true"></i>{{r.pro_post | date : 'fullDate'  }}</p>
+                                aria-hidden="true"></i>{{r.pro_post}}</p>
                         <p style="margin-bottom: 5px;"><i class="fa fa-eye" aria-hidden="true"></i> เข้าชม
                             {{r.pro_views}} ครั้ง</p>
                     </mat-card-subtitle>
@@ -55,7 +55,7 @@
     </div>
 </mat-card>
 
-<!-- ยอดนิยม -->
+
 <mat-card style="width: 1200px; margin-left: auto; margin-right: auto; top: 20px; background-color: #BBD9EE">
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการยอดนิยม</mat-toolbar>
     <div class="row">
@@ -98,7 +98,7 @@
 
                     <mat-card-subtitle>
                         <p style="margin-bottom: 2px;"><i class="fa fa-pencil-square-o"
-                                aria-hidden="true"></i>{{pop.pro_post | date : 'fullDate'  }}</p>
+                                aria-hidden="true"></i>{{pop.pro_post}}</p>
                         <p style="margin-bottom: 5px;"><i class="fa fa-eye" aria-hidden="true"></i> เข้าชม
                             {{pop.pro_views}} ครั้ง
                         </p>
@@ -110,7 +110,7 @@
     </div>
 </mat-card>
 
-<!-- รายการอสังหา -->
+
 <mat-card style="width: 1200px; margin-left: auto; margin-right: auto; top: 30px;background-color: #BBD9EE">
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการอสังหาริมทรัพย์</mat-toolbar>
     <div class="row">
@@ -118,7 +118,7 @@
 
             <div class="image">
                 <img style="cursor: pointer;" [routerLink]="['/mainpage/mainpage/property' ,p.pro_id]" mat-card-image
-                src="data:image/jpg;base64,{{p.image1}}" />
+                    src="data:image/jpg;base64,{{p.image1}}" />
             </div>
             <div class="detail">
                 <mat-card-content>
@@ -151,7 +151,7 @@
 
                     <mat-card-subtitle>
                         <p style="margin-bottom: 2px;"><i class="fa fa-pencil-square-o"
-                                aria-hidden="true"></i>{{p.pro_post | date : 'fullDate'  }}</p>
+                                aria-hidden="true"></i>{{p.pro_post}}</p>
                         <p style="margin-bottom: 5px;"><i class="fa fa-eye" aria-hidden="true"></i> เข้าชม
                             {{p.pro_views}} ครั้ง</p>
                     </mat-card-subtitle>
@@ -161,4 +161,15 @@
         </mat-card>
     </div>
 
-</mat-card>
+</mat-card> -->
+
+
+
+<input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+<button (click)="sendMessage()">Send</button>
+
+
+
+<div *ngFor="let message of messages">
+    {{message}}
+</div>

@@ -5,6 +5,7 @@ import { SessionService } from '../@service/session.service';
 import { ServerService } from '../@service/server.service';
 import { Router } from '@angular/router';
 import { delay } from 'q';
+import { SocketioService } from '../@service/socketio.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -75,8 +76,8 @@ export class MainpageComponent implements OnInit {
     private session: SessionService,
     private service: ServerService,
     private route: Router,
-    private alertConfig: NgbAlertConfig
-
+    private alertConfig: NgbAlertConfig,
+    private socketService: SocketioService,
 
   ) { }
 
@@ -99,7 +100,6 @@ export class MainpageComponent implements OnInit {
       }
 
     }
-
 
   }
 

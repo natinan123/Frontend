@@ -19,6 +19,9 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { GalleryModule } from '@ks89/angular-modal-gallery';
+import { SocketioService } from './@service/socketio.service';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -47,8 +50,9 @@ import { GalleryModule } from '@ks89/angular-modal-gallery';
     Ng2SearchPipeModule,
     AgmJsMarkerClustererModule,
     GalleryModule.forRoot(),
+    
   ],
-  providers: [],
+  providers: [SocketioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
