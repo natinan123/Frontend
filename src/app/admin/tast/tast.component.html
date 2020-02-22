@@ -1,31 +1,41 @@
-<!-- <div class="col-md-6 col-md-offset-3">
-    <h1>Home</h1>
-    <p>{{bodyText}}</p>
-    <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
-    <button (click)="openModal('custom-modal-2')">Open Modal 2</button>
+<div class="row">
+    <div class="col-md-5">
+        <mat-card style="margin-top: 10px;" *ngFor="let item of member; let i = index">
+            <mat-checkbox [(ngModel)]="item.Checked" (ngModelChange)="getCheckbox(item.email_id)">Check me!</mat-checkbox>
+
+
+            <div class="row">
+                <div class="col-md">
+                    <img src="data:image/jpg;base64,{{item.profile_pic}}" alt="sunil"
+                        style="width: 100px;height: auto;" />
+
+                </div>
+                <div class="col-md">
+                    <p>{{item.email_id}}</p>
+                    <p>{{item.fname}} {{item.lname}}</p>
+                    <p *ngIf="item.cus_status == 'seller'">ผู้ขาย</p>
+                    <p *ngIf="item.cus_status == 'buyer'">ผู้ซื้อ</p>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-md-7">
+        <form class="example-form" [formGroup]="chatFormGroup">
+            <mat-form-field class="example-full-width">
+                <mat-label>Favorite food</mat-label>
+                <input matInput [(ngModel)]="taxtChat" formControlName="taxtChat" placeholder="Ex. Pizza">
+            </mat-form-field>
+
+            <button mat-raised-button>ส่งข้อความ</button>
+        </form>
+    </div>
 </div>
 
-<modal id="custom-modal-1">
-    <div class="modal">
-        <div class="modal-body">
-            <h1>A Custom Modsaal!</h1>
-            <p>
-                Home page text: <input type="text" [(ngModel)]="bodyText" />
-            </p>
-            
-            <button (click)="closeModal('custom-modal-1');">Close</button>
-        </div>
-    </div>
-    <div class="modal-background"></div>
-</modal>
 
-<modal id="custom-modal-2">
-    <div class="modal">
-        <div class="modal-body">
-          
-            <h1 style="height:1000px">A Tall Custom Modal!</h1>
-            <button (click)="closeModal('custom-modal-2');">Close</button>
-        </div>
-    </div>
-    <div class="modal-background"></div>
-</modal> -->
+
+
+<!-- <div *ngFor="let item of member; let i = index">
+    <input type="checkbox" [id]="item+i" [name]="item" [(ngModel)]="item.Checked"
+        (change)="getCheckboxValues(item.email_id)">
+    <label [for]="item+i"> {{item.email_id}} </label>
+</div> -->

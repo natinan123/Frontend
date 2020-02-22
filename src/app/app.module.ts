@@ -20,7 +20,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { GalleryModule } from '@ks89/angular-modal-gallery';
 import { SocketioService } from './@service/socketio.service';
-
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { SocketioService } from './@service/socketio.service';
     Ng2SearchPipeModule,
     AgmJsMarkerClustererModule,
     GalleryModule.forRoot(),
-    
+    SocketIoModule.forRoot(config)
   ],
   providers: [SocketioService],
   bootstrap: [AppComponent]

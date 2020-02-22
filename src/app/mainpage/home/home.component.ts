@@ -11,14 +11,13 @@ import { SocketioService } from 'src/app/@service/socketio.service';
 })
 export class HomeComponent implements OnInit {
 
-  // products: Object;
-  // recoms: Object;
-  // poppular: Object;
-  // pop_pic: Object;
-  // recom_pic: Object;
-  // products_pic: Object;
-  message: string;
-  messages: string[] = [];
+  products: Object;
+  recoms: Object;
+  poppular: Object;
+  pop_pic: Object;
+  recom_pic: Object;
+  products_pic: Object;
+  
 
 
 
@@ -29,25 +28,14 @@ export class HomeComponent implements OnInit {
     private socketService: SocketioService,
   ) { }
 
-  sendMessage() {
-    this.socketService.sendMessage(this.message);
-    console.log(this.message);
-    console.log(this.messages);
-
-    this.message = '';
-  }
+  
 
   ngOnInit() {
-    // this.getProperty();
-    // this.getRecom();
-    // this.getPoppular();
+    this.getProperty();
+    this.getRecom();
+    this.getPoppular();
 
-    this.socketService.getMessages().subscribe((message: string) => {
-      this.messages.push(message);
-      console.log(this.message);
-      console.log(this.messages);
-    });
-
+  
 
 
   }
@@ -60,34 +48,34 @@ export class HomeComponent implements OnInit {
 
 
 
-  // getProperty() {
-  //   this.service.getProperty().subscribe(
-  //     (res) => {
-  //       console.log(res);
-  //       this.products = res;
+  getProperty() {
+    this.service.getProperty().subscribe(
+      (res) => {
+        console.log(res);
+        this.products = res;
 
-  //     })
-  // }
+      })
+  }
 
-  // getPoppular() {
-  //   this.service.getPoppular().subscribe(
-  //     (res) => {
-  //       console.log(res);
-  //       this.poppular = res;
-  //       console.log(this.poppular);
+  getPoppular() {
+    this.service.getPoppular().subscribe(
+      (res) => {
+        console.log(res);
+        this.poppular = res;
+        console.log(this.poppular);
 
-  //     })
-  // }
+      })
+  }
 
-  // getRecom() {
-  //   this.service.getRecommainpage().subscribe(
-  //     (res) => {
-  //       console.log(res);
-  //       this.recoms = res;
-  //       console.log(this.recoms);
-  //       // this.recom_pic = res.result;
-  //       // console.log(this.recom_pic);
-  //     })
-  // }
+  getRecom() {
+    this.service.getRecommainpage().subscribe(
+      (res) => {
+        console.log(res);
+        this.recoms = res;
+        console.log(this.recoms);
+        // this.recom_pic = res.result;
+        // console.log(this.recom_pic);
+      })
+  }
 
 }

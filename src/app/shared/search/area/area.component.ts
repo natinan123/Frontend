@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Options, LabelType } from 'ng5-slider';
 import { ServerService } from 'src/app/@service/server.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,9 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./area.component.scss']
 })
 export class AreaComponent implements OnInit {
+  @ViewChild('error', { static: false }) error: ElementRef;
+  public typeFormGroup = new FormGroup({
+    type: new FormControl(''),
+    minValue: new FormControl(''),
+    maxValue: new FormControl(''),
+  })
 
-
-  minValue: number = 1000;
+  minValue: number = 0;
   maxValue: number = 30000;
   options: Options = {
     floor: 0,
@@ -38,6 +43,10 @@ export class AreaComponent implements OnInit {
   user: any;
   status: any;
   link: string;
+  pageSize = 16;
+  page = 1;
+  count_list: any;
+
   constructor(
     private service: ServerService,
     private modalService: NgbModal,
@@ -46,6 +55,7 @@ export class AreaComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
   ) { }
+
 
   ngOnInit() {
     this.getType()
@@ -64,6 +74,13 @@ export class AreaComponent implements OnInit {
     if (this.user[0].cus_status == "buyer") {
       this.link = '/buyer/buyer/detail';
     }
+
+    this.typeFormGroup = this._formBuilder.group({
+      type: ['', Validators.required],
+      minValue: [''],
+      maxValue: [''],
+    });
+
   }
 
   // ประเภท
@@ -89,7 +106,12 @@ export class AreaComponent implements OnInit {
       (res) => {
         console.log(res);
         this.ProFromArea = res;
-      })
+        this.count_list = this.ProFromArea.length;
+      },
+      (err) => {
+        this.modalService.open(this.error);
+      }
+      )
   }
 
 

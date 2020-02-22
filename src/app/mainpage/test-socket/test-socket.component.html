@@ -1,0 +1,29 @@
+<p>test-socket works!</p>
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md">
+        <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+        <button (click)="sendMessage()">Send</button>
+    </div>
+    <div class="col-md">
+   
+
+        <p>ข้อความ</p>
+        <p *ngFor="let a of messages">{{a}}</p>
+    </div>
+</div>
+
+<div>
+    <input type="text" #msgInput name=""  value="">
+    <button (click)="sendMsg(msgInput.value)">Send</button>
+    <br>
+    <p>{{msg}}</p>
+    <p *ngFor='let url of texts;'>{{url}}</p>
+</div>

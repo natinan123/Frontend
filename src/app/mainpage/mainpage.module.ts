@@ -19,6 +19,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SharedModule } from '../shared/shared.module';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { TestSocketComponent } from './test-socket/test-socket.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
     HomeComponent,
     PropertyComponent,
     ArticleComponent,
-    ArtDetailComponent
+    ArtDetailComponent,
+    TestSocketComponent
   ],
   imports: [
     CommonModule,

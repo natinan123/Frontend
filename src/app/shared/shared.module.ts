@@ -24,6 +24,7 @@ import { LocationComponent } from './search/location/location.component';
 import { PriceComponent } from './search/price/price.component';
 import { AreaComponent } from './search/area/area.component';
 import * as moment from 'moment';
+import { TestsearchComponent } from './testsearch/testsearch.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import * as moment from 'moment';
     LocationComponent,
     PriceComponent,
     AreaComponent,
+    TestsearchComponent,
   ],
   imports: [
     CommonModule,

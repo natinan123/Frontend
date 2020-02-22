@@ -9,6 +9,7 @@ import { MapComponent } from '../shared/search/map/map.component';
 import { LocationComponent } from '../shared/search/location/location.component';
 import { PriceComponent } from '../shared/search/price/price.component';
 import { AreaComponent } from '../shared/search/area/area.component';
+import { TestSocketComponent } from './test-socket/test-socket.component';
 
 
 
@@ -55,8 +56,8 @@ const routes: Routes = [
         component: ArtDetailComponent
       },
       { // หน้าหลัก
-        path: 'home',
-        component: HomeComponent
+        path: 'socket',
+        component: TestSocketComponent
       },
     ]
   },

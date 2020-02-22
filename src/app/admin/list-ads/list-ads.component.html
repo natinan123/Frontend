@@ -11,7 +11,7 @@
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการโฆษณา</mat-toolbar>
     <!-- !admin -->
     <div class="row">
-        <mat-card class="product-card" *ngFor="let a of articles | filter:searchText">
+        <mat-card class="product-card" *ngFor="let a of articles | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
             <div class="routerLink" [routerLink]="['/admin/admin/editArticle' ,a.article_id]">
                 <div class="image">
                     <img style="cursor: pointer;" mat-card-image src="data:image/jpg;base64,{{a.art_pic1}}"
@@ -46,7 +46,7 @@
             </div> -->
                         <mat-card-subtitle>
                             <p style="margin-bottom: 2px;"><i class="fa fa-pencil-square-o"
-                                    aria-hidden="true"></i>{{a.art_date | date : 'fullDate'  }}</p>
+                                    aria-hidden="true"></i>{{a.art_date}}</p>
                             <p style="margin-bottom: 5px;"><i class="fa fa-eye" aria-hidden="true"></i> เข้าชม
                                 {{a.art_view}} ครั้ง</p>
                         </mat-card-subtitle>
@@ -57,5 +57,6 @@
         </mat-card>
     </div>
 
-
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="articles.length" [maxSize]="5"
+    [rotate]="true" [ellipses]="false" ></ngb-pagination>
 </mat-card>

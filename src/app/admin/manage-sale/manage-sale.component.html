@@ -16,7 +16,7 @@
     <mat-tab label="บ้านเดี่ยว">
         <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
             <div class="row" style="margin-left: 20px;">
-                <mat-card class="product-card" *ngFor="let r of houses | filter:searchText "
+                <mat-card class="product-card" *ngFor="let r of houses | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
                     [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
                     <div class="data sell-box">
@@ -73,13 +73,15 @@
                     </div>
                 </mat-card>
             </div>
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="houses.length" [maxSize]="5"
+            [rotate]="true" [ellipses]="false" ></ngb-pagination>
         </mat-card>
     </mat-tab>
 
     <mat-tab label="ทาวน์เฮ้าส์">
         <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #e5d67b">
             <div class="row" style="margin-left: 20px;">
-                <mat-card class="product-card" *ngFor="let r of townhouses | filter:searchText "
+                <mat-card class="product-card" *ngFor="let r of townhouses | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
                     [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
                     <div class="data sell-box">
@@ -138,13 +140,15 @@
                     </div>
                 </mat-card>
             </div>
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="townhouses.length" [maxSize]="5"
+            [rotate]="true" [ellipses]="false" ></ngb-pagination>
         </mat-card>
     </mat-tab>
 
     <mat-tab label="อพาร์ทเมนท์">
         <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #f6e0ae">
             <div class="row" style="margin-left: 20px;">
-                <mat-card class="product-card" *ngFor="let r of apartment | filter:searchText "
+                <mat-card class="product-card" *ngFor="let r of apartment | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
                     [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
                     <div class="data sell-box">
@@ -203,13 +207,15 @@
                     </div>
                 </mat-card>
             </div>
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="apartment.length" [maxSize]="5"
+            [rotate]="true" [ellipses]="false" ></ngb-pagination>
         </mat-card>
     </mat-tab>
 
     <mat-tab label="อาคารพาณิชย์">
         <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #e5d1ac">
             <div class="row" style="margin-left: 20px;">
-                <mat-card class="product-card" *ngFor="let r of commercial | filter:searchText "
+                <mat-card class="product-card" *ngFor="let r of commercial | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
                     [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
                     <div class="data sell-box">
@@ -268,13 +274,15 @@
                     </div>
                 </mat-card>
             </div>
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="commercial.length" [maxSize]="5"
+            [rotate]="true" [ellipses]="false" ></ngb-pagination>
         </mat-card>
     </mat-tab>
 
     <mat-tab label="คอนโดมิเนียม">
         <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #e8c7b6">
             <div class="row" style="margin-left: 20px;">
-                <mat-card class="product-card" *ngFor="let r of condos | filter:searchText "
+                <mat-card class="product-card" *ngFor="let r of condos | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
                     [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
                     <div class="data sell-box">
@@ -333,13 +341,15 @@
                     </div>
                 </mat-card>
             </div>
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="condos.length" [maxSize]="5"
+            [rotate]="true" [ellipses]="false" ></ngb-pagination>
         </mat-card>
     </mat-tab>
 
     <mat-tab label="ที่ดิน">
         <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #ddf7b8">
             <div class="row" style="margin-left: 20px;">
-                <mat-card class="product-card" *ngFor="let r of lands | filter:searchText "
+                <mat-card class="product-card" *ngFor="let r of lands | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
                     [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
 
                     <div class="data sell-box">
@@ -397,6 +407,8 @@
                     </div>
                 </mat-card>
             </div>
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="lands.length" [maxSize]="5"
+            [rotate]="true" [ellipses]="false" ></ngb-pagination>
         </mat-card>
     </mat-tab>
 

@@ -10,9 +10,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ListApproveComponent implements OnInit {
   listWait: any;
+  pageSize = 16;
   page = 1;
-  pageSize =10;
- 
   constructor(
     private session: SessionService,
     private service: ServerService,
@@ -26,8 +25,8 @@ export class ListApproveComponent implements OnInit {
   getListProWait() {
     this.service.getListProWait().subscribe(
       (res) => {
-       console.log(res);
-       this.listWait = res;
+        console.log(res);
+        this.listWait = res;
 
       }
     )

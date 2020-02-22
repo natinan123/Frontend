@@ -38,6 +38,9 @@ export class PriceComponent implements OnInit {
   user: any;
   status: any;
   link: string;
+  count_list: any;
+  pageSize = 16;
+  page = 1;
   constructor(
     private service: ServerService,
     private modalService: NgbModal,
@@ -60,7 +63,7 @@ export class PriceComponent implements OnInit {
     }
     if (this.user[0].cus_status == "seller") {
       this.link = '/seller/seller/detail';
-    } 
+    }
     if (this.user[0].cus_status == "buyer") {
       this.link = '/buyer/buyer/detail';
     }
@@ -89,6 +92,9 @@ export class PriceComponent implements OnInit {
       (res) => {
         console.log(res);
         this.ProFromprice = res;
+
+        this.count_list = res.length;
+        console.log(this.ProFromprice.length);
       })
   }
 

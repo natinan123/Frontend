@@ -15,6 +15,8 @@ export class ListAdsComponent implements OnInit {
   user: any;
   status: any;
   searchText;
+  pageSize = 16;
+  page = 1;
   constructor(
     private service: ServerService,
     private dialog: MatDialog,

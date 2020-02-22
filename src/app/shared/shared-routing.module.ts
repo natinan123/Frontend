@@ -9,6 +9,7 @@ import { MapComponent } from './search/map/map.component';
 import { LocationComponent } from './search/location/location.component';
 import { PriceComponent } from './search/price/price.component';
 import { AreaComponent } from './search/area/area.component';
+import { TestsearchComponent } from './testsearch/testsearch.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,10 @@ const routes: Routes = [
       { //ค้นหาตามขนาดพื้นที่
         path: 'area',
         component: AreaComponent
+      },
+      { //test
+        path: 'test_shared',
+        component: TestsearchComponent
       },
     ]
   }

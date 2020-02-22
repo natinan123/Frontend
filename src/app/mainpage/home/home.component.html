@@ -1,4 +1,4 @@
-<!-- <div class="row" style="height: 100px;background-color: #014254">
+<div class="row" style="height: 100px;background-color: #014254">
     <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 50px; "> หน้าหลัก</h1>
 </div>
 
@@ -161,15 +161,4 @@
         </mat-card>
     </div>
 
-</mat-card> -->
-
-
-
-<input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
-<button (click)="sendMessage()">Send</button>
-
-
-
-<div *ngFor="let message of messages">
-    {{message}}
-</div>
+</mat-card>

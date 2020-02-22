@@ -109,7 +109,7 @@ export class ChatComponent implements OnInit {
     const data = this.SearchInput.value;
     this.service.getSearchUser(data).subscribe(
       (res) => {
-        // console.log(res);
+        console.log(res);
         this.Member = res;
 
       })

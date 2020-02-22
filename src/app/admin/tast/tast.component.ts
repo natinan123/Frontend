@@ -12,8 +12,16 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./tast.component.scss']
 })
 export class TastComponent implements OnInit {
-  private bodyText: string;
 
+  user: any;
+  My: any;
+  member: Object;
+
+
+  public chatFormGroup = new FormGroup({
+    taxtChat: new FormControl(''),
+
+  })
 
 
   constructor(
@@ -25,17 +33,59 @@ export class TastComponent implements OnInit {
     private modal: NgbModal,
     private session: SessionService,
     private formBuilder: FormBuilder,
-    
+
 
   ) { }
 
   ngOnInit() {
+    this.user = this.session.getActiveUser();
+    // console.log(this.user);
+    this.My = this.user[0].email_id;
+
+    this.getTableMember();
 
 
   }
 
 
- 
+  getTableMember() {
+    this.service.getMember().subscribe(
+      (res) => {
+        console.log(res);
+        this.member = res;
+      }
+    )
+  }
+
+
+  eArray: any = [];
+  //Checkbox Change detecting function
+  getCheckbox(data) {
+    let obj = {
+      email_id: data
+    }
+    this.eArray.push(obj);
+    console.log(this.eArray);
+  }
+
+
+  email_idArray: any = [];
+  //Checkbox Change detecting function
+  getCheckboxValues(data) {
+    let obj = {
+      email_id: data
+    }
+    this.email_idArray.push(obj);
+    console.log(this.email_idArray);
+  }
+
+
+
+
+
+
+
+
 }
 
 

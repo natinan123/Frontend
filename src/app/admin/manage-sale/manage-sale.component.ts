@@ -18,7 +18,8 @@ export class ManageSaleComponent implements OnInit {
   lands: Object;
 
   searchText;
-
+  pageSize = 16;
+  page = 1;
 
 
 

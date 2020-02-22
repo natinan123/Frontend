@@ -42,11 +42,17 @@
 </mat-card>
 
 
+
 <!-- todo FromLocat -->
-<mat-card style="width: 98%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
+<mat-card style="width: 98%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE"
+    *ngIf="count_list != null">
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการจากการค้นหา</mat-toolbar>
+
+    <mat-chip-list>
+        <mat-chip style=" margin-top: 10px; margin-left: 30px;">ผลการค้นหา {{count_list}} รายการ</mat-chip>
+    </mat-chip-list>
     <div class="row">
-        <mat-card class="product-card" *ngFor="let r of ProFromprice" [routerLink]="[link ,r.pro_id]">
+        <mat-card class="product-card" *ngFor="let r of ProFromprice | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" [routerLink]="[link ,r.pro_id]">
 
             <div class="data sell-box">
                 <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
@@ -108,4 +114,6 @@
         </mat-card>
 
     </div>
+    <ngb-pagination *ngIf="ProFromprice.length != 0" [(page)]="page" [pageSize]="pageSize" [collectionSize]="ProFromprice.length" [maxSize]="5"
+            [rotate]="true" [ellipses]="false" ></ngb-pagination>
 </mat-card>

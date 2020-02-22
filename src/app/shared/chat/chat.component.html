@@ -83,9 +83,13 @@
                 </div>
                 <div class="chat_ib">
                     <div class="col-md">
-                        <h5>{{i.fname}} {{i.lname}} <span class="name" *ngIf="i.email_id == My"> ของคุณ</span> </h5>
+                        <h5>{{i.fname}} {{i.lname}} 
+                            <span class="name" *ngIf="i.email_id == My"> ของคุณ</span> 
+                            <span class="name" *ngIf="i.cus_status == 'admin'">ผู้ดูแลระบบ</span>
+                            <span class="name" *ngIf="i.cus_status == 'buyer'">ผู้ประกาศขาย</span>
+                            <span class="name" *ngIf="i.cus_status == 'seller'">ผู้ต้องการซื้อ</span>
 
-
+                        </h5>
                     </div>
                     <div class="col-md">
                         <button mat-button (click)="addChat(i)" *ngIf="i.email_id != My"
