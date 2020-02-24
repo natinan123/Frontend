@@ -34,7 +34,7 @@ export class PriceComponent implements OnInit {
     }
   };
   types: Object;
-  ProFromprice: Object;
+  ProFromprice: any;
   user: any;
   status: any;
   link: string;
@@ -93,7 +93,7 @@ export class PriceComponent implements OnInit {
         console.log(res);
         this.ProFromprice = res;
 
-        this.count_list = res.length;
+        this.count_list = this.ProFromprice.length;
         console.log(this.ProFromprice.length);
       })
   }

@@ -39,7 +39,7 @@ export class AreaComponent implements OnInit {
     }
   };
   types: Object;
-  ProFromArea: Object;
+  ProFromArea: any;
   user: any;
   status: any;
   link: string;

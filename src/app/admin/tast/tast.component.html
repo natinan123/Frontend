@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-md-5">
         <mat-card style="margin-top: 10px;" *ngFor="let item of member; let i = index">
-            <mat-checkbox [(ngModel)]="item.Checked" (ngModelChange)="getCheckbox(item.email_id)">Check me!</mat-checkbox>
+            <mat-checkbox [(ngModel)]="item.Checked"
+                (ngModelChange)="getCheckbox(item.email_id ,item.Checked)">Check me!
+            </mat-checkbox>
 
 
             <div class="row">
@@ -23,19 +25,16 @@
         <form class="example-form" [formGroup]="chatFormGroup">
             <mat-form-field class="example-full-width">
                 <mat-label>Favorite food</mat-label>
-                <input matInput [(ngModel)]="taxtChat" formControlName="taxtChat" placeholder="Ex. Pizza">
+                <input matInput [(ngModel)]="textChat" formControlName="textChat" placeholder="Ex. Pizza">
             </mat-form-field>
 
-            <button mat-raised-button>ส่งข้อความ</button>
+            <button mat-raised-button (click)="postFirstChat()">ส่งข้อความ</button>
         </form>
     </div>
 </div>
 
+<div *ngFor="let checkbox of member">
+	<input type="checkbox" [(ngModel)]="checkbox.checked" [value]="checkbox.value"><span>{{checkbox.email_id}}</span>
+</div>
 
-
-
-<!-- <div *ngFor="let item of member; let i = index">
-    <input type="checkbox" [id]="item+i" [name]="item" [(ngModel)]="item.Checked"
-        (change)="getCheckboxValues(item.email_id)">
-    <label [for]="item+i"> {{item.email_id}} </label>
-</div> -->
+<button type="button" (click)="CheckAllOptions()">Toggle</button>

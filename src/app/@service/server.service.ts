@@ -433,7 +433,10 @@ export class ServerService {
   postFirstChat(data) {
     return this.http.post(urlServer.ipServer + 'firstchat', data)
   }
-
+  // post first chat
+  postFirstChatLiat(data) {
+    return this.http.post(urlServer.ipServer + 'chatlist', data)
+  }
 
 
 

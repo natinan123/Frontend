@@ -23,6 +23,7 @@ import { ApproveComponent } from './list-approve/approve/approve.component';
 import { LocationComponent } from '../shared/search/location/location.component';
 import { PriceComponent } from '../shared/search/price/price.component';
 import { AreaComponent } from '../shared/search/area/area.component';
+import { TestsearchComponent } from '../shared/testsearch/testsearch.component';
 
 
 const routes: Routes = [
@@ -125,6 +126,10 @@ const routes: Routes = [
       {
         path: 'test',                         //!  ไว้สำหรับบลอง
         component: TastComponent
+      },
+      { //test
+        path: 'test_shared',
+        component: TestsearchComponent
       },
     ]
   },
