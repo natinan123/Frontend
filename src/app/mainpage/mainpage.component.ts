@@ -82,7 +82,7 @@ export class MainpageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.putExpire()
     this.user = this.session.getActiveUser();
 
     if (this.user == null || this.user === "") {
@@ -183,7 +183,7 @@ export class MainpageComponent implements OnInit {
       phone: this.Phone,
       id_line: this.Id_line,
       cus_status: this.Cus_status
-      
+
     }
     console.log(data)//if  ทุก คอลัมไม่เท่ากับว่าง
     if (this.repassword === this.password) {
@@ -209,4 +209,12 @@ export class MainpageComponent implements OnInit {
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
+  // put อสังหาที่หมดอายุ
+  putExpire() {
+    this.service.putExpire().subscribe(
+      (res) => {
+      })
+  }
+
 }

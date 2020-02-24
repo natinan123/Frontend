@@ -58,8 +58,12 @@
 </mat-card>
 
 <!-- todo FromLocat -->
-<mat-card style="width: 98%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
+<mat-card *ngIf="count_FromLocat != null"
+    style="width: 98%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการจากเขตที่ตั้ง</mat-toolbar>
+    <mat-chip-list>
+        <mat-chip style=" margin-top: 10px; margin-left: 30px;">ผลการค้นหา {{count_FromLocat}} รายการ</mat-chip>
+    </mat-chip-list>
     <div class="row">
         <mat-card class="product-card" *ngFor="let r of FromLocat" [routerLink]="[link ,r.pro_id]">
 
@@ -126,11 +130,14 @@
 </mat-card>
 
 <!-- todo FromProvin -->
-<mat-card
+<mat-card *ngIf="count_FromProvin != null"
     style="width: 98%; margin-top: 10px; margin-left: auto; margin-right: auto; top: 10px; background-color: #d3d6c3">
     <mat-toolbar style="background-color: #5a5c4f;color: snow">รายการจากพื้นที่ใกล้เคียง</mat-toolbar>
+    <mat-chip-list>
+        <mat-chip style=" margin-top: 10px; margin-left: 30px;">ผลการค้นหา {{count_FromProvin}} รายการ</mat-chip>
+    </mat-chip-list>
     <div class="row">
-        <mat-card class="product-card" *ngFor="let r of FromProvin" [routerLink]="['/buyer/buyer/detail' ,r.pro_id]">
+        <mat-card class="product-card" *ngFor="let r of FromProvin" [routerLink]="[link ,r.pro_id]">
 
             <div class="data sell-box">
 

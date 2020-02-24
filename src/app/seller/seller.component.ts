@@ -26,10 +26,11 @@ export class SellerComponent implements OnInit {
     // console.log(this.user);
     this.data = this.user[0].email_id;
     this.showAvatar();
-
+    this.putExpire()
 
 
   }
+
   onLogout() {
     this.session.clearActiveUser();
     this.route.navigate(['/mainpage/mainpage/home'])
@@ -60,7 +61,12 @@ export class SellerComponent implements OnInit {
 
       clickedElement.className += " active";
     }
-
   }
 
+  // put อสังหาที่หมดอายุ
+  putExpire() {
+    this.service.putExpire().subscribe(
+      (res) => {
+      })
+  }
 }

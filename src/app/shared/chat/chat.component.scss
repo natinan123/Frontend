@@ -202,3 +202,33 @@ img {
   font-size: 12px;
 }
 
+p {
+  font-family: Lato;
+}
+
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+p {
+  font-family: Lato;
+}
+
+/* active tab */
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  color:#003853;
+  background-color: #91d4c2;
+  }
+  
+  /* ink bar */
+  ::ng-deep .mat-ink-bar {
+  background-color: var(--primary-color,#1F89CE) !important;
+  }

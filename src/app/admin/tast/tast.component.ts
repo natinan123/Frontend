@@ -72,6 +72,7 @@ export class TastComponent implements OnInit {
     }
     console.log(this.eArray);
 
+
   }
 
   // ส่งข้อความติดต่อครั้งแรก
@@ -100,21 +101,20 @@ export class TastComponent implements OnInit {
   }
 
 
-  checkboxes: any[] = [
-    { name: 'cb1', value: 'cb1' },
-    { name: 'cb2', value: 'cb2' },
-    { name: 'cb3', value: 'cb3' },
-    { name: 'cb4', value: 'cb4' },
-    { name: 'cb5', value: 'cb5' },
-  ]
-
+  eArray2: any = [];
   CheckAllOptions() {
-    if (this.member.every(val => val.checked == true))
+    if (this.member.every(val => val.checked == true)) {
       this.member.forEach(val => { val.checked = false });
-    else
+
+    }
+    else {
       this.member.forEach(val => { val.checked = true });
+    }
     console.log(this.member);
+    console.log(this.eArray2);
   }
+
+
 
 }
 

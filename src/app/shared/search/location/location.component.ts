@@ -20,10 +20,12 @@ export class LocationComponent implements OnInit {
   zones: any;
   provins: Object;
   district: Object;
-  FromLocat: Object;
-  FromProvin: Object;
+  FromLocat: any;
+  FromProvin: any;
   link: any;
   user: any;
+  count_FromLocat: any;
+  count_FromProvin: any;
 
 
   constructor(
@@ -101,12 +103,15 @@ export class LocationComponent implements OnInit {
       (res) => {
         console.log(res);
         this.FromLocat = res;
+        this.count_FromLocat = this.FromLocat.length;
       })
     // อสังหาจากจังหวัด
     this.service.getProFromProvin(province_id).subscribe(
       (res) => {
         console.log(res);
         this.FromProvin = res;
+        this.count_FromProvin = this.FromProvin.length;
+
       })
 
   }

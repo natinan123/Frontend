@@ -25,10 +25,10 @@
         <agm-marker-cluster
             imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
             <!-- หน้าเริ่ม -->
-            <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude">
+            <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude" (markerClick)="clickedMarker(infowindow)">
                 <!-- มาค์ก -->
 
-                <agm-info-window style="width: 223px; height: auto;">
+                <agm-info-window style="width: 223px; height: auto;"  #infowindow>
                     <h5><strong>{{m.type_name}} </strong></h5>
                     <p>{{m.pro_head}}</p>
                     <div class="row">

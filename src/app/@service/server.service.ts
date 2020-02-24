@@ -371,7 +371,10 @@ export class ServerService {
   putAvatar(formData) {
     return this.http.put(urlServer.ipServer + 'putavatar', formData)
   }
-
+  //  put อสังหาหมดอายุ
+  putExpire() {
+    return this.http.get(urlServer.ipServer + 'expire')
+  }
   // ! END ^ Update -------------------------//
 
 

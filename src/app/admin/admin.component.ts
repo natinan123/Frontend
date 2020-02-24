@@ -58,6 +58,7 @@ export class AdminComponent implements OnInit {
 
     this.showAvatar();
     this.getCountProWait();
+    this.putExpire();
   }
 
 
@@ -87,6 +88,13 @@ export class AdminComponent implements OnInit {
         this.count_wait = res[0].count_wait
       }
     );
+  }
+
+  // put อสังหาที่หมดอายุ
+  putExpire() {
+    this.service.putExpire().subscribe(
+      (res) => {
+      })
   }
 
 }

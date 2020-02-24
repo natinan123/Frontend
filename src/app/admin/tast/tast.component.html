@@ -33,8 +33,4 @@
     </div>
 </div>
 
-<div *ngFor="let checkbox of member">
-	<input type="checkbox" [(ngModel)]="checkbox.checked" [value]="checkbox.value"><span>{{checkbox.email_id}}</span>
-</div>
 
-<button type="button" (click)="CheckAllOptions()">Toggle</button>

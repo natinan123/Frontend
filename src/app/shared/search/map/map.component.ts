@@ -29,6 +29,7 @@ export class MapComponent implements OnInit {
   user: any;
   status: any;
   link: string;
+  previous: any;
 
   constructor(
     private service: ServerService,
@@ -57,7 +58,7 @@ export class MapComponent implements OnInit {
     }
     if (this.user[0].cus_status == "seller") {
       this.link = '/seller/seller/detail';
-    } 
+    }
     if (this.user[0].cus_status == "buyer") {
       this.link = '/buyer/buyer/detail';
     }
@@ -96,5 +97,10 @@ export class MapComponent implements OnInit {
       })
   }
 
-
+  clickedMarker(infowindow) {
+    if (this.previous) {
+      this.previous.close();
+    }
+    this.previous = infowindow;
+  }
 }

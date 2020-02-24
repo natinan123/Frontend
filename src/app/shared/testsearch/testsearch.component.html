@@ -6,7 +6,7 @@
                     <li class="list-group-item">
 
                         <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
-                            (change)="checkUncheckAll(item.checked)" /> <strong>Select/ Unselect All</strong>
+                            (change)="checkUncheckAll()" /> <strong>Select/ Unselect All</strong>
 
                             
                     </li>
@@ -14,7 +14,7 @@
                 <ul class="list-group">
         
                     <li class="list-group-item" *ngFor="let item of checklist">
-                        <input type="checkbox" [(ngModel)]="item.checked" name="list_name" value="{{item.id}}"
+                        <input type="checkbox" [(ngModel)]="item.isSelected" name="list_name" value="{{item.id}}"
                             (change)="isAllSelected()" />
                         {{item.value}}
                     </li>

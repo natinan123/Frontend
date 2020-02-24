@@ -34,15 +34,12 @@ export class TestsearchComponent implements OnInit {
 
   }
 
-  
   checkUncheckAll() {
     for (var i = 0; i < this.checklist.length; i++) {
       this.checklist[i].isSelected = this.masterSelected;
     }
     this.getCheckedItemList();
   }
-
-
   isAllSelected() {
     this.masterSelected = this.checklist.every(function (item: any) {
       return item.isSelected == true;
@@ -50,8 +47,6 @@ export class TestsearchComponent implements OnInit {
     this.getCheckedItemList();
   }
 
-
-  // ! show
   getCheckedItemList() {
     this.checkedList = [];
     for (var i = 0; i < this.checklist.length; i++) {
