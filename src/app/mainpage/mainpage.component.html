@@ -100,11 +100,7 @@
     <div class="login">
         <form style="padding-left: 15px;padding-right: 15px;" [formGroup]="loginUser">
             <img src="../../assets/pic/mainpage/icon-business.png" class="logo">
-            <!-- <mat-form-field class="emailcss" appearance="outline">
-          <input matInput placeholder="Enter your email" formControlName="email_id" required>
-          <mat-error *ngIf="email_id.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field> -->
-
+           
             <mat-form-field class="emailcss" appearance="outline">
                 <mat-label>อีเมล</mat-label>
                 <input matInput placeholder="อีเมล" formControlName="email_id" [(ngModel)]="email_id" required>

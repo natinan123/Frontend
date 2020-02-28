@@ -196,6 +196,7 @@ export class ChatComponent implements OnInit {
     }
     this.service.postFirstChatLiat(result).subscribe(
       async (res) => {
+        location.reload();
 
       }
     )

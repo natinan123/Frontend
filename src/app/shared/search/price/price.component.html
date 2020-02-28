@@ -52,7 +52,9 @@
         <mat-chip style=" margin-top: 10px; margin-left: 30px;">ผลการค้นหา {{count_list}} รายการ</mat-chip>
     </mat-chip-list>
     <div class="row">
-        <mat-card class="product-card" *ngFor="let r of ProFromprice | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" [routerLink]="[link ,r.pro_id]">
+        <mat-card class="product-card"
+            *ngFor="let r of ProFromprice | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+            [routerLink]="[link ,r.pro_id]">
 
             <div class="data sell-box">
                 <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
@@ -114,6 +116,15 @@
         </mat-card>
 
     </div>
-    <ngb-pagination *ngIf="ProFromprice.length != 0" [(page)]="page" [pageSize]="pageSize" [collectionSize]="ProFromprice.length" [maxSize]="5"
-            [rotate]="true" [ellipses]="false" ></ngb-pagination>
+    <ngb-pagination *ngIf="ProFromprice.length != 0" [(page)]="page" [pageSize]="pageSize"
+        [collectionSize]="ProFromprice.length" [maxSize]="5" [rotate]="true" [ellipses]="false"></ngb-pagination>
 </mat-card>
+
+
+<ng-template #error let-modal>
+    <div class="alert alert-warning" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: LightCoral;">
+            highlight_off
+        </i> &nbsp;กรุณากรอกประเภทข้อมูลให้ถูกต้อง
+    </div>
+</ng-template>

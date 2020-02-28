@@ -3,11 +3,11 @@ import { ServerService } from 'src/app/@service/server.service';
 import { SessionService } from 'src/app/@service/session.service';
 
 @Component({
-  selector: 'app-suggestion',
-  templateUrl: './suggestion.component.html',
-  styleUrls: ['./suggestion.component.scss']
+  selector: 'app-suggestion-list',
+  templateUrl: './suggestion-list.component.html',
+  styleUrls: ['./suggestion-list.component.scss']
 })
-export class SuggestionComponent implements OnInit {
+export class SuggestionListComponent implements OnInit {
 
   mypro: Object;
   user: any;

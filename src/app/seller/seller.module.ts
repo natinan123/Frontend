@@ -27,8 +27,9 @@ import { SharedModule } from '../shared/shared.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pending-approval.component';
-import { SuggestionComponent } from './suggestion/suggestion.component';
 import { GalleryModule } from '@ks89/angular-modal-gallery';
+import { SuggestionListComponent } from './suggestion-list/suggestion-list.component';
+import { DetailSuggestComponent } from "./suggestion-list/detail-suggest/detail-suggest.component";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { GalleryModule } from '@ks89/angular-modal-gallery';
     TestingComponent,
     TestPostProComponent,
     SellPendingApprovalComponent,
-    SuggestionComponent,
+    SuggestionListComponent,
+    DetailSuggestComponent,
   ],
   imports: [
     CommonModule,

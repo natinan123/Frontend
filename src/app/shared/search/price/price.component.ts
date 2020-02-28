@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Options, LabelType } from 'ng5-slider';
 import { ServerService } from 'src/app/@service/server.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./price.component.scss']
 })
 export class PriceComponent implements OnInit {
+  @ViewChild('error', { static: false }) error: ElementRef;
 
   minValue: number = 1000000;
   maxValue: number = 40000000;
@@ -88,14 +89,21 @@ export class PriceComponent implements OnInit {
       type_id: Type_id
     }
     console.log(data);
-    this.service.getProFromprice(data).subscribe(
-      (res) => {
-        console.log(res);
-        this.ProFromprice = res;
 
-        this.count_list = this.ProFromprice.length;
-        console.log(this.ProFromprice.length);
-      })
+    if (Type_id == "") {
+      this.service.getProFromprice(data).subscribe(
+        (res) => {
+          console.log(res);
+          this.ProFromprice = res;
+
+          this.count_list = this.ProFromprice.length;
+          console.log(this.ProFromprice.length);
+        })
+    } else {
+      this.modalService.open(this.error);
+
+    }
+
   }
 
 }

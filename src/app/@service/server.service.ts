@@ -323,6 +323,10 @@ export class ServerService {
   postFavorate(data) {
     return this.http.post(urlServer.ipServer + 'postFavorate', data)
   }
+  // post ส่งไปรายการแนะนำ
+  postPacket(formData) {
+    return this.http.post(urlServer.ipServer + 'post_packet', formData)
+  }
   // ! END ^ Post -------------------------//
 
 
@@ -375,6 +379,7 @@ export class ServerService {
   putExpire() {
     return this.http.get(urlServer.ipServer + 'expire')
   }
+  
   // ! END ^ Update -------------------------//
 
 

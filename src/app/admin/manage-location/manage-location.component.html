@@ -22,11 +22,16 @@
             <td mat-cell *matCellDef="let row"> {{row.loc_name}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="provin_name">
+            <th mat-header-cell *matHeaderCellDef> จังหวัด </th>
+            <td mat-cell *matCellDef="let row"> {{row.provin_name}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="loc_zone">
             <th mat-header-cell *matHeaderCellDef> ภาค </th>
             <td mat-cell *matCellDef="let row"> {{row.zone_name}} </td>
         </ng-container>
-
+        
         <ng-container matColumnDef="countLoc">
             <th mat-header-cell *matHeaderCellDef> จำนวนอสังหาริมทรัพย์ </th>
             <td mat-cell *matCellDef="let row"> {{row.countLoc}} รายการ</td>

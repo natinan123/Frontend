@@ -1,4 +1,4 @@
-<mat-tab-group  [color]="'warn'">
+<mat-tab-group [color]="'warn'">
     <mat-tab label="ส่งข้อความ">
         <div class="container">
             <div class="messaging">
@@ -72,35 +72,37 @@
     <mat-tab label="ส่งทั้งหมด">
         <div class="row">
             <div class="col-md-5">
-                <mat-card style="margin-top: 10px;" *ngFor="let item of member; let i = index">
+                <mat-card style="margin-top: 8px;background-color: #dedede;" *ngFor="let item of member; let i = index">
                     <mat-checkbox [(ngModel)]="item.Checked" (ngModelChange)="getCheckbox(item.email_id ,item.Checked)">
                         เลือกที่จะส่ง
                     </mat-checkbox>
 
 
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2" >
                             <img src="data:image/jpg;base64,{{item.profile_pic}}" alt="sunil"
-                                style="width: 100px;height: auto;" />
-
+                                style="width: 80px;height: auto;margin-left: 16px;" />
                         </div>
-                        <div class="col-md">
-                            <p>{{item.email_id}}</p>
+                        <div class="col-md-7">
                             <p>{{item.fname}} {{item.lname}}</p>
-                      
+                        </div>
+                        <div class="col-md-3">
                             <mat-chip-list>
-                                <mat-chip *ngIf="item.cus_status == 'seller'">ผู้ขาย</mat-chip>
-                                <mat-chip *ngIf="item.cus_status == 'buyer'">ผู้ซื้อ</mat-chip>
-                              </mat-chip-list>
+                                <mat-chip *ngIf="item.cus_status == 'seller'" style="background-color: #85b8cb;">ผู้ขาย
+                                </mat-chip>
+                                <mat-chip *ngIf="item.cus_status == 'buyer'" style="background-color: #acc66d;">ผู้ซื้อ
+                                </mat-chip>
+                            </mat-chip-list>
                         </div>
                     </div>
                 </mat-card>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <form class="example-form" [formGroup]="chatFormGroup">
                     <mat-form-field class="example-full-width">
                         <mat-label>ข้อความส่งทั้งหมด</mat-label>
-                        <input matInput [(ngModel)]="textChat" formControlName="textChat" placeholder="กรุณาพิมพ์ข้อความ">
+                        <input matInput [(ngModel)]="textChat" formControlName="textChat"
+                            placeholder="กรุณาพิมพ์ข้อความ">
                     </mat-form-field>
 
                     <button mat-raised-button (click)="postFirstChatAll()">ส่งข้อความ</button>

@@ -6,6 +6,7 @@ import { ServerService } from '../@service/server.service';
 import { Router } from '@angular/router';
 import { delay } from 'q';
 import { SocketioService } from '../@service/socketio.service';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-mainpage',
@@ -75,6 +76,7 @@ export class MainpageComponent implements OnInit {
     private modalService: NgbModal,
     private session: SessionService,
     private service: ServerService,
+    private dialog: MatDialog,
     private route: Router,
     private alertConfig: NgbAlertConfig,
     private socketService: SocketioService,

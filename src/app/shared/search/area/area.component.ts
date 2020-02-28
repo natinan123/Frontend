@@ -34,7 +34,7 @@ export class AreaComponent implements OnInit {
         case LabelType.High:
           return '<b>ขนาดสูงสุด:</b> ' + value + ' ตร.ม.';
         default:
-          return value + ' ตร.ม.' ;
+          return value + ' ตร.ม.';
       }
     }
   };
@@ -70,7 +70,7 @@ export class AreaComponent implements OnInit {
     }
     if (this.user[0].cus_status == "seller") {
       this.link = '/seller/seller/detail';
-    } 
+    }
     if (this.user[0].cus_status == "buyer") {
       this.link = '/buyer/buyer/detail';
     }
@@ -102,16 +102,19 @@ export class AreaComponent implements OnInit {
       type_id: Type_id
     }
     console.log(data);
-    this.service.getProFromArea(data).subscribe(
-      (res) => {
-        console.log(res);
-        this.ProFromArea = res;
-        this.count_list = this.ProFromArea.length;
-      },
-      (err) => {
-        this.modalService.open(this.error);
-      }
+
+    if (Type_id == "") {
+      this.service.getProFromArea(data).subscribe(
+        (res) => {
+          console.log(res);
+          this.ProFromArea = res;
+          this.count_list = this.ProFromArea.length;
+        }
       )
+    } else {
+      this.modalService.open(this.error);
+    }
+
   }
 
 

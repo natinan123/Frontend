@@ -11,7 +11,7 @@ import { delay } from 'q';
   styleUrls: ['./manage-location.component.scss']
 })
 export class ManageLocationComponent implements OnInit {
-  displayedColumns: string[] = ['loc_name', 'loc_zone', 'countLoc', 'edit', 'delete'];
+  displayedColumns: string[] = ['loc_name', 'provin_name', 'loc_zone', 'countLoc', 'edit', 'delete'];
   dataSource: MatTableDataSource<[any]>;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -124,7 +124,7 @@ export class ManageLocationComponent implements OnInit {
 
 
 
-  onUpdateLoc(loc_name,zone_id,province_id) {
+  onUpdateLoc(loc_name, zone_id, province_id) {
 
     const data = {
       loc_name: loc_name,

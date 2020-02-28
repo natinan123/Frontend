@@ -18,10 +18,11 @@ import { HomeComponent } from '../shared/home/home.component';
 import { DetailComponent } from '../shared/detail/detail.component';
 import { MapComponent } from '../shared/search/map/map.component';
 import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pending-approval.component';
-import { SuggestionComponent } from './suggestion/suggestion.component';
 import { LocationComponent } from '../shared/search/location/location.component';
 import { PriceComponent } from '../shared/search/price/price.component';
 import { AreaComponent } from '../shared/search/area/area.component';
+import { SuggestionListComponent } from './suggestion-list/suggestion-list.component';
+import { DetailSuggestComponent } from './suggestion-list/detail-suggest/detail-suggest.component';
 
 
 
@@ -105,9 +106,13 @@ const routes: Routes = [
         path: 'artdetail/:article_id',
         component: ArtDetailComponent
       },
-      { // ส่งไปรายการแนะนำ
-        path: 'suggestion',
-        component: SuggestionComponent
+      { // รายการส่งไปรายการแนะนำ
+        path: 'suggest_list',
+        component: SuggestionListComponent
+      },
+      { // รายละเอียดรายการส่งไปรายการแนะนำ
+        path: 'datail_suggest/:pro_id',
+        component: DetailSuggestComponent
       },
       { // test
         path: 'test',
