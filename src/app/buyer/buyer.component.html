@@ -25,22 +25,34 @@
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu1">ขายอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu1="matMenu">
-            <button mat-menu-item style="width: 400px">ขายบ้านเดี่ยว</button>
-            <button mat-menu-item>ขายทาวน์เฮ้าส์</button>
-            <button mat-menu-item>ขายอพาร์ทเมนท์</button>
-            <button mat-menu-item>ขายอาคารพาณิชย์</button>
-            <button mat-menu-item>ขายคอนโดมิเนียม</button>
-            <button mat-menu-item>ขายที่ดิน</button>
+            <button mat-menu-item style="width: 400px" [routerLink]="['/buyer/buyer/SHouse']"
+                routerLinkActive="active-head">ขายบ้านเดี่ยว</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/STown']"
+                routerLinkActive="active-head">ขายทาวน์เฮ้าส์</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/SApt']"
+                routerLinkActive="active-head">ขายอพาร์ทเมนท์</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/SCommer']"
+                routerLinkActive="active-head">ขายอาคารพาณิชย์</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/SCondo']"
+                routerLinkActive="active-head">ขายคอนโดมิเนียม</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/SLand']"
+                routerLinkActive="active-head">ขายที่ดิน</button>
         </mat-menu>
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu2">เช่าอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu2="matMenu">
-            <button mat-menu-item style="width: 400px"> เช่าบ้านเดี่ยว</button>
-            <button mat-menu-item>เช่าทาวน์เฮ้าส์</button>
-            <button mat-menu-item>เช่าอพาร์ทเมนท์</button>
-            <button mat-menu-item>เช่าอาคารพาณิชย์</button>
-            <button mat-menu-item>เช่าคอนโดมิเนียม</button>
-            <button mat-menu-item>เช่าที่ดิน</button>
+            <button mat-menu-item style="width: 400px" [routerLink]="['/buyer/buyer/LHouse']"
+                routerLinkActive="active-head"> เช่าบ้านเดี่ยว</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/LTown']"
+                routerLinkActive="active-head">เช่าทาวน์เฮ้าส์</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/LApt']"
+                routerLinkActive="active-head">เช่าอพาร์ทเมนท์</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/LCommer']"
+                routerLinkActive="active-head">เช่าอาคารพาณิชย์</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/LCondo']"
+                routerLinkActive="active-head">เช่าคอนโดมิเนียม</button>
+            <button mat-menu-item [routerLink]="['/buyer/buyer/LLand']"
+                routerLinkActive="active-head">เช่าที่ดิน</button>
         </mat-menu>
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3">ค้นหาอสังหาริมทรัพย์</button>

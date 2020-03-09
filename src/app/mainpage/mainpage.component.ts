@@ -84,7 +84,8 @@ export class MainpageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.putExpire()
+    this.putExpire();
+    this.delete_recom();
     this.user = this.session.getActiveUser();
 
     if (this.user == null || this.user === "") {
@@ -189,7 +190,7 @@ export class MainpageComponent implements OnInit {
     }
     console.log(data)//if  ทุก คอลัมไม่เท่ากับว่าง
     if (this.repassword === this.password) {
-      this.service.onRegisterSell(data).subscribe(
+      this.service.onRegister(data).subscribe(
 
         async (res) => {
           this.modalService.open(this.success)
@@ -215,6 +216,13 @@ export class MainpageComponent implements OnInit {
   // put อสังหาที่หมดอายุ
   putExpire() {
     this.service.putExpire().subscribe(
+      (res) => {
+      })
+  }
+
+  //  ลบ recom ที่หมดอายุ
+  delete_recom() {
+    this.service.delete_recom().subscribe(
       (res) => {
       })
   }

@@ -10,6 +10,18 @@ import { LocationComponent } from './search/location/location.component';
 import { PriceComponent } from './search/price/price.component';
 import { AreaComponent } from './search/area/area.component';
 import { TestsearchComponent } from './testsearch/testsearch.component';
+import { SAptComponent } from './property/sell/s-apt/s-apt.component';
+import { SCommerComponent } from './property/sell/s-commer/s-commer.component';
+import { SCondoComponent } from './property/sell/s-condo/s-condo.component';
+import { SHouseComponent } from './property/sell/s-house/s-house.component';
+import { SLandComponent } from './property/sell/s-land/s-land.component';
+import { STownComponent } from './property/sell/s-town/s-town.component';
+import { LAptComponent } from './property/lease/l-apt/l-apt.component';
+import { LCommerComponent } from './property/lease/l-commer/l-commer.component';
+import { LCondoComponent } from './property/lease/l-condo/l-condo.component';
+import { LHouseComponent } from './property/lease/l-house/l-house.component';
+import { LLandComponent } from './property/lease/l-land/l-land.component';
+import { LTownComponent } from './property/lease/l-town/l-town.component';
 
 
 const routes: Routes = [
@@ -55,6 +67,58 @@ const routes: Routes = [
       { //test
         path: 'test_shared',
         component: TestsearchComponent
+      },
+
+
+      // todo sell property
+      { //SApt
+        path: 'SApt',
+        component: SAptComponent
+      },
+      { //SCommer
+        path: 'SCommer',
+        component: SCommerComponent
+      },
+      { //SCondo
+        path: 'SCondo',
+        component: SCondoComponent
+      },
+      { //SHouse
+        path: 'SHouse',
+        component: SHouseComponent
+      },
+      { //SLand
+        path: 'SLand',
+        component: SLandComponent
+      },
+      { //STown
+        path: 'STown',
+        component: STownComponent
+      },
+      // todo lease property
+      { //LApt
+        path: 'LApt',
+        component: LAptComponent
+      },
+      { //LCommer
+        path: 'LCommer',
+        component: LCommerComponent
+      },
+      { //LCondo
+        path: 'LCondo',
+        component: LCondoComponent
+      },
+      { //LHouse
+        path: 'LHouse',
+        component: LHouseComponent
+      },
+      { //LLand
+        path: 'LLand',
+        component: LLandComponent
+      },
+      { //LTown
+        path: 'LTown',
+        component: LTownComponent
       },
     ]
   }

@@ -26,6 +26,10 @@ export class AdminComponent implements OnInit {
   avatarname: any;
   pic64: any;
   count_wait: any;
+  count_ListProWait: any;
+
+
+
 
   constructor(
     private session: SessionService,
@@ -59,7 +63,10 @@ export class AdminComponent implements OnInit {
     this.showAvatar();
     this.getCountProWait();
     this.putExpire();
+    this.delete_recom();
   }
+
+
 
 
   onLogout() {
@@ -84,11 +91,14 @@ export class AdminComponent implements OnInit {
   getCountProWait() {
     this.service.getCountProWait().subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.count_wait = res[0].count_wait
       }
     );
   }
+
+
+
 
   // put อสังหาที่หมดอายุ
   putExpire() {
@@ -96,5 +106,10 @@ export class AdminComponent implements OnInit {
       (res) => {
       })
   }
-
+  //  ลบ recom ที่หมดอายุ
+  delete_recom() {
+    this.service.delete_recom().subscribe(
+      (res) => {
+      })
+  }
 }

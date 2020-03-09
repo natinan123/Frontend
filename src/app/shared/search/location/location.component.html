@@ -5,6 +5,21 @@
     </mat-card-header>
     <mat-card-content>
 
+        <div class="row">
+            <div class="col-md">
+                <div class="label">
+                    <mat-label>ประเภทอสังหาริมทรัพย์</mat-label>
+                </div>
+                <div class="option">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-select [(ngModel)]="type_id" formControlName="TypePro" placeholder="เลือกประเภท..">
+                            <mat-option [value]="row.type_id" *ngFor="let row of types">
+                                {{row.type_name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
         <div class="row" style=" margin-top: 15px;">
             <div class="col-md-3">
                 <div class="label">
@@ -12,7 +27,7 @@
                 </div>
                 <div class="option">
                     <mat-form-field appearance="outline" class="full-width">
-                        <mat-select [(ngModel)]="zone_id" formControlName="Zone" placeholder="เลือกภูมิภาค"
+                        <mat-select [(ngModel)]="zone_id" formControlName="Zone" placeholder="เลือกภูมิภาค.."
                             (ngModelChange)="onProvince($event)" required>
                             <mat-option [value]="z.zone_id" *ngFor="let z of zones">
                                 {{z.zone_name}}</mat-option>
@@ -53,7 +68,8 @@
 
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button (click)="onProFromLocat(location_id,province_id)">Ok</button>
+        <button mat-raised-button (click)="onProFromLocat(location_id,province_id,type_id)">ค้นหา</button>
+
     </mat-card-actions>
 </mat-card>
 

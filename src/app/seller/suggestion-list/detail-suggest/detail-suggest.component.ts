@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ServerService } from 'src/app/@service/server.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup } from '@angular/forms';
+import { delay } from 'q';
+import { Ng2ImgMaxService } from 'ng2-img-max';
 
 
 // Endcode
@@ -22,11 +24,15 @@ function b64_to_utf8(str) {
   styleUrls: ['./detail-suggest.component.scss']
 })
 export class DetailSuggestComponent implements OnInit {
+  @ViewChild('error', { static: false }) error: ElementRef;
+  @ViewChild('success', { static: false }) success: ElementRef;
+
   id_data: string;
   images: any;
   pro_id: any;
   pro_head: any;
-
+  uploadedImage: any;
+  imagePreview: any;
 
 
   constructor(
@@ -36,13 +42,16 @@ export class DetailSuggestComponent implements OnInit {
     private dialog: MatDialog,
     private modalService: NgbModal,
     private modal: NgbModal,
-    private sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private ng2ImgMax: Ng2ImgMaxService,
+
   ) { }
 
   ngOnInit() {
     this.id_data = this.route.snapshot.paramMap.get('pro_id');
     console.log(this.id_data);
     this.getDetail();
+    // this.getIP();
   }
 
 
@@ -150,21 +159,51 @@ export class DetailSuggestComponent implements OnInit {
 
   // todo :Button upload image sigle
   onSubmit() {
-    var formData = new FormData();
-    formData.append('pro_id', this.id_data);
-    formData.append('blogimage', this.images);
-    console.log(formData);
 
-    this.service.postPacket(formData).subscribe(
-      (res) => {
-        // this.route.navigate(['/seller/seller/suggest_list'])
-        this.router.navigate(['/seller/seller/suggest_list']);
-
+    this.ng2ImgMax.resizeImage(this.images, 500, 900).subscribe(
+      result => {
+        this.uploadedImage = new File([result], result.name);
+        this.postImage();
       },
-      (err) => console.log(err)
+      error => {
+        console.log('😢 Oh no!', error);
+      }
     );
   }
 
 
+  // upload image
+  postImage() {
+    var formData = new FormData();
+    formData.append('pro_id', this.id_data);
+    formData.append('blogimage', this.uploadedImage);
+    console.log(formData);
+    if (this.images != null) {
+      this.service.postPacket(formData).subscribe(
+        async (res) => {
+          this.modalService.open(this.success);
+          this.router.navigate(['/seller/seller/suggest_list']);
+
+          await delay(2000);
+          this.modalService.dismissAll();
+        }
+      );
+    } else {
+      this.modalService.open(this.error);
+    }
+  }
+
+
+  // get ip address
+  // ipAddress: string;
+  // getIP() {
+  //   this.service.getIPAddress().subscribe((res: any) => {
+  //     console.log(res);
+  //     this.ipAddress = res.ip;
+  //     console.log(this.ipAddress);
+  //   });
+  // }
 
 }
+
+

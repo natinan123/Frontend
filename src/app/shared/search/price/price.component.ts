@@ -95,7 +95,6 @@ export class PriceComponent implements OnInit {
         (res) => {
           console.log(res);
           this.ProFromprice = res;
-
           this.count_list = this.ProFromprice.length;
           console.log(this.ProFromprice.length);
         })

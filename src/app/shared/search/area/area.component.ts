@@ -61,8 +61,9 @@ export class AreaComponent implements OnInit {
     this.getType()
 
     this.user = this.session.getActiveUser();
+    console.table(this.user);
     this.status = this.user[0].cus_status;
-    if (this.user[0].cus_status == null || this.user[0].cus_status == "") {
+    if (this.user == null) {
       this.link = '/mainpage/mainpage/detail';
     }
     if (this.user[0].cus_status == "admin") {
@@ -75,11 +76,7 @@ export class AreaComponent implements OnInit {
       this.link = '/buyer/buyer/detail';
     }
 
-    this.typeFormGroup = this._formBuilder.group({
-      type: ['', Validators.required],
-      minValue: [''],
-      maxValue: [''],
-    });
+
 
   }
 
@@ -102,8 +99,7 @@ export class AreaComponent implements OnInit {
       type_id: Type_id
     }
     console.log(data);
-
-    if (Type_id == "") {
+    if (Type_id != null) {
       this.service.getProFromArea(data).subscribe(
         (res) => {
           console.log(res);
@@ -114,6 +110,8 @@ export class AreaComponent implements OnInit {
     } else {
       this.modalService.open(this.error);
     }
+
+
 
   }
 

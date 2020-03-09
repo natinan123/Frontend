@@ -22,32 +22,44 @@
         <button mat-button class="tool" [routerLink]="['/admin/admin/home']"
             routerLinkActive="active-head">หน้าหลัก</button>
 
-        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu1">ขายอสังหาริมทรัพย์</button>
+        <button mat-button class="tool" [matMenuTriggerFor]="belowMenu1" routerLinkActive="active-head">ขายอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu1="matMenu">
-            <button mat-menu-item style="width: 400px">ขายบ้านเดี่ยว</button>
-            <button mat-menu-item>ขายทาวน์เฮ้าส์</button>
-            <button mat-menu-item>ขายอพาร์ทเมนท์</button>
-            <button mat-menu-item>ขายอาคารพาณิชย์</button>
-            <button mat-menu-item>ขายคอนโดมิเนียม</button>
-            <button mat-menu-item>ขายที่ดิน</button>
+            <button mat-menu-item style="width: 400px" [routerLink]="['/admin/admin/SHouse']"
+                routerLinkActive="active-head">ขายบ้านเดี่ยว</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/STown']"
+                routerLinkActive="active-head">ขายทาวน์เฮ้าส์</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/SApt']"
+                routerLinkActive="active-head">ขายอพาร์ทเมนท์</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/SCommer']"
+                routerLinkActive="active-head">ขายอาคารพาณิชย์</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/SCondo']"
+                routerLinkActive="active-head">ขายคอนโดมิเนียม</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/SLand']"
+                routerLinkActive="active-head">ขายที่ดิน</button>
         </mat-menu>
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu2">เช่าอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu2="matMenu">
-            <button mat-menu-item style="width: 400px"> เช่าบ้านเดี่ยว</button>
-            <button mat-menu-item>เช่าทาวน์เฮ้าส์</button>
-            <button mat-menu-item>เช่าอพาร์ทเมนท์</button>
-            <button mat-menu-item>เช่าอาคารพาณิชย์</button>
-            <button mat-menu-item>เช่าคอนโดมิเนียม</button>
-            <button mat-menu-item>เช่าที่ดิน</button>
+            <button mat-menu-item style="width: 400px" [routerLink]="['/admin/admin/LHouse']"
+                routerLinkActive="active-head"> เช่าบ้านเดี่ยว</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/LTown']"
+                routerLinkActive="active-head">เช่าทาวน์เฮ้าส์</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/LApt']"
+                routerLinkActive="active-head">เช่าอพาร์ทเมนท์</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/LCommer']"
+                routerLinkActive="active-head">เช่าอาคารพาณิชย์</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/LCondo']"
+                routerLinkActive="active-head">เช่าคอนโดมิเนียม</button>
+            <button mat-menu-item [routerLink]="['/admin/admin/LLand']"
+                routerLinkActive="active-head">เช่าที่ดิน</button>
         </mat-menu>
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3">ค้นหาอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu3="matMenu">
             <button mat-menu-item style="width: 400px" [routerLink]="['/admin/admin/area']"
-            routerLinkActive="active-head">ค้นหาจากขนาดพื้นที่</button>
+                routerLinkActive="active-head">ค้นหาจากขนาดพื้นที่</button>
             <button mat-menu-item [routerLink]="['/admin/admin/price']"
-            routerLinkActive="active-head">ค้นหาจากราคาพื้นที่</button>
+                routerLinkActive="active-head">ค้นหาจากราคาพื้นที่</button>
             <button mat-menu-item [routerLink]="['/admin/admin/map']"
                 routerLinkActive="active-head">ค้นหาจากแผนที่</button>
             <button mat-menu-item [routerLink]="['/admin/admin/location']"
@@ -120,6 +132,14 @@
             </mat-list-item>
             <mat-divider></mat-divider>
 
+            <mat-list-item [routerLink]="['/admin/admin/ManageRecom']" routerLinkActive="active" class="menu">
+                <i class="material-icons">
+                    reorder
+                </i> &nbsp;
+                จัดการรายการแนะนำ
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
             <mat-list-item [routerLink]="['/admin/admin/list-approve']" routerLinkActive="active" class="menu">
                 <i class="material-icons">
                     library_add_check
@@ -150,7 +170,8 @@
             </mat-list-item>
             <mat-divider></mat-divider>
 
-            <mat-list-item [routerLink]="['/admin/admin/test_shared']" routerLinkActive="router-link-active"  class="menu">
+            <mat-list-item [routerLink]="['/admin/admin/test_shared']" routerLinkActive="router-link-active"
+                class="menu">
                 <i class="fa fa-cogs" aria-hidden="true"></i> ไว้ทดสอบ</mat-list-item>
             <mat-divider></mat-divider>
         </mat-list>

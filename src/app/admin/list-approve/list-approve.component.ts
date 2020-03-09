@@ -9,9 +9,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./list-approve.component.scss']
 })
 export class ListApproveComponent implements OnInit {
-  listWait: any;
+
   pageSize = 16;
   page = 1;
+  searchText;
+  listWait: Object;
   constructor(
     private session: SessionService,
     private service: ServerService,
@@ -27,7 +29,6 @@ export class ListApproveComponent implements OnInit {
       (res) => {
         console.log(res);
         this.listWait = res;
-
       }
     )
   }

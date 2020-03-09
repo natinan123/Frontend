@@ -10,6 +10,9 @@ export class ServerService {
   constructor(private http: HttpClient) { }
 
 
+  // public getIPAddress() {
+  //   return this.http.get("http://api.ipify.org/?format=json");
+  // }
 
 
   // login 
@@ -24,7 +27,10 @@ export class ServerService {
   onRegisterSell(data) {
     return this.http.post(urlServer.ipServer + 'register_seller', data)
   }
-
+  // register
+  onRegister(data) {
+    return this.http.post(urlServer.ipServer + 'register', data)
+  }
 
   // todo: Get --------------------------//
 
@@ -221,14 +227,6 @@ export class ServerService {
   getCountPro(data) {
     return this.http.get(urlServer.ipServer + 'countpro/' + data)
   }
-  // ! ไม่ใช้ รายการ อัพเกรด
-  getUpgradeReq() {
-    return this.http.get(urlServer.ipServer + 'getupgrade')
-  }
-  // นับ upgrade
-  getCountUp() {
-    return this.http.get(urlServer.ipServer + 'countup')
-  }
   // รูป โปรไฟล์
   getNameAvatar(data) {
     return this.http.get(urlServer.ipServer + 'getnameavatar/' + data)
@@ -239,11 +237,11 @@ export class ServerService {
   }
   // อสังหาจากเขต
   getProFromLocat(data) {
-    return this.http.get(urlServer.ipServer + 'proFromLocat/' + data)
+    return this.http.post(urlServer.ipServer + 'proFromLocat' , data)
   }
   // อสังหาจากจังหวัด
   getProFromProvin(data) {
-    return this.http.get(urlServer.ipServer + 'proFromProvin/' + data)
+    return this.http.post(urlServer.ipServer + 'proFromProvin', data)
   }
   // อสังหาจากราคา
   getProFromprice(data) {
@@ -268,6 +266,18 @@ export class ServerService {
   // รายการ อสัง เผยแพร่
   getPro_public() {
     return this.http.get(urlServer.ipServer + 'pro_public')
+  }
+  // รายการส่งมาร้องขอแนะนำ
+  getPacket() {
+    return this.http.get(urlServer.ipServer + 'packet')
+  }
+  // รายละเอียดร้องขอแนะนำ
+  getPack_detail(data) {
+    return this.http.get(urlServer.ipServer + 'pack_detail/' + data)
+  }
+  // รายการเช่า - ขาย ตามประเภท
+  get_selltype(data) {
+    return this.http.post(urlServer.ipServer + 'get_selltype', data)
   }
   // todo ทดสอบ
   getimageTast() {
@@ -323,9 +333,13 @@ export class ServerService {
   postFavorate(data) {
     return this.http.post(urlServer.ipServer + 'postFavorate', data)
   }
-  // post ส่งไปรายการแนะนำ
+  // post ส่งร้องขอไปรายการแนะนำ
   postPacket(formData) {
     return this.http.post(urlServer.ipServer + 'post_packet', formData)
+  }
+  // post ส่งไปรายการแนะนำ
+  post_recom(data) {
+    return this.http.post(urlServer.ipServer + 'post_recom', data)
   }
   // ! END ^ Post -------------------------//
 
@@ -338,10 +352,7 @@ export class ServerService {
     return this.http.put(urlServer.ipServer + 'putlocation', data)
   }
 
-  // update recom
-  onRecom(data) {
-    return this.http.put(urlServer.ipServer + 'putrecom', data)
-  }
+
   // update สถานะอสังหา
   putPropublish(data) { //เผยแพร่
     return this.http.put(urlServer.ipServer + 'propublish', data)
@@ -379,7 +390,7 @@ export class ServerService {
   putExpire() {
     return this.http.get(urlServer.ipServer + 'expire')
   }
-  
+
   // ! END ^ Update -------------------------//
 
 
@@ -402,8 +413,14 @@ export class ServerService {
   deleteUnfollow(data) {
     return this.http.post(urlServer.ipServer + 'unfollow', data)
   }
-
-
+  // delete_recom
+  delete_recom() {
+    return this.http.delete(urlServer.ipServer + 'delete_recom')
+  }
+  // delete loc
+  delete_packet(data) {
+    return this.http.delete(urlServer.ipServer + 'delete_packet/' + data)
+  }
   // ! END ^ Delete -------------------------//
 
 

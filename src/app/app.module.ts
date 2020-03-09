@@ -19,6 +19,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { GalleryModule } from '@ks89/angular-modal-gallery';
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { SocketioService } from './@service/socketio.service';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -50,8 +51,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     Ng5SliderModule,
     Ng2SearchPipeModule,
     AgmJsMarkerClustererModule,
+    Ng2ImgMaxModule,
     GalleryModule.forRoot(),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
   ],
   providers: [SocketioService],
   bootstrap: [AppComponent]

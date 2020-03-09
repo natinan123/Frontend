@@ -1,73 +1,215 @@
-<p>
-    pro-detail works! {{data}}
 
-</p>
+<mat-card class="card">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row" style="margin-left: 40px;">
+                <mat-chip-list>
+                    <mat-chip class="tag-sell"><i class="material-icons">home_work</i>&nbsp; ประกาศ{{pro_sell}}
+                    </mat-chip>
+                </mat-chip-list>
+                <mat-chip-list style="margin-left: 15px;">
+                    <mat-chip class="tag-sell2"><i class="material-icons">merge_type</i>&nbsp; ประเภท{{type_name}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
 
-<p>{{pro_id}}</p>
-<p>{{pro_head}}</p>
-<p>{{type_name}}</p>
-<p>{{pro_sell}}</p>
-<p>{{pro_detail}}</p>
-<p>{{pro_area}}</p>
-<p>{{pro_space}}</p>
-<p>{{price}}</p>
-<p>{{pro_floor}}</p>
-<p>{{pro_bedroom}}</p>
-<p>{{pro_toilet}}</p>
-<p>{{pro_status}}</p>
-<p>{{pro_map}}</p>
-<p>{{pro_post}}</p>
-<p>{{pro_views}}</p>
-<p>{{location_id}}</p>
-
-<mat-divider></mat-divider>
-<p>{{email_id}}</p>
-<p>{{fname}}</p>
-<p>{{lname}}</p>
-<p>{{id_line}}</p>
-<p>{{facebook}}</p>
-<p>{{profile_pic}}</p>
-<p>{{cus_detail}}</p>
-<p>{{cus_status}}</p>
-<p>{{cus_status}}</p>
-<p>{{phone}}</p>
-<mat-divider></mat-divider>
-
-<p>{{image1}}</p>
-<p>{{image2}}</p>
-<p>{{image3}}</p>
-<p>{{image4}}</p>
-<p>{{image5}}</p>
-<p>{{image6}}</p>
-<p>{{image7}}</p>
-<p>{{image8}}</p>
-<p>{{image9}}</p>
-<p>{{image10}}</p>
-
-<mat-divider></mat-divider>
+        </div>
+        <!-- <div class="col-md-3">
+            <button mat-raised-button (click)="onClickFollow()" *ngIf="follow == 0" style="color: #253f58;"><i
+                    class="material-icons">
+                    add_box
+                </i> ติดตาม</button>
+            <button mat-raised-button (click)="onUnFollow()" *ngIf="follow == 1" style="color: #d92139;"><i
+                    class="material-icons">
+                    favorite
+                </i> เลิกติดตาม</button>
 
 
 
-<p>
-    <mat-chip-list aria-label="Color selection">
-        <mat-chip *ngIf="image1 != 0 && image10 != null"> ที่จอดรถ </mat-chip>
-        <mat-chip *ngIf="image2 != 0 && image10 != null"> ลานจอดรถ </mat-chip>
-        <mat-chip *ngIf="image3 != 0 && image10 != null"> รักษาความปลอดภัย </mat-chip>
-        <mat-chip *ngIf="image4 != 0 && image10 != null"> สระว่ายน้า </mat-chip>
-        <mat-chip *ngIf="image5 != 0 && image10 != null"> กล้องวงจรปิด </mat-chip>
-        <mat-chip *ngIf="image6 != 0 && image10 != null"> ฟิตเนส </mat-chip>
-        <mat-chip *ngIf="image7 != 0 && image10 != null"> สนามเด็กเล่น </mat-chip>
-        <mat-chip *ngIf="image8 != 0 && image10 != null"> มินิมาร์ท </mat-chip>
-        <mat-chip *ngIf="image9 != 0 && image10 != null"> ซัก อบ รีด </mat-chip>
-        <mat-chip *ngIf="image10 != 0 && image10 != null"> ศาลาชมทิวทัศน์ </mat-chip>
+        </div> -->
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-9">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{pro_head}}</mat-card-title>
+                <mat-card-subtitle>{{zone_name}} &nbsp;{{provin_name}}&nbsp; {{loc_name}}</mat-card-subtitle>
 
-    </mat-chip-list>
-</p>
+            </mat-card-header>
+            <mat-card-subtitle>
+                <div class="row" style="margin-left: 20px;">
+                    <div class="col-md-3">
+                        <i class="fa-icon" class="fa fa-object-group" aria-hidden="true">&nbsp; {{pro_area}}
+                            ตร.ม.</i>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fa-icon" class="fa fa-bed" aria-hidden="true">&nbsp; {{pro_bedroom}} ห้องนอน</i>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fa-icon" class="fa fa-bath" aria-hidden="true">&nbsp; {{pro_toilet}} ห้องน้ำ</i>
+                    </div>
+                    <div class="col-md-3">
+                        <i class="fa-icon" class="fa fa-building-o" aria-hidden="true">&nbsp; {{pro_floor}} ชั้น</i>
+                    </div>
+                </div>
+            </mat-card-subtitle>
+        </div>
+        <div class="col-md-3">
+            <mat-card-header class="price">
+                <mat-card-title>{{price | number : '1.2-2'}} บาท</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions style="margin-right: 30px;">
+                <button mat-button class="bt-map" (click)="openModalLocation(Location)"><i
+                        class="material-icons">navigation
+                    </i> ดูตำแหน่งในแผนที่</button>
+            </mat-card-actions>
+        </div>
+    </div>
+</mat-card>
+
+<div class="row" style="background-color: black;">
+
+    <img class="mainImage" *ngIf="SelectImage != null" src="data:image/jpg;base64,{{SelectImage}}" />
+    <img class="mainImage" *ngIf="SelectImage == null" src="data:image/jpg;base64,{{firstImage}}" />
+
+</div>
+
+
+
+
+
+<div class="row" style="margin-left: auto; margin-right: auto;">
+
+    <div style="width: auto; height: auto; box-shadow: 0 0 0px 1px black;" *ngFor="let item of imagePath">
+        <img mat-card-md-image src="data:image/jpg;base64,{{item.image}}" (click)="onSelectImage(item.image)" />
+    </div>
+
+</div>
+
+
+<mat-card class="card">
+    <mat-card-title>
+        <p>รายละเอียด</p>
+    </mat-card-title>
+    <pre>{{pro_detail}}</pre>
+</mat-card>
+
+<mat-card class="card"
+    *ngIf="style1 || style2 || style3 || style4  || style5 || style6 || style7  || style8 || style9 || style10 == 'true'">
+    <mat-card-title>คุณลักษณะพื้นฐาน</mat-card-title>
+    <div class="row">
+
+
+        <div class="col-md-6">
+            <mat-chip-list aria-label="Color selection">
+                <mat-chip *ngIf="style1 == 'true'"> ใกล้รถไฟฟ้า MRT </mat-chip>
+                <mat-chip *ngIf="style2 == 'true'"> ใกล้รถไฟฟ้า BTS </mat-chip>
+                <mat-chip *ngIf="style3 == 'true'"> ใกล้ห้างสรรพสินค้า </mat-chip>
+                <mat-chip *ngIf="style4 == 'true'"> ใกล้สถานพยาบาล </mat-chip>
+                <mat-chip *ngIf="style5 == 'true'"> ใกล้มหาวิทยาลัย </mat-chip>
+                <mat-chip *ngIf="style6 == 'true'"> ใกล้โรงเรียน </mat-chip>
+                <mat-chip *ngIf="style7 == 'true'"> ใกล้รถโดยสารสาธารณะ </mat-chip>
+                <mat-chip *ngIf="style8 == 'true'"> ใกล้สถานบันเทิง </mat-chip>
+                <mat-chip *ngIf="style9 == 'true'"> ใกล้ร้านอาหาร คาเฟ่ </mat-chip>
+                <mat-chip *ngIf="style10 == 'true' "> สวนสาธารณะ </mat-chip>
+                <mat-chip *ngIf="style11 == 'true'"> ที่จอดรถ </mat-chip>
+                <mat-chip *ngIf="style12 == 'true'"> ลานจอดรถ </mat-chip>
+                <mat-chip *ngIf="style13 == 'true'"> รักษาความปลอดภัย </mat-chip>
+                <mat-chip *ngIf="style14 == 'true'"> สระว่ายน้า </mat-chip>
+                <mat-chip *ngIf="style15 == 'true'"> กล้องวงจรปิด </mat-chip>
+                <mat-chip *ngIf="style16 == 'true'"> ฟิตเนส </mat-chip>
+                <mat-chip *ngIf="style17 == 'true'"> สนามเด็กเล่น </mat-chip>
+                <mat-chip *ngIf="style18 == 'true'"> มินิมาร์ท </mat-chip>
+                <mat-chip *ngIf="style19 == 'true'"> ซัก อบ รีด </mat-chip>
+                <mat-chip *ngIf="style20 == 'true' "> ศาลาชมทิวทัศน์ </mat-chip>
+            </mat-chip-list>
+        </div>
+
+    </div>
+</mat-card>
+
+
+<mat-card class="card">
+    <mat-card-title>ติดต่อผู้ใช้งาน</mat-card-title>
+    <form>
+        <div class="row">
+            <div class="col-md-3">
+                <mat-card-header style="margin-top: 20px">
+
+                    <img mat-card-avatar class="profile_pic" src="data:image/jpg;base64,{{profile_pic}}" alt="sunil" />
+
+                    <mat-card-title> {{fname}} {{lname}}</mat-card-title>
+                    <mat-card-subtitle> {{email_id}} </mat-card-subtitle>
+                    <mat-card-subtitle><button mat-raised-button (click)="addChat()"
+                            style="background-color: #859f3c; color: snow; ">ติดต่อสอบถาม</button></mat-card-subtitle>
+                </mat-card-header>
+            </div>
+            <div class="col-md">
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th scope="row"><img src="../../../assets/pic/admin/line-icon.png" class="image2"></th>
+                            <td class="text">{{id_line}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><img src="../../../assets/pic/admin/facebook.png" class="image2"></th>
+                            <td class="text">{{facebook}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><img src="../../../assets/pic/admin/gmail.png" class="image2"></th>
+                            <td class="text"> {{email_id}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><img src="../../../assets/pic/admin/phone.ico" class="image2"></th>
+                            <td class="text"> {{phone}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="image2">รายละเอียด</th>
+                            <td>{{cus_detail}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</mat-card>
+
+
+<!--   Map  -->
+<ng-template #Location let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">ตำแหน่งอสังหาริมทรัพย์</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <agm-map [latitude]="lat2" [longitude]="lng2">
+        <!-- หน้าเริ่ม -->
+        <agm-marker [latitude]="latitude" [longitude]="longtitude">
+            <!-- มาค์ก -->
+            <agm-info-window>
+                <h5><strong>{{type_name}} </strong></h5>
+                <p>{{pro_head}}</p>
+                <p>{{price}} บาท</p>
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
+
+    <div class="modal-footer">
+        <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
+        <!-- <button mat-raised-button style="background-color: #1d6a96;color: snow">ยืนยัน</button> -->
+    </div>
+</ng-template>
 
 <button mat-raised-button (click)="openModalModifly(ModifyPro)"
-    style="background: #aaa049 ; color: snow; margin-left: 10px; "> ปิดปรับปรุง</button>
+    style="background: #aaa049 ; color: snow; margin-left: 10px; ">
+    ปิดปรับปรุง
+</button>
 <button mat-raised-button (click)="openModalClose(ClosePro)"
-    style="background: #428627 ; color: snow; margin-left: 10px; "> ปิดการขาย</button>
+    style="background: #428627 ; color: snow; margin-left: 10px; ">
+    ปิดการขาย
+</button>
 
 
 <ng-template #ModifyPro let-modal>

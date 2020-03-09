@@ -10,8 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ManageMainpageComponent implements OnInit {
 
-  displayedColumns1: string[] = ['a', 'b', 'c', 'd'];
-  dataSource1: MatTableDataSource<[any]>;
+
 
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -35,20 +34,12 @@ export class ManageMainpageComponent implements OnInit {
   getTable() {
     this.service.getRecommend().subscribe(
       (res) => {
-        this.dataSource1 = new MatTableDataSource(res as any[]);
-        this.dataSource1.sort = this.sort;
-        this.dataSource1.paginator = this.paginator;
+   
         this.recom = res
       }
     )
   }
-  // ตัวกรอง
-  applyFilter(filterValue: string) {
-    this.dataSource1.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource1.paginator) {
-      this.dataSource1.paginator.firstPage();
-    }
-  }
+
   closeModal() {
     this.modalService.dismissAll();
   }

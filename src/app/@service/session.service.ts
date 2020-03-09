@@ -19,4 +19,7 @@ export class SessionService {
   public clearActiveUser() {
     this.sessionService.clear('ACTIVE_USER');
   }
+
+
+
 }

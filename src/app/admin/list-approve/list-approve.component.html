@@ -11,8 +11,7 @@
 <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการอสังหาริมทรัพย์รออนุมัติ</mat-toolbar>
     <div class="row">
-        <mat-card class="product-card"
-            *ngFor="let r of listWait  | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+        <mat-card class="product-card" *ngFor="let r of listWait  | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
             [routerLink]="['/admin/admin/approve' ,r.pro_id]">
 
             <div class="data sell-box">
@@ -82,6 +81,6 @@
 
 
     <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="listWait.length" [maxSize]="5"
-        [rotate]="true" [ellipses]="false" ></ngb-pagination>
+        [rotate]="true" [ellipses]="false"></ngb-pagination>
 
 </mat-card>

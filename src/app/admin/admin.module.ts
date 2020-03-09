@@ -13,7 +13,6 @@ import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
 import { ManageLocationComponent } from './manage-location/manage-location.component';
 import { ManageMainpageComponent } from './manage-mainpage/manage-mainpage.component';
-import { RecommendComponent } from './manage-mainpage/recommend/recommend.component';
 import { ManageMemberComponent } from './manage-member/manage-member.component';
 import { MemberDetailComponent } from './manage-member/member-detail/member-detail.component';
 import { ManageSaleComponent } from './manage-sale/manage-sale.component';
@@ -28,6 +27,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { ListApproveComponent } from './list-approve/list-approve.component';
 import { ApproveComponent } from './list-approve/approve/approve.component';
+import { ManageRecomComponent } from './manage-recom/manage-recom.component';
+import { ApproveRecomComponent } from './manage-recom/approve-recom/approve-recom.component';
+import { DetailMainpageComponent } from './manage-mainpage/detail-mainpage/detail-mainpage.component';
 
 
 
@@ -36,7 +38,6 @@ import { ApproveComponent } from './list-approve/approve/approve.component';
     AdminComponent,
     ManageLocationComponent,
     ManageMainpageComponent,
-    RecommendComponent,
     ManageMemberComponent,
     MemberDetailComponent,
     ManageSaleComponent,
@@ -47,6 +48,9 @@ import { ApproveComponent } from './list-approve/approve/approve.component';
     EditAdsComponent,
     ListApproveComponent,
     ApproveComponent,
+    ManageRecomComponent,
+    ApproveRecomComponent,
+    DetailMainpageComponent,
     ],
   imports: [
     CommonModule,

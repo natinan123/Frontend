@@ -7,7 +7,6 @@ import { ManageMemberComponent } from './manage-member/manage-member.component';
 import { MemberDetailComponent } from './manage-member/member-detail/member-detail.component';
 import { WriteAdsComponent } from './write-ads/write-ads.component';
 import { ManageMainpageComponent } from './manage-mainpage/manage-mainpage.component';
-import { RecommendComponent } from './manage-mainpage/recommend/recommend.component';
 import { ManageLocationComponent } from './manage-location/manage-location.component';
 import { TastComponent } from './tast/tast.component';
 import { ChatComponent } from '../shared/chat/chat.component';
@@ -24,6 +23,21 @@ import { LocationComponent } from '../shared/search/location/location.component'
 import { PriceComponent } from '../shared/search/price/price.component';
 import { AreaComponent } from '../shared/search/area/area.component';
 import { TestsearchComponent } from '../shared/testsearch/testsearch.component';
+import { ManageRecomComponent } from './manage-recom/manage-recom.component';
+import { ApproveRecomComponent } from './manage-recom/approve-recom/approve-recom.component';
+import { SAptComponent } from '../shared/property/sell/s-apt/s-apt.component';
+import { SCommerComponent } from '../shared/property/sell/s-commer/s-commer.component';
+import { SCondoComponent } from '../shared/property/sell/s-condo/s-condo.component';
+import { SHouseComponent } from '../shared/property/sell/s-house/s-house.component';
+import { SLandComponent } from '../shared/property/sell/s-land/s-land.component';
+import { STownComponent } from '../shared/property/sell/s-town/s-town.component';
+import { LAptComponent } from '../shared/property/lease/l-apt/l-apt.component';
+import { LCommerComponent } from '../shared/property/lease/l-commer/l-commer.component';
+import { LCondoComponent } from '../shared/property/lease/l-condo/l-condo.component';
+import { LHouseComponent } from '../shared/property/lease/l-house/l-house.component';
+import { LLandComponent } from '../shared/property/lease/l-land/l-land.component';
+import { LTownComponent } from '../shared/property/lease/l-town/l-town.component';
+import { DetailMainpageComponent } from './manage-mainpage/detail-mainpage/detail-mainpage.component';
 
 
 const routes: Routes = [
@@ -44,7 +58,6 @@ const routes: Routes = [
         path: 'map',
         component: MapComponent
       },
-
       // ! END toolbar
 
 
@@ -81,8 +94,8 @@ const routes: Routes = [
         component: ManageMainpageComponent
       },
       {
-        path: 'recommend/:recom_id',       //เพิ่มรายการแนะนำ
-        component: RecommendComponent
+        path: 'detail-mainpage/:pro_id',           //รายละเอียด รายการแนะนำ
+        component: DetailMainpageComponent
       },
       {
         path: 'managelocation',           //จัดการทำเล
@@ -96,7 +109,14 @@ const routes: Routes = [
         path: 'approve/:pro_id',       //อนุมัติ อสังหา
         component: ApproveComponent
       },
-
+      {
+        path: 'ManageRecom',              // จัดการรายการแนะนำ
+        component: ManageRecomComponent
+      },
+      {
+        path: 'ApproveRecom/:pro_id',              // รายละเอียด จัดการรายการแนะนำ
+        component: ApproveRecomComponent
+      },
 
       // ! page shared
       {                                       // chat-shared 
@@ -130,6 +150,56 @@ const routes: Routes = [
       { //test
         path: 'test_shared',
         component: TestsearchComponent
+      },
+      // todo sell property
+      { //SApt
+        path: 'SApt',
+        component: SAptComponent
+      },
+      { //SCommer
+        path: 'SCommer',
+        component: SCommerComponent
+      },
+      { //SCondo
+        path: 'SCondo',
+        component: SCondoComponent
+      },
+      { //SHouse
+        path: 'SHouse',
+        component: SHouseComponent
+      },
+      { //SLand
+        path: 'SLand',
+        component: SLandComponent
+      },
+      { //STown
+        path: 'STown',
+        component: STownComponent
+      },
+      // todo lease property
+      { //LApt
+        path: 'LApt',
+        component: LAptComponent
+      },
+      { //LCommer
+        path: 'LCommer',
+        component: LCommerComponent
+      },
+      { //LCondo
+        path: 'LCondo',
+        component: LCondoComponent
+      },
+      { //LHouse
+        path: 'LHouse',
+        component: LHouseComponent
+      },
+      { //LLand
+        path: 'LLand',
+        component: LLandComponent
+      },
+      { //LTown
+        path: 'LTown',
+        component: LTownComponent
       },
     ]
   },

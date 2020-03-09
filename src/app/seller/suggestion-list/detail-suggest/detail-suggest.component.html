@@ -1,3 +1,7 @@
+<div class="container">
+    <p>Your IP Address : {{ipAddress}}</p>
+</div>
+
 <p>{{pro_id}}</p>
 <p>{{pro_head}}</p>
 
@@ -17,6 +21,10 @@
     <button mat-raised-button (click)="onSubmit()">ส่ง</button>
 </div>
 
+
+
+
+
 <div class="footer">
     <hr>
     <div class="col-md" style="margin-left: 20px;">
@@ -28,3 +36,23 @@
     </div>
 
 </div>
+
+
+
+
+<!-- modal -->
+<ng-template #error let-modal>
+    <div class="alert alert-warning" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: LightCoral;">
+            highlight_off
+        </i> &nbsp;กรุณากรอกข้อมูลให้ถูกต้อง
+    </div>
+</ng-template>
+
+<ng-template #success let-modal>
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        <i class="material-icons" style="color: forestgreen">
+            offline_pin
+        </i> &nbsp;ส่งข้อมูลสำเร็จ
+    </div>
+</ng-template>

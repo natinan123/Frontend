@@ -20,7 +20,7 @@ export class SellPropertyComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getActiveUser();
-    console.log(this.user);
+    // console.log(this.user);
 
     this.getMypro();
   }

@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./manage-sale.component.scss']
 })
 export class ManageSaleComponent implements OnInit {
-  houses: Object;
+  houses: any;
   townhouses: Object;
   apartment: Object;
   commercial: Object;

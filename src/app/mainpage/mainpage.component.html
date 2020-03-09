@@ -23,11 +23,9 @@
     <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
 
 
-        <!-- <button mat-button class="tool" [routerLink]="['/mainpage/mainpage/home']"
-            routerLinkActive="active-head">หน้าหลัก</button> -->
-
-        <button mat-button class="tool" [routerLink]="['/mainpage/mainpage/socket']"
+        <button mat-button class="tool" [routerLink]="['/mainpage/mainpage/home']"
             routerLinkActive="active-head">หน้าหลัก</button>
+
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu1">ขายอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu1="matMenu">
@@ -100,7 +98,7 @@
     <div class="login">
         <form style="padding-left: 15px;padding-right: 15px;" [formGroup]="loginUser">
             <img src="../../assets/pic/mainpage/icon-business.png" class="logo">
-           
+
             <mat-form-field class="emailcss" appearance="outline">
                 <mat-label>อีเมล</mat-label>
                 <input matInput placeholder="อีเมล" formControlName="email_id" [(ngModel)]="email_id" required>

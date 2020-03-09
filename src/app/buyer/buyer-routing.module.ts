@@ -16,6 +16,18 @@ import { LocationComponent } from '../shared/search/location/location.component'
 import { PriceComponent } from '../shared/search/price/price.component';
 import { AreaComponent } from '../shared/search/area/area.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { SAptComponent } from '../shared/property/sell/s-apt/s-apt.component';
+import { SCommerComponent } from '../shared/property/sell/s-commer/s-commer.component';
+import { SCondoComponent } from '../shared/property/sell/s-condo/s-condo.component';
+import { SHouseComponent } from '../shared/property/sell/s-house/s-house.component';
+import { SLandComponent } from '../shared/property/sell/s-land/s-land.component';
+import { STownComponent } from '../shared/property/sell/s-town/s-town.component';
+import { LAptComponent } from '../shared/property/lease/l-apt/l-apt.component';
+import { LCommerComponent } from '../shared/property/lease/l-commer/l-commer.component';
+import { LCondoComponent } from '../shared/property/lease/l-condo/l-condo.component';
+import { LHouseComponent } from '../shared/property/lease/l-house/l-house.component';
+import { LLandComponent } from '../shared/property/lease/l-land/l-land.component';
+import { LTownComponent } from '../shared/property/lease/l-town/l-town.component';
 
 
 const routes: Routes = [
@@ -85,7 +97,56 @@ const routes: Routes = [
         path: 'chat',
         component: ChatComponent
       },
-    
+      // todo sell property
+      { //SApt
+        path: 'SApt',
+        component: SAptComponent
+      },
+      { //SCommer
+        path: 'SCommer',
+        component: SCommerComponent
+      },
+      { //SCondo
+        path: 'SCondo',
+        component: SCondoComponent
+      },
+      { //SHouse
+        path: 'SHouse',
+        component: SHouseComponent
+      },
+      { //SLand
+        path: 'SLand',
+        component: SLandComponent
+      },
+      { //STown
+        path: 'STown',
+        component: STownComponent
+      },
+      // todo lease property
+      { //LApt
+        path: 'LApt',
+        component: LAptComponent
+      },
+      { //LCommer
+        path: 'LCommer',
+        component: LCommerComponent
+      },
+      { //LCondo
+        path: 'LCondo',
+        component: LCondoComponent
+      },
+      { //LHouse
+        path: 'LHouse',
+        component: LHouseComponent
+      },
+      { //LLand
+        path: 'LLand',
+        component: LLandComponent
+      },
+      { //LTown
+        path: 'LTown',
+        component: LTownComponent
+      },
     ]
   },
   {

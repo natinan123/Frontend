@@ -25,6 +25,18 @@ import { PriceComponent } from './search/price/price.component';
 import { AreaComponent } from './search/area/area.component';
 import * as moment from 'moment';
 import { TestsearchComponent } from './testsearch/testsearch.component';
+import { SHouseComponent } from './property/sell/s-house/s-house.component';
+import { STownComponent } from './property/sell/s-town/s-town.component';
+import { SAptComponent } from './property/sell/s-apt/s-apt.component';
+import { SCommerComponent } from './property/sell/s-commer/s-commer.component';
+import { SCondoComponent } from './property/sell/s-condo/s-condo.component';
+import { SLandComponent } from './property/sell/s-land/s-land.component';
+import { LHouseComponent } from './property/lease/l-house/l-house.component';
+import { LTownComponent } from './property/lease/l-town/l-town.component';
+import { LAptComponent } from './property/lease/l-apt/l-apt.component';
+import { LCommerComponent } from './property/lease/l-commer/l-commer.component';
+import { LCondoComponent } from './property/lease/l-condo/l-condo.component';
+import { LLandComponent } from './property/lease/l-land/l-land.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +50,18 @@ import { TestsearchComponent } from './testsearch/testsearch.component';
     PriceComponent,
     AreaComponent,
     TestsearchComponent,
+    SHouseComponent,
+    STownComponent,
+    SAptComponent,
+    SCommerComponent,
+    SCondoComponent,
+    SLandComponent,
+    LHouseComponent,
+    LTownComponent,
+    LAptComponent,
+    LCommerComponent,
+    LCondoComponent,
+    LLandComponent,
   ],
   imports: [
     CommonModule,

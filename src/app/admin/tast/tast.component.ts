@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-
+import { MouseEvent } from '@agm/core';
 @Component({
   selector: 'app-tast',
   templateUrl: './tast.component.html',
@@ -36,8 +36,9 @@ export class TastComponent implements OnInit {
 
 
 
-
-
+ 
+ 
 }
+
 
 

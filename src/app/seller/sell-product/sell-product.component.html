@@ -16,18 +16,34 @@
 
 </div>
 
-<mat-card class="mat-card">
+
+<mat-card class="card">
     <div class="row">
         <div class="col-md-9">
-            <mat-chip-list>
-                <mat-chip class="tag-sell"><i class="material-icons">home_work</i>&nbsp; ประเภท{{pro_sell}}</mat-chip>
-            </mat-chip-list>
+            <div class="row" style="margin-left: 40px;">
+                <mat-chip-list>
+                    <mat-chip class="tag-sell"><i class="material-icons">home_work</i>&nbsp; ประกาศ{{pro_sell}}
+                    </mat-chip>
+                </mat-chip-list>
+                <mat-chip-list style="margin-left: 15px;">
+                    <mat-chip class="tag-sell2"><i class="material-icons">merge_type</i>&nbsp; ประเภท{{type_name}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+
         </div>
         <div class="col-md-3">
-            <button mat-raised-button *ngIf="pro_status == 'รอแก้ไข'" class="edit-pro"
-                [routerLink]="['/seller/seller/editproperty' ,pro_id]"><i class="fa fa-wrench fa-2x"
-                    aria-hidden="true"></i>
-                แก้ไขอสังหาริมทรัพย์</button>
+            <button mat-raised-button (click)="onClickFollow()" *ngIf="follow == 0" style="color: #253f58;"><i
+                    class="material-icons">
+                    add_box
+                </i> ติดตาม</button>
+            <button mat-raised-button (click)="onUnFollow()" *ngIf="follow == 1" style="color: #d92139;"><i
+                    class="material-icons">
+                    favorite
+                </i> เลิกติดตาม</button>
+
+
+
         </div>
     </div>
     <div class="row" style="margin-top: 15px;">
@@ -35,7 +51,8 @@
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{pro_head}}</mat-card-title>
-                <mat-card-subtitle>{{zone_name}}&nbsp; {{loc_name}}</mat-card-subtitle>
+                <mat-card-subtitle>{{zone_name}} &nbsp;{{provin_name}}&nbsp; {{loc_name}}</mat-card-subtitle>
+
             </mat-card-header>
             <mat-card-subtitle>
                 <div class="row" style="margin-left: 20px;">
@@ -68,75 +85,34 @@
     </div>
 </mat-card>
 
+<div class="row" style="background-color: black;">
+
+    <img class="mainImage" *ngIf="SelectImage != null" src="data:image/jpg;base64,{{SelectImage}}" />
+    <img class="mainImage" *ngIf="SelectImage == null" src="data:image/jpg;base64,{{firstImage}}" />
+
+</div>
 
 
 
 
 
+<div class="row" style="margin-left: auto; margin-right: auto;">
+
+    <div style="width: auto; height: auto; box-shadow: 0 0 0px 1px black;" *ngFor="let item of imagePath">
+        <img mat-card-md-image src="data:image/jpg;base64,{{item.image}}" (click)="onSelectImage(item.image)" />
+    </div>
+
+</div>
 
 
-
-<mat-card class="mat-card" style="top: 20px">
-    <!-- <img *ngIf="image1 != null" mat-card-lg-image class="image" src="data:image/jpeg;base64,{{image1}}" />
-    <p>
-        <img *ngIf="image1 != null" mat-card-md-image src="data:image/jpeg;base64,{{image1}}" />
-        <img *ngIf="image2 != null" mat-card-md-image src="data:image/jpeg;base64,{{image2}}" />
-        <img *ngIf="image3 != null" mat-card-md-image src="data:image/jpeg;base64,{{image3}}" />
-        <img *ngIf="image4 != null" mat-card-md-image src="data:image/jpeg;base64,{{image4}}" />
-        <img *ngIf="image5 != null" mat-card-md-image src="data:image/jpeg;base64,{{image5}}" />
-        <img *ngIf="image6 != null" mat-card-md-image src="data:image/jpeg;base64,{{image6}}" />
-        <img *ngIf="image7 != null" mat-card-md-image src="data:image/jpeg;base64,{{image7}}" />
-        <img *ngIf="image8 != null" mat-card-md-image src="data:image/jpeg;base64,{{image8}}" />
-        <img *ngIf="image9 != null" mat-card-md-image src="data:image/jpeg;base64,{{image9}}" />
-        <img *ngIf="image10 != null" mat-card-md-image src="data:image/jpeg;base64,{{image10}}" />
-
-
-    </p> -->
-
-    <img [src]="imagePath">
-    <!-- <img src="../../../assets/pic/mainpage/user_avatar.png" style="height: 64px;width: auto;"> -->
-
-</mat-card>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<mat-card class="mat-card" style="top: 30px">
+<mat-card class="card">
     <mat-card-title>
         <p>รายละเอียด</p>
     </mat-card-title>
-
-    <p>{{pro_detail}}</p>
+    <pre>{{pro_detail}}</pre>
 </mat-card>
 
-<mat-card class="mat-card" style="top: 35px"
+<mat-card class="card"
     *ngIf="style1 || style2 || style3 || style4  || style5 || style6 || style7  || style8 || style9 || style10 == 'true'">
     <mat-card-title>คุณลักษณะพื้นฐาน</mat-card-title>
     <div class="row">
@@ -144,38 +120,80 @@
 
         <div class="col-md-6">
             <mat-chip-list aria-label="Color selection">
-                <mat-chip *ngIf="style1 == 'true'"> ที่จอดรถ </mat-chip>
-                <mat-chip *ngIf="style2 == 'true'"> ลานจอดรถ </mat-chip>
-                <mat-chip *ngIf="style3 == 'true'"> รักษาความปลอดภัย </mat-chip>
-                <mat-chip *ngIf="style4 == 'true'"> สระว่ายน้า </mat-chip>
-                <mat-chip *ngIf="style5 == 'true'"> กล้องวงจรปิด </mat-chip>
-                <mat-chip *ngIf="style6 == 'true'"> ฟิตเนส </mat-chip>
-                <mat-chip *ngIf="style7 == 'true'"> สนามเด็กเล่น </mat-chip>
-                <mat-chip *ngIf="style8 == 'true'"> มินิมาร์ท </mat-chip>
-                <mat-chip *ngIf="style9 == 'true'"> ซัก อบ รีด </mat-chip>
-                <mat-chip *ngIf="style10 == 'true' "> ศาลาชมทิวทัศน์ </mat-chip>
+                <mat-chip *ngIf="style1 == 'true'"> ใกล้รถไฟฟ้า MRT </mat-chip>
+                <mat-chip *ngIf="style2 == 'true'"> ใกล้รถไฟฟ้า BTS </mat-chip>
+                <mat-chip *ngIf="style3 == 'true'"> ใกล้ห้างสรรพสินค้า </mat-chip>
+                <mat-chip *ngIf="style4 == 'true'"> ใกล้สถานพยาบาล </mat-chip>
+                <mat-chip *ngIf="style5 == 'true'"> ใกล้มหาวิทยาลัย </mat-chip>
+                <mat-chip *ngIf="style6 == 'true'"> ใกล้โรงเรียน </mat-chip>
+                <mat-chip *ngIf="style7 == 'true'"> ใกล้รถโดยสารสาธารณะ </mat-chip>
+                <mat-chip *ngIf="style8 == 'true'"> ใกล้สถานบันเทิง </mat-chip>
+                <mat-chip *ngIf="style9 == 'true'"> ใกล้ร้านอาหาร คาเฟ่ </mat-chip>
+                <mat-chip *ngIf="style10 == 'true' "> สวนสาธารณะ </mat-chip>
+                <mat-chip *ngIf="style11 == 'true'"> ที่จอดรถ </mat-chip>
+                <mat-chip *ngIf="style12 == 'true'"> ลานจอดรถ </mat-chip>
+                <mat-chip *ngIf="style13 == 'true'"> รักษาความปลอดภัย </mat-chip>
+                <mat-chip *ngIf="style14 == 'true'"> สระว่ายน้า </mat-chip>
+                <mat-chip *ngIf="style15 == 'true'"> กล้องวงจรปิด </mat-chip>
+                <mat-chip *ngIf="style16 == 'true'"> ฟิตเนส </mat-chip>
+                <mat-chip *ngIf="style17 == 'true'"> สนามเด็กเล่น </mat-chip>
+                <mat-chip *ngIf="style18 == 'true'"> มินิมาร์ท </mat-chip>
+                <mat-chip *ngIf="style19 == 'true'"> ซัก อบ รีด </mat-chip>
+                <mat-chip *ngIf="style20 == 'true' "> ศาลาชมทิวทัศน์ </mat-chip>
             </mat-chip-list>
         </div>
 
     </div>
 </mat-card>
-<mat-card class="mat-card" style="top: 40px">
-    <mat-card-title>ติดต่อผู้ใช้งาน</mat-card-title>
-    <div class="col-md-6">
-        <p>{{email_id}}</p>
-        <p>{{fname}}</p>
-        <p>{{lname}}</p>
-        <p>{{id_line}}</p>
-        <p>{{facebook}}</p>
-        <p>{{profile_pic}}</p>
-        <p>{{cus_detail}}</p>
-        <p>{{phone}}</p>
-    </div>
 
+
+<mat-card class="card">
+    <mat-card-title>ติดต่อผู้ใช้งาน</mat-card-title>
+    <form>
+        <div class="row">
+            <div class="col-md-3">
+                <mat-card-header style="margin-top: 20px">
+
+                    <img mat-card-avatar class="profile_pic" src="data:image/jpg;base64,{{profile_pic}}" alt="sunil" />
+
+                    <mat-card-title> {{fname}} {{lname}}</mat-card-title>
+                    <mat-card-subtitle> {{email_id}} </mat-card-subtitle>
+                    <mat-card-subtitle><button mat-raised-button (click)="addChat()"
+                            style="background-color: #859f3c; color: snow; ">ติดต่อสอบถาม</button></mat-card-subtitle>
+                </mat-card-header>
+            </div>
+            <div class="col-md">
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th scope="row"><img src="../../../assets/pic/admin/line-icon.png" class="image2"></th>
+                            <td class="text">{{id_line}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><img src="../../../assets/pic/admin/facebook.png" class="image2"></th>
+                            <td class="text">{{facebook}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><img src="../../../assets/pic/admin/gmail.png" class="image2"></th>
+                            <td class="text"> {{email_id}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><img src="../../../assets/pic/admin/phone.ico" class="image2"></th>
+                            <td class="text"> {{phone}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="image2">รายละเอียด</th>
+                            <td>{{cus_detail}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
 </mat-card>
 
 
-
+<!--   Map  -->
 <ng-template #Location let-modal>
     <div class="modal-header">
         <h4 class="modal-title">ตำแหน่งอสังหาริมทรัพย์</h4>
@@ -185,9 +203,9 @@
     </div>
 
     <agm-map [latitude]="lat2" [longitude]="lng2">
-
+        <!-- หน้าเริ่ม -->
         <agm-marker [latitude]="latitude" [longitude]="longtitude">
-
+            <!-- มาค์ก -->
             <agm-info-window>
                 <h5><strong>{{type_name}} </strong></h5>
                 <p>{{pro_head}}</p>
@@ -198,9 +216,11 @@
 
     <div class="modal-footer">
         <button mat-raised-button (click)="modal.close('Close click')">ยกเลิก</button>
-
+        <!-- <button mat-raised-button style="background-color: #1d6a96;color: snow">ยืนยัน</button> -->
     </div>
-</ng-template> -->
+</ng-template>
+
+    
 
 
 <!-- todo : ngModal -->

@@ -3,52 +3,14 @@
 </div>
 
 <p>ค้นหารายการแนะนำ</p>
-<mat-form-field appearance="outline" style="width: 50%;">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="ค้นหารายการ">
-</mat-form-field>
 
 
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource1">
-
-        <ng-container matColumnDef="a">
-            <th mat-header-cell *matHeaderCellDef> ลำดับที่ </th>
-            <td mat-cell *matCellDef="let row"> {{row.recom_id}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="b">
-            <th mat-header-cell *matHeaderCellDef> ชื่ออสังหาริมทรัพย์ </th>
-            <td mat-cell *matCellDef="let row"> {{row.pro_head}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="c">
-            <th mat-header-cell *matHeaderCellDef> เจ้าของอสังหาริมทรัพย์ </th>
-            <td mat-cell *matCellDef="let row"> {{row.fname}} &nbsp; {{row.lname}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="d">
-            <th mat-header-cell *matHeaderCellDef> เพิ่มรายการแนะนำ </th>
-            <td mat-cell *matCellDef="let row">
-
-
-                <button mat-raised-button [routerLink]="['/admin/admin/recommend' ,row.recom_id ]"
-                    style="background: #1d6a96 ; color: snow; "><i class="material-icons">
-                        add_circle
-                    </i> เพิ่มรายการแนะนำ</button>
-
-            </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
-    </table>
-
-    <mat-paginator [pageSizeOptions]="[ 10, 20 ,50 ]" showFirstLastButtons></mat-paginator>
-</div>
 
 <mat-card style="width: 99%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
     <div class="row">
-        <mat-card class="product-card" *ngFor="let r of recom | filter:searchText "
-            [routerLink]="['/admin/admin/prodetail' ,r.pro_id]">
+        <mat-card class="product-card"
+            *ngFor="let r of recom | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+            [routerLink]="['/admin/admin/detail-mainpage' ,r.pro_id]">
 
             <div class="data sell-box">
                 <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
@@ -102,6 +64,8 @@
                     </div>
                 </div>
             </div>
+            <ngb-pagination *ngIf="recom.length != 0" [(page)]="page" [pageSize]="pageSize"
+                [collectionSize]="recom.length" [maxSize]="5" [rotate]="true" [ellipses]="false"></ngb-pagination>
         </mat-card>
     </div>
 </mat-card>

@@ -10,6 +10,7 @@ import { LocationComponent } from '../shared/search/location/location.component'
 import { PriceComponent } from '../shared/search/price/price.component';
 import { AreaComponent } from '../shared/search/area/area.component';
 import { TestSocketComponent } from './test-socket/test-socket.component';
+import { DetailComponent } from '../shared/detail/detail.component';
 
 
 
@@ -39,7 +40,10 @@ const routes: Routes = [
         path: 'area',
         component: AreaComponent
       },
-
+      { // รายละเอียด
+        path: 'detail/:pro_id',
+        component: DetailComponent
+      },
       // todo : รายละเอียด
       { // รายละเอียด
         path: 'property/:pro_id',

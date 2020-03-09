@@ -30,6 +30,7 @@ import { SellPendingApprovalComponent } from './sell-pending-approval/sell-pendi
 import { GalleryModule } from '@ks89/angular-modal-gallery';
 import { SuggestionListComponent } from './suggestion-list/suggestion-list.component';
 import { DetailSuggestComponent } from "./suggestion-list/detail-suggest/detail-suggest.component";
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,8 @@ import { DetailSuggestComponent } from "./suggestion-list/detail-suggest/detail-
     Ng2SearchPipeModule,
     AgmJsMarkerClustererModule,
     GalleryModule.forRoot(),
+    Ng2ImgMaxModule,
+
   ]
 })
 export class SellerModule { }

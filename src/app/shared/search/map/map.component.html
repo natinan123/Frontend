@@ -25,10 +25,11 @@
         <agm-marker-cluster
             imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
             <!-- หน้าเริ่ม -->
-            <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude" (markerClick)="clickedMarker(infowindow)">
+            <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude"
+                (markerClick)="clickedMarker(infowindow)">
                 <!-- มาค์ก -->
 
-                <agm-info-window style="width: 223px; height: auto;"  #infowindow>
+                <agm-info-window style="width: 223px; height: auto;" #infowindow>
                     <h5><strong>{{m.type_name}} </strong></h5>
                     <p>{{m.pro_head}}</p>
                     <div class="row">
@@ -54,3 +55,44 @@
     </agm-map>
 
 </div>
+
+<p><u>คำอธิบาย</u> : ของเครื่องหมาย</p>
+<table style="width:50%">
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/pin.png" alt="" style="width: 30px; ">
+        </td>
+        <td>ที่ตั้งของอสังหาริมทรัพย์</td>
+
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m1.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่ 2 แห่งขึ้นไป</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m2.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่มากกว่า 10 แห่ง</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m3.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่มากกว่า 100 แห่ง</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m4.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่มากกว่า 1,000 แห่ง</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m5.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่มากกว่า 10,000 แห่ง</td>
+    </tr>
+</table>

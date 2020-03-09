@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LocationComponent implements OnInit {
 
   public firstFormGroup = new FormGroup({
+    TypePro: new FormControl(''),
     Zone: new FormControl(''),
     Province_id: new FormControl(''),
     Location_id: new FormControl(''),
@@ -26,6 +27,8 @@ export class LocationComponent implements OnInit {
   user: any;
   count_FromLocat: any;
   count_FromProvin: any;
+  types: Object;
+
 
 
   constructor(
@@ -41,11 +44,12 @@ export class LocationComponent implements OnInit {
     this.user = this.session.getActiveUser();
     console.log(this.user[0].cus_status)
     this.getZonePro();
-
+    this.getType();
     this.firstFormGroup = this._formBuilder.group({
       Zone: ['', Validators.required],
       Province_id: ['', Validators.required],
       Location_id: ['', Validators.required],
+      TypePro: ['', Validators.required],
     });
 
 
@@ -57,7 +61,7 @@ export class LocationComponent implements OnInit {
     }
     if (this.user[0].cus_status == "seller") {
       this.link = '/seller/seller/detail';
-    } 
+    }
     if (this.user[0].cus_status == "buyer") {
       this.link = '/buyer/buyer/detail';
     }
@@ -67,7 +71,15 @@ export class LocationComponent implements OnInit {
 
 
   }
-
+  // ประเภท
+  getType() {
+    this.service.getType().subscribe(
+      (res) => {
+        console.log(res);
+        this.types = res;
+      }
+    )
+  }
 
   // ภาค
   getZonePro() {
@@ -97,16 +109,24 @@ export class LocationComponent implements OnInit {
   }
 
   // อสังหาจากเขต
-  onProFromLocat(location_id, province_id) {
-    console.log(location_id);
-    this.service.getProFromLocat(location_id).subscribe(
+  onProFromLocat(location_id, province_id, type_id) {
+    const data = {
+      location_id: location_id,
+      type_id: type_id
+    }
+    console.log(data);
+    this.service.getProFromLocat(data).subscribe(
       (res) => {
         console.log(res);
         this.FromLocat = res;
         this.count_FromLocat = this.FromLocat.length;
       })
     // อสังหาจากจังหวัด
-    this.service.getProFromProvin(province_id).subscribe(
+    const data2 = {
+      province_id: province_id,
+      location_id: location_id
+    }
+    this.service.getProFromProvin(data2).subscribe(
       (res) => {
         console.log(res);
         this.FromProvin = res;
@@ -115,6 +135,7 @@ export class LocationComponent implements OnInit {
       })
 
   }
+
 
 
 }
