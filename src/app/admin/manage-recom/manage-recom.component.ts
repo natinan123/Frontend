@@ -11,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ManageRecomComponent implements OnInit {
   searchText;
   packet_list: any;
+  packet_list_count: any;
   constructor(
     private service: ServerService,
     private dialog: MatDialog,
@@ -28,7 +29,8 @@ export class ManageRecomComponent implements OnInit {
       (res) => {
         // console.log(res);
         this.packet_list = res;
-
+        this.packet_list_count = this.packet_list.length;
+        console.log("นับ", this.packet_list_count);
       }
     )
   }

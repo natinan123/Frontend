@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Ng2ImgMaxService } from 'ng2-img-max';
 
 // Endcode
 function utf8_to_b64(str) {
@@ -35,7 +37,7 @@ export class WriteAdsComponent implements OnInit {
   })
   art_type: any;
   articl_head: any;
- 
+
 
   constructor(
     private service: ServerService,
@@ -45,7 +47,8 @@ export class WriteAdsComponent implements OnInit {
     private modalService: NgbModal,
     private modal: NgbModal,
     private formBuilder: FormBuilder,
-
+    public sanitizer: DomSanitizer,
+    private ng2ImgMax: Ng2ImgMaxService,
   ) { }
 
   ngOnInit() {
@@ -80,6 +83,9 @@ export class WriteAdsComponent implements OnInit {
     this.attachment.nativeElement.value = '';
   }
 
+
+
+
   removeSelectedFile(index) {
     // Delete the item from fileNames list
     this.listOfFiles.splice(index, 1);
@@ -89,25 +95,30 @@ export class WriteAdsComponent implements OnInit {
     this.urls.splice(index, 1);
   }
 
-  // todo :Button upload image multi
-  onMultipleSubmit() {
-    const formData = new FormData();
-    for (let img of this.fileList) {
-      formData.append('blogimage', img);
-    }
+  // // todo :Button upload image multi
+  // onMultipleSubmit() {
+  //   const formData = new FormData();
+  //   for (let img of this.fileList) {
+  //     formData.append('blogimage', img);
+  //   }
 
-    this.service.postImageProMulti(formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
-  }
+  //   this.service.postImageProMulti(formData).subscribe(
+  //     (res) => console.log(res),
+  //     (err) => console.log(err)
+  //   );
+  // }
+
+
+
+
+
 
   art_detail1 = '';
   art_detail2 = '';
 
   log = '';
   log2 = '';
-  
+
 
   // post Art
   onPostArt(): void {
@@ -121,8 +132,8 @@ export class WriteAdsComponent implements OnInit {
     // textarea2
     this.log2 += `${this.art_detail2}\n`;
     var str2 = this.log2;
-    const detail2 =  utf8_to_b64(this.log2);
-   
+    const detail2 = utf8_to_b64(this.log2);
+
 
     const formData = new FormData();
     formData.append('art_type', this.art_type);
@@ -136,13 +147,15 @@ export class WriteAdsComponent implements OnInit {
     this.service.postArticle(formData).subscribe(
       async (res) => {
         console.log(res);
+        this.router.navigate(['admin/admin/listArticle']);
+
       }
     )
 
 
 
   }
-  
+
 
 
 

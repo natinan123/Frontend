@@ -27,6 +27,8 @@ export class AdminComponent implements OnInit {
   pic64: any;
   count_wait: any;
   count_ListProWait: any;
+  packet_list_count: any;
+  packet_list: any;
 
 
 
@@ -97,7 +99,17 @@ export class AdminComponent implements OnInit {
     );
   }
 
-
+  // รายการส่งมาร้องขอแนะนำ
+  getPacket() {
+    this.service.getPacket().subscribe(
+      (res) => {
+        console.log(res);
+        this.packet_list = res;
+        this.packet_list_count = this.packet_list.length;
+        console.log("นับ", this.packet_list_count);
+      }
+    )
+  }
 
 
   // put อสังหาที่หมดอายุ

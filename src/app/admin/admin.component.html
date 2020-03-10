@@ -101,13 +101,13 @@
                 จัดการรายการประกาศขาย
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item [routerLink]="['/admin/admin/managemainpage']" routerLinkActive="active" class="menu">
+            <!-- <mat-list-item [routerLink]="['/admin/admin/managemainpage']" routerLinkActive="active" class="menu">
                 <i class="material-icons">
                     domain
                 </i> &nbsp;
                 จัดการหน้าหลัก
             </mat-list-item>
-            <mat-divider></mat-divider>
+            <mat-divider></mat-divider> -->
             <mat-list-item [routerLink]="['/admin/admin/managemember']" routerLinkActive="active" class="menu">
                 <i class="material-icons">
                     people
@@ -136,7 +136,7 @@
                 <i class="material-icons">
                     reorder
                 </i> &nbsp;
-                จัดการรายการแนะนำ
+                <span matBadge="{{packet_list_count}}" matBadgeOverlap="true" style="text-align: right;">จัดการรายการแนะนำ </span>
             </mat-list-item>
             <mat-divider></mat-divider>
 
@@ -166,14 +166,14 @@
             </mat-list-item>
             <mat-divider></mat-divider>
 
-            <mat-list-item [routerLink]="['/admin/admin/test']" routerLinkActive="active" class="menu">ไว้สำหรับลอง
+            <!-- <mat-list-item [routerLink]="['/admin/admin/test']" routerLinkActive="active" class="menu">ไว้สำหรับลอง
             </mat-list-item>
             <mat-divider></mat-divider>
 
             <mat-list-item [routerLink]="['/admin/admin/test_shared']" routerLinkActive="router-link-active"
                 class="menu">
                 <i class="fa fa-cogs" aria-hidden="true"></i> ไว้ทดสอบ</mat-list-item>
-            <mat-divider></mat-divider>
+            <mat-divider></mat-divider> -->
         </mat-list>
 
     </div>

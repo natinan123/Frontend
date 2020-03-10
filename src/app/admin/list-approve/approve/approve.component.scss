@@ -1,3 +1,17 @@
+.approve {
+  background-color: #6DD920;
+  color: white;
+  margin-top: 50px;
+  margin-right: 10px;
+}
+
+.notapprove {
+  background-color: #F68225;
+  color: white;
+  margin-top: 50px;
+  margin-right: 10px;
+}
+
 mat-chip {
   width: 180px;
 }
@@ -73,7 +87,7 @@ agm-map {
 }
 
 .mainImage {
-  width:  804.406px;
+  width: 804.406px;
   height: 535.922px;
   margin-left: auto;
   margin-right: auto;

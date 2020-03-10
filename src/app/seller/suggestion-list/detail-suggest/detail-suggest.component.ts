@@ -157,7 +157,7 @@ export class DetailSuggestComponent implements OnInit {
     }
   }
 
-  // todo :Button upload image sigle
+  // todo :Button upload image single
   onSubmit() {
 
     this.ng2ImgMax.resizeImage(this.images, 500, 900).subscribe(

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainpageComponent } from './mainpage.component';
-import { HomeComponent } from './home/home.component';
 import { PropertyComponent } from './product/property/property.component';
 import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
@@ -11,6 +10,7 @@ import { PriceComponent } from '../shared/search/price/price.component';
 import { AreaComponent } from '../shared/search/area/area.component';
 import { TestSocketComponent } from './test-socket/test-socket.component';
 import { DetailComponent } from '../shared/detail/detail.component';
+import { HomeComponent } from '../shared/home/home.component';
 
 
 
@@ -59,7 +59,7 @@ const routes: Routes = [
         path: 'artdetail/:article_id',
         component: ArtDetailComponent
       },
-      { // หน้าหลัก
+      { // 
         path: 'socket',
         component: TestSocketComponent
       },

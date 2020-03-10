@@ -11,7 +11,6 @@ import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng
 import { CarouselModule } from 'ngx-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { API } from '../map-api';
-import { HomeComponent } from './home/home.component';
 import { PropertyComponent } from './product/property/property.component';
 import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
@@ -25,7 +24,6 @@ import { TestSocketComponent } from './test-socket/test-socket.component';
 @NgModule({
   declarations: [
     MainpageComponent,
-    HomeComponent,
     PropertyComponent,
     ArticleComponent,
     ArtDetailComponent,

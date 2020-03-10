@@ -11,10 +11,12 @@
 
 
     <div class="row">
-        <mat-card class="product-card" *ngFor="let a of articles | filter:searchText">
-            <div class="routerLink" [routerLink]="[link ,a.article_id]">
+        <mat-card class="product-card" *ngFor="let a of articles | filter:searchText"
+            [routerLink]="[link ,a.article_id]">
+            <div class="routerLink">
                 <div class="image">
-                    <img style="cursor: pointer;" mat-card-image src="data:image/jpg;base64,{{a.art_pic1}}" />
+                    <img style="cursor: pointer; width: 318px;height: auto;" mat-card-image
+                        src="data:image/jpeg;base64,{{a.art_pic1}}" />
                 </div>
                 <div class="detail">
                     <mat-card-content>
@@ -24,24 +26,30 @@
                     </mat-card-content>
 
                     <mat-chip-list>
-                        <mat-chip *ngIf="a.art_type == '1'" style="background-color: #73B66B">รีวิว</mat-chip>
-                        <mat-chip *ngIf="a.art_type == '2'" style="background-color: #FFCB18">ไอเดีย</mat-chip>
-                        <mat-chip *ngIf="a.art_type == '3'" style="background-color: rgb(228, 90, 27)">ข่าวสาร
+                        <mat-chip *ngIf="a.art_type == 'รีวิวอสังหาริมทรัพย์'" style="background-color: #73B66B">
+                            รีวิวอสังหาริมทรัพย์</mat-chip>
+                        <mat-chip *ngIf="a.art_type == 'โฆษณา'" style="background-color: #FFCB18">โฆษณา</mat-chip>
+                        <mat-chip *ngIf="a.art_type == 'ข่าวสาร'" style="background-color: rgb(228, 90, 27)">ข่าวสาร
                         </mat-chip>
 
                     </mat-chip-list>
 
-                    <mat-card-actions style="font-size: small">
+                    <mat-card-subtitle>
+                        <div class="row">
+                            <div class="col-md">
+                                <p> <i class="material-icons">
+                                        schedule
+                                    </i> {{a.art_date}}</p>
 
-
-                        <mat-card-subtitle>
-                            <p style="margin-bottom: 2px;"><i class="fa fa-pencil-square-o"
-                                    aria-hidden="true"></i> {{a.art_date}}</p>
-                            <p style="margin-bottom: 5px;"><i class="fa fa-eye" aria-hidden="true"></i> เข้าชม
-                                {{a.art_view}} ครั้ง</p>
-                        </mat-card-subtitle>
-
-                    </mat-card-actions>
+                            </div>
+                            <div class="col-md">
+                                <p><i class="material-icons">
+                                        remove_red_eye
+                                    </i> เข้าชม
+                                    {{a.art_view}} ครั้ง</p>
+                            </div>
+                        </div>
+                    </mat-card-subtitle>
                 </div>
             </div>
         </mat-card>

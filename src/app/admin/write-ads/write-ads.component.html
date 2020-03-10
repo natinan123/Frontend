@@ -1,8 +1,14 @@
 <div class="row" style="height: 100px;background-color: #014254;">
-    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> เขียนบทความโฆษณา</h1>
+    <div class="col-md-7">
+        <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> เขียนบทความโฆษณา</h1>
+    </div>
+
+    <div class="col-md">
+        <button mat-raised-button class="approve" (click)="onPostArt()">ลงประกาศ</button>
+
+    </div>
 </div>
 
-<button mat-raised-button (click)="onPostArt()">post</button>
 
 <form [formGroup]="AdsFormGroup" class="form">
     <mat-form-field class="example-container">
