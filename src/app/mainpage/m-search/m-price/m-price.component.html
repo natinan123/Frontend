@@ -1,42 +1,36 @@
 <mat-card class="head">
     <mat-card-header>
-        <mat-card-title>ใส่ขนาดพื้นที่เพื่อค้นหา</mat-card-title>
-        <mat-card-subtitle>ใส่ขนาดพื้นที่ค้นหาอสังหาอสังหาริมทรัพย์ที่ต้องการได้</mat-card-subtitle>
+        <mat-card-title>ใส่ราคาเพื่อค้นหา</mat-card-title>
+        <mat-card-subtitle>ใส่ราคาเพื่อกรองการค้นหาอสังหาอสังหาริมทรัพย์ได้</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]="typeFormGroup">
-            <div class="type-select">
+        <div class="type-select">
             <label for="type_id">เลือกประเภทอสังหาริมทรัพย์</label>
-            <select class="form-control" id="type_id" [(ngModel)]="Type_id" formControlName="type"  required>
-                <option selected>เลือกประเภท...</option>
+            <select class="form-control" id="type_id" [(ngModel)]="Type_id">
                 <option [value]="row.type_id" *ngFor="let row of types">
                     {{row.type_name}}</option>
 
             </select>
         </div>
-
-
-            <div class="row" style="margin-top: 5px;">
-                <div class="input-price1">
-                    <label for="price1">ขนาดพื้นที่ต่ำสุด :</label>
-                    <input class="form-control" id="price1" type="number" formControlName="minValue"
-                        [(ngModel)]="minValue" maxlength="8">
-                </div>
-                <p class="goto">ไปถึง</p>
-                <div class="input-price2">
-                    <label for="price1">ขนาดพื้นที่สูงสุด :</label>
-                    <input class="form-control" type="number" formControlName="maxValue" [(ngModel)]="maxValue"
-                        maxlength="8">
-                </div>
-                <p class="goto">หน่วยเป็นตารางเมตร</p>
-
+        <div class="row" style="margin-top: 5px;">
+            <div class="input-price1">
+                <label for="price1">ราคาต่ำสุด :</label>
+                <input class="form-control" id="price1" type="number" [(ngModel)]="minValue" maxlength="8">
             </div>
-
-            <div class="custom-slider">
-                <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+            <p class="goto">ไปถึง</p>
+            <div class="input-price2">
+                <label for="price1">ราคาสูงสุด :</label>
+                <input class="form-control" type="number" [(ngModel)]="maxValue" maxlength="8">
             </div>
+            <p class="goto">หน่วยเป็นบาท</p>
 
-        </form>
+        </div>
+
+        <div class="custom-slider">
+            <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+        </div>
+
+
     </mat-card-content>
     <mat-card-actions style="text-align: center; margin-bottom: 10px;">
         <button mat-button class="submit" (click)="onCheck(minValue,maxValue,Type_id)">
@@ -48,16 +42,17 @@
 </mat-card>
 
 
-<!-- todo FromLocat -->
+
 <mat-card style="width: 98%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE"
     *ngIf="count_list != null">
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการจากการค้นหา</mat-toolbar>
+
     <mat-chip-list>
         <mat-chip style=" margin-top: 10px; margin-left: 30px;">ผลการค้นหา {{count_list}} รายการ</mat-chip>
     </mat-chip-list>
     <div class="row">
         <mat-card class="product-card"
-            *ngFor="let r of ProFromArea | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+            *ngFor="let r of ProFromprice | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
             [routerLink]="[link ,r.pro_id]">
 
             <div class="data sell-box">
@@ -74,7 +69,6 @@
                         {{r.pro_head}}
                     </p>
                 </mat-card-content>
-                <!-- <mat-divider></mat-divider> -->
                 <mat-card-subtitle class="date-post">
                     <div class="row">
                         <div class="col-md">
@@ -120,9 +114,10 @@
         </mat-card>
 
     </div>
-    <ngb-pagination *ngIf="ProFromArea.length != 0" [(page)]="page" [pageSize]="pageSize"
-        [collectionSize]="ProFromArea.length" [maxSize]="5" [rotate]="true" [ellipses]="false"></ngb-pagination>
+    <ngb-pagination *ngIf="ProFromprice.length != 0" [(page)]="page" [pageSize]="pageSize"
+        [collectionSize]="ProFromprice.length" [maxSize]="5" [rotate]="true" [ellipses]="false"></ngb-pagination>
 </mat-card>
+
 
 <ng-template #error let-modal>
     <div class="alert alert-warning" role="alert" style="margin-bottom: 0px;">

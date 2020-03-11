@@ -6,15 +6,16 @@
     <mat-card-content>
         <form [formGroup]="typeFormGroup">
             <div class="type-select">
-            <label for="type_id">เลือกประเภทอสังหาริมทรัพย์</label>
-            <select class="form-control" id="type_id" [(ngModel)]="Type_id" formControlName="type"  required>
-                <option selected>เลือกประเภท...</option>
-                <option [value]="row.type_id" *ngFor="let row of types">
-                    {{row.type_name}}</option>
+                <label for="type_id">เลือกประเภทอสังหาริมทรัพย์</label>
+                <select class="form-control" id="type_id" [(ngModel)]="Type_id" formControlName="type" required>
+                    <option selected>เลือกประเภท...</option>
+                    <option [value]="row.type_id" *ngFor="let row of types">
+                        {{row.type_name}}</option>
 
-            </select>
-        </div>
+                </select>
+            </div>
 
+         
 
             <div class="row" style="margin-top: 5px;">
                 <div class="input-price1">
@@ -48,7 +49,7 @@
 </mat-card>
 
 
-<!-- todo FromLocat -->
+
 <mat-card style="width: 98%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE"
     *ngIf="count_list != null">
     <mat-toolbar style="background-color: #4579a0;color: snow">รายการจากการค้นหา</mat-toolbar>
@@ -74,7 +75,7 @@
                         {{r.pro_head}}
                     </p>
                 </mat-card-content>
-                <!-- <mat-divider></mat-divider> -->
+              
                 <mat-card-subtitle class="date-post">
                     <div class="row">
                         <div class="col-md">

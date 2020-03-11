@@ -1,4 +1,3 @@
-
 <mat-card class="card">
     <div class="row">
         <div class="col-md-9">
@@ -14,19 +13,19 @@
             </div>
 
         </div>
-        <!-- <div class="col-md-3">
-            <button mat-raised-button (click)="onClickFollow()" *ngIf="follow == 0" style="color: #253f58;"><i
-                    class="material-icons">
-                    add_box
-                </i> ติดตาม</button>
-            <button mat-raised-button (click)="onUnFollow()" *ngIf="follow == 1" style="color: #d92139;"><i
-                    class="material-icons">
-                    favorite
-                </i> เลิกติดตาม</button>
+        <div class="col-md-3">
+            <button mat-raised-button (click)="openModalModifly(ModifyPro)"
+                style="background: #aaa049 ; color: snow; margin-left: 10px; ">
+                ปิดปรับปรุง
+            </button>
+            <button mat-raised-button (click)="openModalClose(ClosePro)"
+                style="background: #428627 ; color: snow; margin-left: 10px; ">
+                ปิดการขาย
+            </button>
 
 
 
-        </div> -->
+        </div>
     </div>
     <div class="row" style="margin-top: 15px;">
         <div class="col-md-9">
@@ -202,14 +201,7 @@
     </div>
 </ng-template>
 
-<button mat-raised-button (click)="openModalModifly(ModifyPro)"
-    style="background: #aaa049 ; color: snow; margin-left: 10px; ">
-    ปิดปรับปรุง
-</button>
-<button mat-raised-button (click)="openModalClose(ClosePro)"
-    style="background: #428627 ; color: snow; margin-left: 10px; ">
-    ปิดการขาย
-</button>
+
 
 
 <ng-template #ModifyPro let-modal>

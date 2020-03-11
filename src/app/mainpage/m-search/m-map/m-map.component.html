@@ -1,0 +1,98 @@
+<div class="row" style="height: 100px;background-color: #014254">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 25px; "> ค้นหาอสังหาริมทรัพย์จากแผนที่</h1>
+
+
+</div>
+
+
+
+<!-- <div *ngIf="lat && lng"> -->
+<div>
+    <mat-form-field style="width: 20%; margin-left: 20px  ;">
+        <mat-label>เลือกประเภทอสังหาริมทรัพย์</mat-label>
+        <mat-select [(ngModel)]="type_id" FormControl="type_id" (ngModelChange)="onGetHouse($event)">
+            <mat-option (click)="getMappro()">เลือกทั้งหมด</mat-option>
+            <mat-option value="1">บ้านเดี่ยว</mat-option>
+            <mat-option value="2">ทาวน์เฮาส์</mat-option>
+            <mat-option value="3">อพาร์ทเมนท์</mat-option>
+            <mat-option value="4">อาคารพาณิชย์</mat-option>
+            <mat-option value="5">คอนโดมิเนียม</mat-option>
+            <mat-option value="6">ที่ดิน</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <agm-map [latitude]="lat2" [longitude]="lng2">
+        <agm-marker-cluster
+            imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+            <!-- หน้าเริ่ม -->
+            <agm-marker *ngFor="let m of markers;" [latitude]="m.latitude" [longitude]="m.longtitude"
+                (markerClick)="clickedMarker(infowindow)">
+                <!-- มาค์ก -->
+
+                <agm-info-window style="width: 223px; height: auto;" #infowindow>
+                    <h5><strong>{{m.type_name}} </strong></h5>
+                    <p>{{m.pro_head}}</p>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <p>ราคา : {{m.price | number : '1.2-2'}} บาท</p>
+                            <p>ขนาดพื้นที่ :{{m.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                            <button class="btn btn-primary btn-sm" [routerLink]="[link ,m.pro_id]">ดูรายละเอียด</button>
+                        </div>
+                        <div class="col-md-7">
+                            <img class="image-size" mat-card-image src="data:image/jpg;base64,{{m.image1}}" />
+                        </div>
+                    </div>
+
+
+
+
+
+                </agm-info-window>
+
+            </agm-marker>
+        </agm-marker-cluster>
+
+    </agm-map>
+
+</div>
+
+<p><u>คำอธิบาย</u> : ของเครื่องหมาย</p>
+<table style="width:50%">
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/pin.png" alt="" style="width: 30px; ">
+        </td>
+        <td>ที่ตั้งของอสังหาริมทรัพย์</td>
+
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m1.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่ 2 แห่งขึ้นไป</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m2.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่มากกว่า 10 แห่ง</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m3.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่มากกว่า 100 แห่ง</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m4.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่มากกว่า 1,000 แห่ง</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../../assets/pic/marker/m5.png" alt="" style="width: 35px; ">
+        </td>
+        <td>กลุ่มเครื่องหมายที่มากกว่า 10,000 แห่ง</td>
+    </tr>
+</table>

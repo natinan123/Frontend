@@ -1,0 +1,218 @@
+<mat-card [formGroup]="firstFormGroup" class="mat-card-Zone">
+    <mat-card-header class="mat-header">
+        <mat-card-title>เลือกเขตที่ตั้งที่ต้องการ</mat-card-title>
+        <mat-card-subtitle>สามารถเลือกเขตที่ตั้งเพื่อแสดงตามต้องการ</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+        <div class="row">
+            <div class="col-md">
+                <div class="label">
+                    <mat-label>ประเภทอสังหาริมทรัพย์</mat-label>
+                </div>
+                <div class="option">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-select [(ngModel)]="type_id" formControlName="TypePro" placeholder="เลือกประเภท..">
+                            <mat-option [value]="row.type_id" *ngFor="let row of types">
+                                {{row.type_name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row" style=" margin-top: 15px;">
+            <div class="col-md-3">
+                <div class="label">
+                    <mat-label>ภูมิภาค</mat-label>
+                </div>
+                <div class="option">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-select [(ngModel)]="zone_id" formControlName="Zone" placeholder="เลือกภูมิภาค.."
+                            (ngModelChange)="onProvince($event)" required>
+                            <mat-option [value]="z.zone_id" *ngFor="let z of zones">
+                                {{z.zone_name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="label">
+                    <mat-label>จังหวัด</mat-label>
+                </div>
+                <div class="option">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-select [(ngModel)]="province_id" formControlName="Province_id" placeholder="เลือกจังหวัด"
+                            (ngModelChange)="onLocation($event)" required>
+                            <mat-option [value]="p.province_id" *ngFor="let p of provins">{{p.provin_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="label">
+                    <mat-label>เขต/อำเภอ</mat-label>
+                </div>
+                <div class="option">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-select [(ngModel)]="location_id" formControlName="Location_id" placeholder="เลือกจังหวัด"
+                            required>
+                            <mat-option [value]="dis.location_id" *ngFor="let dis of district">{{dis.loc_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="onProFromLocat(location_id,province_id,type_id)">ค้นหา</button>
+
+    </mat-card-actions>
+</mat-card>
+
+<!-- todo FromLocat -->
+<mat-card *ngIf="count_FromLocat != null"
+    style="width: 98%; margin-left: auto; margin-right: auto; top: 10px; background-color: #BBD9EE">
+    <mat-toolbar style="background-color: #4579a0;color: snow">รายการจากเขตที่ตั้ง</mat-toolbar>
+    <mat-chip-list>
+        <mat-chip style=" margin-top: 10px; margin-left: 30px;">ผลการค้นหา {{count_FromLocat}} รายการ</mat-chip>
+    </mat-chip-list>
+    <div class="row">
+        <mat-card class="product-card" *ngFor="let r of FromLocat" [routerLink]="[link ,r.pro_id]">
+
+            <div class="data sell-box">
+                <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
+                <div class="sell-corner sell-SUB" *ngIf="r.pro_sell == 'เช่า'">{{r.pro_sell}}</div>
+                <img class="image-size" style="cursor: pointer;" mat-card-image
+                    src="data:image/jpg;base64,{{r.image1}}" />
+
+            </div>
+            <div class="listing-cost">฿ {{r.price | number : '1.2-2'}} บาท</div>
+            <div class="detail">
+                <mat-card-content>
+                    <p class="head">
+                        {{r.pro_head}}
+                    </p>
+                </mat-card-content>
+                <!-- <mat-divider></mat-divider> -->
+                <mat-card-subtitle class="date-post">
+                    <div class="row">
+                        <div class="col-md">
+                            <i class="fa fa-pencil-square-o fa-lg"> {{r.pro_post}}</i>
+
+                        </div>
+                        <div class="col-md" style=" text-align: right;">
+                            <i class="fa fa-eye fa-lg"> {{r.pro_views}}</i>
+
+                        </div>
+                    </div>
+                </mat-card-subtitle>
+
+                <div class="type">
+                    <i class="material-icons" style="color: #7a96a2;">
+                        style
+                    </i> <span style="opacity: 0.85;  font-size: 14px;"> {{r.type_name}}</span>
+                </div>
+
+                <div class="loca">
+
+                    <i class="material-icons" style="color: #abbf4e;">place</i>
+                    <span style="opacity: 0.85;">{{r.loc_name}} {{r.provin_name}} </span>
+
+                </div>
+                <hr style="margin-top: 4px; margin-bottom: 2px;">
+                <div class="row">
+                    <div class="col-7">
+                        <p class="p_icon1"><i class="fa fa-object-group" aria-hidden="true"></i>&nbsp;
+                            {{r.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                        <p class="p_icon1"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp; {{r.pro_bedroom}}
+                            ห้องนอน</p>
+                    </div>
+                    <div class="col-5">
+                        <p class="p_icon2"><i class="fa fa-bath" aria-hidden="true"></i>&nbsp; {{r.pro_toilet}}
+                            ห้องน้ำ</p>
+                        <p class="p_icon2"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp; {{r.pro_floor}}
+                            ชั้น</p>
+                    </div>
+                </div>
+
+            </div>
+        </mat-card>
+
+    </div>
+</mat-card>
+
+<!-- todo FromProvin -->
+<mat-card *ngIf="count_FromProvin != null"
+    style="width: 98%; margin-top: 10px; margin-left: auto; margin-right: auto; top: 10px; background-color: #d3d6c3">
+    <mat-toolbar style="background-color: #5a5c4f;color: snow">รายการจากพื้นที่ใกล้เคียง</mat-toolbar>
+    <mat-chip-list>
+        <mat-chip style=" margin-top: 10px; margin-left: 30px;">ผลการค้นหา {{count_FromProvin}} รายการ</mat-chip>
+    </mat-chip-list>
+    <div class="row">
+        <mat-card class="product-card" *ngFor="let r of FromProvin" [routerLink]="[link ,r.pro_id]">
+
+            <div class="data sell-box">
+
+                <div class="sell-corner sell-HD" *ngIf="r.pro_sell == 'ขาย'">{{r.pro_sell}}</div>
+                <div class="sell-corner sell-SUB" *ngIf="r.pro_sell == 'เช่า'">{{r.pro_sell}}</div>
+                <img class="image-size" style="cursor: pointer;" mat-card-image
+                    src="data:image/jpg;base64,{{r.image1}}" />
+
+            </div>
+            <div class="listing-cost">฿ {{r.price | number : '1.2-2'}} บาท</div>
+            <div class="detail">
+                <mat-card-content>
+                    <p class="head">
+                        {{r.pro_head}}
+                    </p>
+                </mat-card-content>
+                <!-- <mat-divider></mat-divider> -->
+                <mat-card-subtitle class="date-post">
+                    <div class="row">
+                        <div class="col-md">
+                            <i class="fa fa-pencil-square-o fa-lg"> {{r.pro_post}}</i>
+
+                        </div>
+                        <div class="col-md" style=" text-align: right;">
+                            <i class="fa fa-eye fa-lg"> {{r.pro_views}}</i>
+
+                        </div>
+                    </div>
+                </mat-card-subtitle>
+
+                <div class="type">
+                    <i class="material-icons" style="color: #7a96a2;">
+                        style
+                    </i> <span style="opacity: 0.85;  font-size: 14px;"> {{r.type_name}}</span>
+                </div>
+
+                <div class="loca">
+
+                    <i class="material-icons" style="color: #abbf4e;">place</i>
+                    <span style="opacity: 0.85;">{{r.loc_name}} {{r.provin_name}} </span>
+
+                </div>
+                <hr style="margin-top: 4px; margin-bottom: 2px;">
+                <div class="row">
+                    <div class="col-7">
+                        <p class="p_icon1"><i class="fa fa-object-group" aria-hidden="true"></i>&nbsp;
+                            {{r.pro_area | number : '1.2-2'}} ตร.ม.</p>
+                        <p class="p_icon1"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp; {{r.pro_bedroom}}
+                            ห้องนอน</p>
+                    </div>
+                    <div class="col-5">
+                        <p class="p_icon2"><i class="fa fa-bath" aria-hidden="true"></i>&nbsp; {{r.pro_toilet}}
+                            ห้องน้ำ</p>
+                        <p class="p_icon2"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp; {{r.pro_floor}}
+                            ชั้น</p>
+                    </div>
+                </div>
+
+            </div>
+        </mat-card>
+    </div>
+</mat-card>

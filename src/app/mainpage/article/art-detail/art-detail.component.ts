@@ -61,7 +61,7 @@ export class ArtDetailComponent implements OnInit {
   getDetail() {
     this.service.getArtDetail(this.data).subscribe(
       (res) => {
-
+        console.log(res);
         this.article_id = res[0].article_id,
           this.articl_head = res[0].articl_head,
           this.art_detail1 = b64_to_utf8(res[0].art_detail1),
@@ -76,6 +76,7 @@ export class ArtDetailComponent implements OnInit {
       }
     )
   }
+
 
 
 }

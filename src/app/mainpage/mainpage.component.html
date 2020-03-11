@@ -23,7 +23,7 @@
     <mat-toolbar-row class="shadow" style="background: #013b63 ; text-align: center;color: snow">
 
 
-        <button mat-button class="tool" [routerLink]="['/mainpage/mainpage/home']"
+        <button mat-button class="tool" [routerLink]="['/mainpage/mainpage/Mhome']"
             routerLinkActive="active-head">หน้าหลัก</button>
 
 
@@ -64,13 +64,13 @@
 
         <button mat-button class="tool" [matMenuTriggerFor]="belowMenu3">ค้นหาอสังหาริมทรัพย์</button>
         <mat-menu #belowMenu3="matMenu">
-            <button mat-menu-item style="width: 400px" [routerLink]="['/mainpage/mainpage/area']"
+            <button mat-menu-item style="width: 400px" [routerLink]="['/mainpage/mainpage/Marea']"
                 routerLinkActive="active-head">ค้นหาจากขนาดพื้นที่</button>
-            <button mat-menu-item [routerLink]="['/mainpage/mainpage/price']"
+            <button mat-menu-item [routerLink]="['/mainpage/mainpage/Mprice']"
                 routerLinkActive="active-head">ค้นหาจากราคาพื้นที่</button>
-            <button mat-menu-item [routerLink]="['/mainpage/mainpage/map']"
+            <button mat-menu-item [routerLink]="['/mainpage/mainpage/Mmap']"
                 routerLinkActive="active-head">ค้นหาจากแผนที่</button>
-            <button mat-menu-item [routerLink]="['/mainpage/mainpage/location']"
+            <button mat-menu-item [routerLink]="['/mainpage/mainpage/Mlocation']"
                 routerLinkActive="active-head">ค้นหาจากทำเลที่ตั้ง</button>
         </mat-menu>
 

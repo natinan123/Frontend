@@ -16,9 +16,14 @@ import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { SharedModule } from '../shared/shared.module';
-import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { TestSocketComponent } from './test-socket/test-socket.component';
+import { MHomeComponent } from './m-home/m-home.component';
+import { MAreaComponent } from './m-search/m-area/m-area.component';
+import { MLocationComponent } from './m-search/m-location/m-location.component';
+import { MMapComponent } from './m-search/m-map/m-map.component';
+import { MPriceComponent } from './m-search/m-price/m-price.component';
+import { Ng5SliderModule } from 'ng5-slider';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
 
 @NgModule({
@@ -27,7 +32,12 @@ import { TestSocketComponent } from './test-socket/test-socket.component';
     PropertyComponent,
     ArticleComponent,
     ArtDetailComponent,
-    TestSocketComponent
+    TestSocketComponent,
+    MHomeComponent,
+    MAreaComponent,
+    MLocationComponent,
+    MMapComponent,
+    MPriceComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +55,7 @@ import { TestSocketComponent } from './test-socket/test-socket.component';
       libraries: ['places', 'geometry', 'drawing']
     }),//google api
     Ng2SearchPipeModule,
-    SharedModule,
+    Ng5SliderModule,
     AgmJsMarkerClustererModule,
   ]
 })

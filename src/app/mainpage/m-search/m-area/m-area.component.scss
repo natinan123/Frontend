@@ -1,107 +1,85 @@
-mat-chip {
-  width: 180px;
-}
-
-.card {
-  width: 90%;
-  border-radius: 12px;
-  margin-left: auto;
-  margin-right: auto;
+.head {
   margin-top: 10px;
-  background-color: #bbd9ee;
+  background-color: #f2f3f5;
+}
+.input-price1 {
+  margin-left: 65px;
+  width: 20%;
+}
+.input-price2 {
+  width: 20%;
+}
+.type-select {
+  width: 40%;
+  margin-left: 50px;
+}
+.goto {
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-top: 35px;
+}
+// We need to use ::ng-deep to overcome view encapsulation
+::ng-deep {
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: #ffe4d1;
+    height: 2px;
+  }
+  .custom-slider .ng5-slider .ng5-slider-selection {
+    background: orange;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer {
+    width: 12px;
+    height: 15px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: #478fcd;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-bubble {
+    bottom: 14px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-limit {
+    font-weight: bold;
+    color: #5fad46;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #ffe4d1;
+    top: -1px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+    background: #5fad46;
+  }
 }
 
-.tag-sell {
-  white-space: nowrap;
-  background-color: #aec33a;
-  width: 130px;
-  color: snow;
+.custom-slider {
+  margin-top: 20px;
 }
-.tag-sell2 {
-  white-space: nowrap;
-  background-color: #f78e1e;
-  color: #ffffff;
-}
-.price {
-  float: right;
-  color: #f25c62 !important;
-}
-
-.bt-map {
-  color: snow;
+.submit {
+  margin-left: 0;
+  margin-right: 0;
+  color: white;
   background-color: #5fad46;
-  float: right;
-}
-
-.image {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  height: 450px;
-}
-
-agm-map {
-  height: 500px;
-  width: 100%;
-}
-
-.public {
-  color: snow;
-  background-color: #aec33a;
-  margin-left: 15px;
-}
-.proclose {
-  color: snow;
-  background-color: #d92139;
-  margin-left: 15px;
-}
-.edit {
-  color: snow;
-  background-color: #fec748;
-  margin-left: 15px;
-}
-.draft {
-  color: snow;
-  background-color: #928a99;
-  margin-left: 15px;
-}
-
-.edit-pro {
+  width: 50%;
   height: 45px;
-  color: snow;
-  background-color: #877d7c;
+  box-shadow: 0 0 20px 3px #7ce662;
+  font-size: 18px;
 }
 
-.mainImage {
-  width: 804.406px;
-  height: 535.922px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.profile_pic {
-  width: 150px;
-  background-size: cover;
-  width: 100px;
-  height: 100px;
-}
-table {
-  width: 100%;
-}
-
-.image2 {
-  height: 40px;
-  width: auto;
-  float: right;
-}
-th {
-  width: 124px;
-}
-.text {
-  padding-top: 25px;
-}
-
-// !
+// list
 
 .product-card {
   //   max-width: 23%;

@@ -1,107 +1,18 @@
-mat-chip {
-  width: 180px;
+.search-hero {
+  max-width: 500px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: auto;
 }
 
-.card {
-  width: 90%;
-  border-radius: 12px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  background-color: #bbd9ee;
+.form-control {
+  box-shadow: 0 0 10px 0 #b0c1d9;
+}
+.form-control::placeholder {
+  font-family: FontAwesome;
 }
 
-.tag-sell {
-  white-space: nowrap;
-  background-color: #aec33a;
-  width: 130px;
-  color: snow;
-}
-.tag-sell2 {
-  white-space: nowrap;
-  background-color: #f78e1e;
-  color: #ffffff;
-}
-.price {
-  float: right;
-  color: #f25c62 !important;
-}
-
-.bt-map {
-  color: snow;
-  background-color: #5fad46;
-  float: right;
-}
-
-.image {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  height: 450px;
-}
-
-agm-map {
-  height: 500px;
-  width: 100%;
-}
-
-.public {
-  color: snow;
-  background-color: #aec33a;
-  margin-left: 15px;
-}
-.proclose {
-  color: snow;
-  background-color: #d92139;
-  margin-left: 15px;
-}
-.edit {
-  color: snow;
-  background-color: #fec748;
-  margin-left: 15px;
-}
-.draft {
-  color: snow;
-  background-color: #928a99;
-  margin-left: 15px;
-}
-
-.edit-pro {
-  height: 45px;
-  color: snow;
-  background-color: #877d7c;
-}
-
-.mainImage {
-  width: 804.406px;
-  height: 535.922px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.profile_pic {
-  width: 150px;
-  background-size: cover;
-  width: 100px;
-  height: 100px;
-}
-table {
-  width: 100%;
-}
-
-.image2 {
-  height: 40px;
-  width: auto;
-  float: right;
-}
-th {
-  width: 124px;
-}
-.text {
-  padding-top: 25px;
-}
-
-// !
+// list
 
 .product-card {
   //   max-width: 23%;

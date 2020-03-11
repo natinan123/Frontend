@@ -54,7 +54,7 @@ export class BuyerComponent implements OnInit {
   }
   onLogout() {
     this.session.clearActiveUser();
-    this.route.navigate(['/mainpage/mainpage/home'])
+    this.route.navigate(['/mainpage'])
   }
 
   // put อสังหาที่หมดอายุ

@@ -1,37 +1,63 @@
+<div class="row" style="height: 100px;background-color: #014254">
+    <h1 style="color: snow;font-size: 20px;margin-top: 35px;margin-left: 50px; "> บทความ</h1>
+</div>
+
 <form action="">
 
-    <p>
-        art-detail works!
-    </p>
+    <div class="container">
 
-    <p>{{article_id}}</p>
-    <p> {{articl_head}}</p>
-    <!-- <p> {{art_detail1}}</p> -->
+        <h3 style="margin-top: 20px;"> {{articl_head}}</h3>
+        <div class="row">
 
-    <div style="width: 70%;">
-        <pre>{{art_detail1}}</pre>
+            <p style="font-size: 14px; margin-left: 30px;">
+                <i class="material-icons" style="font-size: 18px;">
+                    loyalty
+                </i>
+                {{art_type}}
+            </p>
+            <p style="font-size: 14px;  margin-left: 10px;">
+                <i class="material-icons" style="font-size: 18px;">
+                    query_builder
+                </i>
+                {{art_date}}
+            </p>
+            <p style="font-size: 14px; margin-left: 10px;">
+                <i class="material-icons" style="font-size: 18px;">
+                    remove_red_eye
+                </i>
+                ผู้เข้าชม {{art_view}} ครั้ง
+            </p>
 
+        </div>
+
+        <div class="image">
+            <img mat-card-image src="data:image/jpg;base64,{{art_pic1}}" style="width: 830px;height: 433px;" />
+        </div>
+
+        <div style="width: 80%; margin-left: 50px;margin-top: 20px;">
+            <pre>{{art_detail1}}</pre>
+
+
+
+        </div>
+
+        <div class="image">
+            <img mat-card-image src="data:image/jpg;base64,{{art_pic2}}" style="width: 830px;height: 433px;" />
+        </div>
+
+        <div style="width: 80%;margin-left: 50px;margin-top: 20px;">
+            <pre>{{art_detail2}}</pre>
+        </div>
+
+
+
+
+        <div class="image">
+            <img mat-card-image src="data:image/jpg;base64,{{art_pic3}}" style="width: 830px;height: 433px;" />
+        </div>
 
 
     </div>
 
-    <div style="width: 70%;">
-        <pre>{{art_detail2}}</pre>
-    </div>
-  
-
-    <div class="image">
-        <img mat-card-image src="data:image/jpg;base64,{{art_pic1}}" />
-    </div>
-    <div class="image">
-        <img mat-card-image src="data:image/jpg;base64,{{art_pic2}}" />
-    </div>
-    <div class="image">
-        <img mat-card-image src="data:image/jpg;base64,{{art_pic3}}" />
-    </div>
-
-    <p>{{art_type}}</p>
-    <p>{{art_date}}</p>
-    <p>{{art_view}}</p>
 
 </form>

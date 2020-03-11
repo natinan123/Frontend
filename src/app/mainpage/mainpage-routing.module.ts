@@ -4,13 +4,14 @@ import { MainpageComponent } from './mainpage.component';
 import { PropertyComponent } from './product/property/property.component';
 import { ArticleComponent } from './article/article.component';
 import { ArtDetailComponent } from './article/art-detail/art-detail.component';
-import { MapComponent } from '../shared/search/map/map.component';
-import { LocationComponent } from '../shared/search/location/location.component';
-import { PriceComponent } from '../shared/search/price/price.component';
-import { AreaComponent } from '../shared/search/area/area.component';
 import { TestSocketComponent } from './test-socket/test-socket.component';
 import { DetailComponent } from '../shared/detail/detail.component';
-import { HomeComponent } from '../shared/home/home.component';
+import { MHomeComponent } from './m-home/m-home.component';
+import { MAreaComponent } from './m-search/m-area/m-area.component';
+import { MMapComponent } from './m-search/m-map/m-map.component';
+import { MLocationComponent } from './m-search/m-location/m-location.component';
+import { MPriceComponent } from './m-search/m-price/m-price.component';
+
 
 
 
@@ -20,29 +21,25 @@ const routes: Routes = [
     component: MainpageComponent,
     children: [
       { // หน้าหลัก
-        path: 'home',
-        component: HomeComponent
+        path: 'Mhome',
+        component: MHomeComponent
       },
       // todo: ค้นหา
       { // แผนที่
-        path: 'map',
-        component: MapComponent
+        path: 'Mmap',
+        component: MMapComponent
       },
       { // ที่ตั้ง
-        path: 'location',
-        component: LocationComponent
+        path: 'Mlocation',
+        component: MLocationComponent
       },
       { //ค้นหาตามราคา
-        path: 'price',
-        component: PriceComponent
+        path: 'Mprice',
+        component: MPriceComponent
       },
       { //ค้นหาตามขนาดพื้นที่
-        path: 'area',
-        component: AreaComponent
-      },
-      { // รายละเอียด
-        path: 'detail/:pro_id',
-        component: DetailComponent
+        path: 'Marea',
+        component: MAreaComponent
       },
       // todo : รายละเอียด
       { // รายละเอียด
@@ -67,7 +64,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'mainpage/home',
+    redirectTo: 'mainpage/Mhome',
     pathMatch: 'full'
   }
 

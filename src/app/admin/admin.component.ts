@@ -73,7 +73,7 @@ export class AdminComponent implements OnInit {
 
   onLogout() {
     this.session.clearActiveUser();
-    this.route.navigate(['/mainpage/mainpage/home'])
+    this.route.navigate(['/mainpage'])
   }
 
   // รูป avatar

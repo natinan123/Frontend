@@ -1,24 +1,20 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Options, LabelType } from 'ng5-slider';
+import { LabelType, Options } from 'ng5-slider';
 import { ServerService } from 'src/app/@service/server.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-price',
-  templateUrl: './price.component.html',
-  styleUrls: ['./price.component.scss']
+  selector: 'app-m-price',
+  templateUrl: './m-price.component.html',
+  styleUrls: ['./m-price.component.scss']
 })
-export class PriceComponent implements OnInit {
+export class MPriceComponent implements OnInit {
+
   @ViewChild('error', { static: false }) error: ElementRef;
-  public typeFormGroup = new FormGroup({
-    type: new FormControl(''),
-    minValue: new FormControl(''),
-    maxValue: new FormControl(''),
-  })
+
   minValue: number = 1000000;
   maxValue: number = 40000000;
   options: Options = {
@@ -58,20 +54,8 @@ export class PriceComponent implements OnInit {
   ngOnInit() {
     this.getType()
 
-    this.user = this.session.getActiveUser();
-    this.status = this.user[0].cus_status;
-    if (this.user[0].cus_status == null || this.user[0].cus_status == "") {
-      this.link = '/mainpage/mainpage/detail';
-    }
-    if (this.user[0].cus_status == "admin") {
-      this.link = '/admin/admin/detail';
-    }
-    if (this.user[0].cus_status == "seller") {
-      this.link = '/seller/seller/detail';
-    }
-    if (this.user[0].cus_status == "buyer") {
-      this.link = '/buyer/buyer/detail';
-    }
+    this.link = '/mainpage/mainpage/property';
+   
   }
 
   // ประเภท
@@ -94,7 +78,7 @@ export class PriceComponent implements OnInit {
     }
     console.log(data);
 
-    if (Type_id != "") {
+    if (Type_id == "") {
       this.service.getProFromprice(data).subscribe(
         (res) => {
           console.log(res);
