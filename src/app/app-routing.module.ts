@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'mainpage/mainpage/Mhome',
+    redirectTo: 'mainpage',
     pathMatch: 'full'
   }
 ];

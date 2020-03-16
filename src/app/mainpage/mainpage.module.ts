@@ -24,6 +24,7 @@ import { MMapComponent } from './m-search/m-map/m-map.component';
 import { MPriceComponent } from './m-search/m-price/m-price.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { IndexComponent } from './index/index.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
     MAreaComponent,
     MLocationComponent,
     MMapComponent,
-    MPriceComponent
+    MPriceComponent,
+    IndexComponent
   ],
   imports: [
     CommonModule,

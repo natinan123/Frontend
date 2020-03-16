@@ -151,7 +151,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'buyer/buyerhome',
+    redirectTo: 'buyer/require',
     pathMatch: 'full'
   }
 ];

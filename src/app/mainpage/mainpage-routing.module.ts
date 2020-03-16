@@ -11,6 +11,7 @@ import { MAreaComponent } from './m-search/m-area/m-area.component';
 import { MMapComponent } from './m-search/m-map/m-map.component';
 import { MLocationComponent } from './m-search/m-location/m-location.component';
 import { MPriceComponent } from './m-search/m-price/m-price.component';
+import { IndexComponent } from './index/index.component';
 
 
 
@@ -62,9 +63,13 @@ const routes: Routes = [
       },
     ]
   },
+  { // 
+    path: 'index',
+   component: IndexComponent
+  }, 
   {
     path: '',
-    redirectTo: 'mainpage/Mhome',
+    redirectTo: 'index',
     pathMatch: 'full'
   }
 

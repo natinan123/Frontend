@@ -52,6 +52,14 @@ export class ProfileComponent implements OnInit {
     console.log(this.user);
     this.data = this.user[0].email_id;
     this.showAvatar();
+    this.getProfile() ;
+
+    // this.pro_limit = this.user[0].limit_id;
+    this.getCountPro();
+
+  }
+
+  getProfile() {
     this.service.getProfile(this.user[0].email_id).subscribe(
       (res) => {
         console.log(res);
@@ -65,12 +73,7 @@ export class ProfileComponent implements OnInit {
         // this.profile_pic = res[0].profile_pic;
       }
     )
-
-    // this.pro_limit = this.user[0].limit_id;
-    this.getCountPro();
-
   }
-
   //  จำนวนอสังหา
   getCountPro() {
     this.service.getCountPro(this.user[0].email_id).subscribe(
@@ -110,7 +113,8 @@ export class ProfileComponent implements OnInit {
         this.modalService.open(this.success);
         await delay(2000);
         this.closeModal();
-        location.reload();
+        this.getProfile() ;
+
       }
     )
   }

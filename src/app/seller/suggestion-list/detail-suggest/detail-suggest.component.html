@@ -1,24 +1,22 @@
-<div class="container">
-    <p>Your IP Address : {{ipAddress}}</p>
-</div>
+<mat-card style="width: 732px; height: auto; margin-top: 10px;">
+    <h5>หัวเรื่องอสังหาริมทรัพย์</h5>
+    <p>{{pro_head}}</p>
 
-<p>{{pro_id}}</p>
-<p>{{pro_head}}</p>
-
+</mat-card>
 
 <div class="modal-body">
 
     <!-- single -->
     <div class="" style="margin-top: 10px; margin-bottom: 10px;">
 
-        <img [src]="url" style="width: 188px; height: 281px;">
+        <img [src]="url" style="width: 188px; height: 281px;box-shadow: 0 0 0 2px #00a26e;">
 
     </div>
     <div>
         <input type='file' accept=" image/* " (change)="onSelectFile($event)">
     </div>
 
-    <button mat-raised-button (click)="onSubmit()">ส่ง</button>
+    <button mat-raised-button style="color: snow;background-color: #196a96;" (click)="onSubmit()">ส่งรายการแนะนำ</button>
 </div>
 
 

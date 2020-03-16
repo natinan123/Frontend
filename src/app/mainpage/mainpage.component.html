@@ -182,7 +182,7 @@
 
             <div class="status">
                 <label for="cheese">เลือกสถานะผู้ใช้งาน</label> <br>
-                <select class="custom-select" id="cheese" formControlName="Cus_status">
+                <select class="custom-select" id="cheese" [(ngModel)]="Cus_status" formControlName="Cus_status">
                     <option selected>เลือกสถานะผู้ใช้งาน</option>
                     <option value="seller">ผู้ขาย</option>
                     <option value="buyer">ผู้ซื้อ</option>
