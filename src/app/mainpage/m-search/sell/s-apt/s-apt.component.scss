@@ -1,0 +1,180 @@
+.head {
+  margin-top: 10px;
+  background-color: #f2f3f5;
+}
+.input-price1 {
+  margin-left: 65px;
+  width: 20%;
+}
+.input-price2 {
+  width: 20%;
+}
+.type-select {
+  width: 40%;
+  margin-left: 50px;
+}
+.goto {
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-top: 35px;
+}
+// We need to use ::ng-deep to overcome view encapsulation
+::ng-deep {
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: #ffe4d1;
+    height: 2px;
+  }
+  .custom-slider .ng5-slider .ng5-slider-selection {
+    background: orange;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer {
+    width: 12px;
+    height: 15px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: #478fcd;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-bubble {
+    bottom: 14px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-limit {
+    font-weight: bold;
+    color: #5fad46;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #ffe4d1;
+    top: -1px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+    background: #5fad46;
+  }
+}
+
+.custom-slider {
+  margin-top: 20px;
+}
+.submit {
+  margin-left: 0;
+  margin-right: 0;
+  color: white;
+  background-color: #5fad46;
+  width: 50%;
+  height: 45px;
+  box-shadow: 0 0 20px 3px #7ce662;
+  font-size: 18px;
+}
+
+// list
+
+.product-card {
+  //   max-width: 23%;
+  position: relative;
+  margin-bottom: 8px;
+  margin-left: 18px;
+  margin-top: 10px;
+  //   background-color: #ebf4fa;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 395px;
+  width: 262.5px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  cursor: pointer;
+}
+
+.image-size {
+  width: 262.5px;
+  height: 180px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+}
+
+.listing-cost {
+  position: initial;
+  bottom: 0;
+  font-size: 16px;
+  z-index: 2;
+  padding-right: 5px;
+  text-align: right;
+  color: #ffffff;
+  width: 100%;
+  background-color: #40686a;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.detail {
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+.head {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.date-post {
+  font-size: x-small;
+}
+
+.loca {
+  white-space: nowrap;
+  font-size: small;
+  margin-left: 0px;
+}
+.p_icon1 {
+  font-size: small;
+  margin-bottom: 5px;
+  margin-left: 11px;
+}
+
+.p_icon2 {
+  font-size: small;
+  margin-bottom: 5px;
+}
+
+.sell-HD {
+  background: #dc0603;
+}
+.sell-SUB {
+  background: #00649f;
+}
+.sell-corner {
+  width: 80px;
+  position: absolute;
+  font-size: small;
+  text-align: center;
+  line-height: 20px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  top: 10px;
+  right: -20px;
+  left: auto;
+  transform: rotate(45deg);
+  font-weight: bold;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 1px #222;
+}
+.sell-box {
+  position: relative;
+  width: auto;
+  overflow: hidden;
+}

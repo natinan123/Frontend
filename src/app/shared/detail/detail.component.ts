@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ServerService } from 'src/app/@service/server.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
@@ -97,6 +97,8 @@ export class DetailComponent implements OnInit {
   view_list: any;
   FromProvin: any;
   count_FromProvin: any;
+  status: any;
+  link: string;
 
 
   constructor(
@@ -115,7 +117,19 @@ export class DetailComponent implements OnInit {
     this.data = this.route.snapshot.paramMap.getAll('pro_id');
     console.log(this.data)
     this.user = this.session.getActiveUser();
-
+    this.status = this.user[0].cus_status;
+    if (this.user == null) {
+      this.link = '/mainpage/mainpage/detail';
+    }
+    if (this.user[0].cus_status == "admin") {
+      this.link = '/admin/admin/detail';
+    }
+    if (this.user[0].cus_status == "seller") {
+      this.link = '/seller/seller/detail';
+    }
+    if (this.user[0].cus_status == "buyer") {
+      this.link = '/buyer/buyer/detail';
+    }
 
     this.getDetail();
 
@@ -304,4 +318,22 @@ export class DetailComponent implements OnInit {
 
       })
   }
+
+
+  onClick(r) {
+    console.log(r);
+    this.router.navigate([this.link, r.pro_id]);
+    this.data = r.pro_id
+    this.getDetail();
+    // updatep ยอดวิว
+    this.service.putProview(this.data).subscribe(
+      async (res) => {
+      }
+    )
+    this.getUserLocation();
+    this.getfollow();
+    this.getImagePro();
+    window.scroll(0, 0);
+  }
+
 }

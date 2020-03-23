@@ -5,6 +5,8 @@ import { ServerService } from 'src/app/@service/server.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Ng2ImgMaxService } from 'ng2-img-max';
 
 // Endcode
 function utf8_to_b64(str) {
@@ -130,6 +132,7 @@ export class SellingComponent implements OnInit {
   test123: string;
   test12345: string;
   guide_price: Object;
+  selectedFile2: File;
 
 
 
@@ -141,7 +144,8 @@ export class SellingComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-
+    public sanitizer: DomSanitizer,
+    private ng2ImgMax: Ng2ImgMaxService,
   ) { }
 
   ngOnInit() {
@@ -197,7 +201,7 @@ export class SellingComponent implements OnInit {
     this.getUserLocation();
     this.getZonePro();
     this.getType();
-  
+
   }
 
   // ราคาแนะนำ
@@ -297,7 +301,19 @@ export class SellingComponent implements OnInit {
   onFileChanged(event: any) {
     for (var i = 0; i <= event.target.files.length - 1; i++) {
       var selectedFile = event.target.files[i];
-      this.fileList.push(selectedFile);
+
+      // todo : resize รูป
+      this.ng2ImgMax.resizeImage(event.target.files[i], 830, 433).subscribe(
+        result => {
+          this.selectedFile2 = new File([result], result.name);
+          this.fileList.push(this.selectedFile2);
+        },
+        error => {
+          console.log('😢 Oh no!', error);
+        }
+      );
+
+      // this.fileList.push(selectedFile);
       this.listOfFiles.push(selectedFile.name);
       var reader = new FileReader();
       reader.onload = (event: any) => {

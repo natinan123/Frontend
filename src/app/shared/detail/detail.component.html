@@ -190,7 +190,7 @@
         <mat-chip style=" margin-top: 10px; margin-left: 30px;">ผลการค้นหา {{count_FromProvin}} รายการ</mat-chip>
     </mat-chip-list>
     <div class="row">
-        <mat-card class="product-card" *ngFor="let r of FromProvin" [routerLink]="[link ,r.pro_id]">
+        <mat-card class="product-card" *ngFor="let r of FromProvin" (click)="onClick(r)">
 
             <div class="data sell-box">
 
@@ -264,7 +264,7 @@
         </button>
     </div>
 
-    <agm-map [latitude]="lat2" [longitude]="lng2">
+    <agm-map [latitude]="latitude" [longitude]="longtitude">
         <!-- หน้าเริ่ม -->
         <agm-marker [latitude]="latitude" [longitude]="longtitude">
             <!-- มาค์ก -->

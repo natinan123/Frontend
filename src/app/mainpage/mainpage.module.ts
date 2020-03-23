@@ -25,6 +25,19 @@ import { MPriceComponent } from './m-search/m-price/m-price.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { IndexComponent } from './index/index.component';
+import { VerifyComponent } from './verify/verify.component';
+import { LAptComponent } from './m-search/lease/l-apt/l-apt.component';
+import { LCommerComponent } from './m-search/lease/l-commer/l-commer.component';
+import { LCondoComponent } from './m-search/lease/l-condo/l-condo.component';
+import { LHouseComponent } from './m-search/lease/l-house/l-house.component';
+import { LLandComponent } from './m-search/lease/l-land/l-land.component';
+import { LTownComponent } from './m-search/lease/l-town/l-town.component';
+import { SAptComponent } from './m-search/sell/s-apt/s-apt.component';
+import { SCommerComponent } from './m-search/sell/s-commer/s-commer.component';
+import { SCondoComponent } from './m-search/sell/s-condo/s-condo.component';
+import { SHouseComponent } from './m-search/sell/s-house/s-house.component';
+import { SLandComponent } from './m-search/sell/s-land/s-land.component';
+import { STownComponent } from './m-search/sell/s-town/s-town.component';
 
 
 @NgModule({
@@ -39,7 +52,20 @@ import { IndexComponent } from './index/index.component';
     MLocationComponent,
     MMapComponent,
     MPriceComponent,
-    IndexComponent
+    IndexComponent,
+    VerifyComponent,
+    LAptComponent,
+    LCommerComponent,
+    LCondoComponent,
+    LHouseComponent,
+    LLandComponent,
+    LTownComponent,
+    SAptComponent,
+    SCommerComponent,
+    SCondoComponent,
+    SHouseComponent,
+    SLandComponent,
+    STownComponent
   ],
   imports: [
     CommonModule,

@@ -11,7 +11,8 @@
 
     <div class="row">
         <div class="col-md-3">
-            <img src="data:image/jpg;base64,{{pic64}}" class="circle" />
+            <img *ngIf="pic64 != null" src="data:image/jpg;base64,{{pic64}}" class="circle" />
+            <img *ngIf="pic64 == '' || pic64 == null" src="../../../assets/pic/sall/sall-avtar.png" class="circle" />
         </div>
         <div class="col-md-3">
             <button mat-raised-button style="margin-top: 70px;" (click)="openModalAvatar(editAvatar)"><i
@@ -149,7 +150,7 @@
 
         <!-- single -->
         <div class="" style="margin-top: 10px; margin-bottom: 10px;">
-            <img *ngIf="url == null && pic64 == null" src="../../../assets/pic/mainpage/user_avatar.png"
+            <img *ngIf="url == null && pic64 == null" src="../../../assets/pic/sall/sall-avtar.png"
                 class="circle2">
             <img *ngIf="url != null" [src]="url" class="circle2">
             <img *ngIf="url == null && pic64 != null" src="data:image/jpg;base64,{{pic64}}" class="circle2" />

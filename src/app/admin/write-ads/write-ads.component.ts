@@ -37,6 +37,7 @@ export class WriteAdsComponent implements OnInit {
   })
   art_type: any;
   articl_head: any;
+  imagePreview: string | ArrayBuffer;
 
 
   constructor(
@@ -64,14 +65,27 @@ export class WriteAdsComponent implements OnInit {
   @ViewChild('attachments', { static: false }) attachment: any;
 
   selectedFile: File;
-  fileList: File[] = [];
+  selectedFile2: File;
+
+  fileList: any[] = [];
   listOfFiles: any[] = [];
   urls: any[] = [];
 
   onFileChanged(event: any) {
     for (var i = 0; i <= event.target.files.length - 1; i++) {
       var selectedFile = event.target.files[i];
-      this.fileList.push(selectedFile);
+
+      // todo : resize รูป
+      this.ng2ImgMax.resizeImage(event.target.files[i], 830, 433).subscribe(
+        result => {
+          this.selectedFile2 = new File([result], result.name);
+          this.fileList.push(this.selectedFile2);
+        },
+        error => {
+          console.log('😢 Oh no!', error);
+        }
+      );
+
       this.listOfFiles.push(selectedFile.name);
       var reader = new FileReader();
       reader.onload = (event: any) => {
@@ -83,7 +97,7 @@ export class WriteAdsComponent implements OnInit {
     this.attachment.nativeElement.value = '';
   }
 
-
+ 
 
 
   removeSelectedFile(index) {
@@ -94,20 +108,6 @@ export class WriteAdsComponent implements OnInit {
     // delete file from image
     this.urls.splice(index, 1);
   }
-
-  // // todo :Button upload image multi
-  // onMultipleSubmit() {
-  //   const formData = new FormData();
-  //   for (let img of this.fileList) {
-  //     formData.append('blogimage', img);
-  //   }
-
-  //   this.service.postImageProMulti(formData).subscribe(
-  //     (res) => console.log(res),
-  //     (err) => console.log(err)
-  //   );
-  // }
-
 
 
 

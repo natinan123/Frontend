@@ -84,7 +84,7 @@
 <div class="row" style="width: 100%; height: 100%;">
     <div class="col-md-2" style="background-color: #40686a ; padding-right: 0px; ">
         <div class="pic">
-            <img *ngIf="pic64 == ''" src="../../assets/pic/sall/sall-avtar.png"
+            <img *ngIf="pic64 == '' || pic64 == null" src="../../assets/pic/sall/sall-avtar.png"
                 style="height: 100px;width: auto;  display: block; margin-left: auto; margin-right: auto; ">
             <img *ngIf="pic64 != null" src="data:image/jpg;base64,{{pic64}}" class="circle" />
             <div class="user">
