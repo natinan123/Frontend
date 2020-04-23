@@ -6,7 +6,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/@service/session.service';
 import { delay } from 'q';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ViewService } from 'src/app/@service/view.service';
 
 
 // Endcode
@@ -99,6 +98,7 @@ export class DetailComponent implements OnInit {
   count_FromProvin: any;
   status: any;
   link: string;
+  count_view: any;
 
 
   constructor(
@@ -110,7 +110,9 @@ export class DetailComponent implements OnInit {
     private modalService: NgbModal,
     private modal: NgbModal,
     private sanitizer: DomSanitizer,
-    private view: ViewService
+
+   
+
   ) { }
 
   ngOnInit() {
@@ -141,8 +143,7 @@ export class DetailComponent implements OnInit {
     this.getUserLocation();
     this.getfollow();
     this.getImagePro();
-
-
+    
   }
 
   getDetail() {

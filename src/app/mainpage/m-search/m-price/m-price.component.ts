@@ -78,7 +78,7 @@ export class MPriceComponent implements OnInit {
     }
     console.log(data);
 
-    if (Type_id == "") {
+    if (Type_id != "") {
       this.service.getProFromprice(data).subscribe(
         (res) => {
           console.log(res);
