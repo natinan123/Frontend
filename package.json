@@ -34,7 +34,7 @@
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "js-marker-clusterer": "^1.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mousetrap": "^1.6.5",
     "ng2-file-upload": "^1.4.0",
     "ng2-img-max": "^2.1.18",
